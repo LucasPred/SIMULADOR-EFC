@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFC - Panel Privativo del Consultor & Peritaje Sistémico</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --accent: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-col: #1e293b;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 720px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-col);
+        }
+        .header-pericial {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid var(--border-col);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+        .header-pericial img { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+        h1 { font-size: 1.25rem; color: var(--accent); text-transform: uppercase; margin: 0 0 5px 0; }
+        .metrics-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .metric-box {
+            background: #0b0f19; padding: 12px; border-radius: 8px; text-align: center; border: 1px solid var(--border-col); font-size: 0.8rem; color: var(--text-muted);
+        }
+        .metric-box span { display: block; font-size: 1.2rem; font-weight: bold; color: var(--success); margin-top: 5px; }
+        .report-section {
+            background-color: #0b0f19; padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid var(--border-col); line-height: 1.6; font-size: 0.95rem;
+        }
+        .alerta-box {
+            padding: 15px; border-radius: 8px; margin-top: 15px; font-weight: bold; font-size: 0.9rem;
+        }
+        .alerta-roja { background-color: rgba(239, 68, 68, 0.15); border: 1px solid var(--danger); color: #fca5a5; }
+        .alerta-verde { background-color: rgba(34, 197, 94, 0.15); border: 1px solid var(--success); color: #86efac; }
+        button {
+            width: 100%; padding: 14px; background-color: #1e293b; color: var(--text-main);
+            border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; border: 1px solid #334155; text-transform: uppercase;
+        }
+        button:hover { background-color: #334155; }
+    </style>
+</head>
+<body>
 
+    <div class="container">
+        <div class="header-pericial">
+            <img id="avatarDisplay" alt="Avatar">
+            <div>
+                <h1 id="lblUsuario">Participante</h1>
+                <span id="lblRazon" style="color:var(--text-muted); font-size:0.85rem;">Razón Social</span>
+            </div>
+        </div>
+
+        <div class="metrics-bar">
+            <div class="metric-box">Armonía Familiar<span id="rArmonia">0%</span></div>
+            <div class="metric-box">Eficiencia Operativa<span id="rOperativa">0%</span></div>
+            <div class="metric-box">Continuidad Sucesoria<span id="rSucesoria">0%</span></div>
+        </div>
+
+        <div class="report-section" id="cuerpoReporte">
+            <!-- Dinámico -->
+        </div>
+
+        <button onclick="reiniciarEvaluacion()">Reiniciar Auditoría Sistémica</button>
+    </div>
+
+    <script>
+        if (sessionStorage.getItem("efc_sucesion_completado") !== "true") {
+            window.location.href = "index.html";
+        } else {
+            document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario");
+            document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon");
+            document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar");
+
+            document.getElementById("rArmonia").innerText = sessionStorage.getItem("efc_armonia") + "%";
+            document.getElementById("rOperativa").innerText = sessionStorage.getItem("efc_operativa") + "%";
+            document.getElementById("rSucesoria").innerText = sessionStorage.getItem("efc_sucesoria") + "%";
+
+            const contradicciones = parseInt(sessionStorage.getItem("efc_contradicciones"));
+            const rol = sessionStorage.getItem("efc_rol_estructural");
+            const vinculos = sessionStorage.getItem("efc_diagnostico_vinculos");
+            const estrategiaSucesion = sessionStorage.getItem("efc_estrategia_sucesion");
+
+            let html = `<p><strong>Informe de Peritaje y Gobernanza (Cátedra Angus / Bowen):</strong> Se ha procesado el perfil conductual del titular bajo el rol de <em>${rol}</em>.</p>`;
+            
+            html += `<p><strong>Diagnóstico Vincular:</strong> "${vinculos}"</p>`;
+            html += `<p><strong>Estrategia Sucesoria Seleccionada:</strong> ${estrategiaSucesion.toUpperCase()}</p>`;
+
+            if (contradicciones >= 1) {
+                html += `
+                    <div class="alerta-box alerta-roja">
+                        🚨 [DETECTOR DE DISOCIACIÓN CONDUCTUAL ACTIVO]: Se registraron ${contradicciones} decisiones cortoplacistas que contradicen la preservación a largo plazo del legado patrimonial. Evidencia triangulación vincular y cesión ante presiones de terceros no corporativos.
+                    </div>
+                `;
+            } else {
+                html += `
+                    <div class="alerta-box alerta-verde">
+                        ✅ [ALTA COHERENCIA SISTÉMICA]: El participante mantiene unidad de pensamiento y acción entre su rol institucional y las decisiones adoptadas, resguardando la continuidad y eficiencia operativa.
+                    </div>
+                `;
+            }
+
+            document.getElementById("cuerpoReporte").innerHTML = html;
+        }
+
+        function reiniciarEvaluacion() {
+            sessionStorage.clear();
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
