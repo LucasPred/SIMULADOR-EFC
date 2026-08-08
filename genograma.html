@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EFC - Genograma Sistémico (Genopro & Bowen)</title>
+    <title>EFC - Estructura Familiar & Mapeo Operativo</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -12,7 +12,9 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-col: #1e293b;
+            --danger: #ef4444;
             --success: #22c55e;
+            --warning: #f59e0b;
         }
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
@@ -27,7 +29,7 @@
         }
         .container {
             width: 100%;
-            max-width: 650px;
+            max-width: 780px;
             background-color: var(--card-bg);
             border-radius: 16px;
             padding: 30px;
@@ -45,19 +47,80 @@
         .user-info { display: flex; align-items: center; gap: 12px; }
         .user-info img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
         h1 { font-size: 1.15rem; color: var(--accent); text-transform: uppercase; margin: 0; }
-        p.desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; }
-        label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--text-muted); font-size: 0.85rem; }
-        select, textarea {
-            width: 100%; padding: 12px; margin-bottom: 15px;
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--text-muted); font-size: 0.82rem; }
+        select, input[type="text"] {
+            width: 100%; padding: 11px;
             background-color: #0b0f19; border: 1px solid var(--border-col); border-radius: 8px;
-            color: var(--text-main); font-size: 0.95rem; box-sizing: border-box;
+            color: var(--text-main); font-size: 0.9rem; box-sizing: border-box;
         }
-        textarea { resize: vertical; height: 80px; }
-        button {
+        .checkbox-group {
+            background: #0b0f19;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-col);
+            margin-bottom: 20px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .checkbox-label input { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
+        
+        /* Panel Genopro Vectorial Inferior */
+        .genopro-panel {
+            background-color: #070a12;
+            border: 2px dashed var(--accent);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .genopro-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        .genogram-canvas-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            min-height: 80px;
+        }
+        .node-symbol {
+            background: #131b2e;
+            border: 2px solid var(--text-muted);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: bold;
+        }
+        .node-symbol.square { border-radius: 4px; border-color: var(--accent); color: var(--accent); }
+        .node-symbol.circle { border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-color: #f472b6; color: #f472b6; }
+        .node-symbol.conflict { border-color: var(--danger); box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
+        .node-symbol.addiction { border-color: var(--warning); }
+
+        button.main-btn {
             width: 100%; padding: 14px; background-color: var(--accent); color: #0b0f19;
-            border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; text-transform: uppercase;
+            border: none; border-radius: 8px; font-size: 0.95rem; font-weight: bold; cursor: pointer; text-transform: uppercase;
         }
-        button:hover { background-color: #0ea5e9; }
+        button.main-btn:hover { background-color: #0ea5e9; }
     </style>
 </head>
 <body>
@@ -71,24 +134,50 @@
                     <span id="lblRazon" style="font-size:0.75rem; color:var(--text-muted);">Entidad</span>
                 </div>
             </div>
-            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--accent);">Módulo Genograma</div>
+            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--accent);">Mapeo Estructural</div>
         </div>
 
-        <p class="desc">Defina su rol estructural dentro del sistema familiar y describa la dinámica vincular con otros miembros clave. Esto mapeará las <strong>Tríadas de Bowen</strong> y las posibles alianzas con terceros ajenos al negocio.</p>
+        <div class="form-grid">
+            <div>
+                <label for="selectRol">Su Posición en la Empresa:</label>
+                <select id="selectRol" onchange="actualizarGenogramaVectorial()">
+                    <option value="Fundador / Director Principal">Fundador / Director Principal</option>
+                    <option value="Sucesor / Hijo Directo">Sucesor / Hijo Directo</option>
+                    <option value="Familiar Colateral / Hermano">Familiar Colateral / Hermano</option>
+                    <option value="Familiar Político / Externo">Familiar Político / Externo</option>
+                </select>
+            </div>
+            <div>
+                <label for="inputNucleo">Composición del Núcleo Conviviente:</label>
+                <input type="text" id="inputNucleo" placeholder="Ej: Cónyuge, 2 Hijos..." oninput="actualizarGenogramaVectorial()">
+            </div>
+        </div>
 
-        <label for="selectRol">Su Rol Estructural Principal:</label>
-        <select id="selectRol">
-            <option value="Fundador / Patriarca / Matriarca">Fundador / Patriarca / Matriarca</option>
-            <option value="Sucesor Designado / Hijo">Sucesor Designado / Hijo/a</option>
-            <option value="Hermano Co-propietario">Hermano Co-propietario</option>
-            <option value="Familiar Político / Externo">Familiar Político / Tercero Incorporado</option>
-            <option value="Gerente Profesional No Familiar">Gerente Profesional No Familiar</option>
-        </select>
+        <label>Dinámicas Cotidianas y Relaciones del Entorno:</label>
+        <div class="checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="chkAlianza" onchange="actualizarGenogramaVectorial()"> Participación activa de asesores o terceros externos en la toma de decisiones.
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="chkConflicto" onchange="actualizarGenogramaVectorial()"> Fricciones o distanciamiento prolongado entre socios/herederos.
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="chkAdiccion" onchange="actualizarGenogramaVectorial()"> Situaciones críticas o vulnerabilidades personales de miembros del grupo.
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="chkCortoplazo" onchange="actualizarGenogramaVectorial()"> Demanda familiar constante de retiros financieros inmediatos por sobre reinversión.
+            </label>
+        </div>
 
-        <label for="txtVinculos">Diagnóstico Vincular y Presencia de Triadas (Bowen):</label>
-        <textarea id="txtVinculos" placeholder="Describa coaliciones, tensiones, alianzas con terceros o familiares que influyen en las decisiones..."></textarea>
+        <!-- PANEL INFERIOR GENOPRO VECTORIAL -->
+        <div class="genopro-panel">
+            <div class="genopro-title">📊 Panel Vectorial de Dinámica Relacional</div>
+            <div class="genogram-canvas-box" id="canvasGenopro">
+                <!-- Se dibuja dinámicamente -->
+            </div>
+        </div>
 
-        <button onclick="guardarGenograma()">Generar Genopro y Avanzar a Encrucijadas</button>
+        <button class="main-btn" onclick="guardarYContinuar()">Continuar con la Evaluación</button>
     </div>
 
     <script>
@@ -98,19 +187,68 @@
             document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario");
             document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon");
             document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar");
+            actualizarGenogramaVectorial();
         }
 
-        function guardarGenograma() {
+        function actualizarGenogramaVectorial() {
             const rol = document.getElementById("selectRol").value;
-            const vinculos = document.getElementById("txtVinculos").value.trim();
+            const nucleo = document.getElementById("inputNucleo").value || "Núcleo Base";
+            const chkAlianza = document.getElementById("chkAlianza").checked;
+            const chkConflicto = document.getElementById("chkConflicto").checked;
+            const chkAdiccion = document.getElementById("chkAdiccion").checked;
+            const chkCortoplazo = document.getElementById("chkCortoplazo").checked;
 
-            if (!vinculos) {
-                alert("⚠️ Por favor, ingrese un diagnóstico vincular para configurar el mapa sistémico.");
-                return;
+            const canvas = document.getElementById("canvasGenopro");
+            canvas.innerHTML = "";
+
+            const nodoPrincipal = document.createElement("div");
+            nodoPrincipal.className = "node-symbol square";
+            nodoPrincipal.innerHTML = `👤 ${rol.split('/')[0]}<br><span style="font-size:0.7rem; color:var(--text-muted);">${sessionStorage.getItem("efc_usuario")}</span>`;
+            canvas.appendChild(nodoPrincipal);
+
+            const nodoNucleo = document.createElement("div");
+            nodoNucleo.className = "node-symbol circle";
+            nodoNucleo.innerHTML = `👨‍👩‍👧`;
+            nodoNucleo.title = `Núcleo: ${nucleo}`;
+            canvas.appendChild(nodoNucleo);
+
+            if (chkAlianza) {
+                const n = document.createElement("div");
+                n.className = "node-symbol";
+                n.style.borderColor = "var(--success)";
+                n.style.color = "var(--success)";
+                n.innerHTML = `🤝 Tercero / Asesor`;
+                canvas.appendChild(n);
             }
+            if (chkConflicto) {
+                const n = document.createElement("div");
+                n.className = "node-symbol conflict";
+                n.innerHTML = `⚡ Conflicto Activo`;
+                canvas.appendChild(n);
+            }
+            if (chkAdiccion) {
+                const n = document.createElement("div");
+                n.className = "node-symbol addiction";
+                n.innerHTML = `⚠️ Vulnerabilidad`;
+                canvas.appendChild(n);
+            }
+            if (chkCortoplazo) {
+                const n = document.createElement("div");
+                n.className = "node-symbol";
+                n.style.borderColor = "var(--warning)";
+                n.style.color = "var(--warning)";
+                n.innerHTML = `💸 Presión de Caja`;
+                canvas.appendChild(n);
+            }
+        }
 
+        function guardarYContinuar() {
+            const rol = document.getElementById("selectRol").value;
+            const nucleo = document.getElementById("inputNucleo").value.trim() || "Estándar";
+            
+            // Guardar datos ocultos para tu panel de consultor sin alterar las variables del resto del flujo
             sessionStorage.setItem("efc_rol_estructural", rol);
-            sessionStorage.setItem("efc_diagnostico_vinculos", vinculos);
+            sessionStorage.setItem("efc_diagnostico_vinculos", `Núcleo: ${nucleo} | Alianzas Terceros: ${document.getElementById('chkAlianza').checked} | Conflictos: ${document.getElementById('chkConflicto').checked} | Vulnerabilidad: ${document.getElementById('chkAdiccion').checked} | Presión Caja: ${document.getElementById('chkCortoplazo').checked}`);
             sessionStorage.setItem("efc_genograma_completado", "true");
 
             window.location.href = "encrucijadas.html";
