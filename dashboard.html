@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EFC - Dashboard Privativo del Consultor & Auditoría</title>
+    <title>EFC - Dashboard Privativo del Consultor & Auditoría Histórica</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -14,6 +14,7 @@
             --border-col: #1e293b;
             --danger: #ef4444;
             --success: #22c55e;
+            --warning: #f59e0b;
         }
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
@@ -28,7 +29,7 @@
         }
         .container {
             width: 100%;
-            max-width: 750px;
+            max-width: 850px;
             background-color: var(--card-bg);
             border-radius: 16px;
             padding: 35px;
@@ -64,12 +65,41 @@
         }
         .alerta-roja { background-color: rgba(239, 68, 68, 0.15); border: 1px solid var(--danger); color: #fca5a5; }
         .alerta-verde { background-color: rgba(34, 197, 94, 0.15); border: 1px solid var(--success); color: #86efac; }
-        button {
-            width: 100%; padding: 14px; background-color: #1e293b; color: var(--text-main);
-            border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; border: 1px solid #334155; text-transform: uppercase;
-            letter-spacing: 0.5px;
+        
+        .export-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
         }
-        button:hover { background-color: #334155; border-color: var(--accent); }
+        .btn-action {
+            width: 100%; padding: 12px; background-color: #1e293b; color: var(--text-main);
+            border: 1px solid #334155; border-radius: 8px; font-size: 0.9rem; font-weight: bold; cursor: pointer; transition: all 0.2s;
+            text-transform: uppercase; letter-spacing: 0.5px; text-align: center;
+        }
+        .btn-action:hover { background-color: #334155; border-color: var(--accent); }
+        .btn-primary {
+            background-color: var(--accent);
+            color: #0b0f19;
+            border: none;
+        }
+        .btn-primary:hover { background-color: #0ea5e9; }
+        
+        table.history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+        table.history-table th, table.history-table td {
+            border: 1px solid var(--border-col);
+            padding: 8px 10px;
+            text-align: left;
+        }
+        table.history-table th {
+            background-color: #1e293b;
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -83,7 +113,7 @@
                     <span id="lblRazon" style="color:var(--text-muted); font-size:0.8rem;">Entidad Corporativa</span>
                 </div>
             </div>
-            <div style="background:#1e293b; padding:8px 14px; border-radius:6px; font-size:0.8rem; color:var(--accent); border:1px solid var(--border-col);">Dashboard Privativo</div>
+            <div style="background:#1e293b; padding:8px 14px; border-radius:6px; font-size:0.8rem; color:var(--accent); border:1px solid var(--border-col);">Panel del Consultor</div>
         </div>
 
         <div class="metrics-grid">
@@ -96,14 +126,72 @@
             <!-- Cargado dinámicamente -->
         </div>
 
-        <button onclick="reiniciarSistema()">Reiniciar Sesión y Auditoría</button>
+        <div class="panel-section">
+            <h3 style="margin-top:0; color:var(--accent); font-size:1rem;">Registro Histórico y Exportación Pericial</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:15px;">Gestión y respaldo de constancias de todos los integrantes evaluados en el sistema corporativo.</p>
+            
+            <div class="export-buttons">
+                <button class="btn-action" onclick="exportarCSV()">Exportar CSV (Excel)</button>
+                <button class="btn-action" onclick="exportarJSON()">Exportar JSON</button>
+                <button class="btn-action" onclick="copiarReporte()">Copiar Reporte</button>
+            </div>
+
+            <div style="max-height: 180px; overflow-y: auto;">
+                <table class="history-table" id="tablaHistorial">
+                    <thead>
+                        <tr>
+                            <th>Fecha/Hora</th>
+                            <th>Entidad</th>
+                            <th>Participante</th>
+                            <th>Rol</th>
+                            <th>Estrategia Sucesión</th>
+                            <th>Contradicciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyHistorial">
+                        <!-- Dinámico -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <button class="btn-action btn-primary" onclick="reiniciarSistema()" style="margin-top: 10px;">Nueva Sesión / Siguiente Participante</button>
     </div>
 
     <script>
+        // Registrar la sesión actual en el historial global almacenado en localStorage
+        function registrarEnHistorialGlobal() {
+            if (sessionStorage.getItem("efc_sucesion_completado") === "true") {
+                const registroActual = {
+                    fecha: new Date().toLocaleString(),
+                    razon: sessionStorage.getItem("efc_razon") || "N/A",
+                    usuario: sessionStorage.getItem("efc_usuario") || "N/A",
+                    rol: sessionStorage.getItem("efc_rol_estructural") || "N/A",
+                    armonia: sessionStorage.getItem("efc_armonia") + "%",
+                    operativa: sessionStorage.getItem("efc_operativa") + "%",
+                    sucesoria: sessionStorage.getItem("efc_sucesoria") + "%",
+                    estrategia: sessionStorage.getItem("efc_estrategia_sucesion") || "N/A",
+                    contradicciones: sessionStorage.getItem("efc_contradicciones") || "0",
+                    vinculos: sessionStorage.getItem("efc_diagnostico_vinculos") || "N/A"
+                };
+
+                let historialGlobal = JSON.parse(localStorage.getItem("efc_historial_global") || "[]");
+                
+                // Evitar duplicados exactos consecutivos de la misma sesión
+                const yaExiste = historialGlobal.some(h => h.usuario === registroActual.usuario && h.fecha === registroActual.fecha);
+                if (!yaExiste) {
+                    historialGlobal.push(registroActual);
+                    localStorage.setItem("efc_historial_global", JSON.stringify(historialGlobal));
+                }
+            }
+        }
+
         if (sessionStorage.getItem("efc_sucesion_completado") !== "true") {
             alert("⚠️ Acceso restringido al Dashboard: Debe completar la secuencia de simulación sucesoria.");
             window.location.href = "index.html";
         } else {
+            registrarEnHistorialGlobal();
+
             document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario");
             document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon");
             document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar");
@@ -136,6 +224,107 @@
             }
 
             document.getElementById("cuerpoDashboard").innerHTML = html;
+            cargarTablaHistorial();
+        }
+
+        function cargarTablaHistorial() {
+            const historialGlobal = JSON.parse(localStorage.getItem("efc_historial_global") || "[]");
+            const tbody = document.getElementById("tbodyHistorial");
+            tbody.innerHTML = "";
+
+            if (historialGlobal.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">Sin registros históricos almacenados aún.</td></tr>`;
+                return;
+            }
+
+            historialGlobal.slice().reverse().forEach(item => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${item.fecha}</td>
+                    <td>${item.razon}</td>
+                    <td>${item.usuario}</td>
+                    <td>${item.rol}</td>
+                    <td>${item.estrategia.toUpperCase()}</td>
+                    <td style="color:${item.contradicciones > 0 ? 'var(--danger)' : 'var(--success)'}; font-weight:bold;">${item.contradicciones}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function exportarCSV() {
+            const historialGlobal = JSON.parse(localStorage.getItem("efc_historial_global") || "[]");
+            if (historialGlobal.length === 0) {
+                alert("No hay datos históricos para exportar.");
+                return;
+            }
+
+            let csvContent = "data:text/csv;charset=utf-8,Fecha,Entidad,Participante,Rol,Armonía,Eficiencia,Sucesión,Estrategia,Contradicciones,Vínculos\n";
+            
+            historialGlobal.forEach(item => {
+                let row = [
+                    `"${item.fecha}"`,
+                    `"${item.razon}"`,
+                    `"${item.usuario}"`,
+                    `"${item.rol}"`,
+                    `"${item.armonia}"`,
+                    `"${item.operativa}"`,
+                    `"${item.sucesoria}"`,
+                    `"${item.estrategia}"`,
+                    `"${item.contradicciones}"`,
+                    `"${item.vinculos.replace(/"/g, '""')}"`
+                ];
+                csvContent += row.join(",") + "\n";
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `EFC_Auditoria_Historica_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function exportarJSON() {
+            const historialGlobal = JSON.parse(localStorage.getItem("efc_historial_global") || "[]");
+            if (historialGlobal.length === 0) {
+                alert("No hay datos históricos para exportar.");
+                return;
+            }
+
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(historialGlobal, null, 2));
+            const dlAnchorElem = document.createElement('a');
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", `EFC_Auditoria_Historica_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(dlAnchorElem);
+            dlAnchorElem.click();
+            dlAnchorElem.removeChild(dlAnchorElem);
+        }
+
+        function copiarReporte() {
+            const usuario = sessionStorage.getItem("efc_usuario");
+            const razon = sessionStorage.getItem("efc_razon");
+            const rol = sessionStorage.getItem("efc_rol_estructural");
+            const armonia = sessionStorage.getItem("efc_armonia");
+            const operativa = sessionStorage.getItem("efc_operativa");
+            const sucesoria = sessionStorage.getItem("efc_sucesoria");
+            const contradicciones = sessionStorage.getItem("efc_contradicciones");
+            const estrategia = sessionStorage.getItem("efc_estrategia_sucesion");
+            const vinculos = sessionStorage.getItem("efc_diagnostico_vinculos");
+
+            const textoReporte = `--- INFORME PERICIAL EFC ---
+Entidad: ${razon}
+Participante: ${usuario}
+Rol: ${rol}
+Métricas: Armonía ${armonia}% | Eficiencia ${operativa}% | Sucesión ${sucesoria}%
+Estrategia Sucesoria: ${estrategia.toUpperCase()}
+Desvíos/Contradicciones Cortoplacistas: ${contradicciones}
+Diagnóstico Vincular: ${vinculos}
+-----------------------------`;
+
+            navigator.clipboard.writeText(textoReporte).then(() => {
+                alert("📋 ¡Reporte copiado al portapapeles con éxito!");
+            });
         }
 
         function reiniciarSistema() {
