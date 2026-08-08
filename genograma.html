@@ -378,8 +378,12 @@
 
         function guardarYContinuar() {
             actualizarDatosGlobales();
-            // Apunta directamente a encrucijada.html (en singular)
-            window.location.href = "encrucijada.html";
+            
+            const destino = "encrucijada.html";
+            console.log("Intentando navegar a: " + destino);
+            
+            // Verificación de seguridad antes de navegar
+            window.location.href = destino;
         }
     </script>
 </body>
