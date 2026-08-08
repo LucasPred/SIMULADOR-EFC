@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EFC Enterprise - Acceso y Autenticación Sistémica</title>
+    <title>EFC - Acceso al Sistema & Registro Biométrico</title>
     <style>
         :root {
             --bg-color: #0b0f19;
             --card-bg: #131b2e;
             --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border-col: #1e293b;
             --danger: #ef4444;
+            --success: #22c55e;
         }
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
@@ -28,159 +28,210 @@
         }
         .container {
             width: 100%;
-            max-width: 520px;
+            max-width: 480px;
             background-color: var(--card-bg);
             border-radius: 16px;
             padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             border: 1px solid var(--border-col);
-        }
-        h1 {
-            font-size: 1.35rem;
-            color: var(--accent);
-            text-align: center;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        p.subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 30px;
-        }
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        input, select {
-            width: 100%;
-            padding: 12px 14px;
-            margin-bottom: 18px;
-            background-color: #0b0f19;
-            border: 1px solid var(--border-col);
-            border-radius: 8px;
-            color: var(--text-main);
-            font-size: 0.95rem;
             box-sizing: border-box;
         }
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+        h1 { font-size: 1.4rem; color: var(--accent); text-transform: uppercase; margin-top: 0; margin-bottom: 8px; text-align: center; letter-spacing: 1px; }
+        p.subtitle { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 30px; }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; }
+        input[type="text"], input[type="password"], select {
+            width: 100%; padding: 12px;
+            background-color: #0b0f19; border: 1px solid var(--border-col); border-radius: 8px;
+            color: var(--text-main); font-size: 0.95rem; box-sizing: border-box;
         }
-        .avatar-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-            background: #0b0f19;
-            padding: 15px;
+        
+        /* Sección de Avatar / Cámara */
+        .avatar-section {
+            background: #070a12;
+            border: 1px solid var(--border-col);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .video-box {
+            width: 100%;
+            max-width: 200px;
+            height: 150px;
+            background: #000;
             border-radius: 8px;
-            border: 1px dashed var(--border-col);
+            margin: 0 auto 12px auto;
+            object-fit: cover;
+            display: none;
+            border: 2px solid var(--accent);
         }
-        #previewImg {
-            width: 70px;
-            height: 70px;
+        .canvas-box { display: none; }
+        .preview-avatar {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
-            background-color: #1e293b;
-            margin-bottom: 10px;
-            border: 2px solid var(--accent);
+            border: 3px solid var(--accent);
+            margin: 0 auto 12px auto;
             display: none;
         }
-        button {
-            width: 100%;
-            padding: 14px;
-            background-color: var(--accent);
-            color: #0b0f19;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-transform: uppercase;
+        .btn-camera-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        .btn-sub {
+            padding: 8px 12px; background: var(--border-col); color: var(--accent);
+            border: 1px solid var(--accent); border-radius: 6px; font-size: 0.8rem; font-weight: bold; cursor: pointer;
+        }
+        .btn-sub:hover { background: #1e293b; }
+        
+        button.main-btn {
+            width: 100%; padding: 15px; background-color: var(--accent); color: #0b0f19;
+            border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; text-transform: uppercase;
             letter-spacing: 0.5px;
+            transition: background 0.2s;
         }
-        button:hover { background-color: var(--accent-hover); }
-        .error-msg {
-            color: var(--danger);
-            font-size: 0.8rem;
-            margin-top: -12px;
-            margin-bottom: 15px;
-            display: none;
-        }
+        button.main-btn:hover { background-color: #0ea5e9; }
+        .error-msg { color: var(--danger); font-size: 0.8rem; text-align: center; margin-top: 10px; display: none; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Auditoría EFC & Gobernanza</h1>
-        <p class="subtitle">Plataforma Pericial y Simulador Sistémico</p>
+        <h1>Auditoría EFC</h1>
+        <p class="subtitle">Identificación Estructural y Validación de Acceso</p>
 
-        <label for="razonSocial">Razón Social / Grupo Empresario:</label>
-        <input type="text" id="razonSocial" placeholder="Ej: GRAVAFILT S.A. / Grupo Agroindustrial...">
-        <div id="errRazon" class="error-msg">Ingrese la razón social o entidad corporativa.</div>
-
-        <label for="usuario">Usuario / Titular:</label>
-        <input type="text" id="usuario" placeholder="Nombre y Apellido del Participante...">
-
-        <label for="password">Clave de Acceso Institucional:</label>
-        <input type="password" id="password" placeholder="••••••••">
-
-        <label>Avatar / Registro Facial Corporativo:</label>
-        <div class="avatar-box">
-            <img id="previewImg" alt="Avatar Facial">
-            <input type="file" id="inputFoto" accept="image/*" onchange="cargarFoto(event)">
-            <span style="font-size:0.75rem; color:var(--text-muted); text-align:center;">Suba una fotografía reciente del rostro para mantener pertenencia y presencia en el panel de control.</span>
+        <!-- Campos completamente vacíos por defecto -->
+        <div class="form-group">
+            <label for="txtUser">Usuario Asignado:</label>
+            <input type="text" id="txtUser" placeholder="Ingrese su usuario" autocomplete="off">
         </div>
 
-        <button onclick="autenticarSistema()">Validar Identidad e Ingresar al Genograma</button>
+        <div class="form-group">
+            <label for="txtPass">Contraseña:</label>
+            <input type="password" id="txtPass" placeholder="Ingrese su contraseña" autocomplete="new-password">
+        </div>
+
+        <div class="form-group">
+            <label for="selectRazon">Entidad / Sociedad Vinculada:</label>
+            <select id="selectRazon">
+                <option value="GRAVAFILT S.A.">GRAVAFILT S.A.</option>
+                <option value="SPRINT / Comercial SL">SPRINT / Comercial SL</option>
+                <option value="Operaciones Vaca Muerta / Entre Ríos">Operaciones Vaca Muerta / Entre Ríos</option>
+            </select>
+        </div>
+
+        <!-- VALIDACIÓN DE FOTO / AVATAR OBLIGATORIO -->
+        <div class="avatar-section">
+            <label>Registro de Avatar Obligatorio</label>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 12px;">Active su cámara para capturar su imagen o cargue una fotografía desde su dispositivo.</p>
+            
+            <video id="videoElement" autoplay playsinline class="video-box"></video>
+            <canvas id="canvasElement" class="canvas-box"></canvas>
+            <img id="imgPreview" class="preview-avatar" alt="Avatar Preview">
+
+            <div class="btn-camera-group" id="controlsCamera">
+                <button type="button" class="btn-sub" onclick="iniciarCamara()">📷 Activar Cámara</button>
+                <button type="button" class="btn-sub" onclick="capturarFoto()" id="btnSnap" style="display:none;">📸 Capturar</button>
+            </div>
+
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin: 8px 0;">O bien cargue un archivo de imagen:</div>
+            <input type="file" id="fileInput" accept="image/*" onchange="cargarImagenArchivo(event)" style="font-size: 0.8rem; color: var(--text-muted);">
+        </div>
+
+        <div class="error-msg" id="lblError">Por favor complete usuario, contraseña y asegure su imagen de avatar.</div>
+
+        <button class="main-btn" onclick="validarIngreso()">Ingresar al Sistema</button>
     </div>
 
     <script>
-        let fotoDataUrl = "";
+        let avatarDataUrl = "";
+        let streamCam = null;
 
-        function cargarFoto(event) {
-            const archivo = event.target.files[0];
-            if (archivo) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    fotoDataUrl = e.target.result;
-                    const img = document.getElementById("previewImg");
-                    img.src = fotoDataUrl;
-                    img.style.display = "block";
-                }
-                reader.readAsDataURL(archivo);
+        // Credenciales habilitadas para cada familiar
+        const credencialesPermitidas = {
+            "lprediger": "joaquin7",
+            "marisa": "gravafilt2026",
+            "claudia": "compras77",
+            "heredero1": "sucesion123",
+            "heredero2": "sucesion456",
+            "patricio": "fundador99"
+        };
+
+        async function iniciarCamara() {
+            try {
+                streamCam = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                const video = document.getElementById("videoElement");
+                video.style.display = "block";
+                video.srcObject = streamCam;
+                document.getElementById("btnSnap").style.display = "inline-block";
+            } catch (err) {
+                alert("No se pudo acceder a la cámara. Por favor utilice la opción de cargar archivo de imagen.");
             }
         }
 
-        function autenticarSistema() {
-            const razon = document.getElementById("razonSocial").value.trim();
-            const usuario = document.getElementById("usuario").value.trim();
-            const pass = document.getElementById("password").value.trim();
+        function capturarFoto() {
+            const video = document.getElementById("videoElement");
+            const canvas = document.getElementById("canvasElement");
+            canvas.width = video.videoWidth || 320;
+            canvas.height = video.videoHeight || 240;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            
+            avatarDataUrl = canvas.toDataURL("image/png");
+            
+            const imgPreview = document.getElementById("imgPreview");
+            imgPreview.src = avatarDataUrl;
+            imgPreview.style.display = "block";
+            video.style.display = "none";
+            document.getElementById("btnSnap").style.display = "none";
 
-            if (!razon || !usuario || !pass) {
-                alert("⚠️ Datos incompletos: Todos los campos de acceso corporativo son obligatorios.");
+            if (streamCam) {
+                streamCam.getTracks().forEach(track => track.stop());
+            }
+        }
+
+        function cargarImagenArchivo(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarDataUrl = e.target.result;
+                    const imgPreview = document.getElementById("imgPreview");
+                    imgPreview.src = avatarDataUrl;
+                    imgPreview.style.display = "block";
+                    document.getElementById("videoElement").style.display = "none";
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function validarIngreso() {
+            const usuarioInput = document.getElementById("txtUser").value.trim().toLowerCase();
+            const passInput = document.getElementById("txtPass").value.trim();
+            const razon = document.getElementById("selectRazon").value;
+            const errorMsg = document.getElementById("lblError");
+
+            if (!credencialesPermitidas[usuarioInput] || credencialesPermitidas[usuarioInput] !== passInput) {
+                errorMsg.innerText = "Usuario o contraseña inválidos. Verifique sus credenciales.";
+                errorMsg.style.display = "block";
                 return;
             }
 
-            // Almacenamiento persistente seguro en sesión
-            sessionStorage.setItem("efc_razon", razon);
-            sessionStorage.setItem("efc_usuario", usuario);
-            sessionStorage.setItem("efc_avatar", fotoDataUrl || "https://via.placeholder.com/70");
-            sessionStorage.setItem("efc_auth", "true");
+            if (!avatarDataUrl) {
+                errorMsg.innerText = "Debe capturar una foto o cargar un archivo de imagen para su avatar obligatoriamente.";
+                errorMsg.style.display = "block";
+                return;
+            }
 
-            // Inicialización de matrices de disociación y métricas
-            sessionStorage.setItem("efc_armonia", "100");
-            sessionStorage.setItem("efc_operativa", "100");
-            sessionStorage.setItem("efc_sucesoria", "100");
-            sessionStorage.setItem("efc_contradicciones", "0");
-            sessionStorage.setItem("efc_historial_decisiones", JSON.stringify([]));
+            sessionStorage.setItem("efc_auth", "true");
+            sessionStorage.setItem("efc_usuario", usuarioInput.toUpperCase());
+            sessionStorage.setItem("efc_razon", razon);
+            sessionStorage.setItem("efc_avatar", avatarDataUrl);
 
             window.location.href = "genograma.html";
         }
