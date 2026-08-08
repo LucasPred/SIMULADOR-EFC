@@ -46,7 +46,7 @@
         }
         .user-info { display: flex; align-items: center; gap: 12px; }
         .user-info img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
-        h1 { font-size: 1.2rem; color: var(--accent); text-transform: uppercase; margin: 0; }
+        h1 { font-size: 1.1rem; color: var(--accent); text-transform: uppercase; margin: 0; }
         
         .section-block {
             background-color: #070a12;
@@ -114,7 +114,6 @@
             flex-shrink: 0;
         }
 
-        /* Panel Consultor Oculto (GenoPro) */
         .consultant-access-box {
             background: #131b2e;
             border: 1px solid var(--border-col);
@@ -173,6 +172,7 @@
 <body>
 
     <div class="container">
+        <!-- BARRA SUPERIOR CON AVATAR -->
         <div class="top-bar">
             <div class="user-info">
                 <img id="avatarDisplay" alt="Avatar">
@@ -256,20 +256,20 @@
                 <label class="question-item"><input type="checkbox" class="q-check" value="Conflictos abiertos y silencios prolongados entre hermanos" onchange="actualizarDatosGlobales()"> 23. ¿Existen períodos prolongados de silencio o litigios latentes entre hermanos que co-administran la firma?</label>
                 <label class="question-item"><input type="checkbox" class="q-check" value="Falta absoluta de protocolo sucesorio formalizado" onchange="actualizarDatosGlobales()"> 24. ¿Carece la entidad de un protocolo sucesorio escrito, formalizado y validado legalmente ante notario?</label>
                 <label class="question-item"><input type="checkbox" class="q-check" value="Asignación de roles basada en afecto y no en mérito técnico" onchange="actualizarDatosGlobales()"> 25. ¿Los puestos gerenciales se asignan por orden de parentesco y afecto antes que por evaluación de desempeño y mérito?</label>
-                <label class="question-item"><input type="checkbox" class="q-check" value="Invasión de cónyuges externos en la gestión cotidiana" onchange="actualizarDatosGlobales()"> 26. ¿Los cónyuges de los herederos participan opinando o incidiendo directamente en decisiones de compras o despidos?</label>
-                <label class="question-item"><input type="checkbox" class="q-check" value="Temor recurrente a la pérdida de control frente a terceros" onchange="actualizarDatosGlobales()"> 27. ¿Existe un miedo generalizado a incorporar directores profesionales externos por temor a perder el control familiar?</label>
-                <label class="question-item"><input type="checkbox" class="q-check" value="Diferencias abismales de estilo de vida y consumo entre hermanos socios" onchange="actualizarDatosGlobales()"> 28. ¿Se observan asimetrías marcadas de retiros y tren de vida entre hermanos que generan cortocircuitos internos?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Invasión de cónyuges externos en la gestión cotidiana" onchange="actualizarDatosGlobales()"> 26. ¿Los cónyuges de herederos participan opinando directamente en decisiones de compras o despidos?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Temor recurrente a la pérdida de control frente a terceros" onchange="actualizarDatosGlobales()"> 27. ¿Existe un miedo generalizado a incorporar directores profesionales externos por temor a perder control familiar?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Diferencias abismales de estilo de vida y consumo entre hermanos socios" onchange="actualizarDatosGlobales()"> 28. ¿Se observan asimetrías marcadas de retiros y tren de vida entre hermanos que generan cortocircuitos?</label>
                 <label class="question-item"><input type="checkbox" class="q-check" value="Ausencia de reuniones de directorio formales con actas" onchange="actualizarDatosGlobales()"> 29. ¿Las decisiones estratégicas se toman de manera informal en almuerzos familiares sin constancia escrita?</label>
-                <label class="question-item"><input type="checkbox" class="q-check" value="Resistencia generacional al uso de herramientas digitales de control" onchange="actualizarDatosGlobales()"> 30. ¿Hay resistencia de los mandos históricos a digitalizar los tableros de control y auditoría de stocks/caja?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Resistencia generacional al uso de herramientas digitales de control" onchange="actualizarDatosGlobales()"> 30. ¿Hay resistencia de mandos históricos a digitalizar los tableros de control y auditoría de stocks o caja?</label>
                 <label class="question-item"><input type="checkbox" class="q-check" value="Uso del personal leal histórico como espías internos" onchange="actualizarDatosGlobales()"> 31. ¿Se utiliza a empleados antiguos como informantes sobre los movimientos de los nuevos sucesores?</label>
-                <label class="question-item"><input type="checkbox" class="q-check" value="Promesas verbales contradictorias de herencia a distintos hijos" onchange="actualizarDatos Globales()"> 32. ¿Ha deslizado el fundador promesas de porcentajes societarios distintos a diferentes herederos en privado?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Promesas verbales contradictorias de herencia a distintos hijos" onchange="actualizarDatosGlobales()"> 32. ¿Ha deslizado el fundador promesas de porcentajes societarios distintos a diferentes herederos en privado?</label>
                 <label class="question-item"><input type="checkbox" class="q-check" value="Sensación de que la empresa es una carga y no un activo" onchange="actualizarDatosGlobales()"> 33. ¿Manifiestan los jóvenes sucesores hastío o sensación de trampa vital respecto a su continuidad en la firma?</label>
-                <label class="question-item"><input type="checkbox" class="q-check" value="Inexistencia de un plan de contingencia ante fallecimiento súbito" onchange="actualizarDatosGlobales()"> 34. ¿Qué sucedería mañana mismo en las cuentas bancarias si faltara el titular principal? ¿Colapsaría la operativa?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Inexistencia de un plan de contingencia ante fallecimiento súbito" onchange="actualizarDatosGlobales()"> 34. ¿Qué sucedería mañana mismo en las cuentas bancarias si faltara el titular principal?</label>
                 <label class="question-item"><input type="checkbox" class="q-check" value="Contratación de familiares no calificados solo por asistencialismo" onchange="actualizarDatosGlobales()"> 35. ¿Se mantiene en nómina a parientes sin funciones reales como forma encubierta de asistencia social familiar?</label>
             </div>
         </details>
 
-        <!-- ACCESO EXCLUSIVO CONSULTOR PARA VER PANEL VECTORIAL -->
+        <!-- PANEL PRIVATIVO CONSULTOR (CAMPOS LIMPIOS) -->
         <div class="consultant-access-box">
             <div style="font-size: 0.8rem; font-weight: bold; color: var(--text-muted); margin-bottom: 8px;">🔒 Panel Privativo de Auditoría (Restringido a Consultores)</div>
             <div style="display: flex; gap: 10px; align-items: center;">
@@ -278,12 +278,9 @@
                 <button class="btn-small" onclick="desbloquearPanelVectorial()">Desbloquear Panel</button>
             </div>
 
-            <!-- PANEL INFERIOR GENOPRO VECTORIAL (OCULTO POR DEFECTO) -->
             <div class="genopro-panel" id="panelVectorialOculto">
                 <div class="genopro-title">📊 Matriz Vectorial de Diagnóstico Sistémico (Vista de Consultor)</div>
-                <div class="genogram-canvas-box" id="canvasGenopro">
-                    <!-- Se dibuja dinámicamente -->
-                </div>
+                <div class="genogram-canvas-box" id="canvasGenopro"></div>
             </div>
         </div>
 
@@ -291,12 +288,13 @@
     </div>
 
     <script>
+        // Verificar autenticación inicial y cargar avatar en miniatura
         if (sessionStorage.getItem("efc_auth") !== "true") {
             window.location.href = "index.html";
         } else {
-            document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario");
-            document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon");
-            document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar");
+            document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario") || "USUARIO";
+            document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon") || "Entidad";
+            document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar") || "";
             actualizarDatosGlobales();
         }
 
@@ -308,12 +306,10 @@
             let respuestasSeleccionadas = [];
             checkboxes.forEach(chk => respuestasSeleccionadas.push(chk.value));
 
-            // Guardar en sessionStorage de forma totalmente invisible para el jugador
             sessionStorage.setItem("efc_rol_estructural", rol);
             sessionStorage.setItem("efc_diagnostico_vinculos", `Núcleo: ${nucleo} | Factores Detectados: ${respuestasSeleccionadas.length} de 35 | Detalle: [${respuestasSeleccionadas.join("; ")}]`);
             sessionStorage.setItem("efc_genograma_completado", "true");
 
-            // Actualizar canvas interno por si el consultor ya ingresó las credenciales
             renderizarVectorial(rol, nucleo, checkboxes);
         }
 
@@ -324,7 +320,7 @@
             if (u === "lprediger" && p === "joaquin7") {
                 document.getElementById("panelVectorialOculto").style.display = "block";
                 actualizarDatosGlobales();
-                alert("🔓 Acceso de consultor concedido. Panel vectorial visible.");
+                alert("🔓 Acceso de consultor concedido.");
             } else {
                 alert("🚨 Credenciales de consultor inválidas.");
             }
