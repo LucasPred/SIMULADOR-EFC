@@ -41,7 +41,7 @@
         
         .form-group { margin-bottom: 20px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; }
-        input[type="text"], input[type="password"], select {
+        input[type="text"], input[type="password"] {
             width: 100%; padding: 12px;
             background-color: #0b0f19; border: 1px solid var(--border-col); border-radius: 8px;
             color: var(--text-main); font-size: 0.95rem; box-sizing: border-box;
@@ -97,6 +97,7 @@
         }
         button.main-btn:hover { background-color: #0ea5e9; }
         .error-msg { color: var(--danger); font-size: 0.8rem; text-align: center; margin-top: 10px; display: none; }
+        .credential-hint { background: #070a12; border: 1px solid var(--border-col); padding: 10px; border-radius: 6px; font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px; text-align: center; }
     </style>
 </head>
 <body>
@@ -105,24 +106,29 @@
         <h1>Auditoría EFC</h1>
         <p class="subtitle">Identificación Estructural y Validación de Acceso</p>
 
-        <!-- Campos completamente vacíos por defecto -->
+        <div class="credential-hint">
+            🔑 Credencial Genérica para Familiares:<br>
+            Usuario: <b>familiar</b> | Contraseña: <b>acceso2026</b>
+        </div>
+
         <div class="form-group">
-            <label for="txtUser">Usuario Asignado:</label>
-            <input type="text" id="txtUser" placeholder="Ingrese su usuario" autocomplete="off">
+            <label for="txtUser">Usuario de Ingreso:</label>
+            <input type="text" id="txtUser" placeholder="Ingrese el usuario" autocomplete="off">
         </div>
 
         <div class="form-group">
             <label for="txtPass">Contraseña:</label>
-            <input type="password" id="txtPass" placeholder="Ingrese su contraseña" autocomplete="new-password">
+            <input type="password" id="txtPass" placeholder="Ingrese la contraseña" autocomplete="new-password">
         </div>
 
         <div class="form-group">
-            <label for="selectRazon">Entidad / Sociedad Vinculada:</label>
-            <select id="selectRazon">
-                <option value="GRAVAFILT S.A.">GRAVAFILT S.A.</option>
-                <option value="SPRINT / Comercial SL">SPRINT / Comercial SL</option>
-                <option value="Operaciones Vaca Muerta / Entre Ríos">Operaciones Vaca Muerta / Entre Ríos</option>
-            </select>
+            <label for="inputNombreFamiliar">Nombre y Apellido del Familiar:</label>
+            <input type="text" id="inputNombreFamiliar" placeholder="Ej: Juan Pérez" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+            <label for="inputSociedad">Sociedad / Grupo Empresario (Trazabilidad):</label>
+            <input type="text" id="inputSociedad" placeholder="Ej: GRAVAFILT S.A., SPRINT..." autocomplete="off">
         </div>
 
         <!-- VALIDACIÓN DE FOTO / AVATAR OBLIGATORIO -->
@@ -143,7 +149,7 @@
             <input type="file" id="fileInput" accept="image/*" onchange="cargarImagenArchivo(event)" style="font-size: 0.8rem; color: var(--text-muted);">
         </div>
 
-        <div class="error-msg" id="lblError">Por favor complete usuario, contraseña y asegure su imagen de avatar.</div>
+        <div class="error-msg" id="lblError">Por favor complete todos los campos y asegure su imagen de avatar.</div>
 
         <button class="main-btn" onclick="validarIngreso()">Ingresar al Sistema</button>
     </div>
@@ -151,16 +157,6 @@
     <script>
         let avatarDataUrl = "";
         let streamCam = null;
-
-        // Credenciales habilitadas para cada familiar
-        const credencialesPermitidas = {
-            "lprediger": "joaquin7",
-            "marisa": "gravafilt2026",
-            "claudia": "compras77",
-            "heredero1": "sucesion123",
-            "heredero2": "sucesion456",
-            "patricio": "fundador99"
-        };
 
         async function iniciarCamara() {
             try {
@@ -213,11 +209,22 @@
         function validarIngreso() {
             const usuarioInput = document.getElementById("txtUser").value.trim().toLowerCase();
             const passInput = document.getElementById("txtPass").value.trim();
-            const razon = document.getElementById("selectRazon").value;
+            const nombreFamiliar = document.getElementById("inputNombreFamiliar").value.trim();
+            const sociedad = document.getElementById("inputSociedad").value.trim();
             const errorMsg = document.getElementById("lblError");
 
-            if (!credencialesPermitidas[usuarioInput] || credencialesPermitidas[usuarioInput] !== passInput) {
-                errorMsg.innerText = "Usuario o contraseña inválidos. Verifique sus credenciales.";
+            // Validación de credencial genérica o credencial de consultor
+            const esFamiliarValido = (usuarioInput === "familiar" && passInput === "acceso2026");
+            const esConsultorValido = (usuarioInput === "lprediger" && passInput === "joaquin7");
+
+            if (!esFamiliarValido && !esConsultorValido) {
+                errorMsg.innerText = "Usuario o contraseña genéricos incorrectos.";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            if (!nombreFamiliar || !sociedad) {
+                errorMsg.innerText = "Debe completar su nombre y la sociedad o grupo empresario.";
                 errorMsg.style.display = "block";
                 return;
             }
@@ -228,9 +235,10 @@
                 return;
             }
 
+            // Guardar datos en sesión para la trazabilidad y el dashboard
             sessionStorage.setItem("efc_auth", "true");
-            sessionStorage.setItem("efc_usuario", usuarioInput.toUpperCase());
-            sessionStorage.setItem("efc_razon", razon);
+            sessionStorage.setItem("efc_usuario", nombreFamiliar.toUpperCase());
+            sessionStorage.setItem("efc_razon", sociedad.toUpperCase());
             sessionStorage.setItem("efc_avatar", avatarDataUrl);
 
             window.location.href = "genograma.html";
