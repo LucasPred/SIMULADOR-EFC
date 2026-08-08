@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFC - Plan Sucesorio y Costos Jurisprudenciales (Argentina)</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --accent: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-col: #1e293b;
+            --danger: #ef4444;
+            --success: #22c55e;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 680px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-col);
+        }
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-col);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .user-info img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+        h1 { font-size: 1.15rem; color: var(--accent); text-transform: uppercase; margin-bottom: 15px; }
+        .scenario-box {
+            background-color: #0b0f19; padding: 18px; border-radius: 10px; margin-bottom: 20px; border: 1px solid var(--border-col); line-height: 1.5; font-size: 0.95rem;
+        }
+        .choices { display: flex; flex-direction: column; gap: 12px; }
+        .choice-btn {
+            background-color: #1e293b; color: var(--text-main); text-align: left; padding: 14px 16px;
+            border-radius: 8px; cursor: pointer; border: 1px solid #334155; font-size: 0.95rem; transition: all 0.2s;
+        }
+        .choice-btn:hover { background-color: #334155; border-color: var(--accent); }
+    </style>
+</head>
+<body>
 
+    <div class="container">
+        <div class="top-bar">
+            <div class="user-info">
+                <img id="avatarDisplay" alt="Avatar">
+                <div>
+                    <h4 id="lblUsuario" style="margin:0; font-size:0.95rem; color:var(--accent);">Usuario</h4>
+                    <span id="lblRazon" style="font-size:0.7rem; color:var(--text-muted);">Empresa</span>
+                </div>
+            </div>
+            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--accent);">Acto Final: Sucesión</div>
+        </div>
+
+        <h1>Simulación de Plan Sucesorio & Impacto Jurisprudencial (Argentina)</h1>
+
+        <div class="scenario-box">
+            <p><strong>Dilema Sucesorio Estratégico:</strong> El directorio y los socios fundadores deben definir el mecanismo de transferencia patrimonial y de gobierno corporativo. Bajo el régimen del Código Civil y Comercial de la Nación y la jurisprudencia argentina, seleccione la estrategia de salida:</p>
+        </div>
+
+        <div class="choices">
+            <button class="choice-btn" onclick="finalizarSimulacion('judicial')">
+                <strong>Opción A: Sucesión *Mortis Causa* Judicial Tradicional.</strong><br>
+                <span style="font-size:0.85rem; color:var(--text-muted);">Bloqueo operativo temporal, tasa de justicia provincial, honorarios de abogados y peritos estimados entre $15,000 y $45,000 USD según valor activo, con riesgo latente de colisión entre herederos.</span>
+            </button>
+            <button class="choice-btn" onclick="finalizarSimulacion('donacion')">
+                <strong>Opción B: Donación en Vida con Reserva de Usufructo y Pactos de Sindicación.</strong><br>
+                <span style="font-size:0.85rem; color:var(--text-muted);">Costo notarial e impositivo estimado de $5,000 a $12,000 USD. Protege el control político del fundador mediante usufructo accionario, sujeto a acciones de colación y reducción si vulnera legítimas.</span>
+            </button>
+            <button class="choice-btn" onclick="finalizarSimulacion('protocolo')">
+                <strong>Opción C: Protocolo Familiar con Fideicomiso Sucesorio / Acciones Clase A y B.</strong><br>
+                <span style="font-size:0.85rem; color:var(--text-muted);">Estructuración jurídica avanzada de alta gobernanza. Costo de implementación fiduciaria y corporativa de $8,000 a $20,000 USD. Máxima continuidad institucional y blindaje patrimonial.</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        if (sessionStorage.getItem("efc_indice_escenario") < 2) {
+            window.location.href = "encrucijadas.html";
+        } else {
+            document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario");
+            document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon");
+            document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar");
+        }
+
+        function finalizarSimulacion(estrategia) {
+            sessionStorage.setItem("efc_estrategia_sucesion", estrategia);
+            sessionStorage.setItem("efc_sucesion_completada", "true");
+            window.location.href = "consultor.html";
+        }
+    </script>
+</body>
+</html>
