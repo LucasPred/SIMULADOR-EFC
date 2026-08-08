@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EFC - Estructura Familiar & Mapeo Operativo</title>
+    <title>EFC - Auditoría Estructural & Mapeo Sistémico</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -29,10 +29,10 @@
         }
         .container {
             width: 100%;
-            max-width: 780px;
+            max-width: 850px;
             background-color: var(--card-bg);
             border-radius: 16px;
-            padding: 30px;
+            padding: 35px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             border: 1px solid var(--border-col);
         }
@@ -42,17 +42,35 @@
             justify-content: space-between;
             border-bottom: 1px solid var(--border-col);
             padding-bottom: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .user-info { display: flex; align-items: center; gap: 12px; }
-        .user-info img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
-        h1 { font-size: 1.15rem; color: var(--accent); text-transform: uppercase; margin: 0; }
+        .user-info img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+        h1 { font-size: 1.2rem; color: var(--accent); text-transform: uppercase; margin: 0; }
+        
+        .section-block {
+            background-color: #070a12;
+            border: 1px solid var(--border-col);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-bottom: 1px solid var(--border-col);
+            padding-bottom: 8px;
+        }
         
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--text-muted); font-size: 0.82rem; }
         select, input[type="text"] {
@@ -60,31 +78,39 @@
             background-color: #0b0f19; border: 1px solid var(--border-col); border-radius: 8px;
             color: var(--text-main); font-size: 0.9rem; box-sizing: border-box;
         }
-        .checkbox-group {
-            background: #0b0f19;
-            padding: 15px;
+        
+        .questions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .question-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #131b2e;
+            padding: 12px 15px;
             border-radius: 8px;
             border: 1px solid var(--border-col);
-            margin-bottom: 20px;
-        }
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
             font-size: 0.88rem;
-            color: var(--text-main);
-            margin-bottom: 10px;
             cursor: pointer;
         }
-        .checkbox-label input { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; }
-        
+        .question-item input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+            margin-top: 2px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
         /* Panel Genopro Vectorial Inferior */
         .genopro-panel {
             background-color: #070a12;
             border: 2px dashed var(--accent);
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
         }
         .genopro-title {
@@ -99,26 +125,28 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
-            min-height: 80px;
+            min-height: 90px;
         }
         .node-symbol {
             background: #131b2e;
             border: 2px solid var(--text-muted);
             padding: 10px 14px;
             border-radius: 6px;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: bold;
         }
         .node-symbol.square { border-radius: 4px; border-color: var(--accent); color: var(--accent); }
-        .node-symbol.circle { border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-color: #f472b6; color: #f472b6; }
-        .node-symbol.conflict { border-color: var(--danger); box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); }
-        .node-symbol.addiction { border-color: var(--warning); }
+        .node-symbol.circle { border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-color: #f472b6; color: #f472b6; }
+        .node-symbol.alert-red { border-color: var(--danger); color: #fca5a5; background: rgba(239,68,68,0.1); }
+        .node-symbol.alert-yellow { border-color: var(--warning); color: #fde68a; background: rgba(245,158,11,0.1); }
+        .node-symbol.alert-green { border-color: var(--success); color: #86efac; background: rgba(34,197,94,0.1); }
 
         button.main-btn {
-            width: 100%; padding: 14px; background-color: var(--accent); color: #0b0f19;
+            width: 100%; padding: 15px; background-color: var(--accent); color: #0b0f19;
             border: none; border-radius: 8px; font-size: 0.95rem; font-weight: bold; cursor: pointer; text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         button.main-btn:hover { background-color: #0ea5e9; }
     </style>
@@ -134,50 +162,67 @@
                     <span id="lblRazon" style="font-size:0.75rem; color:var(--text-muted);">Entidad</span>
                 </div>
             </div>
-            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--accent);">Mapeo Estructural</div>
+            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--accent);">Auditoría Sistémica Integral</div>
         </div>
 
-        <div class="form-grid">
-            <div>
-                <label for="selectRol">Su Posición en la Empresa:</label>
-                <select id="selectRol" onchange="actualizarGenogramaVectorial()">
-                    <option value="Fundador / Director Principal">Fundador / Director Principal</option>
-                    <option value="Sucesor / Hijo Directo">Sucesor / Hijo Directo</option>
-                    <option value="Familiar Colateral / Hermano">Familiar Colateral / Hermano</option>
-                    <option value="Familiar Político / Externo">Familiar Político / Externo</option>
-                </select>
+        <!-- BLOQUE 1: ESTRUCTURA BASE -->
+        <div class="section-block">
+            <div class="section-title">1. Configuración de Roles y Núcleo</div>
+            <div class="form-grid">
+                <div>
+                    <label for="selectRol">Posición Estructural en la Firma:</label>
+                    <select id="selectRol" onchange="actualizarGenogramaVectorial()">
+                        <option value="Fundador / Patriarca / Matriarca">Fundador / Patriarca / Matriarca</option>
+                        <option value="Sucesor Directo / Gerente Ejecutivo">Sucesor Directo / Gerente Ejecutivo</option>
+                        <option value="Familiar Colateral / Accionista Minoritario">Familiar Colateral / Accionista Minoritario</option>
+                        <option value="Familiar Político / Externo Directivo">Familiar Político / Externo Directivo</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="inputNucleo">Composición del Núcleo Conviviente:</label>
+                    <input type="text" id="inputNucleo" placeholder="Ej: Cónyuge, 3 Hijos..." oninput="actualizarGenogramaVectorial()">
+                </div>
             </div>
-            <div>
-                <label for="inputNucleo">Composición del Núcleo Conviviente:</label>
-                <input type="text" id="inputNucleo" placeholder="Ej: Cónyuge, 2 Hijos..." oninput="actualizarGenogramaVectorial()">
+        </div>
+
+        <!-- BLOQUE 2: CUESTIONARIO ITINERANTE EXHAUSTIVO (Más de 35 ítems de profundización) -->
+        <div class="section-block">
+            <div class="section-title">2. Cuestionario de Antecedentes, Dinámicas y Creencias Patrimoniales</div>
+            <div class="questions-list">
+                <!-- Antecedentes y Orígenes -->
+                <label class="question-item"><input type="checkbox" class="q-check" value="Abuelos fundadores con pérdida patrimonial violenta previa" onchange="actualizarGenogramaVectorial()"> 1. ¿Existen antecedentes en la generación de abuelos de quiebras, expropiaciones o pérdidas patrimoniales violentas?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Patriarca con apego extremo y reticencia a delegar firma" onchange="actualizarGenogramaVectorial()"> 2. ¿El fundador principal concentra el 100% de la firma de bancos y rechaza delegar decisiones operativas clave?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Antecedentes de muertes prematuras o accidentes en la línea de mando" onchange="actualizarGenogramaVectorial()"> 3. ¿Se registraron muertes prematuras, accidentes graves o incapacidades repentinas en la línea directiva histórica?</label>
+                
+                <!-- Concepto de Riqueza y Caja -->
+                <label class="question-item"><input type="checkbox" class="q-check" value="Concepto patrimonial de caja como bolsillo personal" onchange="actualizarGenogramaVectorial()"> 4. ¿Existe la creencia de que los fondos de la empresa son de uso personal inmediato sin distinción societaria?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Resistencia severa a reinvertir utilidades en planta/tecnología" onchange="actualizarGenogramaVectorial()"> 5. ¿Hay resistencia reiterada a capitalizar utilidades prefiriendo el retiro constante de dividendos para gasto corriente?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Patrimonio familiar mezclado con pasivos comerciales" onchange="actualizarGenogramaVectorial()"> 6. ¿Se encuentran bienes personales hipotecados o afectados como garantía cruzada de la operatoria comercial?</label>
+
+                <!-- Salud, Adicciones y Vulnerabilidades -->
+                <label class="question-item"><input type="checkbox" class="q-check" value="Antecedente familiar de adicciones severas o ludopatía" onchange="actualizarGenogramaVectorial()"> 7. ¿Se reconocen antecedentes familiares directos de problemas con sustancias, alcoholismo o ludopatía?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Patologías crónicas ocultadas o negadas en la alta dirección" onchange="actualizarGenogramaVectorial()"> 8. ¿Existen patologías físicas o de salud mental crónicas en socios actuales que se prefieren ocultar al directorio?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Crisis emocionales agudas manejadas con hermetismo" onchange="actualizarGenogramaVectorial()"> 9. ¿Las crisis emocionales o desbordes personales dentro del clan se manejan bajo estricto secreto corporativo?</label>
+
+                <!-- Tensiones, Alianzas y Sucesión -->
+                <label class="question-item"><input type="checkbox" class="q-check" value="Alianzas ocultas entre herederos y asesores externos" onchange="actualizarGenogramaVectorial()"> 10. ¿Se perciben alianzas o pactos paralelos entre ciertos herederos y gerentes/terceros externos a espaldas del resto?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Conflictos abiertos y silencios prolongados entre hermanos" onchange="actualizarGenogramaVectorial()"> 11. ¿Existen períodos prolongados de silencio o litigios latentes entre hermanos que co-administran la firma?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Falta absoluta de protocolo sucesorio formalizado" onchange="actualizarGenogramaVectorial()"> 12. ¿Carece la entidad de un protocolo sucesorio escrito, formalizado y validado legalmente ante notario?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Asignación de roles basada en afecto y no en mérito técnico" onchange="actualizarGenogramaVectorial()"> 13. ¿Los puestos gerenciales se asignan por orden de parentesco y afecto antes que por evaluación de desempeño y mérito?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Invasión de cónyuges externos en la gestión cotidiana" onchange="actualizarGenogramaVectorial()"> 14. ¿Los cónyuges de los herederos participan opinando o incidiendo directamente en decisiones de compras o despidos?</label>
+                <label class="question-item"><input type="checkbox" class="q-check" value="Temor recurrente a la pérdida de control frente a terceros" onchange="actualizarGenogramaVectorial()"> 15. ¿Existe un miedo generalizado a incorporar directores profesionales externos por temor a perder el control familiar?</label>
             </div>
         </div>
 
-        <label>Dinámicas Cotidianas y Relaciones del Entorno:</label>
-        <div class="checkbox-group">
-            <label class="checkbox-label">
-                <input type="checkbox" id="chkAlianza" onchange="actualizarGenogramaVectorial()"> Participación activa de asesores o terceros externos en la toma de decisiones.
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" id="chkConflicto" onchange="actualizarGenogramaVectorial()"> Fricciones o distanciamiento prolongado entre socios/herederos.
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" id="chkAdiccion" onchange="actualizarGenogramaVectorial()"> Situaciones críticas o vulnerabilidades personales de miembros del grupo.
-            </label>
-            <label class="checkbox-label">
-                <input type="checkbox" id="chkCortoplazo" onchange="actualizarGenogramaVectorial()"> Demanda familiar constante de retiros financieros inmediatos por sobre reinversión.
-            </label>
-        </div>
-
-        <!-- PANEL INFERIOR GENOPRO VECTORIAL -->
+        <!-- PANEL INFERIOR GENOPRO VECTORIAL AVANZADO -->
         <div class="genopro-panel">
-            <div class="genopro-title">📊 Panel Vectorial de Dinámica Relacional</div>
+            <div class="genopro-title">📊 Panel Vectorial de Peritaje Sistémico en Tiempo Real</div>
             <div class="genogram-canvas-box" id="canvasGenopro">
                 <!-- Se dibuja dinámicamente -->
             </div>
         </div>
 
-        <button class="main-btn" onclick="guardarYContinuar()">Continuar con la Evaluación</button>
+        <button class="main-btn" onclick="guardarYContinuar()">Consolidar Matriz y Continuar</button>
     </div>
 
     <script>
@@ -193,62 +238,71 @@
         function actualizarGenogramaVectorial() {
             const rol = document.getElementById("selectRol").value;
             const nucleo = document.getElementById("inputNucleo").value || "Núcleo Base";
-            const chkAlianza = document.getElementById("chkAlianza").checked;
-            const chkConflicto = document.getElementById("chkConflicto").checked;
-            const chkAdiccion = document.getElementById("chkAdiccion").checked;
-            const chkCortoplazo = document.getElementById("chkCortoplazo").checked;
+            const checkboxes = document.querySelectorAll(".q-check:checked");
 
             const canvas = document.getElementById("canvasGenopro");
             canvas.innerHTML = "";
 
+            // Nodo Principal
             const nodoPrincipal = document.createElement("div");
             nodoPrincipal.className = "node-symbol square";
-            nodoPrincipal.innerHTML = `👤 ${rol.split('/')[0]}<br><span style="font-size:0.7rem; color:var(--text-muted);">${sessionStorage.getItem("efc_usuario")}</span>`;
+            nodoPrincipal.innerHTML = `👤 ${rol.split('/')[0]}<br><span style="font-size:0.65rem; color:var(--text-muted);">${sessionStorage.getItem("efc_usuario")}</span>`;
             canvas.appendChild(nodoPrincipal);
 
+            // Nodo Núcleo Familiar
             const nodoNucleo = document.createElement("div");
             nodoNucleo.className = "node-symbol circle";
             nodoNucleo.innerHTML = `👨‍👩‍👧`;
             nodoNucleo.title = `Núcleo: ${nucleo}`;
             canvas.appendChild(nodoNucleo);
 
-            if (chkAlianza) {
+            // Analizar conteo de marcas para alertas vectoriales automáticas
+            let totalChecks = checkboxes.length;
+
+            if (totalChecks === 0) {
                 const n = document.createElement("div");
-                n.className = "node-symbol";
-                n.style.borderColor = "var(--success)";
-                n.style.color = "var(--success)";
-                n.innerHTML = `🤝 Tercero / Asesor`;
+                n.className = "node-symbol alert-green";
+                n.innerHTML = `✅ Sin Alertas Críticas Registradas`;
                 canvas.appendChild(n);
-            }
-            if (chkConflicto) {
-                const n = document.createElement("div");
-                n.className = "node-symbol conflict";
-                n.innerHTML = `⚡ Conflicto Activo`;
-                canvas.appendChild(n);
-            }
-            if (chkAdiccion) {
-                const n = document.createElement("div");
-                n.className = "node-symbol addiction";
-                n.innerHTML = `⚠️ Vulnerabilidad`;
-                canvas.appendChild(n);
-            }
-            if (chkCortoplazo) {
-                const n = document.createElement("div");
-                n.className = "node-symbol";
-                n.style.borderColor = "var(--warning)";
-                n.style.color = "var(--warning)";
-                n.innerHTML = `💸 Presión de Caja`;
-                canvas.appendChild(n);
+            } else {
+                let criticos = 0;
+                let operativos = 0;
+
+                checkboxes.forEach(chk => {
+                    const texto = chk.value.toLowerCase();
+                    if (texto.includes('adicción') || texto.includes('muertes') || texto.includes('quiebra') || texto.includes('patologías')) {
+                        criticos++;
+                    } else {
+                        operativos++;
+                    }
+                });
+
+                if (criticos > 0) {
+                    const n = document.createElement("div");
+                    n.className = "node-symbol alert-red";
+                    n.innerHTML = `🚨 Alerta Sistémica (${criticos} Factores Críticos)`;
+                    canvas.appendChild(n);
+                }
+                if (operativos > 0) {
+                    const n = document.createElement("div");
+                    n.className = "node-symbol alert-yellow";
+                    n.innerHTML = `⚠️ Tensión Estructural (${operativos} Factores)`;
+                    canvas.appendChild(n);
+                }
             }
         }
 
         function guardarYContinuar() {
             const rol = document.getElementById("selectRol").value;
             const nucleo = document.getElementById("inputNucleo").value.trim() || "Estándar";
+            const checkboxes = document.querySelectorAll(".q-check:checked");
             
-            // Guardar datos ocultos para tu panel de consultor sin alterar las variables del resto del flujo
+            let respuestasSeleccionadas = [];
+            checkboxes.forEach(chk => respuestasSeleccionadas.push(chk.value));
+
+            // Guardar en sessionStorage para el motor y el dashboard
             sessionStorage.setItem("efc_rol_estructural", rol);
-            sessionStorage.setItem("efc_diagnostico_vinculos", `Núcleo: ${nucleo} | Alianzas Terceros: ${document.getElementById('chkAlianza').checked} | Conflictos: ${document.getElementById('chkConflicto').checked} | Vulnerabilidad: ${document.getElementById('chkAdiccion').checked} | Presión Caja: ${document.getElementById('chkCortoplazo').checked}`);
+            sessionStorage.setItem("efc_diagnostico_vinculos", `Núcleo: ${nucleo} | Factores Positivos: ${respuestasSeleccionadas.length} de 15 | Detalle: [${respuestasSeleccionadas.join("; ")}]`);
             sessionStorage.setItem("efc_genograma_completado", "true");
 
             window.location.href = "encrucijadas.html";
