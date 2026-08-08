@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFC Enterprise - Acceso y Autenticación Sistémica</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --accent: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-col: #1e293b;
+            --danger: #ef4444;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-col);
+        }
+        h1 {
+            font-size: 1.35rem;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        p.subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            background-color: #0b0f19;
+            border: 1px solid var(--border-col);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+        }
+        .avatar-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            background: #0b0f19;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--border-col);
+        }
+        #previewImg {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #1e293b;
+            margin-bottom: 10px;
+            border: 2px solid var(--accent);
+            display: none;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--accent);
+            color: #0b0f19;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        button:hover { background-color: var(--accent-hover); }
+        .error-msg {
+            color: var(--danger);
+            font-size: 0.8rem;
+            margin-top: -12px;
+            margin-bottom: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
 
+    <div class="container">
+        <h1>Auditoría EFC & Gobernanza</h1>
+        <p class="subtitle">Plataforma Pericial y Simulador Sistémico</p>
+
+        <label for="razonSocial">Razón Social / Grupo Empresario:</label>
+        <input type="text" id="razonSocial" placeholder="Ej: GRAVAFILT S.A. / Grupo Agroindustrial...">
+        <div id="errRazon" class="error-msg">Ingrese la razón social o entidad corporativa.</div>
+
+        <label for="usuario">Usuario / Titular:</label>
+        <input type="text" id="usuario" placeholder="Nombre y Apellido del Participante...">
+
+        <label for="password">Clave de Acceso Institucional:</label>
+        <input type="password" id="password" placeholder="••••••••">
+
+        <label>Avatar / Registro Facial Corporativo:</label>
+        <div class="avatar-box">
+            <img id="previewImg" alt="Avatar Facial">
+            <input type="file" id="inputFoto" accept="image/*" onchange="cargarFoto(event)">
+            <span style="font-size:0.75rem; color:var(--text-muted); text-align:center;">Suba una fotografía reciente del rostro para mantener pertenencia y presencia en el panel de control.</span>
+        </div>
+
+        <button onclick="autenticarSistema()">Validar Identidad e Ingresar al Genograma</button>
+    </div>
+
+    <script>
+        let fotoDataUrl = "";
+
+        function cargarFoto(event) {
+            const archivo = event.target.files[0];
+            if (archivo) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    fotoDataUrl = e.target.result;
+                    const img = document.getElementById("previewImg");
+                    img.src = fotoDataUrl;
+                    img.style.display = "block";
+                }
+                reader.readAsDataURL(archivo);
+            }
+        }
+
+        function autenticarSistema() {
+            const razon = document.getElementById("razonSocial").value.trim();
+            const usuario = document.getElementById("usuario").value.trim();
+            const pass = document.getElementById("password").value.trim();
+
+            if (!razon || !usuario || !pass) {
+                alert("⚠️ Datos incompletos: Todos los campos de acceso corporativo son obligatorios.");
+                return;
+            }
+
+            // Almacenamiento persistente seguro en sesión
+            sessionStorage.setItem("efc_razon", razon);
+            sessionStorage.setItem("efc_usuario", usuario);
+            sessionStorage.setItem("efc_avatar", fotoDataUrl || "https://via.placeholder.com/70");
+            sessionStorage.setItem("efc_auth", "true");
+
+            // Inicialización de matrices de disociación y métricas
+            sessionStorage.setItem("efc_armonia", "100");
+            sessionStorage.setItem("efc_operativa", "100");
+            sessionStorage.setItem("efc_sucesoria", "100");
+            sessionStorage.setItem("efc_contradicciones", "0");
+            sessionStorage.setItem("efc_historial_decisiones", JSON.stringify([]));
+
+            window.location.href = "genograma.html";
+        }
+    </script>
+</body>
+</html>
