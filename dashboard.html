@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EFC - Panel Privativo del Consultor & Peritaje Sistémico</title>
+    <title>EFC - Dashboard Privativo del Consultor & Auditoría</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -28,34 +28,35 @@
         }
         .container {
             width: 100%;
-            max-width: 720px;
+            max-width: 750px;
             background-color: var(--card-bg);
             border-radius: 16px;
             padding: 35px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
             border: 1px solid var(--border-col);
         }
-        .header-pericial {
+        .header-dashboard {
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: space-between;
             border-bottom: 1px solid var(--border-col);
             padding-bottom: 20px;
             margin-bottom: 25px;
         }
-        .header-pericial img { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
-        h1 { font-size: 1.25rem; color: var(--accent); text-transform: uppercase; margin: 0 0 5px 0; }
-        .metrics-bar {
+        .user-meta { display: flex; align-items: center; gap: 15px; }
+        .user-meta img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+        h1 { font-size: 1.2rem; color: var(--accent); text-transform: uppercase; margin: 0 0 4px 0; }
+        .metrics-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             margin-bottom: 25px;
         }
-        .metric-box {
-            background: #0b0f19; padding: 12px; border-radius: 8px; text-align: center; border: 1px solid var(--border-col); font-size: 0.8rem; color: var(--text-muted);
+        .metric-card {
+            background: #0b0f19; padding: 14px; border-radius: 10px; text-align: center; border: 1px solid var(--border-col); font-size: 0.8rem; color: var(--text-muted);
         }
-        .metric-box span { display: block; font-size: 1.2rem; font-weight: bold; color: var(--success); margin-top: 5px; }
-        .report-section {
+        .metric-card span { display: block; font-size: 1.25rem; font-weight: bold; color: var(--success); margin-top: 6px; }
+        .panel-section {
             background-color: #0b0f19; padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid var(--border-col); line-height: 1.6; font-size: 0.95rem;
         }
         .alerta-box {
@@ -66,74 +67,78 @@
         button {
             width: 100%; padding: 14px; background-color: #1e293b; color: var(--text-main);
             border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; border: 1px solid #334155; text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        button:hover { background-color: #334155; }
+        button:hover { background-color: #334155; border-color: var(--accent); }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="header-pericial">
-            <img id="avatarDisplay" alt="Avatar">
-            <div>
-                <h1 id="lblUsuario">Participante</h1>
-                <span id="lblRazon" style="color:var(--text-muted); font-size:0.85rem;">Razón Social</span>
+        <div class="header-dashboard">
+            <div class="user-meta">
+                <img id="avatarDisplay" alt="Avatar">
+                <div>
+                    <h1 id="lblUsuario">Participante</h1>
+                    <span id="lblRazon" style="color:var(--text-muted); font-size:0.8rem;">Entidad Corporativa</span>
+                </div>
             </div>
+            <div style="background:#1e293b; padding:8px 14px; border-radius:6px; font-size:0.8rem; color:var(--accent); border:1px solid var(--border-col);">Dashboard Privativo</div>
         </div>
 
-        <div class="metrics-bar">
-            <div class="metric-box">Armonía Familiar<span id="rArmonia">0%</span></div>
-            <div class="metric-box">Eficiencia Operativa<span id="rOperativa">0%</span></div>
-            <div class="metric-box">Continuidad Sucesoria<span id="rSucesoria">0%</span></div>
+        <div class="metrics-grid">
+            <div class="metric-card">Armonía Familiar<span id="dArmonia">0%</span></div>
+            <div class="metric-card">Eficiencia Operativa<span id="dOperativa">0%</span></div>
+            <div class="metric-card">Continuidad Sucesoria<span id="dSucesoria">0%</span></div>
         </div>
 
-        <div class="report-section" id="cuerpoReporte">
-            <!-- Dinámico -->
+        <div class="panel-section" id="cuerpoDashboard">
+            <!-- Cargado dinámicamente -->
         </div>
 
-        <button onclick="reiniciarEvaluacion()">Reiniciar Auditoría Sistémica</button>
+        <button onclick="reiniciarSistema()">Reiniciar Sesión y Auditoría</button>
     </div>
 
     <script>
         if (sessionStorage.getItem("efc_sucesion_completado") !== "true") {
+            alert("⚠️ Acceso restringido al Dashboard: Debe completar la secuencia de simulación sucesoria.");
             window.location.href = "index.html";
         } else {
             document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario");
             document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon");
             document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar");
 
-            document.getElementById("rArmonia").innerText = sessionStorage.getItem("efc_armonia") + "%";
-            document.getElementById("rOperativa").innerText = sessionStorage.getItem("efc_operativa") + "%";
-            document.getElementById("rSucesoria").innerText = sessionStorage.getItem("efc_sucesoria") + "%";
+            document.getElementById("dArmonia").innerText = sessionStorage.getItem("efc_armonia") + "%";
+            document.getElementById("dOperativa").innerText = sessionStorage.getItem("efc_operativa") + "%";
+            document.getElementById("dSucesoria").innerText = sessionStorage.getItem("efc_sucesoria") + "%";
 
-            const contradicciones = parseInt(sessionStorage.getItem("efc_contradicciones"));
-            const rol = sessionStorage.getItem("efc_rol_estructural");
-            const vinculos = sessionStorage.getItem("efc_diagnostico_vinculos");
-            const estrategiaSucesion = sessionStorage.getItem("efc_estrategia_sucesion");
+            const contradicciones = parseInt(sessionStorage.getItem("efc_contradicciones") || "0");
+            const rol = sessionStorage.getItem("efc_rol_estructural") || "No especificado";
+            const vinculos = sessionStorage.getItem("efc_diagnostico_vinculos") || "Sin registrar";
+            const estrategiaSucesion = sessionStorage.getItem("efc_estrategia_sucesion") || "No definida";
 
-            let html = `<p><strong>Informe de Peritaje y Gobernanza (Cátedra Angus / Bowen):</strong> Se ha procesado el perfil conductual del titular bajo el rol de <em>${rol}</em>.</p>`;
-            
-            html += `<p><strong>Diagnóstico Vincular:</strong> "${vinculos}"</p>`;
-            html += `<p><strong>Estrategia Sucesoria Seleccionada:</strong> ${estrategiaSucesion.toUpperCase()}</p>`;
+            let html = `<p><strong>Informe Ejecutivo de Peritaje Sistémico (Cátedra Angus):</strong> Análisis conductual consolidado para el rol de <em>${rol}</em>.</p>`;
+            html += `<p><strong>Diagnóstico de Red Vincular (Bowen):</strong> "${vinculos}"</p>`;
+            html += `<p><strong>Selección de Plan Sucesorio:</strong> ${estrategiaSucesion.toUpperCase()}</p>`;
 
             if (contradicciones >= 1) {
                 html += `
                     <div class="alerta-box alerta-roja">
-                        🚨 [DETECTOR DE DISOCIACIÓN CONDUCTUAL ACTIVO]: Se registraron ${contradicciones} decisiones cortoplacistas que contradicen la preservación a largo plazo del legado patrimonial. Evidencia triangulación vincular y cesión ante presiones de terceros no corporativos.
+                        🚨 [DETECTOR DE DISOCIACIÓN CONDUCTUAL ACTIVO]: Se detectaron ${contradicciones} decisiones con sesgo cortoplacista. Esto evidencia una disociación entre el discurso formal de continuidad institucional y las concesiones realizadas ante presiones de terceros o familiares.
                     </div>
                 `;
             } else {
                 html += `
                     <div class="alerta-box alerta-verde">
-                        ✅ [ALTA COHERENCIA SISTÉMICA]: El participante mantiene unidad de pensamiento y acción entre su rol institucional y las decisiones adoptadas, resguardando la continuidad y eficiencia operativa.
+                        ✅ [ALTA COHERENCIA Y GOBERNANZA ROBUSTA]: El participante mantuvo una línea de acción alineada con la preservación del patrimonio y los estándares técnicos, sin desvíos cortoplacistas significativos.
                     </div>
                 `;
             }
 
-            document.getElementById("cuerpoReporte").innerHTML = html;
+            document.getElementById("cuerpoDashboard").innerHTML = html;
         }
 
-        function reiniciarEvaluacion() {
+        function reiniciarSistema() {
             sessionStorage.clear();
             window.location.href = "index.html";
         }
