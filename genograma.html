@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFC - Genograma Sistémico (Genopro & Bowen)</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #131b2e;
+            --accent: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-col: #1e293b;
+            --success: #22c55e;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid var(--border-col);
+        }
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-col);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .user-info img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+        h1 { font-size: 1.15rem; color: var(--accent); text-transform: uppercase; margin: 0; }
+        p.desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--text-muted); font-size: 0.85rem; }
+        select, textarea {
+            width: 100%; padding: 12px; margin-bottom: 15px;
+            background-color: #0b0f19; border: 1px solid var(--border-col); border-radius: 8px;
+            color: var(--text-main); font-size: 0.95rem; box-sizing: border-box;
+        }
+        textarea { resize: vertical; height: 80px; }
+        button {
+            width: 100%; padding: 14px; background-color: var(--accent); color: #0b0f19;
+            border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; text-transform: uppercase;
+        }
+        button:hover { background-color: #0ea5e9; }
+    </style>
+</head>
+<body>
 
+    <div class="container">
+        <div class="top-bar">
+            <div class="user-info">
+                <img id="avatarDisplay" alt="Avatar">
+                <div>
+                    <h1 id="lblUsuario">Usuario</h1>
+                    <span id="lblRazon" style="font-size:0.75rem; color:var(--text-muted);">Entidad</span>
+                </div>
+            </div>
+            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--accent);">Módulo Genograma</div>
+        </div>
+
+        <p class="desc">Defina su rol estructural dentro del sistema familiar y describa la dinámica vincular con otros miembros clave. Esto mapeará las <strong>Tríadas de Bowen</strong> y las posibles alianzas con terceros ajenos al negocio.</p>
+
+        <label for="selectRol">Su Rol Estructural Principal:</label>
+        <select id="selectRol">
+            <option value="Fundador / Patriarca / Matriarca">Fundador / Patriarca / Matriarca</option>
+            <option value="Sucesor Designado / Hijo">Sucesor Designado / Hijo/a</option>
+            <option value="Hermano Co-propietario">Hermano Co-propietario</option>
+            <option value="Familiar Político / Externo">Familiar Político / Tercero Incorporado</option>
+            <option value="Gerente Profesional No Familiar">Gerente Profesional No Familiar</option>
+        </select>
+
+        <label for="txtVinculos">Diagnóstico Vincular y Presencia de Triadas (Bowen):</label>
+        <textarea id="txtVinculos" placeholder="Describa coaliciones, tensiones, alianzas con terceros o familiares que influyen en las decisiones..."></textarea>
+
+        <button onclick="guardarGenograma()">Generar Genopro y Avanzar a Encrucijadas</button>
+    </div>
+
+    <script>
+        if (sessionStorage.getItem("efc_auth") !== "true") {
+            window.location.href = "index.html";
+        } else {
+            document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario");
+            document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon");
+            document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar");
+        }
+
+        function guardarGenograma() {
+            const rol = document.getElementById("selectRol").value;
+            const vinculos = document.getElementById("txtVinculos").value.trim();
+
+            if (!vinculos) {
+                alert("⚠️ Por favor, ingrese un diagnóstico vincular para configurar el mapa sistémico.");
+                return;
+            }
+
+            sessionStorage.setItem("efc_rol_estructural", rol);
+            sessionStorage.setItem("efc_diagnostico_vinculos", vinculos);
+            sessionStorage.setItem("efc_genograma_completado", "true");
+
+            window.location.href = "encrucijadas.html";
+        }
+    </script>
+</body>
+</html>
