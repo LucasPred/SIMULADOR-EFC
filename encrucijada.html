@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EFC - Micrositio de Encrucijadas & Auditoría de Coherencia Sistémica</title>
+    <title>EFC - Micrositio de Encrucijadas & Auditoría de Coherencia Sistémica (50+ Escenas)</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -29,7 +29,7 @@
         }
         .container {
             width: 100%;
-            max-width: 1050px;
+            max-width: 1100px;
             background-color: var(--card-bg);
             border-radius: 16px;
             padding: 35px;
@@ -55,7 +55,7 @@
         h1 { font-size: 1.3rem; color: var(--accent); text-transform: uppercase; margin-top: 0; letter-spacing: 1px; }
         .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
 
-        .tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tabs { display: flex; gap: 8px; margin-bottom: 25px; flex-wrap: wrap; }
         .tab-btn { background: #070a12; border: 1px solid var(--border-col); color: var(--text-muted); padding: 10px 14px; border-radius: 6px; cursor: pointer; font-size: 0.78rem; font-weight: bold; text-transform: uppercase; }
         .tab-btn.active { background: var(--accent); color: #0b0f19; border-color: var(--accent); }
 
@@ -76,11 +76,11 @@
 
         /* Panel Restringido Consultor */
         .consultant-access-box { background: #070a12; border: 2px dashed var(--accent); padding: 20px; border-radius: 12px; margin-top: 30px; }
-        .consultant-panel { display: none; margin-top: 15px; background: #131b2e; border: 1px solid var(--border-col); padding: 15px; border-radius: 8px; }
-        .history-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 10px; }
+        .consultant-panel { display: none; margin-top: 15px; background: #131b2e; border: 1px solid var(--border-col); padding: 15px; border-radius: 8px; overflow-x: auto; }
+        .history-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 10px; min-width: 700px; }
         .history-table th, .history-table td { border: 1px solid var(--border-col); padding: 8px; text-align: left; }
         .history-table th { background: #070a12; color: var(--accent); }
-        .tension-badge { padding: 3px 6px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; }
+        .tension-badge { padding: 3px 6px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; white-space: nowrap; }
         .badge-alta { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid var(--danger); }
         .badge-moderada { background: rgba(245, 158, 11, 0.2); color: #fde68a; border: 1px solid var(--warning); }
         .badge-coherente { background: rgba(34, 197, 94, 0.2); color: #86efac; border: 1px solid var(--success); }
@@ -89,8 +89,8 @@
 <body>
 
     <div class="container">
-        <h1>Micrositio de Encrucijadas & Simulación Sistémica</h1>
-        <p class="subtitle">Evaluación de Gobernanzas Complejas bajo el Marco Metodológico de la Profesora Patricia Angus</p>
+        <h1>Micrositio de Encrucijadas & Auditoría de Coherencia Sistémica</h1>
+        <p class="subtitle">Evaluación Integral de Gobernanzas Complejas (50+ Escenas Disruptivas — Marco Prof. Patricia Angus)</p>
 
         <div class="top-banner">
             <div>Jugador / Participante: <b id="lblUsuario">-</b></div>
@@ -110,7 +110,7 @@
         <div id="mod-corp" class="module-container active">
             <!-- Escena 1 -->
             <div class="scene-box" data-scene="corp-1">
-                <div class="scene-header"><span>Corporativa — Escena 01: Política de Dividendos vs. Liquidez Operativa</span><span>[10 opciones de tensión]</span></div>
+                <div class="scene-header"><span>Corporativa — Escena 01: Política de Dividendos vs. Liquidez Operativa</span><span>[Escena 1/10]</span></div>
                 <div class="scene-text">La compañía enfrenta un ciclo de contracción en el capital de trabajo mientras los socios minoritarios exigen retiros de caja inmediatos para gastos particulares. ¿Cuál es el procedimiento a seguir ante la junta?</div>
                 <div class="options-group">
                     <label class="option-label"><input type="radio" name="corp-1" value="A"> A) Suspender temporalmente todo retiro extraordinario y capitalizar el 100% de la utilidad neta para sanear pasivos bancarios de corto plazo.</label>
@@ -123,7 +123,7 @@
 
             <!-- Escena 2 -->
             <div class="scene-box" data-scene="corp-2">
-                <div class="scene-header"><span>Corporativa — Escena 02: Profesionalización del Directorio</span><span>[10 opciones de tensión]</span></div>
+                <div class="scene-header"><span>Corporativa — Escena 02: Profesionalización del Directorio</span><span>[Escena 2/10]</span></div>
                 <div class="scene-text">Se debate la incorporación de un Director Independiente externo con poder de voto para destrabar empates históricos en el consejo. ¿Cómo se posiciona ante la estructura de mando?</div>
                 <div class="options-group">
                     <label class="option-label"><input type="radio" name="corp-2" value="A"> A) Respaldar la incorporación plena del director externo dotándolo de facultades de auditoría y voto dirimente.</label>
@@ -134,78 +134,641 @@
                 <button class="btn-main" onclick="registrarRespuesta('corp', 2)">Registrar Decisión Corporativa 02</button>
             </div>
 
-            <!-- Escenas 3 a 10 (Corporativa) resumidas en estructura idéntica de alta simulación -->
+            <!-- Escena 3 -->
             <div class="scene-box" data-scene="corp-3">
-                <div class="scene-header"><span>Corporativa — Escena 03: Opacidad Contable y Auditoría Externa</span><span>[Control de Transparencia]</span></div>
+                <div class="scene-header"><span>Corporativa — Escena 03: Opacidad Contable y Auditoría Externa</span><span>[Escena 3/10]</span></div>
                 <div class="scene-text">Un consorcio internacional de auditoría externa detecta inconsistencias en la trazabilidad de acopio y retiros de efectivo sin factura. ¿Qué directiva imparte ante el hallazgo?</div>
                 <div class="options-group">
                     <label class="option-label"><input type="radio" name="corp-3" value="A"> A) Regularizar inmediatamente los asientos contables y transparentar la totalidad de los flujos financieros.</label>
                     <label class="option-label"><input type="radio" name="corp-3" value="B"> B) Limitar el alcance de la auditoría a los balances formales y ocultar los circuitos de caja paralelos.</label>
                     <label class="option-label"><input type="radio" name="corp-3" value="C"> C) Desvincular al auditor externo y contratar a un estudio contable menor que no cuestione los usos históricos.</label>
+                    <label class="option-label"><input type="radio" name="corp-3" value="D"> D) Justificar las diferencias como gastos reservados del directorio amparados en la confidencialidad estatutaria.</label>
                 </div>
                 <button class="btn-main" onclick="registrarRespuesta('corp', 3)">Registrar Decisión Corporativa 03</button>
             </div>
-            <!-- (Se pueden incorporar las escenas 4 a 10 con el mismo rigor metodológico corporativo) -->
+
+            <!-- Escena 4 -->
+            <div class="scene-box" data-scene="corp-4">
+                <div class="scene-header"><span>Corporativa — Escena 04: Reestructuración de Pasivos Laborales y Sindicatos</span><span>[Escena 4/10]</span></div>
+                <div class="scene-text">Ante una caída abrupta en la demanda sectorial, se requiere una reestructuración de turnos y reducción de horas extras que genera tensión gremial directa. ¿Cómo asume la negociación?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="corp-4" value="A"> A) Conducir una mesa de diálogo transparente con delegados gremiales aplicando acuerdos de crisis homologados.</label>
+                    <label class="option-label"><input type="radio" name="corp-4" value="B"> B) Delegar unilateralmente la crisis en los mandos medios sin involucrarse directamente desde el directorio.</label>
+                    <label class="option-label"><input type="radio" name="corp-4" value="C"> C) Aplicar despidos selectivos encubiertos focalizados en los operarios más críticos sindicalmente.</label>
+                    <label class="option-label"><input type="radio" name="corp-4" value="D"> D) Vaciar la planta principal y tercerizar la operativa en una SRL satélite para eludir cargas sociales.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('corp', 4)">Registrar Decisión Corporativa 04</button>
+            </div>
+
+            <!-- Escena 5 -->
+            <div class="scene-box" data-scene="corp-5">
+                <div class="scene-header"><span>Corporativa — Escena 05: Inversión en Tecnología y Automatización de Planta</span><span>[Escena 5/10]</span></div>
+                <div class="scene-text">El comité técnico propone una inversión millonaria para automatizar la línea de clasificación y reducir la dependencia de mano de obra intensiva. Los socios más veteranos se oponen por apego al método tradicional. ¿Cómo define?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="corp-5" value="A"> A) Aprobar el plan de modernización tecnológica fundamentado en retornos de eficiencia a mediano plazo.</label>
+                    <label class="option-label"><input type="radio" name="corp-5" value="B"> B) Postergar la decisión indefinidamente hasta lograr un consenso unánime de todos los fundadores.</label>
+                    <label class="option-label"><input type="radio" name="corp-5" value="C"> C) Comprar equipos obsoletos de menor costo solo para dar la impresión visual de innovación ante los clientes.</label>
+                    <label class="option-label"><input type="radio" name="corp-5" value="D"> D) Financiar la tecnología con fondos sustraídos de los presupuestos de mantenimiento preventivo.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('corp', 5)">Registrar Decisión Corporativa 05</button>
+            </div>
+
+            <!-- Escena 6 -->
+            <div class="scene-box" data-scene="corp-6">
+                <div class="scene-header"><span>Corporativa — Escena 06: Conflictos de Interés en Compras y Proveedores</span><span>[Escena 6/10]</span></div>
+                <div class="scene-text">Se descubre que el responsable del área de compras adjudica contratos logísticos prioritarios a una empresa de transporte propiedad de su cónyuge. ¿Qué medida adopta el directorio?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="corp-6" value="A"> A) Aplicar el protocolo de conflicto de intereses, rescindir el contrato y abrir licitación pública transparente.</label>
+                    <label class="option-label"><input type="radio" name="corp-6" value="B"> B) Permitir que continúe el contrato bajo la condición de reducir un 5% la tarifa facturada.</label>
+                    <label class="option-label"><input type="radio" name="corp-6" value="C"> C) Encubrir la situación para evitar un escándalo familiar interno de repercusión imprevisible.</label>
+                    <label class="option-label"><input type="radio" name="corp-6" value="D"> D) Exigir un canon o retorno oculto proporcional para los demás socios de la línea fundadora.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('corp', 6)">Registrar Decisión Corporativa 06</button>
+            </div>
+
+            <!-- Escena 7 -->
+            <div class="scene-box" data-scene="corp-7">
+                <div class="scene-header"><span>Corporativa — Escena 07: Diversificación Geográfica vs. Riesgo País</span><span>[Escena 7/10]</span></div>
+                <div class="scene-text">Ante la volatilidad macroeconómica local, surge la oportunidad de expandir operaciones y abrir una filial comercial en España (Balearicos / Ibiza). Los socios más conservadores se niegan a sacar capitales. ¿Cómo arbitra?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="corp-7" value="A"> A) Diseñar un plan de negocios formal con flujos segregados y aprobación institucional por el directorio.</label>
+                    <label class="option-label"><input type="radio" name="corp-7" value="B"> B) Enviar fondos al exterior de manera informal mediante operaciones de triangulación cambiaria gris.</label>
+                    <label class="option-label"><input type="radio" name="corp-7" value="C"> C) Abandonar el proyecto exterior y concentrar el 100% del riesgo en la plaza local tradicional.</label>
+                    <label class="option-label"><input type="radio" name="corp-7" value="D"> D) Constituir la filial extranjera a nombre de un testaferro familiar para eludir controles societarios locales.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('corp', 7)">Registrar Decisión Corporativa 07</button>
+            </div>
+
+            <!-- Escena 8 -->
+            <div class="scene-box" data-scene="corp-8">
+                <div class="scene-header"><span>Corporativa — Escena 08: Remuneración de Directores Familiares</span><span>[Escena 8/10]</span></div>
+                <div class="scene-text">Se discute si los familiares que ocupan cargos ejecutivos deben percibir honorarios basados en el mercado o retiros discrecionales en función de su parentesco. ¿Qué criterio fija?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="corp-8" value="A"> A) Establecer una política de compensaciones homologada con estudios de mercado para ejecutivos externos.</label>
+                    <label class="option-label"><input type="radio" name="corp-8" value="B"> B) Fijar retiros mensuales fijos por acuerdo verbal entre fundadores sin importar los resultados del ejercicio.</label>
+                    <label class="option-label"><input type="radio" name="corp-8" value="C"> C) Asignar remuneraciones asimétricas según el grado de afinidad con la rama directiva principal.</label>
+                    <label class="option-label"><input type="radio" name="corp-8" value="D"> D) Sustituir sueldos por uso exclusivo de bienes societarios (vehículos, inmuebles y gastos corporativos).</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('corp', 8)">Registrar Decisión Corporativa 08</button>
+            </div>
+
+            <!-- Escena 9 -->
+            <div class="scene-box" data-scene="corp-9">
+                <div class="scene-header"><span>Corporativa — Escena 09: Manejo de Crisis Reputacional y Ambiental</span><span>[Escena 9/10]</span></div>
+                <div class="scene-text">Un organismo de control ambiental intima a la empresa por desvíos en el manejo de efluentes de lavado de áridos. ¿Cuál es la estrategia inmediata a desplegar?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="corp-9" value="A"> A) Contratar peritos ambientales independientes, paralizar el foco del daño y presentar un plan de remediación.</label>
+                    <label class="option-label"><input type="radio" name="corp-9" value="B"> B) Intentar negociar políticamente la infracción mediante contactos informales para evitar la multa.</label>
+                    <label class="option-label"><input type="radio" name="corp-9" value="C"> C) Negar públicamente los cargos y desvincular la responsabilidad hacia subcontratistas menores.</label>
+                    <label class="option-label"><input type="radio" name="corp-9" value="D"> D) Desviar los efluentes en horarios nocturnos para eludir las mediciones oficiales de los inspectores.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('corp', 9)">Registrar Decisión Corporativa 09</button>
+            </div>
+
+            <!-- Escena 10 -->
+            <div class="scene-box" data-scene="corp-10">
+                <div class="scene-header"><span>Corporativa — Escena 10: Venta Parcial o Apertura Accional Estratégica</span><span>[Escena 10/10]</span></div>
+                <div class="scene-text">Un fondo de inversión ofrece adquirir un 20% del paquete accionario minoritario con fuerte inyección de capital. Los fundadores se debaten entre la apertura o el control absoluto. ¿Cómo procede?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="corp-10" value="A"> A) Evaluar la propuesta mediante due diligence formal, analizando sinergias operativas y pacto de socios.</label>
+                    <label class="option-label"><input type="radio" name="corp-10" value="B"> B) Rechazar de inmediato cualquier oferta que implique ceder una sola acción a capitales externos.</label>
+                    <label class="option-label"><input type="radio" name="corp-10" value="C"> C) Simular la venta emitiendo acciones sin derecho a voto con cláusulas de recompra leoninas.</label>
+                    <label class="option-label"><input type="radio" name="corp-10" value="D"> D) Aceptar la venta en secreto y repartir el producido entre los miembros de la línea directiva directa.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('corp', 10)">Registrar Decisión Corporativa 10</button>
+            </div>
         </div>
 
         <!-- ================= MÓDULO 2: GOBERNANZA FAMILIAR (10 ESCENAS) ================= -->
         <div id="mod-fam" class="module-container">
+            <!-- Escena 1 -->
             <div class="scene-box" data-scene="fam-1">
-                <div class="scene-header"><span>Familiar — Escena 01: Ingreso de la Siguiente Generación (Family Governance Pyramid™)</span></div>
+                <div class="scene-header"><span>Familiar — Escena 01: Ingreso de la Siguiente Generación (Family Governance Pyramid™)</span><span>[Escena 1/10]</span></div>
                 <div class="scene-text">Un heredero directo exige un cargo gerencial de jerarquía sin cumplir los requisitos de experiencia externa estipulados en el protocolo. ¿Cómo resuelve la presión familiar?</div>
                 <div class="options-group">
                     <label class="option-label"><input type="radio" name="fam-1" value="A"> A) Exigir el cumplimiento estricto del protocolo: 3 años de desempeño en empresas ajenas al grupo.</label>
                     <label class="option-label"><input type="radio" name="fam-1" value="B"> B) Conceder una excepción temporal por vía de excepción en acuerdo privado con el patriarca.</label>
                     <label class="option-label"><input type="radio" name="fam-1" value="C"> C) Crear un puesto gerencial ficticio (asistencialismo encubierto) para contener la demanda sin riesgo operativo.</label>
+                    <label class="option-label"><input type="radio" name="fam-1" value="D"> D) Otorgarle el cargo ejecutivo exigido cediendo ante el chantaje emocional del grupo familiar íntimo.</label>
                 </div>
                 <button class="btn-main" onclick="registrarRespuesta('fam', 1)">Registrar Decisión Familiar 01</button>
             </div>
-            <!-- (Se estructuran las 10 escenas de Gobernanza Familiar) -->
+
+            <!-- Escena 2 -->
+            <div class="scene-box" data-scene="fam-2">
+                <div class="scene-header"><span>Familiar — Escena 02: Incorporación de Cónyuges al Sistema</span><span>[Escena 2/10]</span></div>
+                <div class="scene-text">El cónyuge de un accionista reclama participar activamente en las reuniones del consejo de familia y opinar sobre nombramientos. ¿Qué directiva establece el protocolo?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fam-2" value="A"> A) Mantener la restricción estricta: los cónyuges participan solo en eventos sociales, no en la gobernanza.</label>
+                    <label class="option-label"><input type="radio" name="fam-2" value="B"> B) Permitir su ingreso excepcional a las reuniones con voz pero sin derecho a voto ni acceso a balances.</label>
+                    <label class="option-label"><input type="radio" name="fam-2" value="C"> C) Filtrar información confidencial a través de ellos para operar indirectamente en las decisiones.</label>
+                    <label class="option-label"><input type="radio" name="fam-2" value="D"> D) Otorgarles poder plenario de representación en nombre de su pareja inhabilitada temporalmente.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fam', 2)">Registrar Decisión Familiar 02</button>
+            </div>
+
+            <!-- Escena 3 -->
+            <div class="scene-box" data-scene="fam-3">
+                <div class="scene-header"><span>Familiar — Escena 03: Protocolo de Sucesión y Testamento Vital</span><span>[Escena 3/10]</span></div>
+                <div class="scene-text">El fundador se resiste a firmar un testamento formal y un protocolo de transferencia accionaria por temor a perder poder en vida. ¿Cómo se destraba este punto crítico?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fam-3" value="A"> A) Promover un proceso de mediación sucesoria profesional con facilitadores externos especializados.</label>
+                    <label class="option-label"><input type="radio" name="fam-3" value="B"> B) Dejar que la sucesión avance naturalmente sin planificación ante el inminente conflicto legal.</label>
+                    <label class="option-label"><input type="radio" name="fam-3" value="C"> C) Obtener la firma del fundador mediante coacción familiar y pactos sucesorios secretos.</label>
+                    <label class="option-label"><input type="radio" name="fam-3" value="D"> D) Fragmentar la propiedad en testamentos cruzados ocultos para favorecer a una sola rama hereditaria.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fam', 3)">Registrar Decisión Familiar 03</button>
+            </div>
+
+            <!-- Escena 4 -->
+            <div class="scene-box" data-scene="fam-4">
+                <div class="scene-header"><span>Familiar — Escena 04: Asimetrías en el Tren de Vida y Retiros</span><span>[Escena 4/10]</span></div>
+                <div class="scene-text">Se generan tensiones porque algunos herederos que trabajan en la empresa exigen mayores ingresos que los hermanos pasivos que solo cobran dividendos. ¿Qué política se adopta?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fam-4" value="A"> A) Separar claramente la retribución salarial por función ejecutiva del dividendo proporcional por tenencia accionaria.</label>
+                    <label class="option-label"><input type="radio" name="fam-4" value="B"> B) Uniformar los ingresos de todos los hermanos por igual sin importar si prestan servicios operativos o no.</label>
+                    <label class="option-label"><input type="radio" name="fam-4" value="C"> C) Autorizar retiros graciables encubiertos a la rama operativa para perjudicar a los socios pasivos.</label>
+                    <label class="option-label"><input type="radio" name="fam-4" value="D"> D) Fomentar disputas internas para forzar la salida a precio vil de los hermanos no operativos.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fam', 4)">Registrar Decisión Familiar 04</button>
+            </div>
+
+            <!-- Escena 5 -->
+            <div class="scene-box" data-scene="fam-5">
+                <div class="scene-header"><span>Familiar — Escena 05: Creación del Consejo de Familia</span><span>[Escena 5/10]</span></div>
+                <div class="scene-text">Se propone institucionalizar un Consejo de Familia independiente para canalizar debates emocionales y evitar que los conflictos domésticos invadan el directorio corporativo. ¿Cómo reacciona?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fam-5" value="A"> A) Impulsar la creación formal del consejo redactando un reglamento operativo y un código de conducta.</label>
+                    <label class="option-label"><input type="radio" name="fam-5" value="B"> B) Descartarlo considerando que las reuniones familiares deben ser informales en los almuerzos de domingo.</label>
+                    <label class="option-label"><input type="radio" name="fam-5" value="C"> C) Usar el consejo de familia como órgano decorativo para legitimar decisiones tomadas por el líder.</label>
+                    <label class="option-label"><input type="radio" name="fam-5" value="D"> D) Boicotear las reuniones del consejo para centralizar el mando absoluto en una sola persona.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fam', 5)">Registrar Decisión Familiar 05</button>
+            </div>
+
+            <!-- Escena 6 -->
+            <div class="scene-box" data-scene="fam-6">
+                <div class="scene-header"><span>Familiar — Escena 06: Manejo de Adicciones o Conductas Disfuncionales</span><span>[Escena 6/10]</span></div>
+                <div class="scene-text">Un miembro de la familia con participación accionaria clave atraviesa una crisis personal severa que afecta su desempeño y pone en riesgo la reputación de la firma. ¿Cómo procede?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fam-6" value="A"> A) Aplicar el protocolo de protección institucional, apartarlo temporalmente de la gestión y ofrecer asistencia médica.</label>
+                    <label class="option-label"><input type="radio" name="fam-6" value="B"> B) Ocultar el problema a los demás socios y tolerar sus faltas para evitar un escándalo familiar.</label>
+                    <label class="option-label"><input type="radio" name="fam-6" value="C"> C) Aprovechar su estado de vulnerabilidad para obligarlo a ceder sus acciones a precio rebajado.</label>
+                    <label class="option-label"><input type="radio" name="fam-6" value="D"> D) Exponer públicamente su situación en reuniones corporativas para restarle poder político.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fam', 6)">Registrar Decisión Familiar 06</button>
+            </div>
+
+            <!-- Escena 7 -->
+            <div class="scene-box" data-scene="fam-7">
+                <div class="scene-header"><span>Familiar — Escena 07: Resolución de Empates en Votaciones Familiares</span><span>[Escena 7/10]</span></div>
+                <div class="scene-text">En una votación del consejo familiar sobre la estrategia de expansión, se produce un empate exacto entre dos ramas del clan. ¿Qué mecanismo institucional se activa?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fam-7" value="A"> A) Someter el diferendo a un comité de arbitraje externo previamente estipulado en el protocolo.</label>
+                    <label class="option-label"><input type="radio" name="fam-7" value="B"> B) Otorgar voto dirimente absoluto y vitalicio al patriarca o miembro de mayor antigüedad.</label>
+                    <label class="option-label"><input type="radio" name="fam-7" value="C"> C) Romper la votación por la fuerza mediante la coacción de los socios minoritarios.</label>
+                    <label class="option-label"><input type="radio" name="fam-7" value="D"> D) Paralizar toda la operatoria de la compañía hasta que una de las partes ceda por desgaste.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fam', 7)">Registrar Decisión Familiar 07</button>
+            </div>
+
+            <!-- Escena 8 -->
+            <div class="scene-box" data-scene="fam-8">
+                <div class="scene-header"><span>Familiar — Escena 08: Educación y Formación de Accionistas Futuros</span><span>[Escena 8/10]</span></div>
+                <div class="scene-text">Se debate si los jóvenes de la próxima generación deben recibir capacitación formal en lectura de balances y gobernanza antes de heredar sus derechos políticos. ¿Qué define?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fam-8" value="A"> A) Implementar un programa formal de formación para accionistas jóvenes dictado por consultores especializados.</label>
+                    <label class="option-label"><input type="radio" name="fam-8" value="B"> B) Considerar que la educación corporativa no es necesaria y que aprenderán sobre la marcha al cumplir la mayoría de edad.</label>
+                    <label class="option-label"><input type="radio" name="fam-8" value="C"> C) Entrenar únicamente a los herederos varones favoritos, marginando al resto de las mujeres del clan.</label>
+                    <label class="option-label"><input type="radio" name="fam-8" value="D"> D) Mantenerlos en la ignorancia financiera para poder controlar sus decisiones de voto en el futuro.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fam', 8)">Registrar Decisión Familiar 08</button>
+            </div>
+
+            <!-- Escena 9 -->
+            <div class="scene-box" data-scene="fam-9">
+                <div class="scene-header"><span>Familiar — Escena 09: Salida Voluntaria de un Familiar (Buyout)</span><span>[Escena 9/10]</span></div>
+                <div class="scene-text">Un heredero manifiesta su total desinterés por el negocio y exige la venta inmediata de su paquete accionario al contado. La empresa no cuenta con liquidez para pagarle. ¿Cómo actúa?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fam-9" value="A"> A) Acordar un plan de pagos estructurado a plazo con garantías reales y valuación técnica independiente.</label>
+                    <label class="option-label"><input type="radio" name="fam-9" value="B"> B) Negarse a pagarle argumentando que las acciones familiares no se pueden vender bajo ningún concepto.</label>
+                    <label class="option-label"><input type="radio" name="fam-9" value="C"> C) Ofrecerle un pago simbólico irrisorio aprovechándose de su urgencia financiera personal.</label>
+                    <label class="option-label"><input type="radio" name="fam-9" value="D"> D) Obligarlo mediante presiones familiares a retener las acciones sin recibir ningún dividendo.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fam', 9)">Registrar Decisión Familiar 09</button>
+            </div>
+
+            <!-- Escena 10 -->
+            <div class="scene-box" data-scene="fam-10">
+                <div class="scene-header"><span>Familiar — Escena 10: Pacto de Divorcio y Protección Accionaria</span><span>[Escena 10/10]</span></div>
+                <div class="scene-text">Un miembro de la familia se divorcia en litigio conflictivo y su expareja reclama parte de las acciones de la empresa como gananciales. ¿Cómo prevé o defiende el patrimonio?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fam-10" value="A"> A) Invocar las cláusulas de exclusión y derecho de recompra preventiva estipuladas en el protocolo y estatuto.</label>
+                    <label class="option-label"><input type="radio" name="fam-10" value="B"> B) Permitir que la expareja ingrese como socia minoritaria para evitar mayores costos judiciales.</label>
+                    <label class="option-label"><input type="radio" name="fam-10" value="C"> C) Ocultar activos societarios mediante maniobras contables grises para reducir el monto del litigio.</label>
+                    <label class="option-label"><input type="radio" name="fam-10" value="D"> D) Transferir precipitadamente las acciones a testaferros para burlar la sentencia judicial de divorcio.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fam', 10)">Registrar Decisión Familiar 10</button>
+            </div>
         </div>
 
         <!-- ================= MÓDULO 3: GOBERNANZA PATRIMONIAL (10 ESCENAS) ================= -->
         <div id="mod-pat" class="module-container">
+            <!-- Escena 1 -->
             <div class="scene-box" data-scene="pat-1">
-                <div class="scene-header"><span>Patrimonial — Escena 01: Garantías Cruzadas y Exposición de Bienes</span></div>
+                <div class="scene-header"><span>Patrimonial — Escena 01: Garantías Cruzadas y Exposición de Bienes</span><span>[Escena 1/10]</span></div>
                 <div class="scene-text">Una entidad bancaria condiciona una línea de crédito vital a que los socios hipotequen sus bienes raíces personales (viviendas y campos). ¿Cuál es su decisión ejecutiva?</div>
                 <div class="options-group">
                     <label class="option-label"><input type="radio" name="pat-1" value="A"> A) Negativa rotunda a mezclar el patrimonio personal; buscar financiamiento alternativo con activos de la empresa.</label>
                     <label class="option-label"><input type="radio" name="pat-1" value="B"> B) Aceptar la hipoteca personal de inmediato sin consultar al consejo familiar por urgencia de liquidez.</label>
                     <label class="option-label"><input type="radio" name="pat-1" value="C"> C) Realizar una transferencia simulada de bienes a familiares colaterales para blindarlos antes de firmar.</label>
+                    <label class="option-label"><input type="radio" name="pat-1" value="D"> D) Hipotecar los bienes de los socios minoritarios encubriendo la operatoria real del préstamo.</label>
                 </div>
                 <button class="btn-main" onclick="registrarRespuesta('pat', 1)">Registrar Decisión Patrimonial 01</button>
             </div>
-            <!-- (Se estructuran las 10 escenas de Gobernanza Patrimonial) -->
+
+            <!-- Escena 2 -->
+            <div class="scene-box" data-scene="pat-2">
+                <div class="scene-header"><span>Patrimonial — Escena 02: Separación de Inmuebles Operativos y Personales</span><span>[Escena 2/10]</span></div>
+                <div class="scene-text">Los terrenos donde opera la planta industrial están a nombre personal de los fundadores y no de la sociedad comercial. Se propone regularizar contratos de alquiler. ¿Cómo procede?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="pat-2" value="A"> A) Firmar contratos de locación comerciales formales con tasación de mercado y plazos seguros.</label>
+                    <label class="option-label"><input type="radio" name="pat-2" value="B"> B) Continuar con la informalidad histórica de uso gratuito sin contratos escritos para evitar impuestos.</label>
+                    <label class="option-label"><input type="radio" name="pat-2" value="C"> C) Cobrar alquileres exhorbitantes y discrecionales para vaciar la caja de la empresa operativa.</label>
+                    <label class="option-label"><input type="radio" name="pat-2" value="D"> D) Donar los terrenos a una sola rama familiar en perjuicio de los demás herederos colaterales.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('pat', 2)">Registrar Decisión Patrimonial 02</button>
+            </div>
+
+            <!-- Escena 3 -->
+            <div class="scene-box" data-scene="pat-3">
+                <div class="scene-header"><span>Patrimonial — Escena 03: Seguros de Hombre Clave (Key Man Insurance)</span><span>[Escena 3/10]</span></div>
+                <div class="scene-text">Ante la inestabilidad de salud del principal líder operativo, se sugiere contratar pólizas de seguro de hombre clave con beneficiario la empresa. ¿Qué decisión toma la junta?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="pat-3" value="A"> A) Contratar las pólizas internacionales de cobertura integral para blindar la continuidad financiera.</label>
+                    <label class="option-label"><input type="radio" name="pat-3" value="B"> B) Rechazar la propuesta por considerarla un gasto innecesario que incrementa los costos fijos.</label>
+                    <label class="option-label"><input type="radio" name="pat-3" value="C"> C) Tomar el seguro nombrando beneficiarios exclusivos a los familiares directos en lugar de la firma.</label>
+                    <label class="option-label"><input type="radio" name="pat-3" value="D"> D) Ocultar el riesgo de salud del líder a las aseguradoras para abonar primas preferenciales.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('pat', 3)">Registrar Decisión Patrimonial 03</button>
+            </div>
+
+            <!-- Escena 4 -->
+            <div class="scene-box" data-scene="pat-4">
+                <div class="scene-header"><span>Patrimonial — Escena 04: Blindaje Frente a Ejecuciones Fiscales</span><span>[Escena 4/10]</span></div>
+                <div class="scene-text">Se pronostica un embargo inminente por parte del fisco debido a inconsistencias en declaraciones juradas impositivas pasadas. ¿Qué directiva patrimonial imparte?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="pat-4" value="A"> A) Acogerse a planes de regularización fiscal oficiales y transparentar el estado patrimonial.</label>
+                    <label class="option-label"><input type="radio" name="pat-4" value="B"> B) Desviar la titularidad de los rodados y maquinarias a nombre de empleados o prestanombres.</label>
+                    <label class="option-label"><input type="radio" name="pat-4" value="C"> C) Vaciar las cuentas bancarias operativas y operar exclusivamente en efectivo físico.</label>
+                    <label class="option-label"><input type="radio" name="pat-4" value="D"> D) Litigar eternamente utilizando chicanas procesales para prescribir la deuda fiscal.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('pat', 4)">Registrar Decisión Patrimonial 04</button>
+            </div>
+
+            <!-- Escena 5 -->
+            <div class="scene-box" data-scene="pat-5">
+                <div class="scene-header"><span>Patrimonial — Escena 05: Inversiones Inmobiliarias con Fondos Sociales</span><span>[Escena 5/10]</span></div>
+                <div class="scene-text">Existen excedentes de caja que el directorio decide invertir. Algunos proponen comprar campos agrícolas y otros oficinas comerciales urbanas. ¿Cómo se arbitra?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="pat-5" value="A"> A) Diversificar en activos institucionales registrados formalmente en el balance de la sociedad.</label>
+                    <label class="option-label"><input type="radio" name="pat-5" value="B"> B) Comprar propiedades a nombre personal de los directores utilizando los fondos de la caja social.</label>
+                    <label class="option-label"><input type="radio" name="pat-5" value="C"> C) Invertir en proyectos inmobiliarios informales de dudosa trazabilidad legal en el exterior.</label>
+                    <label class="option-label"><input type="radio" name="pat-5" value="D"> D) Repartir los fondos en efectivo entre los socios para que cada uno compre bienes por su cuenta.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('pat', 5)">Registrar Decisión Patrimonial 05</button>
+            </div>
+
+            <!-- Escena 6 -->
+            <div class="scene-box" data-scene="pat-6">
+                <div class="scene-header"><span>Patrimonial — Escena 06: Donaciones Anticipadas de Bienes en Vida</span><span>[Escena 6/10]</span></div>
+                <div class="scene-text">El patriarca propone donar en vida propiedades rurales a sus hijos preferidos reservándose el usufructo vitalicio, generando asimetría con el resto. ¿Qué posición adopta?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="pat-6" value="A"> A) Exigir que cualquier donación en vida sea colacionable y equiparable equitativamente para todos los herederos.</label>
+                    <label class="option-label"><input type="radio" name="pat-6" value="B"> B) Convalidar la donación asimétrica para evitar discusiones directas con el patriarca.</label>
+                    <label class="option-label"><input type="radio" name="pat-6" value="C"> C) Ocultar la donación a los hermanos perjudicados hasta el fallecimiento del causante.</label>
+                    <label class="option-label"><input type="radio" name="pat-6" value="D"> D) Exigir una donación equivalente para la rama familiar propia utilizando presiones corporativas.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('pat', 6)">Registrar Decisión Patrimonial 06</button>
+            </div>
+
+            <!-- Escena 7 -->
+            <div class="scene-box" data-scene="pat-7">
+                <div class="scene-header"><span>Patrimonial — Escena 07: Uso de Vehículos y Activos de Lujo Societarios</span><span>[Escena 7/10]</span></div>
+                <div class="scene-text">Se detecta que los familiares utilizan la flota de vehículos alta gama y tarjetas corporativas de la empresa para gastos personales vacacionales desmedidos. ¿Cómo actúa?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="pat-7" value="A"> A) Restringir el uso de activos a fines estrictamente laborales y facturar los consumos particulares como adelanto de dividendos.</label>
+                    <label class="option-label"><input type="radio" name="pat-7" value="B"> B) Permitir el uso discrecional de los bienes para mantener contentos a los miembros de la familia.</label>
+                    <label class="option-label"><input type="radio" name="pat-7" value="C"> C) Asignar vehículos de lujo solo a los directores principales, prohibiendo el acceso a los demás parientes.</label>
+                    <label class="option-label"><input type="radio" name="pat-7" value="D"> D) Ignorar la irregularidad contable mientras las facturas puedan deducirse como gastos operativos.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('pat', 7)">Registrar Decisión Patrimonial 07</button>
+            </div>
+
+            <!-- Escena 8 -->
+            <div class="scene-box" data-scene="pat-8">
+                <div class="scene-header"><span>Patrimonial — Escena 08: Litigios Sucesorios y Bloqueo de Cuentas</span><span>[Escena 8/10]</span></div>
+                <div class="scene-text">Tras el fallecimiento de un socio mayoritario, los herederos bloquean judicialmente las cuentas bancarias de la empresa exigiendo inventario total. ¿Cómo destraba la crisis?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="pat-8" value="A"> A) Acordar un administrador judicial provisorio y presentar balances auditados para destrabar la operatoria comercial.</label>
+                    <label class="option-label"><input type="radio" name="pat-8" value="B"> B) Operar con cuentas paralelas en efectivo para sortear el bloqueo judicial de los fondos.</label>
+                    <label class="option-label"><input type="radio" name="pat-8" value="C"> C) Desconocer los derechos de los nuevos herederos y negarles el acceso a la información contable.</label>
+                    <label class="option-label"><input type="radio" name="pat-8" value="D"> D) Vaciar el stock de la empresa hacia otra sociedad paralela para dejar sin materia el litigio sucesorio.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('pat', 8)">Registrar Decisión Patrimonial 08</button>
+            </div>
+
+            <!-- Escena 9 -->
+            <div class="scene-box" data-scene="pat-9">
+                <div class="scene-header"><span>Patrimonial — Escena 09: Fondos de Reserva y Prevención de Liquidez</span><span>[Escena 9/10]</span></div>
+                <div class="scene-text">El estatuto exige destinar un porcentaje de utilidades a un fondo de reserva patrimonial inalienable. Ante una emergencia, los socios quieren repartirlo. ¿Qué decide?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="pat-9" value="A"> A) Respetar estrictamente el fondo de reserva legal y estatutario como reaseguro de solvencia.</label>
+                    <label class="option-label"><input type="radio" name="pat-9" value="B"> B) Modificar el estatuto por asamblea express para repartir el fondo de reserva entre los socios actuales.</label>
+                    <label class="option-label"><input type="radio" name="pat-9" value="C"> C) Simular una pérdida contable ficticia para justificar la liberación y reparto de la reserva.</label>
+                    <label class="option-label"><input type="radio" name="pat-9" value="D"> D) Prestar los fondos de la reserva a los directores mediante vales informales sin devolución.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('pat', 9)">Registrar Decisión Patrimonial 09</button>
+            </div>
+
+            <!-- Escena 10 -->
+            <div class="scene-box" data-scene="pat-10">
+                <div class="scene-header"><span>Patrimonial — Escena 10: Auditoría Integral de Activos Ocultos</span><span>[Escena 10/10]</span></div>
+                <div class="scene-text">Un perito contador designado por los socios minoritarios exige relevar la totalidad de inversiones financieras no declaradas en paraísos fiscales. ¿Cómo actúa?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="pat-10" value="A"> A) Facilitar el relevamiento y ordenar la repatriación e integración formal de los activos al balance.</label>
+                    <label class="option-label"><input type="radio" name="pat-10" value="B"> B) Limitar la auditoría e invocar secreto fiscal y comercial para bloquear la revisión.</label>
+                    <label class="option-label"><input type="radio" name="pat-10" value="C"> C) Destituir al perito y amenazar con acciones legales a los socios que solicitaron la auditoría.</label>
+                    <label class="option-label"><input type="radio" name="pat-10" value="D"> D) Ocultar los movimientos offshore transfiriéndolos a estructuras fiduciarias extranjeras anónimas.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('pat', 10)">Registrar Decisión Patrimonial 10</button>
+            </div>
         </div>
 
         <!-- ================= MÓDULO 4: GOBERNANZA FIDUCIARIA (10 ESCENAS) ================= -->
         <div id="mod-fid" class="module-container">
+            <!-- Escena 1 -->
             <div class="scene-box" data-scene="fid-1">
-                <div class="scene-header"><span>Fiduciaria — Escena 01: Discrecionalidad y Blindaje en Fideicomisos</span></div>
+                <div class="scene-header"><span>Fiduciaria — Escena 01: Discrecionalidad y Blindaje en Fideicomisos</span><span>[Escena 1/10]</span></div>
                 <div class="scene-text">El comité fiduciario bloquea un desembolso extraordinario solicitado por un beneficiario para cancelar deudas personales suntuarias. ¿Cómo interviene ante el fiduciario?</div>
                 <div class="options-group">
                     <label class="option-label"><input type="radio" name="fid-1" value="A"> A) Respaldar al comité fiduciario y hacer cumplir estrictamente los fines protectores del contrato.</label>
                     <label class="option-label"><input type="radio" name="fid-1" value="B"> B) Presionar al fiduciario para liberar fondos de forma discrecional y evitar rupturas en el clan.</label>
                     <label class="option-label"><input type="radio" name="fid-1" value="C"> C) Canalizar pagos paralelos a espaldas del fideicomiso utilizando cuentas no declaradas de filiales.</label>
+                    <label class="option-label"><input type="radio" name="fid-1" value="D"> D) Destituir al fiduciario profesional e imponer a un familiar sumiso que apruebe cualquier retiro.</label>
                 </div>
                 <button class="btn-main" onclick="registrarRespuesta('fid', 1)">Registrar Decisión Fiduciaria 01</button>
             </div>
-            <!-- (Se estructuran las 10 escenas de Gobernanza Fiduciaria) -->
+
+            <!-- Escena 2 -->
+            <div class="scene-box" data-scene="fid-2">
+                <div class="scene-header"><span>Fiduciaria — Escena 02: Remoción y Sustitución de Fiduciarios</span><span>[Escena 2/10]</span></div>
+                <div class="scene-text">El fiduciario institucional (banco o fiduciaria independiente) se niega a firmar una operatoria comercial gris por considerarla de alto riesgo legal. ¿Qué medida se adopta?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fid-2" value="A"> A) Acatar el dictamen técnico del fiduciario y desistir de la operatoria riesgosa.</label>
+                    <label class="option-label"><input type="radio" name="fid-2" value="B"> B) Iniciar el proceso legal de remoción del fiduciario por exceso de celo profesional.</label>
+                    <label class="option-label"><input type="radio" name="fid-2" value="C"> C) Presionar al fiduciario mediante campañas de desprestigio hasta lograr su renuncia voluntaria.</label>
+                    <label class="option-label"><input type="radio" name="fid-2" value="D"> D) Operar al margen del fideicomiso utilizando sociedades instrumentales fantasmas.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fid', 2)">Registrar Decisión Fiduciaria 02</button>
+            </div>
+
+            <!-- Escena 3 -->
+            <div class="scene-box" data-scene="fid-3">
+                <div class="scene-header"><span>Fiduciaria — Escena 03: Beneficiarios Ocultos y Fideicomisos Testamentarios</span><span>[Escena 3/10]</span></div>
+                <div class="scene-text">Se debate la inclusión de beneficiarios ocultos (parejas extramatrimoniales o hijos no reconocidos) dentro de las cláusulas de un fideicomiso testamentario. ¿Cómo procede?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fid-3" value="A"> A) Integrar a los herederos legítimos reconocidos legalmente bajo estrictos estándares de transparencia.</label>
+                    <label class="option-label"><input type="radio" name="fid-3" value="B"> B) Incluir beneficiarios ocultos mediante adendas secretas no registradas en el contrato principal.</label>
+                    <label class="option-label"><input type="radio" name="fid-3" value="C"> C) Excluir por completo a cualquier beneficiario externo mediante cláusulas de desheredación forzosa.</label>
+                    <label class="option-label"><input type="radio" name="fid-3" value="D"> D) Utilizar testaferros fiduciarios para canalizar rentas a familiares no declarados formalmente.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fid', 3)">Registrar Decisión Fiduciaria 03</button>
+            </div>
+
+            <!-- Escena 4 -->
+            <div class="scene-box" data-scene="fid-4">
+                <div class="scene-header"><span>Fiduciaria — Escena 04: Revocabilidad y Modificación Unilateral de Fideicomisos</span><span>[Escena 4/10]</span></div>
+                <div class="scene-text">El constituyente original del fideicomiso pretende revocar unilateralmente el contrato para modificar el destino de los bienes asignados a los hijos. ¿Qué dictamina el consejo?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fid-4" value="A"> A) Respetar el carácter irrevocable del fideicomiso si así fue pactado para garantizar la seguridad jurídica.</label>
+                    <label class="option-label"><input type="radio" name="fid-4" value="B"> B) Permitir la revocación unilateral por presión directa del fundador sin consultar a los beneficiarios.</label>
+                    <label class="option-label"><input type="radio" name="fid-4" value="C"> C) Simular una nulidad legal del contrato mediante artilugios procesales judiciales.</label>
+                    <label class="option-label"><input type="radio" name="fid-4" value="D"> D) Modificar los anexos fiduciarios a espaldas de los fiduciarios institucionales.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fid', 4)">Registrar Decisión Fiduciaria 04</button>
+            </div>
+
+            <!-- Escena 5 -->
+            <div class="scene-box" data-scene="fid-5">
+                <div class="scene-header"><span>Fiduciaria — Escena 05: Asignación de Dividendos Fideicomitidos</span><span>[Escena 5/10]</span></div>
+                <div class="scene-text">Las acciones de la compañía principal se encuentran en fideicomiso. Los dividendos generados deben distribuirse según reglas estrictas, pero una rama exige adelantos. ¿Cómo actúa?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fid-5" value="A"> A) Cumplir estrictamente con el cronograma y las formas de distribución previstas en el contrato fiduciario.</label>
+                    <label class="option-label"><input type="radio" name="fid-5" value="B"> B) Solicitar al fiduciario adelantos excepcionales de fondos afectando la liquidez del fideicomiso.</label>
+                    <label class="option-label"><input type="radio" name="fid-5" value="C"> C) Retirar dinero directamente de la caja operativa de la empresa sin que pase por el fideicomiso.</label>
+                    <label class="option-label"><input type="radio" name="fid-5" value="D"> D) Alterar las proporciones de reparto para favorecer arbitrariamente a los administradores.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fid', 5)">Registrar Decisión Fiduciaria 05</button>
+            </div>
+
+            <!-- Escena 6 -->
+            <div class="scene-box" data-scene="fid-6">
+                <div class="scene-header"><span>Fiduciaria — Escena 06: Blindaje Patrimonial ante Embargos Externos</span><span>[Escena 6/10]</span></div>
+                <div class="scene-text">Un acreedor particular de un beneficiario intenta embargar las rentas que este percibe del fideicomiso. El fiduciario consulta cómo responder al oficio judicial. ¿Qué instruye?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fid-6" value="A"> A) Invocar la cláusula de inejecutabilidad y protección de activos del fideicomiso conforme a derecho.</label>
+                    <label class="option-label"><input type="radio" name="fid-6" value="B"> B) Ceder al embargo y entregar las rentas del beneficiario para evitar mayores litigios judiciales.</label>
+                    <label class="option-label"><input type="radio" name="fid-6" value="C"> C) Suspender temporalmente las distribuciones de rentas para que el acreedor no cobre nada.</label>
+                    <label class="option-label"><input type="radio" name="fid-6" value="D"> D) Simular una quiebra fraudulenta del beneficiario para extinguir la obligación crediticia.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fid', 6)">Registrar Decisión Fiduciaria 06</button>
+            </div>
+
+            <!-- Escena 7 -->
+            <div class="scene-box" data-scene="fid-7">
+                <div class="scene-header"><span>Fiduciaria — Escena 07: Conflictos de Interés en el Comité de Administración</span><span>[Escena 7/10]</span></div>
+                <div class="scene-text">Un integrante del comité de administración fiduciaria vota a favor de otorgar un contrato de servicios a su propia consultora privada. ¿Qué medidas correctivas se aplican?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fid-7" value="A"> A) Recusar al integrante por conflicto de intereses, anular el contrato y exigir la devolución de fondos.</label>
+                    <label class="option-label"><input type="radio" name="fid-7" value="B"> B) Validar el contrato reduciendo un porcentaje menor de la honoraria facturada.</label>
+                    <label class="option-label"><input type="radio" name="fid-7" value="C"> C) Encubrir el conflicto de intereses para evitar divisiones en el seno del comité.</label>
+                    <label class="option-label"><input type="radio" name="fid-7" value="D"> D) Exigir contratos cruzados similares para los demás miembros del comité fiduciario.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fid', 7)">Registrar Decisión Fiduciaria 07</button>
+            </div>
+
+            <!-- Escena 8 -->
+            <div class="scene-box" data-scene="fid-8">
+                <div class="scene-header"><span>Fiduciaria — Escena 08: Auditoría y Rendición de Cuentas del Fiduciario</span><span>[Escena 8/10]</span></div>
+                <div class="scene-text">El fiduciario demora la presentación de la rendición de cuentas anual obligatoria a los beneficiarios. ¿Qué temperamento adopta la conducción familiar?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fid-8" value="A"> A) Intimar formalmente bajo apercibimiento legal la presentación inmediata de la rendición de cuentas.</label>
+                    <label class="option-label"><input type="radio" name="fid-8" value="B"> B) Tolerar la demora confiando en la reputación histórica de la entidad fiduciaria.</label>
+                    <label class="option-label"><input type="radio" name="fid-8" value="C"> C) Ignorar la falta mientras continúen ingresando los dividendos habituales a las cuentas.</label>
+                    <label class="option-label"><input type="radio" name="fid-8" value="D"> D) Contratar auditores paralelos para revisar los libros mediante accesos informales no autorizados.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fid', 8)">Registrar Decisión Fiduciaria 08</button>
+            </div>
+
+            <!-- Escena 9 -->
+            <div class="scene-box" data-scene="fid-9">
+                <div class="scene-header"><span>Fiduciaria — Escena 09: Extinción y Liquidación del Fideicomiso</span><span>[Escena 9/10]</span></div>
+                <div class="scene-text">Se cumple el plazo estipulado de vigencia del fideicomiso y debe procederse a la liquidación y adjudicación final de los bienes a los herederos. Surge disputa por los lotes principales. ¿Cómo se resuelve?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fid-9" value="A"> A) Ejecutar la liquidación mediante tasación pública independiente y adjudicación proporcional equitativa.</label>
+                    <label class="option-label"><input type="radio" name="fid-9" value="B"> B) Prorrogar arbitrariamente el fideicomiso por decisión de la mayoría sin acuerdo de las partes.</label>
+                    <label class="option-label"><input type="radio" name="fid-9" value="C"> C) Adjudicar los mejores bienes a la rama directiva principal y los remanentes a los colaterales.</label>
+                    <label class="option-label"><input type="radio" name="fid-9" value="D"> D) Judicializar la liquidación para bloquear la entrega de activos a los demás herederos.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fid', 9)">Registrar Decisión Fiduciaria 09</button>
+            </div>
+
+            <!-- Escena 10 -->
+            <div class="scene-box" data-scene="fid-10">
+                <div class="scene-header"><span>Fiduciaria — Escena 10: Fideicomisos Offshore y Estructuras Internacionales</span><span>[Escena 10/10]</span></div>
+                <div class="scene-text">Se evalúa la constitución de un fideicomiso en jurisdicción offshore (ej. Islas Cuerdas / Panamá / Delaware) para canalizar inversiones internacionales. ¿Cómo procede?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fid-10" value="A"> A) Constituir la estructura bajo el cumplimiento estricto de regímenes de transparencia fiscal internacional y FATCA.</label>
+                    <label class="option-label"><input type="radio" name="fid-10" value="B"> B) Armar la estructura offshore de manera totalmente opaca para ocultar flujos financieros al fisco local.</label>
+                    <label class="option-label"><input type="radio" name="fid-10" value="C"> C) Desistir de cualquier expansión internacional por temor a requerimientos regulatorios complejos.</label>
+                    <label class="option-label"><input type="radio" name="fid-10" value="D"> D) Utilizar testaferros extranjeros para operar las cuentas offshore sin registro documental propio.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fid', 10)">Registrar Decisión Fiduciaria 10</button>
+            </div>
         </div>
 
         <!-- ================= MÓDULO 5: FILANTROPÍA E IMPACTO (10 ESCENAS) ================= -->
         <div id="mod-fil" class="module-container">
+            <!-- Escena 1 -->
             <div class="scene-box" data-scene="fil-1">
-                <div class="scene-header"><span>Filantropía — Escena 01: Asistencialismo vs. Empresa Social de Impacto</span></div>
+                <div class="scene-header"><span>Filantropía — Escena 01: Asistencialismo vs. Empresa Social de Impacto</span><span>[Escena 1/10]</span></div>
                 <div class="scene-text">La corporación dispone de un remanente de utilidades para destinar a la comunidad regional de influencia. Se debate el destino estratégico de dichos fondos. ¿Qué directiva fija?</div>
                 <div class="options-group">
                     <label class="option-label"><input type="radio" name="fil-1" value="A"> A) Invertir en un programa de empresa social autosustentable con métricas de impacto a largo plazo.</label>
                     <label class="option-label"><input type="radio" name="fil-1" value="B"> B) Destinarlo a donaciones caritativas tradicionales y de impacto publicitario rápido en medios locales.</label>
                     <label class="option-label"><input type="radio" name="fil-1" value="C"> C) Distribuir el fondo entre los socios bajo el criterio de que la filantropía corporativa erosiona el capital.</label>
+                    <label class="option-label"><input type="radio" name="fil-1" value="D"> D) Simular donaciones a fundaciones fantasma controladas por familiares para desviar fondos.</label>
                 </div>
                 <button class="btn-main" onclick="registrarRespuesta('fil', 1)">Registrar Decisión Filantrópica 01</button>
             </div>
-            <!-- (Se estructuran las 10 escenas de Filantropía e Impacto) -->
+
+            <!-- Escena 2 -->
+            <div class="scene-box" data-scene="fil-2">
+                <div class="scene-header"><span>Filantropía — Escena 02: Creación de Fundación Familiar Autónoma</span><span>[Escena 2/10]</span></div>
+                <div class="scene-text">Se propone crear una fundación sin fines de lucro vinculada a la empresa familiar para gestionar becas educativas técnicas en la región. ¿Cómo estructura el proyecto?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fil-2" value="A"> A) Dotar a la fundación de un directorio técnico independiente y auditoría de impacto transparente.</label>
+                    <label class="option-label"><input type="radio" name="fil-2" value="B"> B) Utilizar la fundación exclusivamente como herramienta de marketing y reducción de impuestos.</label>
+                    <label class="option-label"><input type="radio" name="fil-2" value="C"> C) Designar en los cargos directivos de la fundación a familiares sin antecedentes en el área social.</label>
+                    <label class="option-label"><input type="radio" name="fil-2" value="D"> D) Rechazar la creación de la fundación por considerarla un centro de costos sin retorno financiero.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fil', 2)">Registrar Decisión Filantrópica 02</button>
+            </div>
+
+            <!-- Escena 3 -->
+            <div class="scene-box" data-scene="fil-3">
+                <div class="scene-header"><span>Filantropía — Escena 03: Inversión de Impacto Ambiental Regional</span><span>[Escena 3/10]</span></div>
+                <div class="scene-text">La comunidad local presiona por compensaciones ambientales debido a la extracción en zonas ribereñas. Se propone financiar un parque ecológico público. ¿Qué decide?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fil-3" value="A"> A) Financiar el parque ecológico con un programa de mitigación ambiental auditado y sostenible.</label>
+                    <label class="option-label"><input type="radio" name="fil-3" value="B"> B) Pautar avisos publicitarios institucionales en medios locales para mitigar la protesta sin invertir en obras.</label>
+                    <label class="option-label"><input type="radio" name="fil-3" value="C"> C) Desestimar el reclamo comunitario amparándose en los permisos de explotación vigentes.</label>
+                    <label class="option-label"><input type="radio" name="fil-3" value="D"> D) Financiar obras cosméticas menores que no resuelven el impacto real pero satisfacen la formalidad.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fil', 3)">Registrar Decisión Filantrópica 03</button>
+            </div>
+
+            <!-- Escena 4 -->
+            <div class="scene-box" data-scene="fil-4">
+                <div class="scene-header"><span>Filantropía — Escena 04: Becas Educativas y Mérito Interno</span><span>[Escena 4/10]</span></div>
+                <div class="scene-text">Se implementa un fondo de becas universitarias para hijos de empleados de la planta. Un director exige que se priorice a los parientes de los gerentes antes que al mérito. ¿Cómo actúa?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fil-4" value="A"> A) Mantener el criterio estricto de mérito académico y necesidad socioeconómica para todos los postulantes.</label>
+                    <label class="option-label"><input type="radio" name="fil-4" value="B"> B) Destinar un cupo reservado y discrecional para los familiares de los directivos y mandos medios.</label>
+                    <label class="option-label"><input type="radio" name="fil-4" value="C"> C) Cancelar el programa de becas si no se puede beneficiar directamente al círculo íntimo.</label>
+                    <label class="option-label"><input type="radio" name="fil-4" value="D"> D) Asignar las becas de forma arbitraria según conveniencias de lealtad política interna.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fil', 4)">Registrar Decisión Filantrópica 04</button>
+            </div>
+
+            <!-- Escena 5 -->
+            <div class="scene-box" data-scene="fil-5">
+                <div class="scene-header"><span>Filantropía — Escena 05: Alianzas con ONGs y Transparencia de Fondos</span><span>[Escena 5/10]</span></div>
+                <div class="scene-text">Una ONG local solicita subsidios mensuales para programas comunitarios. Se descubre que la ONG es dirigida por un familiar colateral de un socio. ¿Qué temperamento adopta?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fil-5" value="A"> A) Rechazar el subsidio por conflicto de intereses y abrir una convocatoria pública transparente para ONGs.</label>
+                    <label class="option-label"><input type="radio" name="fil-5" value="B"> B) Otorgar el subsidio de igual forma para evitar tensiones con el pariente involucrado.</label>
+                    <label class="option-label"><input type="radio" name="fil-5" value="C"> C) Canalizar los fondos mediante facturación cruzada simulada para encubrir el vínculo familiar.</label>
+                    <label class="option-label"><input type="radio" name="fil-5" value="D"> D) Exigir un retorno porcentual de los fondos donados para los gastos reservados del directorio.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fil', 5)">Registrar Decisión Filantrópica 05</button>
+            </div>
+
+            <!-- Escena 6 -->
+            <div class="scene-box" data-scene="fil-6">
+                <div class="scene-header"><span>Filantropía — Escena 06: Filantropía Estratégica vs. Asistencialismo Puro</span><span>[Escena 6/10]</span></div>
+                <div class="scene-text">Se debate si las donaciones anuales deben atomizarse en múltiples pequeños aportes caritativos o concentrarse en un proyecto de alto impacto transformador. ¿Qué define?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fil-6" value="A"> A) Concentrar el presupuesto en un proyecto estratégico de alto impacto comunitario medible.</label>
+                    <label class="option-label"><input type="radio" name="fil-6" value="B"> B) Atomizar las donaciones en pequeños aportes asistenciales para complacer compromisos sociales políticos.</label>
+                    <label class="option-label"><input type="radio" name="fil-6" value="C"> C) Eliminar todo presupuesto filantrópico y repartir el dinero como dividendo entre los socios.</label>
+                    <label class="option-label"><input type="radio" name="fil-6" value="D"> D) Utilizar las donaciones como herramienta de publicidad política partidaria local.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fil', 6)">Registrar Decisión Filantrópica 06</button>
+            </div>
+
+            <!-- Escena 7 -->
+            <div class="scene-box" data-scene="fil-7">
+                <div class="scene-header"><span>Filantropía — Escena 07: Programas de Voluntariado Corporativo</span><span>[Escena 7/10]</span></div>
+                <div class="scene-text">Se propone instaurar jornadas de voluntariado corporativo obligatorio en horario laboral para los empleados de la planta industrial. ¿Cómo se implementa?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fil-7" value="A"> A) Diseñar un programa de voluntariado rentado y optativo con fuerte participación institucional.</label>
+                    <label class="option-label"><input type="radio" name="fil-7" value="B"> B) Imponer jornadas obligatorias sin goce de sueldo adicional afectando la productividad de la planta.</label>
+                    <label class="option-label"><input type="radio" name="fil-7" value="C"> C) Descartar la iniciativa por considerarla una pérdida de tiempo operativo inútil.</label>
+                    <label class="option-label"><input type="radio" name="fil-7" value="D"> D) Simular jornadas de voluntariado solo para la toma de fotografías institucionales de marketing.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fil', 7)">Registrar Decisión Filantrópica 07</button>
+            </div>
+
+            <!-- Escena 8 -->
+            <div class="scene-box" data-scene="fil-8">
+                <div class="scene-header"><span>Filantropía — Escena 08: Inversiones de Impacto en Emprendimientos Locales</span><span>[Escena 8/10]</span></div>
+                <div class="scene-text">La empresa recibe propuestas de emprendedores locales de triple impacto (social, ambiental y económico). ¿Bajo qué criterio se fondean estos proyectos?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fil-8" value="A"> A) Evaluar los proyectos mediante un fondo de inversión de impacto con métricas de retorno social claras.</label>
+                    <label class="option-label"><input type="radio" name="fil-8" value="B"> B) Financiar únicamente a emprendimientos cuyos dueños tengan vínculos de amistad con la familia.</label>
+                    <label class="option-label"><input type="radio" name="fil-8" value="C"> C) Rechazar todo proyecto innovador y destinar el capital a inversiones financieras especulativas.</label>
+                    <label class="option-label"><input type="radio" name="fil-8" value="D"> D) Exigir participaciones accionariales leoninas en los emprendimientos a cambio de un capital mínimo.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fil', 8)">Registrar Decisión Filantrópica 08</button>
+            </div>
+
+            <!-- Escena 9 -->
+            <div class="scene-box" data-scene="fil-9">
+                <div class="scene-header"><span>Filantropía — Escena 09: Medición de Retorno Social de Inversión (SROI)</span><span>[Escena 9/10]</span></div>
+                <div class="scene-text">Se exige auditar el impacto real (SROI) de los fondos destinados a filantropía en los últimos cinco años. Los resultados muestran baja efectividad. ¿Qué directiva imparte?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fil-9" value="A"> A) Rediseñar los programas filantrópicos basándose en las métricas de impacto y auditorías profesionales.</label>
+                    <label class="option-label"><input type="radio" name="fil-9" value="B"> B) Ocultar el informe de SROI para evitar cuestionamientos sobre el destino de los fondos.</label>
+                    <label class="option-label"><input type="radio" name="fil-9" value="C"> C) Cancelar definitivamente cualquier inversión social por falta de resultados financieros directos.</label>
+                    <label class="option-label"><input type="radio" name="fil-9" value="D"> D) Falsificar los indicadores de impacto en los reportes anuales para cumplir formalmente.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fil', 9)">Registrar Decisión Filantrópica 09</button>
+            </div>
+
+            <!-- Escena 10 -->
+            <div class="scene-box" data-scene="fil-10">
+                <div class="scene-header"><span>Filantropía — Escena 10: Legado Comunitario y Sostenibilidad Generacional</span><span>[Escena 10/10]</span></div>
+                <div class="scene-text">Se debate la incorporación del propósito filantrópico y comunitario como cláusula pétrea e inmodificable dentro del Protocolo Familiar y Estatuto Societario. ¿Cómo vota?</div>
+                <div class="options-group">
+                    <label class="option-label"><input type="radio" name="fil-10" value="A"> A) Votar a favor de consagrar el propósito comunitario como pilar ético inalterable de la corporación.</label>
+                    <label class="option-label"><input type="radio" name="fil-10" value="B"> B) Rechazar la incorporación estatutaria argumentando que las prioridades filantrópicas deben ser discrecionales.</label>
+                    <label class="option-label"><input type="radio" name="fil-10" value="C"> C) Aceptar la cláusula formalmente sabiendo que no tendrá aplicación práctica en la operativa real.</label>
+                    <label class="option-label"><input type="radio" name="fil-10" value="D"> D) Boicotear la redacción del protocolo para impedir cualquier compromiso filantrópico vinculante.</label>
+                </div>
+                <button class="btn-main" onclick="registrarRespuesta('fil', 10)">Registrar Decisión Filantrópica 10</button>
+            </div>
         </div>
 
         <!-- ================= PANEL PRIVATIVO DEL CONSULTOR (RESTRINGIDO) ================= -->
@@ -220,7 +783,7 @@
             </div>
 
             <div class="consultant-panel" id="panelConsultorOculto">
-                <div style="font-size: 0.82rem; font-weight: bold; color: var(--accent); margin-bottom: 10px; text-transform: uppercase;">📊 Historial Permanente de Decisiones y Matriz de Tensiones Sistémicas</div>
+                <div style="font-size: 0.82rem; font-weight: bold; color: var(--accent); margin-bottom: 10px; text-transform: uppercase;">📊 Historial Permanente de Decisiones y Matriz de Tensiones Sistémicas (50+ Escenas)</div>
                 <div id="contenedorHistorialGlobal">
                     <table class="history-table">
                         <thead>
@@ -274,7 +837,7 @@
             const seleccion = radios[0].value;
             const timestamp = new Date().toLocaleString();
             
-            // Evaluar nivel de tensión / disociación (Las opciones B, C, D generan tensión frente a la ortodoxia institucional A)
+            // Evaluar nivel de tensión / disociación (A = Coherente ortodojo institucional; B, D = Tensión moderada; C = Disociación autocrática crítica)
             let nivelTension = "Coherente con Protocolo";
             let claseBadge = "badge-coherente";
             if (seleccion === "B" || seleccion === "D") {
@@ -290,7 +853,7 @@
                 usuario: usuarioActual,
                 sociedad: sociedadActual,
                 modulo: modulo.toUpperCase(),
-                escena: `Escena 0${escenaNum}`,
+                escena: `Escena ${escenaNum < 10 ? '0' + escenaNum : escenaNum}`,
                 seleccion: `Opción ${seleccion}`,
                 tension: nivelTension,
                 badge: claseBadge
@@ -298,10 +861,14 @@
 
             // Guardar en almacenamiento persistente global del consultor (Inviolable para usuarios rasos)
             let historialGlobal = JSON.parse(localStorage.getItem("efc_historial_consultor") || "[]");
+            
+            // Evitar duplicados exactos si el usuario re-envía la misma escena, actualizando o agregando
+            historialGlobal = historialGlobal.filter(item => !(item.usuario === usuarioActual && item.modulo === modulo.toUpperCase() && item.escena === registroItem.escena));
             historialGlobal.push(registroItem);
+            
             localStorage.setItem("efc_historial_consultor", JSON.stringify(historialGlobal));
 
-            alert("¡Decisión registrada y consolidada en el historial de trazabilidad sistémica!");
+            alert(`¡Decisión registrada y consolidada en el historial de trazabilidad sistémica (${modulo.toUpperCase()} - Escena ${escenaNum})!`);
         }
 
         function desbloquearPanelConsultor() {
@@ -328,7 +895,8 @@
                 return;
             }
 
-            historialGlobal.forEach(item => {
+            // Ordenar por timestamp descendente
+            historialGlobal.reverse().forEach(item => {
                 const tr = document.createElement("tr");
                 tr.innerHTML = `
                     <td>${item.timestamp}</td>
