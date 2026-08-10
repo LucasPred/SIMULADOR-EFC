@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFC - Panel Privativo del Consultor</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19; --card-bg: #131b2e; --accent: #38bdf8;
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border-col: #1e293b; --danger: #ef4444; --success: #22c55e;
+        }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 950px; background-color: var(--card-bg); border-radius: 16px; padding: 30px; border: 1px solid var(--border-col); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .top-bar { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-col); padding-bottom: 15px; margin-bottom: 20px; }
+        h1 { font-size: 1.25rem; color: var(--accent); text-transform: uppercase; margin-bottom: 5px; }
+        .audit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
+        .audit-card { background: #0b0f19; border: 1px solid var(--border-col); padding: 16px; border-radius: 8px; }
+        .audit-card h3 { color: var(--accent); font-size: 0.95rem; margin-top: 0; }
+        .status-badge { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
+        .status-ok { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+        .status-alert { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
+        ul { padding-left: 15px; margin: 8px 0; font-size: 0.85rem; color: var(--text-muted); }
+        .btn { background-color: var(--accent); color: #0b0f19; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div>
+                <h1>Panel Privativo del Consultor - Auditoría Sistémica</h1>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Monitoreo de congruencia conductual y viabilidad jurídica (Argentina)</span>
+            </div>
+            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--success);">Acceso Autorizado: Consultor</div>
+        </div>
+
+        <div class="audit-grid">
+            <div class="audit-card">
+                <h3>Matriz de Identidad & Jugadores</h3>
+                <p><strong>Empresa / Razón Social:</strong> <span id="resRazon">-</span></p>
+                <p><strong>Titular / Usuario:</strong> <span id="resUsuario">-</span></p>
+                <p>Estado de Sesión: <span class="status-badge status-ok">Verificado</span></p>
+            </div>
+
+            <div class="audit-card">
+                <h3>Detector de Disociaciones</h3>
+                <p>Estrategia Sucesoria Elegida: <span id="resEstrategia" style="color:var(--accent);">-</span></p>
+                <p>Coherencia Discursiva: <span id="resCoherencia" class="status-badge status-ok">Analizando...</span></p>
+            </div>
+
+            <div class="audit-card" style="grid-column: span 2;">
+                <h3>Reporte de Gobernanza y Acuerdos Parasocietarios</h3>
+                <ul>
+                    <li><strong>Periodicidad de Juntas:</strong> <span id="resPeriodicidad">-</span></li>
+                    <li><strong>Filtro de Ingreso Laboral:</strong> <span id="resIngreso">-</span></li>
+                    <li><strong>Mecanismo de Arbitraje:</strong> <span id="resArbitraje">-</span></li>
+                    <li><strong>Blindaje Societario (CCCN / LGS):</strong> Validado mediante sindicación de voto y restricciones de transferencia.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+            <button class="btn" style="background:#1e293b; color:var(--text-main); border:1px solid #334155;" onclick="window.location.href='index.html'">Reiniciar Simulación</button>
+            <button class="btn" onclick="window.print()">Exportar Informe de Peritaje (PDF)</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("resUsuario").innerText = sessionStorage.getItem("efc_usuario") || "No registrado";
+        document.getElementById("resRazon").innerText = sessionStorage.getItem("efc_razon") || "No registrada";
+        
+        const est = sessionStorage.getItem("efc_estrategia_sucesion") || "No definida";
+        document.getElementById("resEstrategia").innerText = est.toUpperCase();
+
+        document.getElementById("resPeriodicidad").innerText = sessionStorage.getItem("efc_gov_periodicidad") || "No configurada";
+        document.getElementById("resIngreso").innerText = sessionStorage.getItem("efc_gov_ingreso") || "No configurado";
+        document.getElementById("resArbitraje").innerText = sessionStorage.getItem("efc_gov_arbitraje") || "No configurado";
+
+        // Lógica de detección de incongruencias simulada
+        if(est === 'judicial') {
+            document.getElementById("resCoherencia").className = "status-badge status-alert";
+            document.getElementById("resCoherencia").innerText = "ALERTA: Disociación detectada (Riesgo operativo alto con discurso de continuidad)";
+        } else {
+            document.getElementById("resCoherencia").className = "status-badge status-ok";
+            document.getElementById("resCoherencia").innerText = "ÓPTIMA: Alineación entre gobernanza y blindaje sucesorio";
+        }
+    </script>
+</body>
+</html>
