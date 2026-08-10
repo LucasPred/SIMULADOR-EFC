@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo de Gobernanza y Acuerdos Parasocietarios | Empresas Familiares</title>
+    <title>Módulo de Gobernanza y Simulación Sistémica | Empresas Familiares</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -34,7 +34,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 1px solid var(--border-col);
         }
@@ -50,10 +50,33 @@
             font-size: 1.1rem;
         }
 
+        .auth-box {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-col);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .auth-box input, .auth-box select {
+            padding: 10px;
+            background-color: #0b0f19;
+            border: 1px solid var(--border-col);
+            color: #fff;
+            border-radius: 6px;
+            flex: 1;
+            min-width: 220px;
+        }
+
         .nav-bar {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .btn {
@@ -122,19 +145,7 @@
             padding: 12px 15px;
             margin-bottom: 15px;
             border-radius: 0 6px 6px 0;
-        }
-
-        .solution-box {
-            background-color: rgba(34, 197, 94, 0.1);
-            border-left: 4px solid var(--success);
-            padding: 15px;
-            margin-top: 15px;
-            border-radius: 0 6px 6px 0;
-            display: none;
-        }
-
-        .solution-box.active {
-            display: block;
+            font-size: 0.95rem;
         }
 
         .options-group {
@@ -145,11 +156,12 @@
             display: block;
             background-color: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-col);
-            padding: 10px 15px;
+            padding: 12px 15px;
             border-radius: 6px;
             margin-bottom: 8px;
             cursor: pointer;
             transition: all 0.2s;
+            font-size: 0.95rem;
         }
 
         .option-label:hover {
@@ -157,7 +169,19 @@
             border-color: var(--accent);
         }
 
-        /* Panel Consultor */
+        .feedback-box {
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+            display: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .feedback-green { background-color: rgba(34, 197, 94, 0.15); border-left: 4px solid var(--success); color: #86efac; }
+        .feedback-yellow { background-color: rgba(245, 158, 11, 0.15); border-left: 4px solid var(--warning); color: #fde047; }
+        .feedback-red { background-color: rgba(239, 68, 68, 0.15); border-left: 4px solid var(--danger); color: #fca5a5; }
+
         .consultant-panel {
             background-color: #111827;
             border: 2px dashed var(--warning);
@@ -170,18 +194,6 @@
             color: var(--warning);
             margin-top: 0;
         }
-
-        code.clause-text {
-            display: block;
-            background-color: #0b0f19;
-            color: #38bdf8;
-            padding: 12px;
-            border-radius: 6px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            white-space: pre-wrap;
-        }
     </style>
 </head>
 <body>
@@ -193,426 +205,539 @@
     </div>
 
     <header>
-        <h1>Módulo de Gobernanza y Blindaje Parasocietario</h1>
-        <p>Simulador técnico-jurídico interactivo para la resolución de conflictos en empresas familiares complejas.</p>
+        <h1>Módulo de Gobernanza y Simulación Pragmática</h1>
+        <p>Acompañamiento directivo, análisis de viabilidad por semáforo y parametrización corporativa.</p>
     </header>
 
+    <!-- AUTENTICACIÓN Y TIPO SOCIETARIO -->
+    <div class="auth-box">
+        <div>
+            <strong style="display:block; color:var(--accent); margin-bottom:5px;">Autenticación del Holding / Empresa</strong>
+            <span style="font-size:0.85rem; color:var(--text-muted);">Defina la razón social y ropaje societario para parametrizar el plexo normativo aplicable.</span>
+        </div>
+        <input type="text" id="razonSocial" placeholder="Razón Social Completa (Ej: GRAVAFILT S.A.)">
+        <select id="tipoSocietario">
+            <option value="SA">Sociedad Anónima (S.A.)</option>
+            <option value="SRL">Sociedad de Responsabilidad Limitada (S.R.L.)</option>
+            <option value="SAS">Sociedad por Acciones Simplificada (S.A.S.)</option>
+        </select>
+        <button class="btn" onclick="guardarParametros()">Fijar Estructura</button>
+    </div>
+
     <div id="escenas-container">
+
         <!-- ESCENA 1 -->
-        <div class="scene-card" id="escena-1">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 1: Ingreso de Familiares por Línea Sucesoria</h3>
-                <span class="scene-badge">Requisito Habilitante</span>
+                <span class="scene-badge">Requisitos de Ingreso</span>
             </div>
-            <p>Los herederos exigen ingresar a cargos ejecutivos por derecho de sangre, mientras que los gerentes externos exigen meritocracia.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Riesgo de asimetría informativa, desmotivación de directivos externos y pérdida de eficiencia operativa.</div>
+            <p>Los herederos exigen ingresar a puestos gerenciales por derecho de sangre frente a la exigencia de meritocracia de los directivos externos.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Asimetría de idoneidad vs. presión de la rama familiar fundadora por colocación directa.</div>
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e1" onclick="resolver(1, true)"> A) Establecer requisitos estrictos: 3 años de experiencia externa, título universitario y evaluación previa de comité externo.</label>
-                <label class="option-label"><input type="radio" name="e1" onclick="resolver(1, false)"> B) Permitir ingreso directo por decisión unilateral de la rama fundadora.</label>
+                <label class="option-label" onclick="mostrarFeedback(1, 'green', '🟢 Viabilidad Óptima: Exigir 3 años externos, título y comité. (Articulado a redactar: Requisito Habilitante Estricto en Acuerdos Parasocietarios).')">
+                    <input type="radio" name="e1"> A) Exigir 3 años de experiencia externa, título universitario y evaluación de comité independiente.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(1, 'yellow', '🟡 Pragmatismo Aceptable: Permite ingreso sin experiencia externa previa pero condicionada a tutoría directiva y evaluación semestral de desempeño.')">
+                    <input type="radio" name="e1"> B) Permitir ingreso directo sin experiencia externa, sujeto a tutoría interna obligatoria y evaluación de desempeño.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(1, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Acceso sin restricciones por parentesco. Genera destrucción de valor corporativo, fuga de cuadros gerenciales y alta conflictividad operativa.')">
+                    <input type="radio" name="e1"> C) Otorgar ingreso libre y automático a cualquier heredero mayor de edad por mera voluntad de los fundadores.
+                </label>
             </div>
-            <div class="solution-box" id="sol-1">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 1ª: Ningún integrante del grupo familiar podrá acceder a cargos ejecutivos sin acreditar fehacientemente tres (3) años de experiencia laboral previa fuera de la compañía, título universitario homologado y dictamen favorable emitido por un comité externo independiente.</code>
-            </div>
+            <div class="feedback-box" id="fb-1"></div>
         </div>
 
         <!-- ESCENA 2 -->
-        <div class="scene-card" id="escena-2">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 2: Política de Dividendos vs. Reinversión</h3>
                 <span class="scene-badge">Régimen Patrimonial</span>
             </div>
-            <p>Accionistas pasivos exigen distribución del 80% de utilidades, mientras los ejecutivos necesitan retener fondos para expansión industrial.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Descapitalización operativa por puja entre renta de subsistencia y reinversión de capital.</div>
+            <p>Accionistas pasivos exigen alta distribución de renta de subsistencia mientras los ejecutivos necesitan retener fondos para la expansión industrial.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Pugna entre liquidez personal de socios no operativos y necesidades de capital de trabajo del holding.</div>
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e2" onclick="resolver(2, true)"> A) Pactar un piso obligatorio de distribución del 30% y condicionar el remanente a ratios de endeudamiento y Capex.</label>
-                <label class="option-label"><input type="radio" name="e2" onclick="resolver(2, false)"> B) Dejar la decisión a mayoría simple variable según correlación de fuerzas en Asamblea.</label>
+                <label class="option-label" onclick="mostrarFeedback(2, 'green', '🟢 Viabilidad Óptima: Piso obligatorio del 30% y remanente atado a ratios de endeudamiento y Capex.')">
+                    <input type="radio" name="e2"> A) Fijar piso obligatorio del 30% en efectivo y condicionar excedentes a ratios de liquidez y solvencia.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(2, 'yellow', '🟡 Pragmatismo Aceptable: Distribución variable discrecional sujeta a votación de mayoría simple en Asamblea anual según caja disponible.')">
+                    <input type="radio" name="e2"> B) Acordar distribución flexible sujeta a la disponibilidad trimestral de caja sin porcentajes rígidos previos.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(2, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Distribución del 100% de utilidades para calmar reclamos familiares, asfixiando la capacidad de inversión y endeudamiento bancario.')">
+                    <input type="radio" name="e2"> C) Distribuir la totalidad de las utilidades netas para evitar tensiones familiares inmediatas, fondeando la operación con endeudamiento bancario.
+                </label>
             </div>
-            <div class="solution-box" id="sol-2">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 2ª: La Asamblea de Accionistas destinará obligatoriamente un piso del treinta por ciento (30%) de las utilidades líquidas y realizadas a distribución de dividendos en efectivo. Cualquier distribución extraordinaria superior estará supeditada al mantenimiento de los ratios de liquidez y solvencia del holding aprobados por directorio.</code>
-            </div>
+            <div class="feedback-box" id="fb-2"></div>
         </div>
 
         <!-- ESCENA 3 -->
-        <div class="scene-card" id="escena-3">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 3: Cónyuges y Parientes Políticos en la Estructura</h3>
                 <span class="scene-badge">Filtro de Afinidad</span>
             </div>
-            <p>Incorporación de cónyuges a la gestión operativa o al directorio con riesgo de filtración de información y conflictos post-divorcio.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Contaminación de la gobernanza corporativa con disputas conyugales y filtración de secretos comerciales.</div>
+            <p>Incorporación de cónyuges a la gestión operativa o directorio, con riesgo latente de filtración de información y conflictos post-divorcio.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Contaminación de la gobernanza societaria por rupturas conyugales y filtración de secretos comerciales.</div>
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e3" onclick="resolver(3, true)"> A) Prohibición expresa de incorporación de cónyuges y afines hasta 2do grado, salvo dispensa unánime de Consejo de Familia.</label>
-                <label class="option-label"><input type="radio" name="e3" onclick="resolver(3, false)"> B) Permitir libremente la contratación bajo las mismas reglas de un empleado común.</label>
+                <label class="option-label" onclick="mostrarFeedback(3, 'green', '🟢 Viabilidad Óptima: Prohibición expresa de afines hasta 2do grado, salvo dispensa unánime del Consejo de Familia.')">
+                    <input type="radio" name="e3"> A) Prohibir expresamente la incorporación de cónyuges y afines, salvo dispensa unánime del Consejo de Familia.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(3, 'yellow', '🟡 Pragmatismo Aceptable: Permitir contratación operativa subordinada de cónyuges pero prohibir terminantemente su acceso a puestos de directorio o gerencias clave.')">
+                    <input type="radio" name="e3"> B) Permitir contratación en puestos operativos no estratégicos, vedando su acceso a directorios y gerencias.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(3, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Libre ingreso de cónyuges a cualquier estatus directivo. Alto riesgo de transferencia patrimonial involuntaria ante disolución matrimonial.')">
+                    <input type="radio" name="e3"> C) Tratar a los cónyuges exactamente igual que a cualquier tercero, sin restricciones especiales en la estructura.
+                </label>
             </div>
-            <div class="solution-box" id="sol-3">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 3ª: Queda prohibida la contratación laboral o designación como directores de cónyuges y parientes por afinidad hasta el segundo grado de los accionistas, salvo expresa dispensa aprobada por unanimidad en el Consejo de Familia y ratificada por el Directorio.</code>
-            </div>
+            <div class="feedback-box" id="fb-3"></div>
         </div>
 
         <!-- ESCENA 4 -->
-        <div class="scene-card" id="escena-4">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 4: Valuación y Mecanismo de Salida (Buy-Sell)</h3>
                 <span class="scene-badge">Protocolo de Retiro</span>
             </div>
-            <p>Accionista minoritario disidente pretende retirarse exigiendo una valuación desproporcionada y amenaza con litigar.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Bloqueo patrimonial y riesgo de litigiosidad pública por ausencia de fórmulas preestablecidas de salida.</div >
+            <p>Accionista minoritario disidente pretende retirarse exigiendo una valuación desproporcionada y amenaza con litigar públicamente.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Bloqueo patrimonial y riesgo de litigiosidad por ausencia de fórmulas preestablecidas de recompra.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e4" onclick="resolver(4, true)"> A) Instituir fórmula matemática de valuación basada en EBITDA normalizado a 3 años y pago fraccionado.</label>
-                <label class="option-label"><input type="radio" name="e4" onclick="resolver(4, false)"> B) Someter la valuación a peritajes judiciales en caso de desacuerdo sin fórmula previa.</label>
+                <label class="option-label" onclick="mostrarFeedback(4, 'green', '🟢 Viabilidad Óptima: Fórmula matemática basada en múltiplo EBITDA normalizado y pagos fraccionados en cuotas.')">
+                    <input type="radio" name="e4"> A) Instituir fórmula estricta basada en múltiplo de EBITDA a 3 años con pago fraccionado en cuotas anuales.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(4, 'yellow', '🟡 Pragmatismo Aceptable: Valuación por tasación de peritos independientes de parte con derecho de preferencia de compra en plazos flexibles.')">
+                    <input type="radio" name="e4"> B) Acordar tasación por contadores de parte con plazos de pago negociados caso por caso ante cada salida.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(4, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Ausencia de mecanismo de salida pactado. Obliga a ventilación judicial y peritajes imprevisibles que descapitalizan la empresa.')">
+                    <input type="radio" name="e4"> C) Omitir reglas de salida previa, dejando que el socio descontento recurra a tribunales en caso de desacuerdo.
+                </label>
             </div>
-            <div class="solution-box" id="sol-4">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 4ª: Ante el ejercicio del derecho de receso o venta forzosa, el valor de las acciones se determinará estrictamente aplicando un múltiplo de cinco (5) veces el EBITDA normalizado del promedio de los últimos tres (3) ejercicios fiscales, pagaderas en sesenta (60) cuotas mensuales y consecutivas.</code>
-            </div>
+            <div class="feedback-box" id="fb-4"></div>
         </div>
 
         <!-- ESCENA 5 -->
-        <div class="scene-card" id="escena-5">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 5: Conflictos de Interés en Contrataciones</h3>
                 <span class="scene-badge">Transparencia Operativa</span>
             </div>
-            <p>Un director adjudica contratos de logística a una empresa de transporte propiedad de su hermano sin licitación ni precios de mercado.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Desvío indirecto de rentabilidad societaria en beneficio particular de una rama familiar.</div >
+            <p>Un director adjudica contratos de logística y transporte a una empresa propiedad de su hermano sin licitación ni precios de mercado.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Desvío indirecto de rentabilidad societaria en beneficio particular de una rama familiar vinculada.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e5" onclick="resolver(5, true)"> A) Obligación de cotización de 3 terceros, informe de mercado y abstención obligatoria del director vinculado.</label>
-                <label class="option-label"><input type="radio" name="e5" onclick="resolver(5, false)"> B) Permitir contrataciones directas si el director familiar avala la conveniencia del precio.</label>
+                <label class="option-label" onclick="mostrarFeedback(5, 'green', '🟢 Viabilidad Óptima: Obligación de cotización de 3 terceros, aprobación calificada y abstención del director interesado.')">
+                    <input type="radio" name="e5"> A) Exigir cotización de tres terceros independientes, informe técnico de mercado y abstención del director vinculado.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(5, 'yellow', '🟡 Pragmatismo Aceptable: Informar la contratación al Directorio ex-post con homologación por mayoría simple sin cotizaciones formales previas.')">
+                    <input type="radio" name="e5"> B) Informar la operación en la siguiente reunión de directorio para convalidación por mayoría simple.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(5, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Adjudicación directa sin control. Genera sospechas de vaciamiento y desmotivación en socios minoritarios no integrados.')">
+                    <input type="radio" name="e5"> C) Permitir contrataciones directas libres con parientes si el director considera que el precio es razonable.
+                </label>
             </div>
-            <div class="solution-box" id="sol-5">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 5ª: Toda operación comercial con sociedades vinculadas a accionistas o directores requerirá obligatoriamente la presentación de tres (3) cotizaciones independientes de mercado, aprobación por mayoría calificada del Directorio y la abstención absoluta del director interesado en la votación.</code>
-            </div>
+            <div class="feedback-box" id="fb-5"></div>
         </div>
 
         <!-- ESCENA 6 -->
-        <div class="scene-card" id="escena-6">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 6: Bloqueo Decisorio (Deadlock) en Directorio</h3>
                 <span class="scene-badge">Parálisis Estructural</span>
             </div>
             <p>Directorio paritario (2 miembros rama A y 2 miembros rama B) genera parálisis operativa absoluta ante discrepancias estratégicas.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Inacción corporativa permanente ante empates técnicos sistemáticos en votaciones directivas.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Inacción corporativa permanente ante empates técnicos sistemáticos en votaciones directivas.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e6" onclick="resolver(6, true)"> A) Incorporar un Director Independiente dirimente o activar periodo de mediación obligatoria de 30 días.</label>
-                <label class="option-label"><input type="radio" name="e6" onclick="resolver(6, false)"> B) Mantener el empate hasta que las partes logren un acuerdo voluntario sin plazos.</label>
+                <label class="option-label" onclick="mostrarFeedback(6, 'green', '🟢 Viabilidad Óptima: Incorporar Director Independiente dirimente o activar periodo de mediación obligatoria de 30 días.')">
+                    <input type="radio" name="e6"> A) Incorporar un Director Independiente dirimente o activar período de mediación obligatoria externa.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(6, 'yellow', '🟡 Pragmatismo Aceptable: Voto de calidad rotativo anual entre los presidentes de ambas ramas familiares.')">
+                    <input type="radio" name="e6"> B) Establecer voto de calidad rotativo anual entre los representantes de ambas ramas.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(6, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Mantener el empate sin arbitraje. Conduce a la parálisis total de pagos, contratos y gestión gerencial.')">
+                    <input type="radio" name="e6"> C) No establecer mecanismo de desempate, esperando que las partes resuelvan el diferendo voluntariamente.
+                </label>
             </div>
-            <div class="solution-box" id="sol-6">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 6ª: Configurado un empate de votos en dos (2) sesiones consecutivas de Directorio, se activará un plazo de enfriamiento de treinta (30) días con intervención de un mediador externo vinculante designado de común acuerdo, o en su defecto, voto de calidad del Director Independiente.</code>
-            </div>
+            <div class="feedback-box" id="fb-6"></div>
         </div>
 
         <!-- ESCENA 7 -->
-        <div class="scene-card" id="escena-7">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 7: Financiamiento Privado de Accionistas (Mutuos)</h3>
                 <span class="scene-badge">Aportes y Préstamos</span>
             </div>
             <p>Accionista inyecta fondos informales de emergencia exigiendo tasas usurarias o capitalizaciones encubiertas dilusivas.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Asimetría financiera y abuso de posición económica para alterar el capital accionario por vía de aportes informales.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Asimetría financiera y abuso de posición económica para alterar el capital accionario mediante aportes informales.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e7" onclick="resolver(7, true)"> A) Prohibir préstamos informales y regular aportes irrevocables con tasa testigo bancaria oficial y paridad de opción.</label>
-                <label class="option-label"><input type="radio" name="e7" onclick="resolver(7, false)"> B) Permitir mutuos particulares libres entre socios y la sociedad sin intervención asamblearia.</label>
+                <label class="option-label" onclick="mostrarFeedback(7, 'green', '🟢 Viabilidad Óptima: Prohibir préstamos informales y regular aportes irrevocables con tasa testigo oficial y derecho de opción.')">
+                    <input type="radio" name="e7"> A) Prohibir mutuos informales y regular aportes irrevocables con tasa testigo bancaria y paridad de opción.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(7, 'yellow', '🟡 Pragmatismo Aceptable: Permitir mutuos particulares entre socios documentados formalmente ante escribano con tasa de mercado acordada.')">
+                    <input type="radio" name="e7"> B) Permitir préstamos particulares entre socios y la sociedad documentados con tasa de mercado estándar.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(7, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Admisión de inyecciones de caja informales discrecionales. Abre la puerta a la dilución encubierta de socios minoritarios.')">
+                    <input type="radio" name="e7"> C) Habilitar inyecciones de fondos informales libres sin intervención de la asamblea ni derecho de preferencia.
+                </label>
             </div>
-            <div class="solution-box" id="sol-7">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 7ª: Todo préstamo o asistencia financiera de un accionista a la sociedad deberá instrumentarse fehacientemente a tasa de mercado testigo bancaria. Quedan prohibidos los mutuos informales con efectos de capitalización automática que no otorguen derecho de opción preferente a los demás socios.</code>
-            </div>
+            <div class="feedback-box" id="fb-7"></div>
         </div>
 
         <!-- ESCENA 8 -->
-        <div class="scene-card" id="escena-8">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 8: Uso de Activos Corporativos para Fines Personales</h3>
                 <span class="scene-badge">Control de Activos</span>
             </div>
             <p>Uso indiscriminado de vehículos de alta gama y propiedades de la empresa por familiares que no prestan servicios efectivos.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Merma injustificada del patrimonio societario y contingencias fiscales por beneficios encubiertos.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Merma injustificada del patrimonio societario y contingencias fiscales por beneficios encubiertos.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e8" onclick="resolver(8, true)"> A) Establecer política formal de comodatos, imputación de retribuciones en especie y trazabilidad de uso corporativo.</label>
-                <label class="option-label"><input type="radio" name="e8" onclick="resolver(8, false)"> B) Mantener uso discrecional libre de bienes sociales por parte de los miembros del clan.</label>
+                <label class="option-label" onclick="mostrarFeedback(8, 'green', '🟢 Viabilidad Óptima: Política formal de comodatos, imputación fiscal de retribuciones en especie y trazabilidad.')">
+                    <input type="radio" name="e8"> A) Establecer política formal de comodatos, imputación de retribuciones en especie y trazabilidad de uso.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(8, 'yellow', '🟡 Pragmatismo Aceptable: Asignación de un único vehículo corporativo por rama familiar bajo declaración jurada de uso mixto.')">
+                    <input type="radio" name="e8"> B) Limitar el uso a un rodado por rama familiar bajo declaración jurada de afectación mixta.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(8, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Uso discrecional ilimitado de flota y bienes por cualquier pariente. Expone a severas multas de AFIP/Agencias fiscales.')">
+                    <input type="radio" name="e8"> C) Mantener el uso discrecional libre de bienes sociales por parte de todos los miembros del clan familiar.
+                </label>
             </div>
-            <div class="solution-box" id="sol-8">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 8ª: El uso de bienes inmuebles y rodados propiedad de la sociedad estará estrictamente limitado a funciones operativas debidamente justificadas, instrumentándose mediante contratos de comodato formalizados e imputándose fiscalmente como remuneración en especie cuando corresponda.</code>
-            </div>
+            <div class="feedback-box" id="fb-8"></div>
         </div>
 
         <!-- ESCENA 9 -->
-        <div class="scene-card" id="escena-9">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 9: Sucesión en la Presidencia y Concentración</h3>
                 <span class="scene-badge">Gobierno Dual</span>
             </div>
             <p>Fundador se resiste a delegar firma y control operativo, generando obsolescencia y bloqueo de la segunda línea gerencial.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Riesgo de parálisis por obsolescencia directiva y falta de renovación generacional ejecutiva.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Riesgo de parálisis por obsolescencia directiva y falta de renovación generacional ejecutiva.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e9" onclick="resolver(9, true)"> A) Separar Presidencia del Consejo de Familia (institucional) y Gerencia General Ejecutiva con límite de edad estatutario.</label>
-                <label class="option-label"><input type="radio" name="e9" onclick="resolver(9, false)"> B) Mantener la concentración vitalicia de todos los poderes en manos del fundador original.</label>
+                <label class="option-label" onclick="mostrarFeedback(9, 'green', '🟢 Viabilidad Óptima: Separación de Presidencia del Consejo de Familia y Gerencia General con límite de edad estatutario.')">
+                    <input type="radio" name="e9"> A) Separar Presidencia del Consejo de Familia y Gerencia Ejecutiva, fijando límite de edad estatutario.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(9, 'yellow', '🟡 Pragmatismo Aceptable: Mantener al fundador como presidente vitalicio pero incorporando un Director Operativo Adjunto con poder de firma.')">
+                    <input type="radio" name="e9"> B) Mantener presidencia vitalicia del fundador sumando un Director Operativo con delegación parcial de firma.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(9, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Concentración absoluta e indefinida de poderes en el fundador. Paraliza la iniciativa de los sucesores y colapsa la empresa ante su ausencia.')">
+                    <input type="radio" name="e9"> C) Sostener la concentración vitalicia de todos los poderes operativos y de firma en manos del fundador original.
+                </label>
             </div>
-            <div class="solution-box" id="sol-9">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 9ª: Se establece una separación funcional estricta entre la Presidencia del Consejo de Familia (rol institucional y ético) y la Gerencia General Ejecutiva. Se fija un límite de edad estatutario de setenta (70) años para el ejercicio de funciones ejecutivas operativas directas.</code>
-            </div>
+            <div class="feedback-box" id="fb-9"></div>
         </div>
 
         <!-- ESCENA 10 -->
-        <div class="scene-card" id="escena-10">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 10: Cesión de Acciones a Herederos Incapaces o Menores</h3>
                 <span class="scene-badge">Voting Trust</span>
             </div>
             <p>Fallecimiento de socio y transmisión hereditaria de acciones a menores de edad o cónyuge supérstite sin formación empresaria.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Ingreso de tutores externos y leguleyos ajenos a la empresa con capacidad de voto en decisiones corporativas.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Ingreso de tutores externos y leguleyos ajenos a la empresa con capacidad de voto en decisiones corporativas.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e10" onclick="resolver(10, true)"> A) Obligar constitución de fideicomiso testamentario (Voting Trust) donde derechos políticos son ejercidos por fiduciario profesional.</label>
-                <label class="option-label"><input type="radio" name="e10" onclick="resolver(10, false)"> B) Permitir ejercicio directo de derechos políticos por tutores legales sin restricción societaria.</label>
+                <label class="option-label" onclick="mostrarFeedback(10, 'green', '🟢 Viabilidad Óptima: Obligar constitución de fideicomiso testamentario (Voting Trust) administrado por fiduciario profesional.')">
+                    <input type="radio" name="e10"> A) Obligar constitución de Fideicomiso Testamentario donde derechos políticos son ejercidos por fiduciario profesional.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(10, 'yellow', '🟡 Pragmatismo Aceptable: Otorgar representación política temporal a un único familiar albacea designado por el Consejo de Familia.')">
+                    <input type="radio" name="e10"> B) Designar un miembro albacea de la familia para agrupar y representar los votos de los menores sin fiduciario externo.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(10, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Permitir ejercicio directo de votos por tutores legales o cónyuges no idóneos. Exenta a la gestión de criterio técnico y abre juicios sucesorios.')">
+                    <input type="radio" name="e10"> C) Permitir ejercicio directo de derechos políticos por tutores legales sin restricción ni fideicomiso.
+                </label>
             </div>
-            <div class="solution-box" id="sol-10">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 10ª: En caso de transmisión hereditaria a menores de edad o incapaces, los derechos políticos inherentes a las acciones deberán ser agrupados y ejercidos temporalmente mediante un Fideicomiso Testamentario (Voting Trust) administrado por un fiduciario profesional designado por el Consejo de Familia.</code>
-            </div>
+            <div class="feedback-box" id="fb-10"></div>
         </div>
 
         <!-- ESCENA 11 -->
-        <div class="scene-card" id="escena-11">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 11: Información Confidencial y Filtraciones</h3>
                 <span class="scene-badge">Secreto Comercial</span>
             </div>
             <p>Disputas familiares escalan motivando a un integrante a filtrar balances, costos o contratos estratégicos a competidores.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Vulneración de ventajas competitivas sectoriales y filtración de secretos industriales a competidores directos.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Vulneración de ventajas competitivas sectoriales y filtración de secretos industriales a competidores directos.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e11" onclick="resolver(11, true)"> A) Imponer cláusula penal severa, multa indemnizatoria automática y exclusión forzosa inmediata del socio infractor.</label>
-                <label class="option-label"><input type="radio" name="e11" onclick="resolver(11, false)"> B) Considerar la filtración como mera desavenencia familiar sin consecuencias patrimoniales societarias.</label>
+                <label class="option-label" onclick="mostrarFeedback(11, 'green', '🟢 Viabilidad Óptima: Cláusula penal severa, multa indemnizatoria automática y exclusión forzosa inmediata del infractor.')">
+                    <input type="radio" name="e11"> A) Imponer cláusula penal severa, multa indemnizatoria automática y exclusión forzosa inmediata del socio infractor.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(11, 'yellow', '🟡 Pragmatismo Aceptable: Obligación de retractación pública y suspensión temporal de percepción de dividendos por un ejercicio fiscal.')">
+                    <input type="radio" name="e11"> B) Establecer apercibimiento ético formal y suspensión temporal del derecho de percepción de dividendos.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(11, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Considerar la filtración como mera desavenencia familiar sin consecuencias patrimoniales societarias graves.')">
+                    <input type="radio" name="e11"> C) No tipificar sanciones patrimoniales por filtración de información bajo el argumento de la indulgencia familiar.
+                </label>
             </div>
-            <div class="solution-box" id="sol-11">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 11ª: La revelación indebida de balances, márgenes de costos, contratos o información reservada a terceros o competidores acarreará una multa indemnizatoria penal preestablecida equivalente al 50% de la participación accionaria del infractor y su exclusión forzosa inmediata del acuerdo parasocietario.</code>
-            </div>
+            <div class="feedback-box" id="fb-11"></div>
         </div>
 
         <!-- ESCENA 12 -->
-        <div class="scene-card" id="escena-12">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 12: Régimen de Dedicación Exclusiva y No Competencia</h3>
                 <span class="scene-badge">Exclusividad</span>
             </div>
             <p>Accionista empleado monta en paralelo un emprendimiento propio en el mismo rubro de extracción de arena, desviando clientes.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Conflicto de intereses operativo, desvío de clientela y aprovechamiento de know-how corporativo en beneficio propio.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Conflicto de intereses operativo, desvío de clientela y aprovechamiento de know-how corporativo en beneficio propio.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e12" onclick="resolver(12, true)"> A) Pacto riguroso de no competencia y exclusividad comercial durante la vinculación y 3 años posteriores.</label>
-                <label class="option-label"><input type="radio" name="e12" onclick="resolver(12, false)"> B) Permitir inversiones paralelas de los socios en cualquier empresa competidora del mismo sector.</label>
+                <label class="option-label" onclick="mostrarFeedback(12, 'green', '🟢 Viabilidad Óptima: Pacto riguroso de no competencia y exclusividad comercial durante la vinculación y 3 años posteriores.')">
+                    <input type="radio" name="e12"> A) Pacto riguroso de no competencia y exclusividad comercial durante la vinculación y 3 años posteriores.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(12, 'yellow', '🟡 Pragmatismo Aceptable: Prohibición de competir solo dentro de la misma zona geográfica de influencia directa de la planta principal.')">
+                    <input type="radio" name="e12"> B) Restringir la no competencia exclusivamente al radio geográfico inmediato de operación de la compañía.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(12, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Ausencia de pacto de exclusividad. Permite a socios empleados competir deslealmente usando la infraestructura de la empresa.')">
+                    <input type="radio" name="e12"> C) Permitir inversiones paralelas de los socios en cualquier empresa competidora del mismo sector industrial.
+                </label>
             </div>
-            <div class="solution-box" id="sol-12">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 12ª: Los accionistas que presten servicios o mantengan control en la compañía se obligan a guardar estricta exclusividad, prohibiéndoseles participar directa o indirectamente en emprendimientos competidores del mismo objeto social por el término de vigencia y hasta tres (3) años posteriores a su desvinculación.</code>
-            </div>
+            <div class="feedback-box" id="fb-12"></div>
         </div>
 
         <!-- ESCENA 13 -->
-        <div class="scene-card" id="escena-13">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 13: Política de Endeudamiento y Garantías</h3>
                 <span class="scene-badge">Gravámenes y Fianza</span>
             </div>
             <p>Empresa toma créditos bancarios gigantes afectando bienes personales de los socios como garantía sin consenso minoritario.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Exposición patrimonial inconsulta de los socios frente al sistema financiero y bancario.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Exposición patrimonial inconsulta de los socios frente al sistema financiero y bancario.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e13" onclick="resolver(13, true)"> A) Exigir mayoría calificada del 75% del capital para constitución de hipotecas, prendas o fianzas solidarias.</label>
-                <label class="option-label"><input type="radio" name="e13" onclick="resolver(13, false)"> B) Conceder total discrecionalidad a la gerencia ejecutiva para endeudar y comprometer activos sociales.</label>
+                <label class="option-label" onclick="mostrarFeedback(13, 'green', '🟢 Viabilidad Óptima: Exigir mayoría calificada del 75% del capital para constitución de hipotecas, prendas o fianzas solidarias.')">
+                    <input type="radio" name="e13"> A) Exigir mayoría calificada del 75% del capital social para constitución de hipotecas, prendas o fianzas solidarias.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(13, 'yellow', '🟡 Pragmatismo Aceptable: Requerir aprobación de la mayoría absoluta de socios solo para fianzas que superen el 50% del patrimonio neto.')">
+                    <input type="radio" name="e13"> B) Requerir aprobación por mayoría absoluta de socios solo para gravámenes que superen el 50% del patrimonio neto.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(13, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Discrecionalidad gerencial absoluta para endeudar y comprometer activos personales de los socios sin su consentimiento.')">
+                    <input type="radio" name="e13"> C) Conceder total discrecionalidad a la gerencia ejecutiva para endeudar y comprometer activos sociales y personales.
+                </label>
             </div>
-            <div class="solution-box" id="sol-13">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 13ª: La constitución de hipotecas, prendas, avales o fianzas solidarias sobre activos sociales que superen el veinte por ciento (20%) del Patrimonio Neto exigirá indefectiblemente el voto favorable de una mayoría calificada del setenta y cinco por ciento (75%) del capital social integrado.</code>
-            </div>
+            <div class="feedback-box" id="fb-13"></div>
         </div>
 
         <!-- ESCENA 14 -->
-        <div class="scene-card" id="escena-14">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 14: Gestión de Crisis Reputacionales</h3>
                 <span class="scene-badge">Blindaje Ético</span>
             </div>
             <p>Conductas públicas reprochables de un miembro de la familia socavan la imagen institucional ante bancos y clientes corporativos.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Deterioro grave del goodwill corporativo y riesgo de pérdida de contratos estratégicos con grandes clientes.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Deterioro grave del goodwill corporativo y riesgo de pérdida de contratos estratégicos con grandes clientes.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e14" onclick="resolver(14, true)"> A) Facultar al Consejo de Familia a suspender derechos políticos y representación institucional ante daño reputacional comprobado.</label>
-                <label class="option-label"><input type="radio" name="e14" onclick="resolver(14, false)"> B) Considerar la vida privada de cada integrante como un asunto estrictamente ajeno a la corporación.</label>
+                <label class="option-label" onclick="mostrarFeedback(14, 'green', '🟢 Viabilidad Óptima: Facultar al Consejo de Familia a suspender derechos políticos y representación ante daño reputacional comprobado.')">
+                    <input type="radio" name="e14"> A) Facultar al Consejo de Familia a suspender derechos políticos y representación ante daño reputacional comprobado.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(14, 'yellow', '🟡 Pragmatismo Aceptable: Exigir pedido de disculpas formales y retiro temporal de cargos de cara al público sin afectar derechos societarios.')">
+                    <input type="radio" name="e14"> B) Exigir retiro temporal de la exposición pública institucional sin alterar la titularidad de los derechos políticos.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(14, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Considerar la vida privada de cada integrante como asunto estrictamente ajeno, permitiendo que escándalos públicos dañen contratos petroleros o industriales.')">
+                    <input type="radio" name="e14"> C) Considerar la vida privada de cada integrante como un asunto estrictamente ajeno a la corporación sin derecho a intervención.
+                </label>
             </div>
-            <div class="solution-box" id="sol-14">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 14ª: El Consejo de Familia tendrá atribuciones para suspender de manera preventiva el goce de derechos políticos y la representación institucional de cualquier integrante cuya conducta pública dolosa o gravemente imprudente ponga en riesgo tangible la reputación y viabilidad comercial de la compañía.</code>
-            </div>
+            <div class="feedback-box" id="fb-14"></div>
         </div>
 
         <!-- ESCENA 15 -->
-        <div class="scene-card" id="escena-15">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 15: Consejo de Familia como Mediación Previa</h3>
                 <span class="scene-badge">Instancia Interna</span>
             </div>
             <p>Conflictos cotidianos familiares se judicializan directamente en tribunales ordinarios, ventilando secretos societarios.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Judicialización prematura que destruye el clima de la empresa y expone documentación interna en estrados judiciales.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Judicialización prematura que destruye el clima de la empresa y expone documentación interna en estrados judiciales.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e15" onclick="resolver(15, true)"> A) Establecer requisito procesal interno de transitar obligatoriamente el Consejo de Familia antes de iniciar demandas.</label>
-                <label class="option-label"><input type="radio" name="e15" onclick="resolver(15, false)"> B) Habilitar la vía judicial ordinaria inmediata ante cualquier diferencia entre parientes o socios.</label>
+                <label class="option-label" onclick="mostrarFeedback(15, 'green', '🟢 Viabilidad Óptima: Establecer requisito procesal interno de transitar obligatoriamente el Consejo de Familia antes de iniciar demandas.')">
+                    <input type="radio" name="e15"> A) Establecer requisito procesal interno de transitar obligatoriamente el Consejo de Familia antes de iniciar demandas.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(15, 'yellow', '🟡 Pragmatismo Aceptable: Instancia de mediación voluntaria recomendada de 15 días antes de habilitar la vía legal ordinaria.')">
+                    <input type="radio" name="e15"> B) Establecer una instancia de mediación voluntaria sugerida de 15 días antes de habilitar la vía legal ordinaria.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(15, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Habilitar la vía judicial ordinaria inmediata. Destruye la paz familiar y ventila balances en expedientes públicos.')">
+                    <input type="radio" name="e15"> C) Habilitar la vía judicial ordinaria inmediata ante cualquier diferencia entre parientes o socios.
+                </label>
             </div>
-            <div class="solution-box" id="sol-15">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 15ª: Los socios firmantes se obligan formalmente a agotar la instancia de mediación y arbitraje interno ante el Consejo de Familia antes de interponer cualquier acción judicial ordinaria entre accionistas o parientes vinculados a la explotación del holding.</code>
-            </div>
+            <div class="feedback-box" id="fb-15"></div>
         </div>
 
         <!-- ESCENA 16 -->
-        <div class="scene-card" id="escena-16">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 16: Evaluación de Desempeño y Remuneraciones</h3>
                 <span class="scene-badge">Comité Salarial</span>
             </div>
             <p>Disparidad en retribuciones percibidas por familiares frente a profesionales externos, generando acusaciones de favoritismo.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Percepción de arbitrariedad salarial y desbalance en la estructura de costos operativos por sueldos injustificados.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Percepción de arbitrariedad salarial y desbalance en la estructura de costos operativos por sueldos injustificados.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e16" onclick="resolver(16, true)"> A) Crear Comité de Remuneraciones independiente con participación de asesor externo y bandas salariales de mercado.</label>
-                <label class="option-label"><input type="radio" name="e16" onclick="resolver(16, false)"> B) Dejar la fijación de haberes ejecutivos familiares a discreción de la presidencia de la firma.</label>
+                <label class="option-label" onclick="mostrarFeedback(16, 'green', '🟢 Viabilidad Óptima: Crear Comité de Remuneraciones independiente con participación de asesor externo y bandas salariales de mercado.')">
+                    <input type="radio" name="e16"> A) Crear Comité de Remuneraciones independiente con participación de asesor externo y bandas salariales de mercado.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(16, 'yellow', '🟡 Pragmatismo Aceptable: Aprobación de sueldos ejecutivos por mayoría simple de directorio sin comité externo especializado.')">
+                    <input type="radio" name="e16"> B) Aprobar los haberes ejecutivos por mayoría simple de directorio sin intervención de consultores externos.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(16, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Fijación discrecional de sueldos por cada director para su propia familia. Genera acusaciones de favoritismo y quebranto operativo.')">
+                    <input type="radio" name="e16"> C) Dejar la fijación de haberes ejecutivos familiares a total discreción de la presidencia de la firma.
+                </label>
             </div>
-            <div class="solution-box" id="sol-16">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 16ª: La fijación de sueldos, honorarios y retribuciones de directores o familiares con cargos ejecutivos estará a cargo de un Comité de Remuneraciones integrado por al menos un consultor externo independiente, ajustándose estrictamente a bandas salariales comparables de mercado.</code>
-            </div>
+            <div class="feedback-box" id="fb-16"></div>
         </div>
 
         <!-- ESCENA 17 -->
-        <div class="scene-card" id="escena-17">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 17: Incorporación de Inversionistas Externos (Private Equity)</h3>
                 <span class="scene-badge">Tag-Along y Drag-Along</span>
             </div>
             <p>Necesidad de capital fresco requiriendo apertura accionaria, generando temor en la familia fundadora por pérdida de control.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Riesgo de dilución de control mayoritario y falta de mecanismos de salida conjunta ante inversores institucionales.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Riesgo de dilución de control mayoritario y falta de mecanismos de salida conjunta ante inversores institucionales.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e17" onclick="resolver(17, true)"> A) Incorporar derechos estrictos de Acompañamiento (Tag-Along) y Arrastre (Drag-Along) en el acuerdo parasocietario.</label>
-                <label class="option-label"><input type="radio" name="e17" onclick="resolver(17, false)"> B) Permitir la entrada de inversores sin regular reglas de venta conjunta ni mayorías de protección.</label>
+                <label class="option-label" onclick="mostrarFeedback(17, 'green', '🟢 Viabilidad Óptima: Incorporar derechos estrictos de Acompañamiento (Tag-Along) y Arrastre (Drag-Along) en el acuerdo parasocietario.')">
+                    <input type="radio" name="e17"> A) Incorporar derechos estrictos de Acompañamiento (Tag-Along) y Arrastre (Drag-Along) en el acuerdo parasocietario.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(17, 'yellow', '🟡 Pragmatismo Aceptable: Pactar derechos de venta conjunta negociables caso por caso sin estipular fórmulas predeterminadas de arrastre.')">
+                    <input type="radio" name="e17"> B) Pactar reglas genéricas de preferencia de venta sin cláusulas estrictas de arrastre accionario obligatorio.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(17, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Permitir la entrada de inversores sin regular reglas de venta conjunta ni mayorías de protección. Expone a la familia a quedar atrapada o diluida.')">
+                    <input type="radio" name="e17"> C) Permitir la entrada de inversores institucionales sin regular reglas de venta conjunta ni mayorías de protección.
+                </label>
             </div>
-            <div class="solution-box" id="sol-17">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 17ª: Se incorporan los derechos de Arrastre (Drag-Along) exigiendo a los minoritarios vender sus acciones ante ofertas de bloques mayores al 80%, y de Acompañamiento (Tag-Along) permitiendo a los minoritarios sumarse en idénticas condiciones económicas ante la venta del bloque mayoritario.</code>
-            </div>
+            <div class="feedback-box" id="fb-17"></div>
         </div>
 
         <!-- ESCENA 18 -->
-        <div class="scene-card" id="escena-18">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 18: Protocolo de Donaciones en Vida y Sucesión</h3>
                 <span class="scene-badge">Anticipo Hereditario</span>
             </div>
             <p>Donación arbitraria de acciones a un solo hijo en vida del fundador, provocando colaciones de herencia y bloqueos futuros.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Conflictos graves entre legitimarios por desigualdad en anticipos de herencia y donaciones accionariales en vida.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Conflictos graves entre legitimarios por desigualdad en anticipos de herencia y donaciones accionariales en vida.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e18" onclick="resolver(18, true)"> A) Consolidar actos de liberalidad bajo esquemas de compensación en vida aceptados por unanimidad de legitimarios.</label>
-                <label class="option-label"><input type="radio" name="e18" onclick="resolver(18, false)"> B) Permitir donaciones unilaterales discrecionales de acciones a favor de herederos preferidos sin compensación.</label>
+                <label class="option-label" onclick="mostrarFeedback(18, 'green', '🟢 Viabilidad Óptima: Consolidar actos de liberalidad bajo esquemas de compensación en vida aceptados por unanimidad de legitimarios.')">
+                    <input type="radio" name="e18"> A) Consolidar actos de liberalidad bajo esquemas de compensación en vida aceptados por unanimidad de legitimarios.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(18, 'yellow', '🟡 Pragmatismo Aceptable: Notificar formalmente las donaciones en vida al Consejo de Familia sin requerir unanimidad compensatoria previa.')">
+                    <input type="radio" name="e18"> B) Notificar las donaciones accionariales en vida al Consejo de Familia sin exigir consenso compensatorio previo.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(18, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Permitir donaciones unilaterales discrecionales de acciones a favor de herederos preferidos sin compensación. Desencadena litigios sucesorios feroces.')">
+                    <input type="radio" name="e18"> C) Permitir donaciones unilaterales discrecionales de acciones a favor de herederos preferidos sin compensación.
+                </label>
             </div>
-            <div class="solution-box" id="sol-18">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 18ª: Todo acto de donación o anticipo de herencia sobre tenencias accionarias requerirá el consenso previo y homologación por unanimidad de los restantes herederos legitimarios en el seno del Consejo de Familia, estableciéndose los mecanismos compensatorios equivalentes necesarios.</code>
-            </div>
+            <div class="feedback-box" id="fb-18"></div>
         </div>
 
         <!-- ESCENA 19 -->
-        <div class="scene-card" id="escena-19">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 19: Formación y Capacitación Obligatoria de Sucesores</h3>
                 <span class="scene-badge">Itinerario Directivo</span>
             </div>
             <p>Incorporación de jóvenes a puestos de decisión sin madurez técnica ni formación requerida, poniendo en riesgo la continuidad.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Inserción prematura de herederos sin competencias técnicas conduciendo a errores operativos severos en planta y administración.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Inserción prematura de herederos sin competencias técnicas conduciendo a errores operativos severos en planta y administración.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e19" onclick="resolver(19, true)"> A) Implementar currícula obligatoria de formación corporativa, pasantías rotativas y posgrados como requisito previo.</label>
-                <label class="option-label"><input type="radio" name="e19" onclick="resolver(19, false)"> B) Habilitar el ingreso automático de los jóvenes herederos al cumplir la mayoría de edad.</label>
+                <label class="option-label" onclick="mostrarFeedback(19, 'green', '🟢 Viabilidad Óptima: Implementar currícula obligatoria de formación corporativa, pasantías rotativas y posgrados como requisito previo.')">
+                    <input type="radio" name="e19"> A) Implementar currícula obligatoria de formación corporativa, pasantías rotativas y posgrados como requisito previo.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(19, 'yellow', '🟡 Pragmatismo Aceptable: Exigir título universitario afín sin necesidad de cursar pasantías internas rotativas operativas previas.')">
+                    <input type="radio" name="e19"> B) Exigir título universitario afín sin obligar a pasantías rotativas internas operativas previas.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(19, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Habilitar el ingreso automático de los jóvenes herederos al cumplir la mayoría de edad sin exigir ningún tipo de formación ni idoneidad.')">
+                    <input type="radio" name="e19"> C) Habilitar el ingreso automático de los jóvenes herederos al cumplir la mayoría de edad sin exigencia formativa.
+                </label>
             </div>
-            <div class="solution-box" id="sol-19">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 19ª: Los sucesores designados para integrar puestos directivos deberán cursar obligatoriamente un itinerario de inducción corporativa que incluye pasantías rotativas por áreas operativas y posgrados específicos en gestión empresaria, como condición habilitante previa a su nombramiento.</code>
-            </div>
+            <div class="feedback-box" id="fb-19"></div>
         </div>
 
         <!-- ESCENA 20 -->
-        <div class="scene-card" id="escena-20">
+        <div class="scene-card">
             <div class="scene-header">
                 <h3 class="scene-title">Escena 20: Mecanismo de Reforma y Actualización Quinquenal</h3>
                 <span class="scene-badge">Evolución Normativa</span>
             </div>
             <p>Un protocolo rígido que queda obsoleto frente a los cambios del mercado y la evolución de las nuevas generaciones.</p>
-            <div class="conflict-box"><strong>Conflicto:</strong> Obsolescencia normativa del acuerdo familiar frente a dinámicas de mercado cambiantes, volviéndose letra muerta.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Obsolescencia normativa del acuerdo familiar frente a dinámicas de mercado cambiantes, volviéndose letra muerta.</div >
             
             <div class="options-group">
-                <label class="option-label"><input type="radio" name="e20" onclick="resolver(20, true)"> A) Mandato formal de revisión integral del Protocolo y acuerdos parasocietarios cada 5 años por mayoría del 80%.</label>
-                <label class="option-label"><input type="radio" name="e20" onclick="resolver(20, false)"> B) Establecer vigencia indefinida e inmodificable del texto original aprobado por los fundadores.</label>
+                <label class="option-label" onclick="mostrarFeedback(20, 'green', '🟢 Viabilidad Óptima: Mandato formal de revisión integral del Protocolo y acuerdos parasocietarios cada 5 años por mayoría del 80%.')">
+                    <input type="radio" name="e20"> A) Mandato formal de revisión integral del Protocolo y acuerdos parasocietarios cada 5 años por mayoría del 80%.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(20, 'yellow', '🟡 Pragmatismo Aceptable: Establecer revisión flexible sujeta a la decisión unánime de los directores en funciones cuando lo consideren oportuno.')">
+                    <input type="radio" name="e20"> B) Establecer revisión sujeta a decisión de los directores en funciones cuando lo consideren oportuno.
+                </label>
+                <label class="option-label" onclick="mostrarFeedback(20, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Establecer vigencia indefinida e inmodificable del texto original aprobado por los fundadores. Conduce inexorablemente al repudio y obsolescencia del pacto.')">
+                    <input type="radio" name="e20"> C) Establecer vigencia indefinida e inmodificable del texto original aprobado por los fundadores.
+                </label>
             </div>
-            <div class="solution-box" id="sol-20">
-                <strong>Cláusula Parasocietaria Generada:</strong>
-                <code class="clause-text">CLÁUSULA 20ª: El presente Protocolo Familiar y los Acuerdos Parasocietarios vinculados se someterán a una revisión integral de actualización normativa y funcional cada cinco (5) años, requiriéndose una mayoría calificada del ochenta por ciento (80%) del capital social para introducir modificaciones estructurales.</code>
-            </div>
+            <div class="feedback-box" id="fb-20"></div>
         </div>
+
     </div>
 
-    <!-- NAVEGACIÓN HACIA EL SIGUIENTE MÓDULO -->
+    <!-- NAVEGACIÓN HACIA EL SIGUIENTE MÓDULO (SIN ERROR 404) -->
     <div style="text-align: center; margin: 40px 0; padding: 30px; background-color: var(--panel-bg); border-radius: 10px; border: 1px solid var(--border-col);">
-        <h3 style="color: var(--accent); margin-top: 0;">¿Completó la parametrización de Gobernanza?</h3>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">Una vez seleccionadas las cláusulas y simulaciones necesarias, consolide el desarrollo jurídico para avanzar en la secuencia lógica corporativa.</p>
-        <button class="btn" onclick="window.location.href='encrucijadas.html'" style="padding: 15px 40px; font-size: 1.1rem; cursor: pointer;">
-            Guardar y Consolidar Constitución Familiar
+        <h3 style="color: var(--accent); margin-top: 0;">Parametrización de Gobernanza Concluida</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Avance al siguiente módulo para desarrollar la teoría, práctica y el articulado jurídico definitivo en Acuerdos Parasocietarios.</p>
+        <button class="btn" onclick="avanzarACuerdos()" style="padding: 15px 40px; font-size: 1.1rem; cursor: pointer;">
+            Continuar a Módulo de Acuerdos Parasocietarios &rarr;
         </button>
     </div>
 
     <!-- PANEL PRIVATIVO DEL CONSULTOR -->
     <div class="consultant-panel" id="consultor">
         <h3>Panel Privativo del Consultor (Restringido)</h3>
-        <p style="color: var(--text-muted);">Acceso exclusivo para auditoría técnica y exportación consolidada de cláusuas parasocietarias.</p>
+        <p style="color: var(--text-muted);">Acceso exclusivo para auditoría técnica de opciones pragmáticas seleccionadas.</p>
         <div style="margin-top: 15px;">
             <input type="password" id="passConsultor" placeholder="Ingrese clave de consultor" style="padding: 10px; width: 250px; background-color: #0b0f19; border: 1px solid var(--border-col); color: #fff; border-radius: 6px;">
             <button class="btn" onclick="verificarConsultor()" style="margin-left: 10px;">Desbloquear Auditoría</button>
         </div>
         <div id="contenidoConsultor" style="display: none; margin-top: 20px; border-top: 1px solid var(--border-col); padding-top: 15px;">
-            <p style="color: var(--success); font-weight: bold;">Acceso concedido. Sistema de auditoría técnica activo.</p>
-            <p><strong>Estado del Holding:</strong> Todas las 20 escenas de gobernanza están operativas y listas para exportación de matriz legal. Integración con bases de datos en tiempo real sincronizada.</p>
+            <p style="color: var(--success); font-weight: bold;">Acceso concedido. Auditoría de semáforos activa.</p>
+            <p><strong>Holding Configurado:</strong> <span id="lblRazonSocial" style="color:var(--accent);">No especificado</span> | <span id="lblTipo" style="color:var(--accent);">S.A.</span></p>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Las opciones elegidas por el cliente se compilarán dinámicamente al presionar continuar para estructurar el plexo normativo en el micrositio de acuerdos.</p>
         </div>
     </div>
 
 </div>
 
 <script>
-    function resolver(idEscena, esCorrecta) {
-        const box = document.getElementById('sol-' + idEscena);
-        if (esCorrecta) {
-            box.classList.add('active');
-        } else {
-            box.classList.remove('active');
-            alert('Aviso de Consultoría: Esta opción genera un vacío jurídico potencial o riesgo de conflicto societario. Seleccione la alternativa recomendada para blindar la cláusula.');
+    function guardarParametros() {
+        const raz = document.getElementById('razonSocial').value || 'Empresa Familiar Sin Nombre';
+        const tipo = document.getElementById('tipoSocietario').value;
+        document.getElementById('lblRazonSocial').innerText = raz;
+        document.getElementById('lblTipo').innerText = tipo;
+        alert('Estructura fijada correctamente para: ' + raz + ' (' + tipo + ').');
+    }
+
+    function mostrarFeedback(idEscena, tipoColor, texto) {
+        const fb = document.getElementById('fb-' + idEscena);
+        fb.style.display = 'block';
+        fb.className = 'feedback-box feedback-' + tipoColor;
+        fb.innerHTML = texto;
+    }
+
+    function avanzarACuerdos() {
+        const raz = document.getElementById('razonSocial').value;
+        if(!raz) {
+            alert('Por favor, ingrese y fije la Razón Social de la empresa antes de avanzar.');
+            return;
         }
+        // Redirección limpia al micrositio siguiente sin error 404
+        window.location.href = 'acuerdos.html';
     }
 
     function verificarConsultor() {
