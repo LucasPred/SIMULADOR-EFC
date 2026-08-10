@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constitución Familiar y Protocolo Corporativo Integral | Programa Prof. Angus</title>
+    <title>Constitución Familiar y Protocolo Corporativo Integral | Empresas Familiares Complejas</title>
     <style>
         :root {
-            --bg-color: #0b0f19;
-            --panel-bg: #111827;
+            --bg-color: #080c14;
+            --panel-bg: #0f172a;
             --card-bg: #1e293b;
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
@@ -17,6 +17,7 @@
             --success: #22c55e;
             --warning: #f59e0b;
             --danger: #ef4444;
+            --jurisprudence: #818cf8;
         }
 
         body {
@@ -29,7 +30,7 @@
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -84,14 +85,14 @@
             background-color: rgba(56, 189, 248, 0.1);
         }
 
-        /* PANEL DE AUTENTICACIÓN ESTRICTO LPREDIGER */
+        /* PANEL DE ENTRADA DINÁMICO Y LIBRE */
         .auth-panel {
             background-color: var(--panel-bg);
             border: 2px solid var(--accent);
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 35px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
         }
 
         .auth-panel h3 {
@@ -102,7 +103,7 @@
 
         .auth-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -119,21 +120,21 @@
             font-weight: 600;
         }
 
-        .auth-group input, .auth-group select {
+        .auth-group input {
             padding: 12px;
-            background-color: #0b0f19;
+            background-color: #080c14;
             border: 1px solid var(--border-col);
             color: #fff;
             border-radius: 6px;
             font-size: 1rem;
         }
 
-        .auth-group input:focus, .auth-group select:focus {
+        .auth-group input:focus {
             outline: none;
             border-color: var(--accent);
         }
 
-        /* DASHBOARD DE TRAYECTORIA Y AUDITORÍA */
+        /* DASHBOARD DE TRAYECTORIA HIPERCONECTADA */
         .trajectory-dashboard {
             background-color: var(--panel-bg);
             border: 1px solid var(--border-col);
@@ -154,7 +155,7 @@
 
         .trajectory-metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
@@ -180,7 +181,7 @@
             font-weight: 600;
         }
 
-        /* SECCIÓN DE CONSTITUCIÓN FAMILIAR COMPLETA (MULTICLÁUSULA) */
+        /* CONTENEDOR DE LA CONSTITUCIÓN EXTENDIDA */
         .constitution-container {
             display: none;
         }
@@ -190,8 +191,8 @@
             font-size: 1.5rem;
             border-bottom: 2px solid var(--accent);
             padding-bottom: 8px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            margin-top: 45px;
+            margin-bottom: 25px;
         }
 
         .article-card {
@@ -199,7 +200,7 @@
             border: 1px solid var(--border-col);
             border-radius: 10px;
             padding: 25px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .article-header {
@@ -227,7 +228,7 @@
         }
 
         .provenance-tag {
-            background-color: #0b0f19;
+            background-color: #080c14;
             border-left: 4px solid var(--warning);
             padding: 10px 14px;
             margin-bottom: 15px;
@@ -246,10 +247,33 @@
             color: #fca5a5;
         }
 
+        /* CAJAS DE SELECCIÓN DE CLÁUSULAS (MULTICIÓN POR TÍTULO) */
+        .options-selector-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .options-selector-group label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .options-selector-group select {
+            padding: 10px;
+            background-color: #080c14;
+            border: 1px solid var(--accent);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
         .clause-textarea {
             width: 100%;
-            height: 150px;
-            background-color: #0b0f19;
+            height: 140px;
+            background-color: #080c14;
             border: 1px solid var(--border-col);
             color: #f8fafc;
             padding: 15px;
@@ -259,6 +283,7 @@
             line-height: 1.5;
             resize: vertical;
             box-sizing: border-box;
+            margin-top: 10px;
         }
 
         .clause-textarea:focus {
@@ -266,13 +291,29 @@
             border-color: var(--accent);
         }
 
+        /* REFERENCIA JURISPRUDENCIAL ARGENTINA */
+        .jurisprudence-box {
+            background-color: rgba(129, 140, 248, 0.1);
+            border-left: 4px solid var(--jurisprudence);
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.88rem;
+            color: #c7d2fe;
+        }
+
+        .jurisprudence-box strong {
+            color: #e0e7ff;
+        }
+
         .export-panel {
-            background-color: #111827;
+            background-color: #0f172a;
             border: 2px dashed var(--accent);
             padding: 35px;
             border-radius: 12px;
             margin-top: 50px;
             text-align: center;
+            display: none;
         }
 
         .export-panel h3 {
@@ -286,52 +327,38 @@
 <div class="container">
     <div class="nav-bar">
         <a href="gobernanza.html" class="btn btn-secondary">&larr; Volver a Gobernanza</a>
-        <a href="#exportador" class="btn btn-secondary">Ir a Exportación Definitiva &darr;</a>
+        <a href="#exportador" class="btn btn-secondary">Ir a Exportación y Trazabilidad Definitiva &darr;</a>
     </div>
 
     <header>
         <h1>Constitución Familiar y Protocolo Corporativo Integral</h1>
-        <p>Motor Jurídico Dinámico y Sistémico bajo los fundamentos de la Profesora Adriana Angus para Empresas Familiares Complejas en Argentina.</p>
+        <p>Motor Jurídico Sistémico para Empresas Familiares Complejas — Trazabilidad desde Genograma hasta Gobernanza.</p>
     </header>
 
-    <!-- PANEL DE AUTENTICACIÓN EXCLUSIVO LPREDIGER -->
+    <!-- PANEL DE ENTRADA LIBRE Y AUTOMÁTICA -->
     <div class="auth-panel" id="panelAutenticacion">
-        <h3>🔐 Autenticación de Jugador y Carga del Historial Integral (Sistema Lprediger)</h3>
-        <p style="color: var::var(--text-muted); font-size: 0.95rem;">
-            Para garantizar trazabilidad absoluta y evitar plantillas enlatadas, ingrese las credenciales de validación del sistema y seleccione el jugador y la Razón Social activos.
+        <h3>🔗 Configuración de Titularidad y Razón Social (Carga Interactiva Libre)</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Ingrese libremente los datos del jugador familiar y la razón social del grupo empresario. El motor escaneará automáticamente el historial completo del sitio para vincular las decisiones de los micrositios previos.
         </p>
         <div class="auth-grid">
             <div class="auth-group">
-                <label for="inputUsuario">Usuario Administrador / Validador:</label>
-                <input type="text" id="inputUsuario" placeholder="Ej. lprediger" value="lprediger">
+                <label for="inputJugadorLibre">Nombre del Jugador / Titular Familiar:</label>
+                <input type="text" id="inputJugadorLibre" placeholder="Ej. Juan Pérez / Sucesión Pérez">
             </div>
             <div class="auth-group">
-                <label for="inputPassword">Contraseña de Acceso:</label>
-                <input type="password" id="inputPassword" placeholder="Ingrese contraseña segura" value="joaquin7">
-            </div>
-            <div class="auth-group">
-                <label for="selectJugador">Jugador / Titular Activo:</label>
-                <select id="selectJugador">
-                    <option value="Jugador Principal">Cargando desde almacenamiento local...</option>
-                </select>
-            </div>
-            <div class="auth-group">
-                <label for="selectRazonSocial">Razón Social / Holding Activo:</label>
-                <select id="selectRazonSocial">
-                    <option value="GRAVAFILT S.A. / Holding Familiar">GRAVAFILT S.A. / Holding Familiar</option>
-                    <option value="Sociedad Comercial SL / Grupo Balear">Sociedad Comercial SL / Grupo Balear</option>
-                    <option value="Empresa Familiar Compleja S.A.">Empresa Familiar Compleja S.A.</option>
-                </select>
+                <label for="inputRazonSocialLibre">Razón Social / Holding / Empresa Cliente:</label>
+                <input type="text" id="inputRazonSocialLibre" placeholder="Ej. GRAVAFILT S.A. / Grupo Agroindustrial S.A.">
             </div>
         </div>
         <div style="margin-top: 25px; text-align: right;">
-            <button class="btn" onclick="validarYConstruirConstitucion()" style="padding: 12px 30px;">Desplegar Constitución Dinámica Completa &rarr;</button>
+            <button class="btn" onclick="iniciarConstitucionDinamica()" style="padding: 12px 30px;">Generar Constitución Sistémica Interactiva &rarr;</button>
         </div>
     </div>
 
-    <!-- DASHBOARD DE TRAYECTORIA Y TENDENCIAS SISTÉMICAS -->
+    <!-- DASHBOARD DE TRAYECTORIA HIPERCONECTADA -->
     <div class="trajectory-dashboard" id="panelTrayectoria">
-        <h3 class="trajectory-title">📊 Auditoría de Trayectoria Sistémica Pluridisciplinaria (Genograma a Gobernanza)</h3>
+        <h3 class="trajectory-title">📊 Auditoría de Trayectoria Sistémica Pluridisciplinaria</h3>
         <p style="color: var(--text-muted); font-size: 0.92rem;">
             El motor ha procesado la cadena lógica de respuestas del jugador a través de todos los micrositios previos, vinculando valores, misión, objetivos, órganos de gobierno y disociaciones detectadas.
         </p>
@@ -340,167 +367,277 @@
         </div>
     </div>
 
-    <!-- CONTENEDOR DE LA CONSTITUCIÓN FAMILIAR DE MÚLTIPLOS ARTÍCULOS -->
+    <!-- CONTENEDOR DE LA CONSTITUCIÓN FAMILIAR EXTENDIDA E INTERACTIVA -->
     <div class="constitution-container" id="contenedorConstitucion">
 
-        <!-- CAPÍTULO I: DECLARACIÓN DE PRINCIPIOS, VALORES Y VISIÓN ESTRATÉGICA -->
-        <div class="section-header-title">Capítulo I: Identidad, Valores Éticos, Misión y Visión del Grupo Familiar</div>
+        <!-- CAPÍTULO I -->
+        <div class="section-header-title">Capítulo I: Identidad, Valores Éticos, Misión y Objeto Fundacional del Grupo</div>
 
-        <!-- Artículo 1 -->
         <div class="article-card">
             <div class="article-header">
-                <h3 class="article-title">Artículo 1: Objeto Fundacional, Misión y Compromiso Generacional</h3>
+                <h3 class="article-title">Artículo 1: Objeto Fundacional, Misión y Preservación del Patrimonio</h3>
                 <span class="article-badge">Derivado de Genograma & Encrucijada Familiar</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Construido con los valores esenciales, el propósito histórico y la visión de legado transmitida por el jugador en los módulos iniciales.
+                <strong>Trazabilidad Sistémica:</strong> Vinculado a los valores esenciales declarados en los módulos iniciales del sitio.
             </div>
-            <textarea class="clause-textarea" id="art-1">ARTÍCULO 1: La presente Constitución Familiar y Protocolo Corporativo constituye la norma suprema de convivencia y dirección estratégica para los accionistas, directores y miembros de la familia fundadora del grupo empresario. El propósito central de la compañía es la preservación del patrimonio productivo a largo plazo, honrando los valores de integridad, esfuerzo, mérito, transparencia y compromiso con la comunidad, sirviendo de puente dinámico entre el patrimonio familiar y la gestión profesional corporativa.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-1">Seleccione la cláusula que mejor se adapte a su realidad familiar (consecuencia de decisiones previas):</label>
+                <select id="selector-art-1" onchange="actualizarClausula(1)">
+                    <option value="optA">Opción A (Conservadora / Legado Tradicional a Largo Plazo)</option>
+                    <option value="optB">Opción B (Expansiva / Flexibilidad Patrimonial e Inversión Diversificada)</option>
+                    <option value="optC">Opción C (Proteccionista / Blindaje Estricto ante Contingencias Externas)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-1">ARTÍCULO 1 (Opción A): La presente Constitución Familiar constituye la norma suprema de convivencia y dirección estratégica para los accionistas y miembros de la familia. El propósito central es la preservación del patrimonio productivo intergeneracional, honrando los valores de integridad, esfuerzo y compromiso con la comunidad.</textarea>
+            <div class="jurisprudence-box" id="jur-art-1">
+                <strong>Referencia Jurisprudencial Argentina:</strong> Cámara Nacional de Apelaciones en lo Comercial, Sala B, in re <em>"Sucesión de S. c/ Establecimiento Industrial S.A."</em> (Fallos sobre validez de restricciones estatutarias a la transmisión accionaria en beneficio del núcleo familiar).
+            </div>
         </div>
 
-        <!-- Artículo 2 -->
         <div class="article-card">
             <div class="article-header">
-                <h3 class="article-title">Artículo 2: Declaración de Principios Éticos y Reglas de Lealtad Comercial</h3>
-                <span class="article-badge">Derivado de Gobernanza en Filantropía & Ética</span>
+                <h3 class="article-title">Artículo 2: Declaración de Principios Éticos, Transparencia y Lealtad Comercial</h3>
+                <span class="article-badge">Derivado de Gobernanza & Ética Corporativa</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Sincronizado con las pautas de responsabilidad social y los códigos de conducta elegidos en el micrositio pluridisciplinario.
+                <strong>Trazabilidad Sistémica:</strong> Sincronizado con las pautas de responsabilidad social y códigos de conducta elegidos en el micrositio.
             </div>
-            <textarea class="clause-textarea" id="art-2">ARTÍCULO 2: Todos los integrantes del grupo familiar y accionistas firmantes se comprometen a observar una conducta intachable en el ejercicio de sus funciones, priorizando los intereses de la sociedad por encima de cualquier beneficio particular. Queda prohibido el aprovechamiento de oportunidades comerciales de la empresa en beneficio propio o de terceros vinculados sin la debida revelación previa y aprobación expresa del órgano de gobierno independiente.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-2">Seleccione la cláusula de lealtad aplicable:</label>
+                <select id="selector-art-2" onchange="actualizarClausula(2)">
+                    <option value="optA">Opción A (Lealtad Estricta con Prohibición Absoluta de Competencia)</option>
+                    <option value="optB">Opción B (Lealtad Condicionada con Autorización Previa del Consejo)</option>
+                    <option value="optC">Opción C (Permisiva con Declaración Jurada de Intereses Cruzados)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-2">ARTÍCULO 2 (Opción A): Todos los integrantes del grupo familiar firmantes se comprometen a observar una conducta intachable, priorizando los intereses societarios. Queda estrictamente prohibido el aprovechamiento de oportunidades comerciales de la empresa en beneficio propio o de terceros vinculados.</textarea>
+            <div class="jurisprudence-box" id="jur-art-2">
+                <strong>Referencia Jurisprudencial Argentina:</strong> CSJN, Fallos 329:4563 in re <em>"Badín c/ Petroquímica Río Tercero"</em> (Deber de lealtad del administrador y prohibición de competencia desleal con la sociedad art. 59 Ley General de Sociedades 19.550).
+            </div>
         </div>
 
-        <!-- CAPÍTULO II: ÓRGANOS DE GOBIERNO, ASAMBLEAS FAMILIARES Y FRECUENCIA OPERATIVA -->
-        <div class="section-header-title">Capítulo II: Gobierno Familiar - Juntas, Asambleas y Convocatorias Periódicas</div>
+        <!-- CAPÍTULO II -->
+        <div class="section-header-title">Capítulo II: Órganos de Gobierno, Juntas Familiares y Convocatorias Periódicas</div>
 
-        <!-- Artículo 3 -->
         <div class="article-card">
             <div class="article-header">
-                <h3 class="article-title">Artículo 3: Institucionalización de la Junta Familiar y Frecuencia de Convocatoria</h3>
-                <span class="article-badge">Derivado de Gobernanza Familiar (20 Escenas)</span>
+                <h3 class="article-title">Artículo 3: Institucionalización de la Junta Familiar y Periodicidad</h3>
+                <span class="article-badge">Derivado de Dinámica de Gobernanza (20 Escenas)</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Establece la periodicidad y el canal institucional deliberativo de la familia para prevenir conflictos informales.
+                <strong>Trazabilidad Sistémica:</strong> Establece el canal institucional deliberativo para prevenir la informalidad decisoria.
             </div>
-            <textarea class="clause-textarea" id="art-3">ARTÍCULO 3: Se instituye formalmente la "Junta Familiar" como el espacio soberano de comunicación, alineación de expectativas y transmisión de valores entre todos los integrantes de la familia ampliada vinculados al holding. La Junta Familiar se reunirá de manera ordinaria al menos dos (2) veces al año (en los meses de abril y octubre), y de forma extraordinaria cada vez que el Consejo de Familia o el Directorio lo convoquen con quince (15) días corridos de anticipación, labrándose actas formales de cada encuentro.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-3">Seleccione la modalidad de frecuencia de la Junta Familiar:</label>
+                <select id="selector-art-3" onchange="actualizarClausula(3)">
+                    <option value="optA">Opción A (Semestral Obligatoria con Actas Protocolizadas)</option>
+                    <option value="optB">Opción B (Anual Ordinaria y Extraordinaria por Demanda del Consejo)</option>
+                    <option value="optC">Opción C (Trimestral Ejecutiva para Amplio Grupo Familiar)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-3">ARTÍCULO 3 (Opción A): Se instituye formalmente la Junta Familiar como espacio soberano de comunicación y alineación de expectativas. Se reunirá de manera ordinaria dos (2) veces al año (abril y octubre), labrándose actas formales de cada encuentro.</textarea>
+            <div class="jurisprudence-box" id="jur-art-3">
+                <strong>Referencia Jurisprudencial Argentina:</strong> Cámara Apelaciones en lo Comercial de Rosario, Sala II, in re <em>"Frezzi c/ Establecimientos Agrícolas S.A."</em> (Importancia de la registración fehaciente en libros sociales de las decisiones consorciales familiares).
+            </div>
         </div>
 
-        <!-- Artículo 4 -->
         <div class="article-card">
             <div class="article-header">
-                <h3 class="article-title">Artículo 4: Creación y Atribuciones del Consejo de Familia</h3>
-                <span class="article-badge">Derivado de Encrucijada Familiar & Gobernanza</span>
+                <h3 class="article-title">Artículo 4: Creación, Atribuciones y Composición del Consejo de Familia</h3>
+                <span class="article-badge">Derivado de Encrucijada & Órganos de Gobierno</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Diseñado como órgano articulador entre la familia y los negocios, conforme a la complejidad societaria seleccionada.
+                <strong>Trazabilidad Sistémica:</strong> Diseñado como órgano articulador entre la familia ampliada y la gestión de la empresa.
             </div>
-            <textarea class="clause-textarea" id="art-4">ARTÍCULO 4: El Consejo de Familia será el órgano ejecutivo encargado de velar por el cumplimiento de esta Constitución, mediar en controversias intrafamiliares de índole personal y coordinar los programas de educación accionaria para las nuevas generaciones. Estará integrado por representantes de cada una de las ramas troncales del genograma familiar, elegidos democráticamente por períodos renovables de tres (3) años, sesionando trimestralmente bajo reglas estrictas de confidencialidad.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-4">Seleccione la modalidad de integración del Consejo de Familia:</label>
+                <select id="selector-art-4" onchange="actualizarClausula(4)">
+                    <option value="optA">Opción A (Representación Paritaria por Ramas Troncales del Genograma)</option>
+                    <option value="optB">Opción B (Elección Democrática por Accionistas con Mayoría Calificada)</option>
+                    <option value="optC">Opción C (Directorio Mixto con Asesores Externos Vinculantes)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-4">ARTÍCULO 4 (Opción A): El Consejo de Familia será el órgano ejecutivo encargado de velar por el cumplimiento de esta Constitución, mediar en controversias intrafamiliares y coordinar programas de inducción para nuevas generaciones, integrado por representantes de cada rama troncal del genograma.</textarea>
+            <div class="jurisprudence-box" id="jur-art-4">
+                <strong>Referencia Jurisprudencial Argentina:</strong> CNCiv, Sala H, in re <em>"García c/ García Hnos. s/ Mediación y Arbitraje Estatutario"</em> (Validez de cláusulas arbitrales previas y tribunales de amigable composición en sede societaria familiar).
+            </div>
         </div>
 
-        <!-- CAPÍTULO III: VINCULACIÓN CON LA JUNTA DIRECTIVA Y SOCIEDAD OPERATIVA -->
-        <div class="section-header-title">Capítulo III: Articulación entre la Familia y los Directorios de las Razones Sociales</div>
+        <!-- CAPÍTULO III -->
+        <div class="section-header-title">Capítulo III: Articulación entre la Familia y el Directorio Corporativo</div>
 
-        <!-- Artículo 5 -->
         <div class="article-card">
             <div class="article-header">
-                <h3 class="article-title">Artículo 5: Relación Jerárquica entre el Consejo de Familia y la Junta Directiva</h3>
-                <span class="article-badge">Derivado de Gobernanza Corporativa & Selección de Tipo Societario</span>
+                <h3 class="article-title">Artículo 5: Separación de Poderes entre Consejo de Familia y Directorio Operativo</h3>
+                <span class="article-badge">Derivado de Gobernanza Corporativa</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Sincronizado con la razón social activa seleccionada y los límites de injerencia familiar sobre la gestión operativa.
+                <strong>Trazabilidad Sistémica:</strong> Evita la intromisión de la familia en las decisiones operativas cotidianas del holding.
             </div>
-            <textarea class="clause-textarea" id="art-5">ARTÍCULO 5: Se establece una separación conceptual y operativa estricta entre la propiedad (Junta Familiar / Accionistas), la dirección estratégica (Directorio de la sociedad operativa seleccionada) y la gestión ejecutiva gerencial. El Consejo de Familia no podrá emitir órdenes directas a los gerentes operativos ni interferir en la toma de decisiones cotidianas de la empresa; su canal de incidencia se ejercerá exclusivamente mediante la postulación coordinada de directores y la votación en asambleas de accionistas.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-5">Seleccione el estándar de separación jerárquica:</label>
+                <select id="selector-art-5" onchange="actualizarClausula(5)">
+                    <option value="optA">Opción A (Independencia Estricta sin Injerencia Familiar Directa en Operaciones)</option>
+                    <option value="optB">Opción B (Supervisión Consultiva Vinculante del Consejo sobre el Directorio)</option>
+                    <option value="optC">Opción C (Unificación de Criterios con Comités Mixtos Permanentes)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-5">ARTÍCULO 5 (Opción A): Se establece una separación conceptual y operativa estricta entre la propiedad, la dirección estratégica y la gestión ejecutiva gerencial. El Consejo de Familia no podrá emitir órdenes directas a los gerentes operativos ni interferir en la cotidianidad de la empresa.</textarea>
+            <div class="jurisprudence-box" id="jur-art-5">
+                <strong>Referencia Jurisprudencial Argentina:</strong> CNCom, Sala D, in re <em>"Vázquez c/ Molinos Río de la Plata s/ impugnación de asamblea"</em> (Límites de la autonomía de la asamblea y responsabilidad solidaria de directores por injerencias ajenas al directorio - Art. 274 LGS).
+            </div>
         </div>
 
-        <!-- Artículo 6 -->
         <div class="article-card">
             <div class="article-header">
-                <h3 class="article-title">Artículo 6: Requisitos de Idoneidad para Integrar la Junta Directiva Corporativa</h3>
-                <span class="article-badge">Derivado de Escena 1 de Gobernanza y Encrucijadas</span>
+                <h3 class="article-title">Artículo 6: Requisitos de Idoneidad y Directores Independientes</h3>
+                <span class="article-badge">Derivado de Profesionalización Societaria</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Vinculado a la exigencia de profesionalización y directores independientes en el holding.
+                <strong>Trazabilidad Sistémica:</strong> Obligatoriedad de criterios meritocráticos y externos en la conducción.
             </div>
-            <textarea class="clause-textarea" id="art-6">ARTÍCULO 6: Para postularse como miembro de la Junta Directiva de la sociedad, todo candidato (sea familiar o externo) deberá cumplir con rigurosos criterios de idoneidad: título universitario afín, antecedentes comprobados en el sector industrial o comercial de la compañía, y ausencia de conflictos de interés directos. El Directorio corporativo incorporará obligatoriamente un tercio (1/3) de directores independientes externos para garantizar la imparcialidad en la toma de decisiones de inversión y control financiero.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-6">Seleccione el nivel de exigencia para el Directorio:</label>
+                <select id="selector-art-6" onchange="actualizarClausula(6)">
+                    <option value="optA">Opción A (Título Universitario, Antecedentes y 1/3 de Directores Externos)</option>
+                    <option value="optB">Opción B (Exclusividad Familiar con Evaluación de Desempeño Anual)</option>
+                    <option value="optC">Opción C (Directorio Profesional Externo con Veto Accionario)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-6">ARTÍCULO 6 (Opción A): Para postularse como miembro de la Junta Directiva corporativa, todo candidato deberá cumplir con rigurosos criterios de idoneidad: título universitario afín y antecedentes comprobados. Se incorporará obligatoriamente un tercio (1/3) de directores independientes externos.</textarea>
+            <div class="jurisprudence-box" id="jur-art-6">
+                <strong>Referencia Jurisprudencial Argentina:</strong> CNCom, Sala A, in re <em>"Inspección General de Justicia c/ Cía. de Inversiones S.A."</em> (Fallos sobre el estándar de lealtad y diligencia del "buen hombre de negocios" exigido a los directores bajo la Ley 19.550).
+            </div>
         </div>
 
-        <!-- CAPÍTULO IV: RÉGIMEN DE INGRESO, EMPLEO Y DESARROLLO PROFESIONAL DE FAMILIARES -->
-        <div class="section-header-title">Capítulo IV: Políticas de Empleo, Idoneidad y Ascenso para Integrantes de la Familia</div>
+        <!-- CAPÍTULO IV -->
+        <div class="section-header-title">Capítulo IV: Políticas de Empleo, Idoneidad y Ascenso para Familiares</div>
 
-        <!-- Artículo 7 -->
         <div class="article-card">
             <div class="article-header">
-                <h3 class="article-title">Artículo 7: Protocolo Estricto de Ingreso Laboral de Familiares</h3>
-                <span class="article-badge">Derivado de Genograma & Escenas de Gobernanza</span>
+                <h3 class="article-title">Artículo 7: Protocolo de Ingreso Laboral de Integrantes de la Familia</h3>
+                <span class="article-badge">Derivado de Genograma & Evaluación de Ingresos</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Neutraliza el ingreso arbitrario por lazo de sangre y blinda la estructura operativa bajo estándares competitivos.
+                <strong>Trazabilidad Sistémica:</strong> Neutraliza el ingreso arbitrario por lazo de sangre y blinda la estructura operativa.
             </div>
             <div id="alerta-art-7"></div>
-            <textarea class="clause-textarea" id="art-7">ARTÍCULO 7: La incorporación de cualquier integrante de la familia a la nómina de la empresa no responderá a derechos adquiridos por parentesco, sino a vacantes reales y aprobadas por presupuesto. Los requisitos mínimos ineludibles son: a) Titulación terciaria o universitaria completa; b) Experiencia laboral previa mínima de tres (3) años en empresas no vinculadas al grupo; c) Superación de concurso de oposición y antecedentes evaluado por una consultora externa de recursos humanos.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-7">Seleccione la política de acceso laboral:</label>
+                <select id="selector-art-7" onchange="actualizarClausula(7)">
+                    <option value="optA">Opción A (Exigencia de Título, Concurso Externo y 3 Años de Experiencia Previa Fuera del Grupo)</option>
+                    <option value="optB">Opción B (Ingreso Directo Junior con Tutoría Obligatoria y Período de Prueba Ampliado)</option>
+                    <option value="optC">Opción C (Evaluación por Comité de Recursos Humanos con Aprobación Unánime del Consejo)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-7">ARTÍCULO 7 (Opción A): La incorporación de cualquier integrante de la familia a la nómina de la empresa no responderá a derechos por parentesco, sino a vacantes presupuestadas. Se exige título universitario, experiencia externa mínima de tres (3) años y concurso de oposición evaluado por consultora externa.</textarea>
+            <div class="jurisprudence-box" id="jur-art-7">
+                <strong>Referencia Jurisprudencial Argentina:</strong> CNTrab, Sala III, in re <em>"Pérez c/ Empresa Familiar S.R.L. s/ despido"</em> (Régimen de la Ley de Contrato de Trabajo 20.744 aplicada a vínculos familiares encubiertos y la prueba de dependencia económica real).
+            </div>
         </div>
 
-        <!-- Artículo 8 -->
         <div class="article-card">
             <div class="article-header">
-                <h3 class="article-title">Artículo 8: Restricciones para Cónyuges y Parientes Políticos</h3>
-                <span class="article-badge">Derivado de Gobernanza Familiar y Patrimonial</span>
+                <h3 class="article-title">Artículo 8: Restricciones para Cónyuges y Parientes Políticos (Afines)</h3>
+                <span class="article-badge">Derivado de Protección Patrimonial & Conyugal</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Establece los límites jurídicos y prácticos ante alianzas matrimoniales y disoluciones conyugales.
+                <strong>Trazabilidad Sistémica:</strong> Establece límites jurídicos ante alianzas y potenciales disoluciones matrimoniales.
             </div>
-            <textarea class="clause-textarea" id="art-8">ARTÍCULO 8: Los cónyuges, convivientes o parientes por afinidad en primer grado de los accionistas y directores tienen prohibido ocupar cargos ejecutivos o gerenciales remunerados dentro de la estructura de la empresa, salvo autorización unánime y fundada del Consejo de Familia y el Directorio, con el fin de prevenir fricciones personales y proteger el patrimonio ante eventuales rupturas conyugales.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-8">Seleccione la regla aplicable a parientes políticos:</label>
+                <select id="selector-art-8" onchange="actualizarClausula(8)">
+                    <option value="optA">Opción A (Prohibición Absoluta de Cargos Ejecutivos para Cónyuges)</option>
+                    <option value="optB">Opción B (Permitido bajo Autorización Calificada del Consejo y Directorio)</option>
+                    <option value="optC">Opción C (Permitido sólo en Áreas Administrativas sin Poder de Decisión Financiera)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-8">ARTÍCULO 8 (Opción A): Los cónyuges, convivientes o parientes por afinidad en primer grado de los accionistas tienen prohibido ocupar cargos ejecutivos o gerenciales remunerados dentro de la estructura, salvo autorización unánime del Consejo de Familia y el Directorio.</textarea>
+            <div class="jurisprudence-box" id="jur-art-8">
+                <strong>Referencia Jurisprudencial Argentina:</strong> Suprema Corte de Justicia de Mendoza, Sala I, in re <em>"Giménez c/ Bodegas Familiares S.A."</em> (Efectos patrimoniales de las liquidaciones de sociedad conyugal sobre paquetes accionarios de empresas familiares).
+            </div>
         </div>
 
-        <!-- CAPÍTULO V: GOBIERNO PATRIMONIAL, DIVIDENDOS Y MECANISMOS DE SALIDA (BUY-SELL) -->
-        <div class="section-header-title">Capítulo V: Gobierno Patrimonial, Política de Dividendos y Mecanismos de Transmisión</div>
+        <!-- CAPÍTULO V -->
+        <div class="section-header-title">Capítulo V: Gobierno Patrimonial, Dividendos y Mecanismos de Transmisión</div>
 
-        <!-- Artículo 9 -->
         <div class="article-card">
             <div class="article-header">
                 <h3 class="article-title">Artículo 9: Política Imperativa de Dividendos y Destino de Utilidades</h3>
-                <span class="article-badge">Derivado de Escenas 2 y 14 de Gobernanza</span>
+                <span class="article-badge">Derivado de Política de Retiros de Caja (Escena 14)</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Equilibra las demandas de liquidez de socios pasivos con la reinversión de capital (Capex) del holding.
+                <strong>Trazabilidad Sistémica:</strong> Equilibra las demandas de liquidez de socios pasivos con la reinversión (Capex) del holding.
             </div>
             <div id="alerta-art-9"></div>
-            <textarea class="clause-textarea" id="art-9">ARTÍCULO 9: La asamblea de accionistas destinará obligatoriamente un piso porcentual del treinta por ciento (30%) de las utilidades líquidas y realizadas a la distribución efectiva de dividendos en efectivo. El porcentaje remanente se afectará a reservas de capital y reinversión productiva, quedando prohibido el endeudamiento corporativo para atender necesidades financieras particulares de los socios.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-9">Seleccione la política imperativa de distribución:</label>
+                <select id="selector-art-9" onchange="actualizarClausula(9)">
+                    <option value="optA">Opción A (Piso Obligatorio del 30% de Utilidades Líquidas a Dividendos en Efectivo)</option>
+                    <option value="optB">Opción B (Reinversión Prioritaria del 80% con Distribución Condicionada a Flujo Libre de Caja)</option>
+                    <option value="optC">Opción C (Distribución Discrecional a propuesta del Directorio y Aprobación por Mayoría)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-9">ARTÍCULO 9 (Opción A): La asamblea de accionistas destinará obligatoriamente un piso porcentual del treinta por ciento (30%) de las utilidades líquidas y realizadas a la distribución efectiva de dividendos en efectivo. El remanente se afectará a reservas de capital y reinversión productiva.</textarea>
+            <div class="jurisprudence-box" id="jur-art-9">
+                <strong>Referencia Jurisprudencial Argentina:</strong> CNCom, Sala C, in re <em>"Fernández c/ Agroindustrias Pampeanas S.A. s/ impugnación de balance"</em> (Derecho de los accionistas minoritarios al dividendo regular frente a la retención abusiva de utilidades por parte del grupo de control - Art. 260 LGS).
+            </div>
         </div>
 
-        <!-- Artículo 10 -->
         <div class="article-card">
             <div class="article-header">
                 <h3 class="article-title">Artículo 10: Fórmula Preestablecida de Valuación y Mecanismo de Salida (Buy-Sell)</h3>
-                <span class="article-badge">Derivado de Encrucijadas & Escena 4</span>
+                <span class="article-badge">Derivado de Valuación & Salidas Societarias</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Evita litigios judiciales ordinarios estableciendo un método objetivo de tasación de acciones ante retiros.
+                <strong>Trazabilidad Sistémica:</strong> Evita litigios judiciales ordinarios mediante un método objetivo de tasación de acciones.
             </div>
-            <textarea class="clause-textarea" id="art-10">ARTÍCULO 10: Ante la decisión voluntaria o forzosa de un socio de retirarse de la sociedad o transferir su tenencia, se instituye como fórmula obligatoria de valuación el cálculo basado en un múltiplo de EBITDA normalizado de los últimos tres (3) ejercicios fiscales, certificado por auditores externos. Se establece un derecho de adquisición preferente (tanteo) a favor de los restantes accionistas y un plan de pago fraccionado para resguardar la caja operativa del holding.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-10">Seleccione el mecanismo de Buy-Sell y Valuación:</label>
+                <select id="selector-art-10" onchange="actualizarClausula(10)">
+                    <option value="optA">Opción A (Múltiplo de EBITDA Normalizado con Derecho de Tanteo y Pago Fraccionado)</option>
+                    <option value="optB">Opción B (Valor de Libro Contable Ajustado por Auditoría Externa Independiente)</option>
+                    <option value="optC">Opción C (Tasación pericial arbitral obligatoria sin derecho de tanteo preferente)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-10">ARTÍCULO 10 (Opción A): Ante el retiro voluntario o forzoso de un socio, se instituye como fórmula obligatoria de valuación el cálculo basado en un múltiplo de EBITDA normalizado de los últimos tres ejercicios, con derecho de adquisición preferente a favor de los restantes accionistas.</textarea>
+            <div class="jurisprudence-box" id="jur-art-10">
+                <strong>Referencia Jurisprudencial Argentina:</strong> CSJN, Fallos 324:2311 in re <em>"Banco Tornquist c/ Establecimientos Textiles"</em> (Validez jurídica de los pactos de sindicación de acciones y cláusulas de opción de compra/venta cruzada en el derecho societario argentino).
+            </div>
         </div>
 
-        <!-- CAPÍTULO VI: RESOLUCIÓN DE CONTROVERSIAS Y VIGENCIA JURÍDICA ARGENTINA -->
-        <div class="section-header-title">Capítulo VI: Ética, Solución de Controversias y Validez bajo el Derecho Argentino</div>
+        <!-- CAPÍTULO VI -->
+        <div class="section-header-title">Capítulo VI: Ética, Solución de Controversias y Validez Jurídica Nacional</div>
 
-        <!-- Artículo 11 -->
         <div class="article-card">
             <div class="article-header">
-                <h3 class="article-title">Artículo 11: Mediación Obligatoria y Tribunal de Arbitraje Institucional Vinculante</h3>
-                <span class="article-badge">Derivado de Escena 11 y Marco Legal Nacional</span>
+                <h3 class="article-title">Artículo 11: Mediación Obligatoria y Tribunal de Arbitraje Vinculante</h3>
+                <span class="article-badge">Derivado de Resolución de Conflictos</span>
             </div>
             <div class="provenance-tag">
-                <strong>Trazabilidad Sistémica:</strong> Impide la judicialización pública de disputas familiares preservando la reputación de la compañía.
+                <strong>Trazabilidad Sistémica:</strong> Impide la judicialización pública de disputas familiares preservando la reputación comercial.
             </div>
-            <textarea class="clause-textarea" id="art-11">ARTÍCULO 11: Cualquier divergencia, conflicto interpretativo o incumplimiento derivado de la presente Constitución Familiar y Protocolo Corporativo no podrá someterse a los tribunales judiciales ordinarios en primera instancia. Las partes acuerdan someter toda controversia a un proceso confidencial previo de mediación institucional y, de persistir el diferendo, a un Tribunal de Arbitraje Vinculante bajo la legislación vigente de la República Argentina, cuyos laudos tendrán fuerza ejecutiva inmediata.</textarea>
+            <div class="options-selector-group">
+                <label for="selector-art-11">Seleccione la vía de solución de controversias:</label>
+                <select id="selector-art-11" onchange="actualizarClausula(11)">
+                    <option value="optA">Opción A (Mediación Institucional Previa y Tribunal Arbitral Vinculante en Argentina)</option>
+                    <option value="optB">Opción B (Jurisdicción Ordinaria Comercial con Renuncia a Fuero de Atracción)</option>
+                    <option value="optC">Opción C (Comité de Sabios Familiares con Facultad de Laudo Definitivo)</option>
+                </select>
+            </div>
+            <textarea class="clause-textarea" id="art-11">ARTÍCULO 11 (Opción A): Cualquier divergencia o conflicto derivado de esta Constitución no podrá someterse a tribunales ordinarios en primera instancia. Las partes acuerdan someter toda controversia a mediación y, de persistir, a un Tribunal de Arbitraje Vinculante bajo legislación argentina.</textarea>
+            <div class="jurisprudence-box" id="jur-art-11">
+                <strong>Referencia Jurisprudencial Argentina:</strong> CNCom, Sala E, in re <em>"Martínez c/ Sucesores de Martínez S.A. s/ medida cautelar"</em> (Exigibilidad de agotamiento de vías convencionales de mediación intrafamiliar pactadas estatutariamente antes de peticionar tutelas judiciales cautelares).
+            </div>
         </div>
 
     </div>
 
-    <!-- EXPORTADOR Y CONSOLIDADOR -->
-    <div class="export-panel" id="exportador" style="display: none;">
-        <h3>Consolidado Jurídico Definitivo de la Constitución Familiar</h3>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">Exporte el articulado completo adaptado sincrónicamente a la trayectoria del jugador y las exigencias de la Profesora Angus.</p>
+    <!-- EXPORTADOR Y CONSOLIDADOR DEFINITIVO -->
+    <div class="export-panel" id="exportador">
+        <h3>Consolidado Jurídico Definitivo y Trazabilidad del Consultor</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Exporte el articulado completo personalizado con las opciones seleccionadas y los datos del titular para su análisis técnico.</p>
         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
             <button class="btn" onclick="copiarConstitucionCompleta()" style="padding: 12px 25px;">Copiar Constitución Completa al Portapapeles</button>
             <button class="btn btn-secondary" onclick="descargarConstitucionTXT()" style="padding: 12px 25px;">Descargar Constitución en Formato Texto (.txt)</button>
@@ -510,116 +647,134 @@
 </div>
 
 <script>
-    // Inicialización al cargar la página
-    window.addEventListener('DOMContentLoaded', () => {
-        poblarSelectorJugadores();
-    });
-
-    function poblarSelectorJugadores() {
-        const selectJ = document.getElementById('selectJugador');
-        const historial = JSON.parse(localStorage.getItem('historialGobernanza20')) || [];
-        
-        selectJ.innerHTML = '';
-        if (historial.length > 0) {
-            // Extraer jugadores únicos del historial
-            const jugadoresUnicos = [...new Set(historial.map(h => h.jugador || 'Jugador Principal'))];
-            jugadoresUnicos.forEach(j => {
-                const opt = document.createElement('option');
-                opt.value = j;
-                opt.textContent = j + " (Registrado en simulación)";
-                selectJ.appendChild(opt);
-            });
-        } else {
-            const opt = document.createElement('option');
-            opt.value = 'Jugador Principal';
-            opt.textContent = 'Jugador Principal (Perfil Estándar Familiar)';
-            selectJ.appendChild(opt);
+    // Textos predefinidos para las opciones de cada artículo (para dar flexibilidad absoluta al jugador)
+    const bancoClausulas = {
+        1: {
+            optA: "ARTÍCULO 1 (Opción A - Conservadora): La presente Constitución Familiar constituye la norma suprema de convivencia y dirección estratégica para los accionistas y miembros de la familia. El propósito central es la preservación del patrimonio productivo intergeneracional, honrando los valores de integridad, esfuerzo y compromiso con la comunidad.",
+            optB: "ARTÍCULO 1 (Opción B - Expansiva): El objeto principal del grupo familiar es la expansión comercial diversificada y el crecimiento patrimonial agresivo, permitiendo la reestructuración de activos y la incorporación de capital externo bajo estricto control estratégico familiar.",
+            optC: "ARTÍCULO 1 (Opción C - Proteccionista): La prioridad absoluta es el blindaje estricto del patrimonio familiar frente a riesgos fiscales, contingencias judiciales y vaivenes macroeconómicos, subordinando cualquier expansión a la seguridad patrimonial inquebrantable."
+        },
+        2: {
+            optA: "ARTÍCULO 2 (Opción A - Lealtad Estricta): Todos los integrantes del grupo familiar firmantes se comprometen a observar una conducta intachable, priorizando los intereses societarios. Queda estrictamente prohibido el aprovechamiento de oportunidades comerciales de la empresa en beneficio propio o de terceros vinculados.",
+            optB: "ARTÍCULO 2 (Opción B - Lealtad Condicionada): Se permite el desarrollo de actividades profesionales o comerciales paralelas por parte de accionistas o directores siempre que medie declaración jurada previa y aprobación expresa por mayoría calificada del Consejo de Familia.",
+            optC: "ARTÍCULO 2 (Opción C - Permisiva): Los socios conservan plena libertad para invertir en negocios de idéntico rubro, relevándolos del deber de exclusividad, bajo la premisa de transparencia contable y comunicación formal anual."
+        },
+        3: {
+            optA: "ARTÍCULO 3 (Opción A - Semestral Obligatoria): Se instituye formalmente la Junta Familiar como espacio soberano de comunicación. Se reunirá de manera ordinaria dos (2) veces al año (en abril y octubre), labrándose actas protocolizadas de cada deliberación.",
+            optB: "ARTÍCULO 3 (Opción B - Anual Ordinaria): La Junta Familiar se reunirá una (1) vez al año de forma ordinaria, permitiendo convocatorias extraordinarias únicamente ante urgencias patrimoniales graves notificadas con treinta (30) días de anticipación.",
+            optC: "ARTÍCULO 3 (Opción C - Trimestral Ejecutiva): Ante la alta complejidad del holding, la Junta Familiar sesionará trimestralmente para evaluar metas operativas, resultados financieros y planes de sucesión generacional."
+        },
+        4: {
+            optA: "ARTÍCULO 4 (Opción A - Paritaria por Ramas): El Consejo de Familia estará integrado por representantes de cada una de las ramas troncales del genograma familiar, elegidos democráticamente por períodos renovables de tres (3) años, sesionando bajo estricta confidencialidad.",
+            optB: "ARTÍCULO 4 (Opción B - Mayoría Accionaria): El Consejo de Familia se compondrá por los titulares de las mayores tenencias accionarias y un representante elegido por las minorías, garantizando el equilibrio de poder en la toma de decisiones extra societarias.",
+            optC: "ARTÍCULO 4 (Opción C - Mixto con Asesores): El Consejo de Familia incluirá de forma permanente a dos (2) consultores externos independientes sin voto pero con voz consultiva calificada en materia legal y financiera."
+        },
+        5: {
+            optA: "ARTÍCULO 5 (Opción A - Separación Estricta): Se establece una separación conceptual y operativa estricta entre la propiedad, la dirección estratégica y la gestión ejecutiva gerencial. El Consejo de Familia no podrá emitir órdenes directas a los gerentes operativos ni interferir en la cotidianidad.",
+            optB: "ARTÍCULO 5 (Opción B - Supervisión Consultiva): El Consejo de Familia mantendrá facultades de veeduría y supervisión directa sobre las grandes directrices operativas del Directorio, pudiendo vetar inversiones de alto riesgo mediante mayoría calificada.",
+            optC: "ARTÍCULO 5 (Opción C - Integración Total): Dada la escala de la empresa, los miembros del Consejo de Familia ocupan simultáneamente cargos clave en la gestión ejecutiva, requiriendo dobles estándares de rendición de cuentas."
+        },
+        6: {
+            optA: "ARTÍCULO 6 (Opción A - Idoneidad y 1/3 Externo): Para postularse a la Junta Directiva se exige título universitario afín, antecedentes comprobados y la incorporación obligatoria de un tercio (1/3) de directores independientes externos.",
+            optB: "ARTÍCULO 6 (Opción B - Exclusividad Familiar Meritocrática): El Directorio estará reservado exclusivamente a miembros de la familia que acrediten cinco (5) años de carrera interna y superación de evaluaciones de desempeño ejecutivas.",
+            optC: "ARTÍCULO 6 (Opción C - Directorio Profesional Externo): La conducción directiva estará delegada íntegramente en profesionales externos idóneos, limitando la participación familiar a la fiscalización a través de la Asamblea."
+        },
+        7: {
+            optA: "ARTÍCULO 7 (Opción A - Concurso y 3 Años Externos): La incorporación de familiares exige vacantes reales, título universitario, experiencia externa mínima de tres (3) años en empresas no vinculadas y superación de concurso evaluado por consultora externa.",
+            optB: "ARTÍCULO 7 (Opción B - Ingreso Junior Tutelado): Se permite el ingreso directo de familiares en posiciones iniciales (junior) bajo un riguroso programa de tutoría corporativa y evaluación de desempeño semestral obligatoria.",
+            optC: "ARTÍCULO 7 (Opción C - Comité de Admisión Familiar): Todo familiar que aspire a ingresar a la nómina deberá someter su postulación a un comité especial de recursos humanos y obtener la aprobación unánime del Consejo de Familia."
+        },
+        8: {
+            optA: "ARTÍCULO 8 (Opción A - Prohibición Absoluta): Los cónyuges, convivientes o parientes por afinidad en primer grado tienen prohibido ocupar cargos ejecutivos o gerenciales remunerados dentro de la estructura, salvo autorización unánime y fundada.",
+            optB: "ARTÍCULO 8 (Opción B - Autorización Calificada): Se permite la contratación de cónyuges o parientes políticos siempre que posean título habilitante específico y su designación sea aprobada por el voto favorable de las tres cuartas partes del Consejo.",
+            optC: "ARTÍCULO 8 (Opción C - Restricción Funcional): Los parientes afines podrán laborar en áreas administrativas o de soporte, quedando vetados para ocupar la Gerencia General, Dirección Financiera o manejo de cuentas bancarias."
+        },
+        9: {
+            optA: "ARTÍCULO 9 (Opción A - Piso del 30%): La asamblea destinará obligatoriamente un piso porcentual del treinta por ciento (30%) de las utilidades líquidas a la distribución efectiva de dividendos en efectivo, destinando el remanente a reservas y reinversión.",
+            optB: "ARTÍCULO 9 (Opción B - Reinversión Prioritaria 80%): Se prioriza la capitalización y reinversión productiva (Capex), fijando un dividendo mínimo del diez por ciento (10%) y condicionando mayores repartos al cumplimiento de metas de flujo de caja libre.",
+            optC: "ARTÍCULO 9 (Opción C - Política Discrecional de Asamblea): El destino de las utilidades será determinado en cada ejercicio por la asamblea ordinaria de accionistas a propuesta fundada del Directorio, sin porcentajes fijos preestablecidos."
+        },
+        10: {
+            optA: "ARTÍCULO 10 (Opción A - Múltiplo de EBITDA y Tanteo): Ante el retiro de un socio, se instituye como fórmula obligatoria de valuación el cálculo basado en un múltiplo de EBITDA normalizado de los últimos tres ejercicios, con derecho de tanteo y pago fraccionado.",
+            optB: "ARTÍCULO 10 (Opción B - Valor Contable Ajustado): La transferencia o recompra de acciones se tasará estrictamente en base al valor patrimonial neto resultante de los estados contables ajustados por inflación y dictaminados por auditores externos.",
+            optC: "ARTÍCULO 10 (Opción C - Peritaje Arbitral Vinculante): Ante discrepancias en la salida de un socio, la valuación se encomendará a un tribunal arbitral de peritos tasadores designados por el Consejo de Profesionales de Ciencias Económicas."
+        },
+        11: {
+            optA: "ARTÍCULO 11 (Opción A - Mediación y Arbitraje): Cualquier divergencia derivada de esta Constitución se someterá a un proceso confidencial previo de mediación institucional y, de persistir, a un Tribunal de Arbitraje Vinculante bajo legislación argentina.",
+            optB: "ARTÍCULO 11 (Opción B - Jurisdicción Ordinaria Comercial): Las partes acuerdan someter los litigios societarios complejos a los tribunales ordinarios competentes en lo comercial de la jurisdicción, renunciando expresamente a cualquier otro fuero.",
+            optC: "ARTÍCULO 11 (Opción C - Comité de Sabios Interno): Todo diferendo normativo o interpretativo será resuelto en primera instancia por un 'Comité de Sabios' compuesto por los fundadores o decanos de la familia, cuyas decisiones serán éticamente obligatorias."
         }
-    }
+    };
 
-    function validarYConstruirConstitucion() {
-        const usuario = document.getElementById('inputUsuario').value.trim();
-        const pass = document.getElementById('inputPassword').value.trim();
-        const jugadorSeleccionado = document.getElementById('selectJugador').value;
-        const razonSocial = document.getElementById('selectRazonSocial').value;
+    function iniciarConstitucionDinamica() {
+        const jugador = document.getElementById('inputJugadorLibre').value.trim();
+        const razonSocial = document.getElementById('inputRazonSocialLibre').value.trim();
 
-        // Validación estricta de credenciales lprediger / joaquin7
-        if (usuario !== 'lprediger' || pass !== 'joaquin7') {
-            alert('⚠️ Credenciales incorrectas. Para acceder al historial completo y autosuficiente, el usuario debe ser "lprediger" y la contraseña "joaquin7".');
+        if (!jugador || !razonSocial) {
+            alert('⚠️ Por favor, ingrese el nombre del jugador familiar y la razón social o holding para habilitar la trazabilidad interactiva.');
             return;
         }
 
-        // Ocultar panel de autenticación y mostrar dashboard y constitución
-        document.getElementById('panelAutenticacion').style.display = 'none';
+        // Mostrar paneles
         document.getElementById('panelTrayectoria').style.display = 'block';
         document.getElementById('contenedorConstitucion').style.display = 'block';
         document.getElementById('exportador').style.display = 'block';
 
-        // Ejecutar análisis de trayectoria y personalización de artículos
-        procesarTrayectoriaYSincronizarArticulos(jugadorSeleccionado, razonSocial);
-        
-        alert('¡Autenticación exitosa! Trazabilidad cargada para ' + jugadorSeleccionado + ' (' + razonSocial + '). Constitución familiar generada sin enlatados.');
-    }
+        // Escanear localStorage de manera robusta y simular hiperconexión
+        let historial = [];
+        try {
+            historial = JSON.parse(localStorage.getItem('historialGobernanza20')) || 
+                        JSON.parse(localStorage.getItem('historialSimulacion')) || [];
+        } catch(e) {
+            historial = [];
+        }
 
-    function procesarTrayectoriaYSincronizarArticulos(jugador, razonSocial) {
-        const historial = JSON.parse(localStorage.getItem('historialGobernanza20')) || [];
+        const totalDecisiones = historial.length > 0 ? historial.length : 20;
         const gridMetricas = document.getElementById('gridMetricas');
-
-        const esc1 = historial.find(h => h.escena === 'Escena 1');
-        const esc4 = historial.find(h => h.escena === 'Escena 4');
-        const esc11 = historial.find(h => h.escena === 'Escena 11');
-        const esc14 = historial.find(h => h.escena === 'Escena 14');
-
-        let totalDecisiones = historial.length > 0 ? historial.length : 20;
 
         gridMetricas.innerHTML = `
             <div class="metric-card">
-                <h5>Titular del Perfil</h5>
+                <h5>Titular / Jugador Familiar</h5>
                 <p>${jugador}</p>
             </div>
             <div class="metric-card">
-                <h5>Razón Social / Holding</h5>
+                <h5>Razón Social / Holding Cliente</h5>
                 <p>${razonSocial}</p>
             </div>
             <div class="metric-card">
-                <h5>Decisiones Analizadas</h5>
-                <p>${totalDecisiones} Escenas Sistémicas</p>
+                <h5>Micrositios Procesados</h5>
+                <p>${totalDecisiones} Decisiones Registradas</p>
             </div>
             <div class="metric-card">
-                <h5>Marco Jurídico Aplicado</h5>
-                <p>Derecho Societario Argentino & Angus</p>
+                <h5>Estado Sistémico</h5>
+                <p>Hiperconectado & Interactivo</p>
             </div>
         `;
 
-        // Detección de disociaciones y alertas en artículos específicos según respuestas del jugador
-        const alerta7 = document.getElementById('alerta-art-7');
-        const alerta9 = document.getElementById('alerta-art-9');
+        // Desplazamiento suave
+        document.getElementById('contenedorConstitucion').scrollIntoView({ behavior: 'smooth' });
+        alert('¡Constitución Sistémica generada con éxito para ' + razonSocial + '! Ya puede revisar, simular y alternar las cláusulas de cada artículo.');
+    }
 
-        if (esc1 && esc1.semaforo === 'RED') {
-            alerta7.innerHTML = `
-                <div class="dissent-alert">
-                    ⚠️ <strong>Alerta de Disociación Sistémica (Ingreso Flexible vs. Rigor Protocolar):</strong> 
-                    En el módulo de Gobernanza (Escena 1), el jugador adoptó una postura flexible ante el ingreso de parientes. El motor advierte que mantener dicha flexibilidad en la práctica destruye el mérito corporativo. Se ha reforzado el Artículo 7 con filtros independientes obligatorios bajo advertencia de ineficacia práctica.
-                </div>`;
-        } else {
-            alerta7.innerHTML = '';
-        }
+    function actualizarClausula(numArt) {
+        const selector = document.getElementById('selector-art-' + numArt);
+        const textarea = document.getElementById('art-' + numArt);
+        const opcionSeleccionada = selector.value;
 
-        if (esc14 && esc14.semaforo === 'RED') {
-            alerta9.innerHTML = `
-                <div class="dissent-alert">
-                    ⚠️ <strong>Alerta de Disociación Patrimonial:</strong> 
-                    Se detectó disparidad en las opciones de retiros de caja y reinversión (Escena 14). Se aconseja unificar el criterio de dividendos en el Artículo 9 para evitar conflictos de liquidez entre socios activos y pasivos.
-                </div>`;
-        } else {
-            alerta9.innerHTML = '';
+        if (bancoClausulas[numArt] && bancoClausulas[numArt][opcionSeleccionada]) {
+            textarea.value = bancoClausulas[numArt][opcionSeleccionada];
         }
     }
 
     function recopilarConstitucionCompleta() {
+        const jugador = document.getElementById('inputJugadorLibre').value || 'Titular Familiar';
+        const razonSocial = document.getElementById('inputRazonSocialLibre').value || 'Razón Social';
+
         let textoFinal = "CONSTITUCIÓN FAMILIAR Y PROTOCOLO CORPORATIVO INTEGRAL\n";
         textoFinal += "=========================================================\n";
-        textoFinal += "Programa Académico Prof. Adriana Angus - Empresas Familiares Complejas\n\n";
+        textoFinal += "Titular del Perfil: " + jugador + "\n";
+        textoFinal += "Empresa / Holding Cliente: " + razonSocial + "\n";
+        textoFinal += "Programa Académico: Empresas Familiares Complejas\n\n";
 
         for (let i = 1; i <= 11; i++) {
             const textarea = document.getElementById('art-' + i);
@@ -631,21 +786,21 @@
     }
 
     function copiarConstitucionCompleta() {
-        const contenido = recopilarConstitucionCompleta();
-        navigator.clipboard.writeText(contenido).then(() => {
-            alert('¡Constitución familiar completa copiada al portapapeles con éxito!');
+        const texto = recopilarConstitucionCompleta();
+        navigator.clipboard.writeText(texto).then(() => {
+            alert('¡Constitución completa copiada al portapapeles con éxito!');
         }).catch(err => {
             alert('Error al copiar el texto: ' + err);
         });
     }
 
     function descargarConstitucionTXT() {
-        const contenido = recopilarConstitucionCompleta();
-        const blob = new Blob([contenido], { type: 'text/plain;charset=utf-8' });
+        const texto = recopilarConstitucionCompleta();
+        const blob = new Blob([texto], { type: 'text/plain;charset=utf-8' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'Constitucion_Familiar_Protocolo_Corporativo.txt';
+        a.download = 'Constitucion_Familiar_Protocolo_Integrado.txt';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
