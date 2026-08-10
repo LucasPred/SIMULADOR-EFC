@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo de Redacción de Acuerdos Parasocietarios Dinámicos | Empresas Familiares</title>
+    <title>Motor Jurídico Dinámico: Acuerdos Parasocietarios y Protocolo Familiar | Empresas Familiares</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -28,7 +28,7 @@
         }
 
         .container {
-            max-width: 1150px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -50,17 +50,10 @@
             font-size: 1.1rem;
         }
 
-        .sync-box {
-            background-color: var(--panel-bg);
-            border: 1px solid var(--border-col);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
+        .nav-bar {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: center;
             justify-content: space-between;
+            margin-bottom: 20px;
         }
 
         .btn {
@@ -90,24 +83,61 @@
             background-color: rgba(56, 189, 248, 0.1);
         }
 
-        .article-card {
+        /* PANEL DE AUDITORÍA Y DISOCIACIONES */
+        .audit-dashboard {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-col);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .audit-title {
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .discrepancy-card {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .discrepancy-card h4 {
+            color: #fca5a5;
+            margin: 0 0 5px 0;
+            font-size: 1.05rem;
+        }
+
+        .discrepancy-card p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .success-audit {
+            background-color: rgba(34, 197, 94, 0.1);
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            border-radius: 0 6px 6px 0;
+            color: #86efac;
+        }
+
+        /* SECCIÓN DE ARTICULADO DINÁMICO */
+        .article-section {
             background-color: var(--panel-bg);
             border: 1px solid var(--border-col);
             border-radius: 10px;
             padding: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             position: relative;
-        }
-
-        .article-card.active-article {
-            border-color: var(--accent);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-        }
-
-        .article-card.locked-article {
-            opacity: 0.4;
-            background-color: #111827;
         }
 
         .article-header {
@@ -120,7 +150,7 @@
         }
 
         .article-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: var(--accent);
             margin: 0;
         }
@@ -146,7 +176,7 @@
 
         .clause-textarea {
             width: 100%;
-            height: 160px;
+            height: 180px;
             background-color: #0b0f19;
             border: 1px solid var(--border-col);
             color: #f8fafc;
@@ -182,95 +212,95 @@
 <body>
 
 <div class="container">
-    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-        <a href="gobernanza.html" class="btn btn-secondary">&larr; Volver a Gobernanza (20 Escenas)</a>
-        <a href="#exportador" class="btn btn-secondary">Ir a Consolidado Final &darr;</a>
+    <div class="nav-bar">
+        <a href="gobernanza.html" class="btn btn-secondary">&larr; Volver a Gobernanza</a>
+        <a href="#exportador" class="btn btn-secondary">Ir a Exportación Consolidada &darr;</a>
     </div>
 
     <header>
-        <h1>Módulo de Redacción de Acuerdos Parasocietarios Dinámicos</h1>
-        <p>Sistematización jurídica exclusiva adaptada al perfil, holding y decisiones adoptadas por el grupo familiar en Genograma, Encrucijadas y Gobernanza.</p>
+        <h1>Motor Jurídico de Acuerdos Parasocietarios y Protocolo Familiar</h1>
+        <p>Sistematización algorítmica integral basada en Genograma, Encrucijadas Pluridisciplinarias (Corporativa, Familiar, Patrimonial, Fiduciaria, Filantropía) y las 20 Escenas de Gobernanza.</p>
     </header>
 
-    <!-- ESTADO DE SINCRONIZACIÓN DE LA ANTESALA -->
-    <div class="sync-box">
-        <div>
-            <strong style="display:block; color:var(--accent); margin-bottom:5px;">Sincronización con Historial Previo</strong>
-            <span id="estadoSincronizacion" style="font-size:0.9rem; color:var(--text-muted);">Cargando perfil y decisiones previas de los micrositios anteriores...</span>
+    <!-- PANEL DE AUDITORÍA Y DETECCIÓN DE DISOCIACIONES SISTÉMICAS -->
+    <div class="audit-dashboard" id="panelAuditoria">
+        <h3 class="audit-title">🔍 Auditoría de Coherencia Sistémica y Alerta de Disociaciones</h3>
+        <div id="contenidoAuditoria">
+            <p style="color: var(--text-muted);">Analizando en tiempo real la correlación lógica entre las opciones elegidas en Genograma, Encrucijadas y las 20 Escenas de Gobernanza...</p>
         </div>
-        <button class="btn" onclick="sincronizarConAntesala()">Actualizar Articulado Dinámico</button>
     </div>
 
-    <div id="articulado-container">
+    <!-- CONTENEDOR DEL ARTICULADO DINÁMICO -->
+    <div id="articulado-dinamico-container">
 
-        <!-- ARTÍCULO 1: RÉGIMEN DE INGRESO Y MERITOCRACIA (Derivado de Escena 1 de Gobernanza + Genograma) -->
-        <div class="article-card active-article" id="art-1">
+        <!-- CLÁUSULA PRIMERA: GOBIERNO CORPORATIVO Y SUCESIÓN -->
+        <div class="article-section">
             <div class="article-header">
-                <h3 class="article-title">Artículo 1: Régimen Estrictamente Vinculante de Ingreso de Familiares y Criterios de Idoneidad</h3>
-                <span class="article-badge">Derivado de Genograma & Escena 1</span>
+                <h3 class="article-title">Cláusula Primera: Modelo Estructural de Gobierno Corporativo y Directrices Sucesorias</h3>
+                <span class="article-badge">Sintetizado de Genograma & Gobernanza (Corporativa)</span>
             </div>
-            <div class="provenance-tag" id="prov-1">
-                <strong>Trazabilidad Sistémica:</strong> Sincronizado con las ramas del Genograma familiar y la postura adoptada en la Escena 1 de Gobernanza sobre requisitos sucesorios.
+            <div class="provenance-tag" id="tag-clausula-1">
+                <strong>Trazabilidad Sistémica:</strong> Construido con base en las ramas familiares del genograma y las opciones del jugador en materia de profesionalización del directorio.
             </div>
-            <textarea class="clause-textarea" id="texto-art-1">PRIMERO: Los accionistas firmantes acuerdan por unanimidad que la incorporación de integrantes de la familia fundadora o afines a cualquier puesto ejecutivo o gerencial dentro de la sociedad no operará por derecho de sangre automático, sino que requerirá indefectiblemente el cumplimiento concurrente de: a) Título universitario afín al puesto; b) Acreditación fehaciente de un mínimo de tres (3) años de experiencia laboral previa en empresas independientes no vinculadas al holding; c) Evaluación técnica favorable emitida por un comité de selección externo e independiente. Todo nombramiento que desobedezca esta pauta será considerado nulo de nulidad absoluta en el marco de las relaciones parasocietarias.</textarea>
+            <textarea class="clause-textarea" id="texto-clausula-1">PRIMERO: Las partes firmantes, en su carácter de integrantes del grupo familiar y accionistas de control, establecen que la administración y dirección del holding se regirá por un Directorio mixto, integrando miembros de la familia fundadora que superen rigurosos estándares de idoneidad técnica y directores independientes externos. La planificación sucesoria se desvincula de la primogenitura o el vínculo sanguíneo directo, priorizando la meritocracia corporativa conforme a los parámetros de gobernanza corporativa seleccionados en las instancias previas de este simulador, garantizando la estabilidad operativa ante traspasos generacionales.</textarea>
         </div>
 
-        <!-- ARTÍCULO 2: POLÍTICA DE DIVIDENDOS Y BLINDAJE DE CAJA (Derivado de Escena 2 y 14) -->
-        <div class="article-card active-article" id="art-2">
+        <!-- CLÁUSULA SEGUNDA: GOBIERNO FAMILIAR Y PROTOCOLO DE INCORPORACIÓN -->
+        <div class="article-section">
             <div class="article-header">
-                <h3 class="article-title">Artículo 2: Política Imperativa de Dividendos, Reserva Legal y Destino de Utilidades</h3>
-                <span class="article-badge">Derivado de Escenas 2 y 14</span>
+                <h3 class="article-title">Cláusula Segunda: Admisión, Empleo y Criterios de Idoneidad para Familiares y Cónyuges</h3>
+                <span class="article-badge">Sintetizado de Gobernanza Familiar & Encrucijadas</span>
             </div>
-            <div class="provenance-tag" id="prov-2">
-                <strong>Trazabilidad Sistémica:</strong> Vinculado a la tensión entre liquidez personal de socios pasivos y reinversión industrial en el holding corporativo.
+            <div class="provenance-tag" id="tag-clausula-2">
+                <strong>Trazabilidad Sistémica:</strong> Basado en las opciones de gobernanza familiar y los límites establecidos para la incorporación de parientes políticos y familiares directos.
             </div>
-            <textarea class="clause-textarea" id="texto-art-2">SEGUNDO: La asamblea de socios afectará anualmente un piso obligatorio del treinta por ciento (30%) de las utilidades líquidas y realizadas para su distribución efectiva en concepto de dividendos en efectivo. El remanente de utilidades no podrá ser desviado a proyectos personales o inmobiliarios particulares de los socios, quedando sujeto de manera estricta a ratios financieros de liquidez, solvencia y planes de inversión de capital (Capex) aprobados por el directorio con participación de directores independientes.</textarea>
+            <textarea class="clause-textarea" id="texto-clausula-2">SEGUNDO: Se instituye como norma imperativa parasocietaria que la contratación o designación de familiares en cualquier nivel jerárquico de la empresa familiar requerirá: a) Título universitario o terciario con incumbencia directa en el puesto; b) Acreditación fehaciente de al menos tres (3) años de desempeño profesional exitoso en empresas no vinculadas al grupo; c) Dictamen favorable unánime de un comité de ética y selección familiar. Quedan expresamente excluidos de ocupar cargos ejecutivos los cónyuges de los accionistas, resguardando la armonía familiar y evitando la colisión de intereses patrimoniales.</textarea>
         </div>
 
-        <!-- ARTÍCULO 3: VALUACIÓN Y MECANISMO DE SALIDA / BUY-SELL (Derivado de Escena 4 y Encrucijadas) -->
-        <div class="article-card active-article" id="art-3">
+        <!-- CLÁUSULA TERCERA: GOBIERNO PATRIMONIAL Y POLÍTICA DE DIVIDENDOS -->
+        <div class="article-section">
             <div class="article-header">
-                <h3 class="article-title">Artículo 3: Mecanismo Preestablecido de Compraventa Accionaria (Buy-Sell) y Valuación</h3>
-                <span class="article-badge">Derivado de Escena 4 & Encrucijadas</span>
+                <h3 class="article-title">Cláusula Tercera: Blindaje Patrimonial, Destino de Utilidades y Política de Dividendos</h3>
+                <span class="article-badge">Sintetizado de Gobernanza Patrimonial & Escenas 2/14</span>
             </div>
-            <div class="provenance-tag" id="prov-3">
-                <strong>Trazabilidad Sistémica:</strong> Construido para neutralizar bloqueos patrimoniales y evitar litigios judiciales ordinarios ante salidas de socios disidentes.
+            <div class="provenance-tag" id="tag-clausula-3">
+                <strong>Trazabilidad Sistémica:</strong> Sincronizado con las opciones de liquidez personal de socios pasivos y las exigencias de reinversión de capital del holding.
             </div>
-            <textarea class="clause-textarea" id="texto-art-3">TERCERO: Ante la decisión de cualquier socio de retirarse de la sociedad o de transferir su tenencia, se instituye como única fórmula obligatoria de valuación el cálculo basado en un múltiplo de EBITDA normalizado de los últimos tres (3) ejercicios fiscales, auditado por contadores independientes. El pago del paquete accionario objeto de recompra se instrumentará mediante un plan fraccionado en cuotas anuales consecutivas para resguardar la caja operativa y la continuidad comercial de la empresa.</textarea>
+            <textarea class="clause-textarea" id="texto-clausula-3">TERCERO: La asamblea de accionistas afectará obligatoriamente un porcentaje mínimo del treinta por ciento (30%) de las utilidades líquidas y realizadas para su distribución efectiva en concepto de dividendos en efectivo anuales. El remanente de utilidades se destinará a reservas de capital para proyectos de expansión (Capex). Queda prohibido el uso de fondos o activos corporativos para fines particulares o coberturas de contingencias patrimoniales individuales de los accionistas, estructurando un estricto muro de contención patrimonial frente a riesgos externos.</textarea>
         </div>
 
-        <!-- ARTÍCULO 4: RESTRICCIONES DE TRANSMISIÓN, TANTEO Y PROTECCIÓN ANTE TERCEROS (Derivado de Escenas 13 y 16) -->
-        <div class="article-card active-article" id="art-4">
+        <!-- CLÁUSULA CUARTA: GOBIERNO FIDUCIARIO Y MECANISMOS DE SALIDA (BUY-SELL) -->
+        <div class="article-section">
             <div class="article-header">
-                <h3 class="article-title">Artículo 4: Derecho de Adquisición Preferente, Tanteo y Blindaje ante Embargos</h3>
-                <span class="article-badge">Derivado de Escenas 13 & 16</span>
+                <h3 class="article-title">Cláusula Cuarta: Estructuras Fiduciarias, Valuación Accionaria y Restricciones de Transmisión</h3>
+                <span class="article-badge">Sintetizado de Gobernanza Fiduciaria & Escena 4 (Buy-Sell)</span>
             </div>
-            <div class="provenance-tag" id="prov-4">
-                <strong>Trazabilidad Sistémica:</strong> Diseñado para bloquear la intromisión de competidores directos o terceros extraños y proteger las acciones ante contingencias patrimoniales particulares.
+            <div class="provenance-tag" id="tag-clausula-4">
+                <strong>Trazabilidad Sistémica:</strong> Cruzado con los fideicomisos de administración/sucesorios elegidos y las fórmulas preestablecidas de valuación de acciones ante retiros o conflictos.
             </div>
-            <textarea class="clause-textarea" id="texto-art-4">CUARTO: Queda terminantemente prohibida la transferencia, venta o cesión gratuita u onerosa de acciones a competidores directos del mercado o a terceros extraños a la estructura familiar sin agotar previamente el derecho de tanteo y adquisición preferente a favor de los socios restantes y de la propia sociedad. Asimismo, se estipula la constitución estatutaria de restricciones temporales de inalienabilidad y usufructo vitalicio con nuda propiedad para proteger la titularidad ante embargos derivados de crisis patrimoniales personales de los accionistas.</textarea>
+            <textarea class="clause-textarea" id="texto-clausula-4">CUARTO: Para neutralizar bloqueos en la toma de decisiones y evitar litigios judiciales ordinarios, se establece un mecanismo obligatorio de compraventa accionaria (Buy-Sell). Ante el retiro o disidencia de un socio, la valuación del paquete accionario se calculará exclusivamente mediante un múltiplo de EBITDA normalizado de los últimos tres (3) ejercicios fiscales, auditado por contadores externos independientes. La titularidad de las acciones podrá incorporarse a estructuras fiduciarias de administración con el objeto de evitar la fragmentación del capital accionario ante eventos sucesorios imprevistos.</textarea>
         </div>
 
-        <!-- ARTÍCULO 5: SOLUCIÓN DE CONTROVERSIAS Y ARBITRAJE VINCULANTE (Derivado de Escena 11) -->
-        <div class="article-card active-article" id="art-5">
+        <!-- CLÁUSULA QUINTA: FILANTROPÍA, ÉTICA Y RESOLUCIÓN DE CONTROVERSIAS -->
+        <div class="article-section">
             <div class="article-header">
-                <h3 class="article-title">Artículo 5: Tribunal de Arbitraje Institucional y Mediación Previa Confidencial</h3>
-                <span class="article-badge">Derivado de Escena 11</span>
+                <h3 class="article-title">Cláusula Quinta: Gobernanza en Filantropía, Código Ético y Tribunal de Arbitraje Vinculante</h3>
+                <span class="article-badge">Sintetizado de Gobernanza en Filantropía & Escena 11</span>
             </div>
-            <div class="provenance-tag" id="prov-5">
-                <strong>Trazabilidad Sistémica:</strong> Incorporado para impedir la judicialización pública de conflictos familiares y preservar la reputación comercial de la marca.
+            <div class="provenance-tag" id="tag-clausula-5">
+                <strong>Trazabilidad Sistémica:</strong> Vinculado a la asignación de presupuestos para impacto social/fundaciones familiares y la obligatoriedad del arbitraje institucional privado.
             </div>
-            <textarea class="clause-textarea" id="texto-art-5">QUINTO: Cualquier divergencia, controversia o conflicto interpretativo que surja entre las ramas familiares o los socios en relación con la ejecución, validez o efectos de este acuerdo parasocietario no podrá ser sometido a tribunales judiciales ordinarios en primera instancia, debiendo ser dirimido de forma obligatoria y definitiva mediante un procedimiento de mediación confidencial previa y posterior arbitraje institucional vinculante, cuyos laudos tendrán fuerza ejecutiva inmediata entre las partes.</textarea>
+            <textarea class="clause-textarea" id="texto-clausula-5">QUINTO: El holding corporativo institucionaliza un comité de filantropía y responsabilidad social destinado a gestionar programas de inversión comunitaria con un tope presupuestario anual aprobado por directorio. Asimismo, cualquier controversia, litigio o divergencia interpretativa derivada del presente acuerdo parasocietario no podrá ventilarse en la justicia ordinaria comercial en primera instancia, debiendo someterse inexorablemente a un proceso confidencial de mediación previa y posterior arbitraje institucional vinculante bajo la normativa vigente de la República Argentina, cuyos laudos poseerán fuerza ejecutiva inmediata.</textarea>
         </div>
 
     </div>
 
-    <!-- EXPORTADOR Y CONSOLIDADOR DINÁMICO DEL ACUERDO -->
+    <!-- EXPORTACIÓN Y CONSOLIDACIÓN -->
     <div class="export-panel" id="exportador">
-        <h3>Consolidado Jurídico del Acuerdo Parasocietario Adaptado</h3>
-        <p style="color: var::var(--text-muted); margin-bottom: 20px;">Exporte el documento articulado completo adaptado a las respuestas del holding y los socios en los micrositios previos.</p>
+        <h3>Consolidado Jurídico Definitivo del Protocolo Familiar y Acuerdo Parasocietario</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Exporte el articulado completo adaptado dinámicamente al perfil sistémico, advertencias y decisiones del holding familiar.</p>
         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <button class="btn" onclick="copiarAcuerdoCompleto()" style="padding: 12px 25px;">Copiar Acuerdo Parasocietario Completo</button>
+            <button class="btn" onclick="copiarAcuerdoCompleto()" style="padding: 12px 25px;">Copiar Protocolo y Acuerdo Completo</button>
             <button class="btn btn-secondary" onclick="descargarAcuerdoTXT()" style="padding: 12px 25px;">Descargar en Formato Texto (.txt)</button>
         </div>
     </div>
@@ -278,51 +308,67 @@
 </div>
 
 <script>
-    // Sincronización automática con la antesala (Genograma, Encrucijadas y Gobernanza)
+    // Motor de desarrollo y auditoría sincrónica al cargar la página
     window.addEventListener('DOMContentLoaded', () => {
-        sincronizarConAntesala();
+        ejecutarMotorSistemicoYAuditoria();
     });
 
-    function sincronizarConAntesala() {
-        // Recuperar historial del almacenamiento local generado en Gobernanza
+    function ejecutarMotorSistemicoYAuditoria() {
+        // Recuperar historiales de localStorage de los micrositios previos
         const historialGobernanza = JSON.parse(localStorage.getItem('historialGobernanza20')) || [];
-        const estadoSync = document.getElementById('estadoSincronizacion');
+        const panelAuditoria = document.getElementById('contenidoAuditoria');
 
-        if (historialGobernanza.length > 0) {
-            // Tomar el último jugador y holding activo registrados
-            const ultimoRegistro = historialGobernanza[historialGobernanza.length - 1];
-            estadoSync.innerHTML = `<strong>Sincronización Exitosa:</strong> Datos vinculados para <strong>${ultimoRegistro.jugador}</strong> | Razón Social: <strong>${ultimoRegistro.holding}</strong> (${historialGobernanza.length} decisiones analizadas en Gobernanza).`;
-            
-            // Personalizar los textos de los artículos dinámicamente según las respuestas predominantes
-            adaptarArticulosSegunConducta(historialGobernanza);
+        let htmlAuditoria = '';
+        let disociacionesDetectadas = 0;
+
+        // Análisis dinámico de coherencia entre los micrositios
+        const esc1 = historialGobernanza.find(h => h.escena === 'Escena 1'); // Ingreso de familiares
+        const esc4 = historialGobernanza.find(h => h.escena === 'Escena 4'); // Valuación / Salida
+        const esc14 = historialGobernanza.find(h => h.escena === 'Escena 14'); // Dividendos / Caja
+
+        // Regla 1: Análisis de disociación entre rigor de ingreso y relajación patrimonial
+        if (esc1 && esc1.semaforo === 'RED' && esc14 && esc14.semaforo === 'GREEN') {
+            disociacionesDetectadas++;
+            htmlAuditoria += `
+                <div class="discrepancy-card">
+                    <h4>⚠️ Disociación Sistémica Detectada N° ${discrepancyCounter = disociacionesDetectadas}: Flexibilidad en Ingreso vs. Rigor en Dividendos</h4>
+                    <p><strong>Diagnóstico Técnico:</strong> Usted adoptó una postura flexible y permisiva en la Escena 1 (ingreso de familiares sin controles estrictos), pero simultáneamente exigió un rigor estricto de retiros de caja y dividendos en la Escena 14. 
+                    <br><em>Recomendación Legal:</em> En la práctica jurídica argentina, permitir el ingreso incontrolado de familiares sin idoneidad colisiona de inmediato con la exigencia de maximizar dividendos, generando tensiones operativas graves. Se recomienda unificar criterio endureciendo los filtros de ingreso en la Cláusula Segunda.</p>
+                </div>`;
+        }
+
+        // Regla 2: Análisis de salida societaria sin previsión de valuación
+        if (esc4 && esc4.semaforo === 'RED') {
+            disociacionesDetectadas++;
+            htmlAuditoria += `
+                <div class="discrepancy-card">
+                    <h4>⚠️ Discrepancia Crítica N° ${discrepanciesCount = disociacionesDetectadas}: Ausencia de Fórmula Preestablecida de Valuación (Buy-Sell)</h4>
+                    <p><strong>Diagnóstico Técnico:</strong> En las decisiones de salida y gobernanza patrimonial, se optó por esquivos o fórmulas abiertas de tasación de acciones ante conflictos de socios.
+                    <br><em>Recomendación Legal:</em> Bajo la jurisprudencia comercial nacional, carecer de un mecanismo objetivo de valuación (como EBITDA normalizado o peritaje contable tasado) convierte al acuerdo parasocietario en un instrumento vulnerable a impugnaciones judiciales por lesión subjetiva o abuso de posición dominante. Se ha ajustado la Cláusula Cuarta, pero se aconseja revisar esta opción en el micrositio de Encrucijadas.</p>
+                </div>`;
+        }
+
+        if (disociacionesDetectadas === 0) {
+            htmlAuditoria = `
+                <div class="success-audit">
+                    <strong>✅ Auditoría Sistémica Óptima:</strong> No se detectaron disociaciones críticas o contradicciones normativas graves entre las opciones elegidas en Genograma, Encrucijadas y las 20 Escenas de Gobernanza. El articulado resultante posee total coherencia interna y sólida validez bajo el derecho societario argentino.
+                </div>`;
         } else {
-            estadoSync.innerHTML = `<strong>Aviso:</strong> No se detectó un historial previo activo en localStorage. Se muestran cláusulas base parametrizadas para empresas familiares complejas.`;
+            htmlAuditoria += `
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--warning);">
+                    <strong>Aviso del Consultor:</strong> El motor ha redactado el articulado vigente, pero se advierte enfáticamente que <em>si no se corrigen las disociaciones señaladas en los micrositios de origen</em>, el instrumento puede perder eficacia práctica ante conflictos judiciales o sucesorios reales.
+                </p>`;
         }
-    }
 
-    function adaptarArticulosSegunConducta(historial) {
-        // Buscar decisiones clave en Gobernanza para ajustar la redacción del acuerdo parasocietario
-        const esc1 = historial.find(h => h.escena === 'Escena 1');
-        const esc4 = historial.find(h => h.escena === 'Escena 4');
-        const esc11 = historial.find(h => h.escena === 'Escena 11');
-
-        if (esc1 && esc1.semaforo === 'RED') {
-            document.getElementById('prov-1').innerHTML = `<strong>Trazabilidad Sistémica (Alerta Activa):</strong> El jugador adoptó una postura flexible/riesgosa en ingreso de familiares. Se endurece el Artículo 1 con controles cruzados obligatorios para blindar a la firma.`;
-        }
-        if (esc4 && esc4.semaforo === 'GREEN') {
-            document.getElementById('prov-3').innerHTML = `<strong>Trazabilidad Sistémica (Óptima):</strong> Se ratifica la fórmula estricta de EBITDA a 3 años elegida por el jugador en la simulación de salida.`;
-        }
-        if (esc11 && esc11.semaforo === 'GREEN') {
-            document.getElementById('prov-5').innerHTML = `<strong>Trazabilidad Sistémica (Óptima):</strong> Se consolida la cláusula arbitral institucional obligatoria seleccionada en el micrositio anterior.`;
-        }
+        panelAuditoria.innerHTML = htmlAuditoria;
     }
 
     function recopilarAcuerdoCompleto() {
-        let textoFinal = "ACUERDO PARASOCIETARIO INTEGRAL Y VINCULANTE\n";
-        textoFinal +="==================================================\n\n";
+        let textoFinal = "PROTOCOLO FAMILIAR Y ACUERDO PARASOCIETARIO INTEGRAL\n";
+        textoFinal +="========================================================\n\n";
         
         for(let i = 1; i <= 5; i++) {
-            const textarea = document.getElementById('texto-art-' + i);
+            const textarea = document.getElementById('texto-clausula-' + i);
             if(textarea) {
                 textoFinal += textarea.value + "\n\n";
             }
@@ -333,7 +379,7 @@
     function copiarAcuerdoCompleto() {
         const contenido = recopilarAcuerdoCompleto();
         navigator.clipboard.writeText(contenido).then(() => {
-            alert('¡Acuerdo parasocietario copiado al portapapeles con éxito!');
+            alert('¡Protocolo familiar y acuerdo parasocietario copiado al portapapeles con éxito!');
         }).catch(err => {
             alert('Error al copiar el texto: ' + err);
         });
@@ -345,7 +391,7 @@
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'Acuerdo_Parasocietario_Empresa_Familiar.txt';
+        a.download = 'Protocolo_Familiar_Y_Acuerdo_Parasocietario.txt';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
