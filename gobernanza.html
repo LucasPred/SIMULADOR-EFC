@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFC - Instrumentos de Gobernanza Familiar</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19; --card-bg: #131b2e; --accent: #38bdf8;
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border-col: #1e293b; --success: #22c55e;
+        }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 850px; background-color: var(--card-bg); border-radius: 16px; padding: 30px; border: 1px solid var(--border-col); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .top-bar { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-col); padding-bottom: 15px; margin-bottom: 20px; }
+        .user-info { display: flex; align-items: center; gap: 12px; }
+        .user-info img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+        h1 { font-size: 1.2rem; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+        .module-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px; }
+        .gov-card { background: #0b0f19; border: 1px solid var(--border-col); padding: 15px; border-radius: 8px; }
+        .gov-card h3 { color: var(--accent); font-size: 0.95rem; margin-top: 0; }
+        label { font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 5px; }
+        select, input { width: 100%; padding: 8px; background: #1e293b; border: 1px solid #334155; color: white; border-radius: 6px; margin-bottom: 10px; box-sizing: border-box; }
+        .actions { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .btn { background-color: var(--accent); color: #0b0f19; border: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="user-info">
+                <img id="avatarDisplay" alt="Avatar">
+                <div>
+                    <h4 id="lblUsuario" style="margin:0; font-size:0.95rem; color:var(--accent);">Usuario</h4>
+                    <span id="lblRazon" style="font-size:0.7rem; color:var(--text-muted);">Empresa</span>
+                </div>
+            </div>
+            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--accent);">Módulo: Gobernanza</div>
+        </div>
+
+        <h1>Diseño de Órganos de Gobierno y Protocolo Familiar</h1>
+        <p style="font-size:0.85rem; color:var(--text-muted);">Configure las reglas de convivencia institucional, requisitos de ingresos de familiares a la nómina y periodicidad de las Asambleas.</p>
+
+        <div class="module-grid">
+            <div class="gov-card">
+                <h3>1. Asamblea Familiar & Consejo</h3>
+                <label>Periodicidad de Reuniones:</label>
+                <select id="periodicidad">
+                    <option value="trimestral">Trimestral (Control Operativo Estricto)</option>
+                    <option value="semestral" selected>Semestral (Estándar Corporativo)</option>
+                    <option value="anual">Anual (Solo Balance General)</option>
+                </select>
+                <label>Requisito de Ingreso Laboral de Familiares:</label>
+                <select id="ingreso_familiar">
+                    <option value="estricto">Título universitario + 3 años externos obligatorios</option>
+                    <option value="moderado" selected>Evaluación por comité de pares no vinculados</option>
+                    <option value="flexible">Decisión directa de los fundadores</option>
+                </select>
+            </div>
+
+            <div class="gov-card">
+                <h3>2. Mecanismo de Resolución de Conflictos</h3>
+                <label>Instancia Previa al Litigio Judicial:</label>
+                <select id="arbitraje">
+                    <option value="mediacion" selected>Mediación y Arbitraje Vinculante Institucional</option>
+                    <option value="directorio">Comité de Sabios / Fundadores</option>
+                    <option value="judicial">Vía Judicial Ordinaria Directa</option>
+                </select>
+                <label>Validez del Protocolo:</label>
+                <input type="text" value="Vinculante por adhesión estatutaria" readonly style="color:var(--success); font-weight:bold;">
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn" style="background:#1e293b; color:var(--text-main); border:1px solid #334155;" onclick="window.location.href='encrucijadas.html'">Volver a Encrucijadas</button>
+            <button class="btn" onclick="guardarGobernanza()">Guardar Gobernanza y Continuar a Acuerdos Parasocietarios</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario") || "Usuario";
+        document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon") || "Empresa";
+        document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar") || "";
+
+        function guardarGobernanza() {
+            sessionStorage.setItem("efc_gov_periodicidad", document.getElementById("periodicidad").value);
+            sessionStorage.setItem("efc_gov_ingreso", document.getElementById("ingreso_familiar").value);
+            sessionStorage.setItem("efc_gov_arbitraje", document.getElementById("arbitraje").value);
+            sessionStorage.setItem("efc_gobernanza_completada", "true");
+            window.location.href = "parasocietarios.html";
+        }
+    </script>
+</body>
+</html>
