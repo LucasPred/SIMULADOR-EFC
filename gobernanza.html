@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo de Gobernanza y Simulación Sistémica | Empresas Familiares</title>
+    <title>Módulo de Gobernanza y Simulación Pragmática (20 Escenas) | Empresas Familiares</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -170,12 +170,12 @@
         }
 
         .feedback-box {
-            padding: 12px 15px;
+            padding: 14px 18px;
             margin-top: 15px;
             border-radius: 6px;
             display: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.92rem;
+            line-height: 1.5;
         }
 
         .feedback-green { background-color: rgba(34, 197, 94, 0.15); border-left: 4px solid var(--success); color: #86efac; }
@@ -194,6 +194,24 @@
             color: var(--warning);
             margin-top: 0;
         }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+
+        .history-table th, .history-table td {
+            border: 1px solid var(--border-col);
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .history-table th {
+            background-color: #1f2937;
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -201,27 +219,28 @@
 <div class="container">
     <div class="nav-bar">
         <a href="encrucijadas.html" class="btn btn-secondary">&larr; Volver a Encrucijadas</a>
-        <a href="#consultor" class="btn btn-secondary" style="border-color: var(--warning); color: var(--warning);">Acceso Consultor</a>
+        <a href="#consultor" class="btn btn-secondary" style="border-color: var(--warning); color: var(--warning);">Panel Consultor &darr;</a>
     </div>
 
     <header>
-        <h1>Módulo de Gobernanza y Simulación Pragmática</h1>
-        <p>Acompañamiento directivo, análisis de viabilidad por semáforo y parametrización corporativa.</p>
+        <h1>Módulo de Gobernanza y Simulación Pragmática (20 Escenas)</h1>
+        <p>Acompañamiento directivo integral, análisis de viabilidad por semáforo y parametrización corporativa avanzada (Marco Patricia Angus).</p>
     </header>
 
-    <!-- AUTENTICACIÓN Y TIPO SOCIETARIO -->
+    <!-- AUTENTICACIÓN DEL JUGADOR Y HOLDING -->
     <div class="auth-box">
         <div>
-            <strong style="display:block; color:var(--accent); margin-bottom:5px;">Autenticación del Holding / Empresa</strong>
-            <span style="font-size:0.85rem; color:var(--text-muted);">Defina la razón social y ropaje societario para parametrizar el plexo normativo aplicable.</span>
+            <strong style="display:block; color:var(--accent); margin-bottom:5px;">Registro de Jugador / Familiar y Holding</strong>
+            <span style="font-size:0.85rem; color:var(--text-muted);">Identifique al jugador y la razón social para vincular su conducta en el historial.</span>
         </div>
-        <input type="text" id="razonSocial" placeholder="Razón Social Completa (Ej: GRAVAFILT S.A.)">
+        <input type="text" id="nombreJugador" placeholder="Nombre y Apellido del Familiar / Jugador">
+        <input type="text" id="razonSocial" placeholder="Razón Social (Ej: GRAVAFILT S.A.)">
         <select id="tipoSocietario">
             <option value="SA">Sociedad Anónima (S.A.)</option>
             <option value="SRL">Sociedad de Responsabilidad Limitada (S.R.L.)</option>
             <option value="SAS">Sociedad por Acciones Simplificada (S.A.S.)</option>
         </select>
-        <button class="btn" onclick="guardarParametros()">Fijar Estructura</button>
+        <button class="btn" onclick="registrarJugador()">Iniciar Sesión Activa</button>
     </div>
 
     <div id="escenas-container">
@@ -236,13 +255,13 @@
             <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Asimetría de idoneidad vs. presión de la rama familiar fundadora por colocación directa.</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(1, 'green', '🟢 Viabilidad Óptima: Exigir 3 años externos, título y comité. (Articulado a redactar: Requisito Habilitante Estricto en Acuerdos Parasocietarios).')">
+                <label class="option-label" onclick="registrarRespuesta(1, 'A) Exigir 3 años de experiencia externa, título y comité (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Exigir 3 años de experiencia en empresas no vinculadas, título universitario afín y evaluación de un comité técnico independiente blinda a la compañía contra la endogamia gerencial, valida capacidades técnicas reales ante terceros y asegura legitimidad institucional frente a cuadros profesionales.')">
                     <input type="radio" name="e1"> A) Exigir 3 años de experiencia externa, título universitario y evaluación de comité independiente.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(1, 'yellow', '🟡 Pragmatismo Aceptable: Permite ingreso sin experiencia externa previa pero condicionada a tutoría directiva y evaluación semestral de desempeño.')">
+                <label class="option-label" onclick="registrarRespuesta(1, 'B) Tutoría interna y evaluación semestral (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Permitir el ingreso directo pero condicionado a una tutoría ejecutiva estricta y evaluaciones periódicas de desempeño minimiza la fricción familiar inicial sin resignar control sobre los resultados operativos reales.')">
                     <input type="radio" name="e1"> B) Permitir ingreso directo sin experiencia externa, sujeto a tutoría interna obligatoria y evaluación de desempeño.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(1, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Acceso sin restricciones por parentesco. Genera destrucción de valor corporativo, fuga de cuadros gerenciales y alta conflictividad operativa.')">
+                <label class="option-label" onclick="registrarRespuesta(1, 'C) Ingreso libre y automático por parentesco (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Otorgar el ingreso libre y automático por mera consanguinidad destruye la motivación de los cuadros gerenciales externos, instala la percepción de impunidad directiva y compromete seriamente la eficiencia operativa de la firma.')">
                     <input type="radio" name="e1"> C) Otorgar ingreso libre y automático a cualquier heredero mayor de edad por mera voluntad de los fundadores.
                 </label>
             </div>
@@ -259,13 +278,13 @@
             <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Pugna entre liquidez personal de socios no operativos y necesidades de capital de trabajo del holding.</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(2, 'green', '🟢 Viabilidad Óptima: Piso obligatorio del 30% y remanente atado a ratios de endeudamiento y Capex.')">
+                <label class="option-label" onclick="registrarRespuesta(2, 'A) Piso obligatorio 30% y remanente atado a Capex (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Fijar un piso previsible del 30% otorga tranquilidad a los socios pasivos de subsistencia, mientras que atar el remanente a ratios financieros y Capex garantiza que la compañía conserve solvencia para sostener inversiones de largo plazo.')">
                     <input type="radio" name="e2"> A) Fijar piso obligatorio del 30% en efectivo y condicionar excedentes a ratios de liquidez y solvencia.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(2, 'yellow', '🟡 Pragmatismo Aceptable: Distribución variable discrecional sujeta a votación de mayoría simple en Asamblea anual según caja disponible.')">
+                <label class="option-label" onclick="registrarRespuesta(2, 'B) Distribución variable por mayoría simple en Asamblea (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Acordar distribuciones flexibles según el flujo de caja trimestral real evita atar a la empresa a fórmulas fijas en contextos macroeconómicos volátiles, preservando la agilidad financiera.')">
                     <input type="radio" name="e2"> B) Acordar distribución flexible sujeta a la disponibilidad trimestral de caja sin porcentajes rígidos previos.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(2, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Distribución del 100% de utilidades para calmar reclamos familiares, asfixiando la capacidad de inversión y endeudamiento bancario.')">
+                <label class="option-label" onclick="registrarRespuesta(2, 'C) Distribuir 100% de utilidades y endeudar la firma (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Distribuir el 100% de las utilidades descapitaliza el negocio y traslada la carga financiera a pasivos bancarios costosos, poniendo en riesgo la sustentabilidad patrimonial del holding ante vaivenes del mercado.')">
                     <input type="radio" name="e2"> C) Distribuir la totalidad de las utilidades netas para evitar tensiones familiares inmediatas, fondeando la operación con endeudamiento bancario.
                 </label>
             </div>
@@ -282,13 +301,13 @@
             <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Contaminación de la gobernanza societaria por rupturas conyugales y filtración de secretos comerciales.</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(3, 'green', '🟢 Viabilidad Óptima: Prohibición expresa de afines hasta 2do grado, salvo dispensa unánime del Consejo de Familia.')">
+                <label class="option-label" onclick="registrarRespuesta(3, 'A) Prohibición expresa de afines salvo dispensa unánime (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Establecer la prohibición de cónyuges y afines protege directamente los activos societarios ante eventuales disoluciones vinculares y evita la injerencia de terceros ajenos a la sangre fundadora en la toma de decisiones estratégicas.')">
                     <input type="radio" name="e3"> A) Prohibir expresamente la incorporación de cónyuges y afines, salvo dispensa unánime del Consejo de Familia.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(3, 'yellow', '🟡 Pragmatismo Aceptable: Permitir contratación operativa subordinada de cónyuges pero prohibir terminantemente su acceso a puestos de directorio o gerencias clave.')">
+                <label class="option-label" onclick="registrarRespuesta(3, 'B) Contratación operativa subordinada prohibiendo directorios (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Permitir roles operativos no gerenciales aprovecha talento disponible en el entorno familiar sin otorgarles peso accionario ni poder de decisión en el Directorio.')">
                     <input type="radio" name="e3"> B) Permitir contratación en puestos operativos no estratégicos, vedando su acceso a directorios y gerencias.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(3, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Libre ingreso de cónyuges a cualquier estatus directivo. Alto riesgo de transferencia patrimonial involuntaria ante disolución matrimonial.')">
+                <label class="option-label" onclick="registrarRespuesta(3, 'C) Libre ingreso de cónyuges sin restricciones (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Tratar a los cónyuges sin restricciones expone a la compañía a litigios complejos por división de bienes corporativos y facilita la fuga de información estratégica hacia ex-cónyuges en litigio.')">
                     <input type="radio" name="e3"> C) Tratar a los cónyuges exactamente igual que a cualquier tercero, sin restricciones especiales en la estructura.
                 </label>
             </div>
@@ -302,16 +321,16 @@
                 <span class="scene-badge">Protocolo de Retiro</span>
             </div>
             <p>Accionista minoritario disidente pretende retirarse exigiendo una valuación desproporcionada y amenaza con litigar públicamente.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Bloqueo patrimonial y riesgo de litigiosidad por ausencia de fórmulas preestablecidas de recompra.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Bloqueo patrimonial y riesgo de litigiosidad por ausencia de fórmulas preestablecidas de recompra.</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(4, 'green', '🟢 Viabilidad Óptima: Fórmula matemática basada en múltiplo EBITDA normalizado y pagos fraccionados en cuotas.')">
+                <label class="option-label" onclick="registrarRespuesta(4, 'A) Fórmula estricta de EBITDA a 3 años y pago en cuotas (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Instituir una fórmula matemática objetiva (múltiplo EBITDA normalizado) junto a un plan de pagos fraccionado neutraliza subjetividades, evita peritajes judiciales interminables y previene la cesación de pagos de la empresa.')">
                     <input type="radio" name="e4"> A) Instituir fórmula estricta basada en múltiplo de EBITDA a 3 años con pago fraccionado en cuotas anuales.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(4, 'yellow', '🟡 Pragmatismo Aceptable: Valuación por tasación de peritos independientes de parte con derecho de preferencia de compra en plazos flexibles.')">
+                <label class="option-label" onclick="registrarRespuesta(4, 'B) Tasación por peritos independientes con preferencia (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Acordar tasación experta externa con derecho de preferencia otorga flexibilidad ante realidades de mercado cambiantes, manteniendo el control de adquisición dentro del círculo de socios vigentes.')">
                     <input type="radio" name="e4"> B) Acordar tasación por contadores de parte con plazos de pago negociados caso por caso ante cada salida.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(4, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Ausencia de mecanismo de salida pactado. Obliga a ventilación judicial y peritajes imprevisibles que descapitalizan la empresa.')">
+                <label class="option-label" onclick="registrarRespuesta(4, 'C) Ausencia de reglas de salida, ventilación judicial (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Carecer de reglas previas de salida deja a la empresa a merced de medidas cautelares, embargos preventivos y litigios públicos que destruyen el valor reputacional y operativo de la marca.')">
                     <input type="radio" name="e4"> C) Omitir reglas de salida previa, dejando que el socio descontento recurra a tribunales en caso de desacuerdo.
                 </label>
             </div>
@@ -325,16 +344,16 @@
                 <span class="scene-badge">Transparencia Operativa</span>
             </div>
             <p>Un director adjudica contratos de logística y transporte a una empresa propiedad de su hermano sin licitación ni precios de mercado.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Desvío indirecto de rentabilidad societaria en beneficio particular de una rama familiar vinculada.</div >
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Desvío indirecto de rentabilidad societaria en beneficio particular de una rama familiar vinculada.</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(5, 'green', '🟢 Viabilidad Óptima: Obligación de cotización de 3 terceros, aprobación calificada y abstención del director interesado.')">
+                <label class="option-label" onclick="registrarRespuesta(5, 'A) Cotización de 3 terceros y abstención del director (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Exigir cotizaciones comparativas de terceros independientes y la abstención obligatoria del director interesado garantiza la transparencia fiduciaria y blinda a los administradores frente a acciones penales por administración fraudulenta.')">
                     <input type="radio" name="e5"> A) Exigir cotización de tres terceros independientes, informe técnico de mercado y abstención del director vinculado.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(5, 'yellow', '🟡 Pragmatismo Aceptable: Informar la contratación al Directorio ex-post con homologación por mayoría simple sin cotizaciones formales previas.')">
+                <label class="option-label" onclick="registrarRespuesta(5, 'B) Informar ex-post con convalidación por mayoría simple (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Permitir la convalidación posterior en Directorio agiliza la operativa comercial de proveedores vinculados sin detener la cadena logística, manteniendo un registro formal de la operación.')">
                     <input type="radio" name="e5"> B) Informar la operación en la siguiente reunión de directorio para convalidación por mayoría simple.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(5, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Adjudicación directa sin control. Genera sospechas de vaciamiento y desmotivación en socios minoritarios no integrados.')">
+                <label class="option-label" onclick="registrarRespuesta(5, 'C) Adjudicación directa libre con parientes (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Avalar contrataciones directas sin control de mercado fomenta la extracción encubierta de utilidades, genera resentimiento en las demás ramas familiares y vulnera los deberes de lealtad societaria.')">
                     <input type="radio" name="e5"> C) Permitir contrataciones directas libres con parientes si el director considera que el precio es razonable.
                 </label>
             </div>
@@ -344,21 +363,21 @@
         <!-- ESCENA 6 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 6: Bloqueo Decisorio (Deadlock) en Directorio</h3>
-                <span class="scene-badge">Parálisis Estructural</span>
+                <h3 class="scene-title">Escena 6: Uso de Bienes Corporativos para Fines Personales</h3>
+                <span class="scene-badge">Patrimonio y Uso</span>
             </div>
-            <p>Directorio paritario (2 miembros rama A y 2 miembros rama B) genera parálisis operativa absoluta ante discrepancias estratégicas.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Inacción corporativa permanente ante empates técnicos sistemáticos en votaciones directivas.</div >
+            <p>Accionistas fundadores utilizan flotas de vehículos, inmuebles y tarjetas corporativas de la firma para gastos particulares y viajes vacacionales.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Confusión entre patrimonio personal y societario con impacto fiscal y contingencias contables.</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(6, 'green', '🟢 Viabilidad Óptima: Incorporar Director Independiente dirimente o activar periodo de mediación obligatoria de 30 días.')">
-                    <input type="radio" name="e6"> A) Incorporar un Director Independiente dirimente o activar período de mediación obligatoria externa.
+                <label class="option-label" onclick="registrarRespuesta(6, 'A) Reglamento de uso tasado y deducción vía cuenta corriente de socio (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Establecer un reglamento estricto que debite el costo del uso particular directamente de la cuenta corriente particular del socio blinda a la compañía ante inspecciones fiscales y evita la presunción de retiros encubiertos de utilidades.')">
+                    <input type="radio" name="e6"> A) Reglamento estricto de uso con reintegro obligatorio de gastos y débito en cuenta corriente particular del socio.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(6, 'yellow', '🟡 Pragmatismo Aceptable: Voto de calidad rotativo anual entre los presidentes de ambas ramas familiares.')">
-                    <input type="radio" name="e6"> B) Establecer voto de calidad rotativo anual entre los representantes de ambas ramas.
+                <label class="option-label" onclick="registrarRespuesta(6, 'B) Cupo anual tasado para fundadores con registro contable genérico (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Asignar un presupuesto acotado y predecible para uso de bienes corporativos reconoce la trayectoria de los fundadores sin descontrolar los gastos operativos anuales de la empresa.')">
+                    <input type="radio" name="e6"> B) Establecer un cupo anual discrecional acotado para los fundadores sujeto a rendición simplificada.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(6, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Mantener el empate sin arbitraje. Conduce a la parálisis total de pagos, contratos y gestión gerencial.')">
-                    <input type="radio" name="e6"> C) No establecer mecanismo de desempate, esperando que las partes resuelvan el diferendo voluntariamente.
+                <label class="option-label" onclick="registrarRespuesta(6, 'C) Uso libre e ilimitado sin contraprestación contable (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Permitir el uso discrecional sin registros genera riesgos graves de impugnación impositiva, multas por parte del fisco y observación de balances por parte de auditores externos.')">
+                    <input type="radio" name="e6"> C) Permitir el uso libre e ilimitado de los activos corporativos por parte de los fundadores y su núcleo íntimo.
                 </label>
             </div>
             <div class="feedback-box" id="fb-6"></div>
@@ -367,21 +386,21 @@
         <!-- ESCENA 7 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 7: Financiamiento Privado de Accionistas (Mutuos)</h3>
-                <span class="scene-badge">Aportes y Préstamos</span>
+                <h3 class="scene-title">Escena 7: Sucesión del Líder Fundador y Liderazgo Operativo</h3>
+                <span class="scene-badge">Transición de Mando</span>
             </div>
-            <p>Accionista inyecta fondos informales de emergencia exigiendo tasas usurarias o capitalizaciones encubiertas dilusivas.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Asimetría financiera y abuso de posición económica para alterar el capital accionario mediante aportes informales.</div >
+            <p>El patriarca fundador se resiste a delegar el mando operativo a pesar de la edad avanzada, generando parálisis decisoria.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Cuello de botella gerencial por centralización extrema de la autoridad en el fundador histórico.</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(7, 'green', '🟢 Viabilidad Óptima: Prohibir préstamos informales y regular aportes irrevocables con tasa testigo oficial y derecho de opción.')">
-                    <input type="radio" name="e7"> A) Prohibir mutuos informales y regular aportes irrevocables con tasa testigo bancaria y paridad de opción.
+                <label class="option-label" onclick="registrarRespuesta(7, 'A) Creación de Directorio Ejecutivo con CEO externo y rol consultivo del fundador (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Institucionalizar un Directorio Ejecutivo con un CEO profesional y reubicar al fundador como Presidente Honorario preserva su respeto institucional mientras transfiere la gestión diaria a manos idóneas.')">
+                    <input type="radio" name="e7"> A) Transición planificada hacia un CEO externo con el fundador asumiendo la Presidencia Honoraria del Consejo.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(7, 'yellow', '🟡 Pragmatismo Aceptable: Permitir mutuos particulares entre socios documentados formalmente ante escribano con tasa de mercado acordada.')">
-                    <input type="radio" name="e7"> B) Permitir préstamos particulares entre socios y la sociedad documentados con tasa de mercado estándar.
+                <label class="option-label" onclick="registrarRespuesta(7, 'B) Co-gestión temporal entre heredero principal y fundador (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Establecer un período de co-gestión supervisada permite transferir el know-how directivo de manera paulatina, reduciendo la resistencia psicológica del fundador.')">
+                    <input type="radio" name="e7"> B) Establecer un esquema de co-gestión transitoria de 24 meses entre el fundador y un heredero designado.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(7, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Admisión de inyecciones de caja informales discrecionales. Abre la puerta a la dilución encubierta de socios minoritarios.')">
-                    <input type="radio" name="e7"> C) Habilitar inyecciones de fondos informales libres sin intervención de la asamblea ni derecho de preferencia.
+                <label class="option-label" onclick="registrarRespuesta(7, 'C) Mantener al fundador en el mando absoluto hasta su deceso (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Sostener la conducción unipersonal sin planes de contingencia expone a la compañía a un vacío de poder crítico e inmediato ante cualquier imprevisto de salud del líder.')">
+                    <input type="radio" name="e7"> C) Conservar el esquema de mando unipersonal absoluto hasta que el fundador decida retirarse motu proprio.
                 </label>
             </div>
             <div class="feedback-box" id="fb-7"></div>
@@ -390,21 +409,21 @@
         <!-- ESCENA 8 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 8: Uso de Activos Corporativos para Fines Personales</h3>
-                <span class="scene-badge">Control de Activos</span>
+                <h3 class="scene-title">Escena 8: Profesionalización del Directorio y Directores Independientes</h3>
+                <span class="scene-badge">Gobierno Corporativo</span>
             </div>
-            <p>Uso indiscriminado de vehículos de alta gama y propiedades de la empresa por familiares que no prestan servicios efectivos.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Merma injustificada del patrimonio societario y contingencias fiscales por beneficios encubiertos.</div >
+            <p>El Directorio está compuesto exclusivamente por familiares directos que carecen de visión estratégica de mercado y capacidad de control técnico.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Falta de contrapeso objetivo y ausencia de perspectiva externa en decisiones de alto impacto.</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(8, 'green', '🟢 Viabilidad Óptima: Política formal de comodatos, imputación fiscal de retribuciones en especie y trazabilidad.')">
-                    <input type="radio" name="e8"> A) Establecer política formal de comodatos, imputación de retribuciones en especie y trazabilidad de uso.
+                <label class="option-label" onclick="registrarRespuesta(8, 'A) Incorporar 30% de directores independientes con trayectoria sectorial (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Sumar directores independientes ajenos al núcleo familiar aporta objetividad técnica, mejores prácticas de mercado y un arbitraje neutral en disputas entre distintas ramas familiares.')">
+                    <input type="radio" name="e8"> A) Incorporar un tercio de directores independientes con voz y voto para dotar de objetividad al cuerpo colegiado.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(8, 'yellow', '🟡 Pragmatismo Aceptable: Asignación de un único vehículo corporativo por rama familiar bajo declaración jurada de uso mixto.')">
-                    <input type="radio" name="e8"> B) Limitar el uso a un rodado por rama familiar bajo declaración jurada de afectación mixta.
+                <label class="option-label" onclick="registrarRespuesta(8, 'B) Crear un Comité Asesor externo sin voto vinculante (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Constituir un consejo consultivo externo permite captar asesoramiento especializado de jerarquía sin ceder espacios en el voto estatutario del Directorio familiar.')">
+                    <input type="radio" name="e8"> B) Instituir un Consejo Asesor externo de consulta periódica sin modificar la composición legal del Directorio.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(8, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Uso discrecional ilimitado de flota y bienes por cualquier pariente. Expone a severas multas de AFIP/Agencias fiscales.')">
-                    <input type="radio" name="e8"> C) Mantener el uso discrecional libre de bienes sociales por parte de todos los miembros del clan familiar.
+                <label class="option-label" onclick="registrarRespuesta(8, 'C) Directorio 100% familiar cerrado a opiniones externas (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Mantener un directorio endogámico perpetúa los sesgos operativos, impide la adopción de innovaciones tecnológicas y anula los controles internos necesarios.')">
+                    <input type="radio" name="e8"> C) Preservar un Directorio cerrado compuesto exclusivamente por integrantes de la familia fundadora.
                 </label>
             </div>
             <div class="feedback-box" id="fb-8"></div>
@@ -413,21 +432,21 @@
         <!-- ESCENA 9 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 9: Sucesión en la Presidencia y Concentración</h3>
-                <span class="scene-badge">Gobierno Dual</span>
+                <h3 class="scene-title">Escena 9: Remuneración de Familiares Empleados vs. Mercado</h3>
+                <span class="scene-badge">Compensaciones</span>
             </div>
-            <p>Fundador se resiste a delegar firma y control operativo, generando obsolescencia y bloqueo de la segunda línea gerencial.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Riesgo de parálisis por obsolescencia directiva y falta de renovación generacional ejecutiva.</div >
+            <p>Algunos familiares perciben salarios muy superiores a los estándares de mercado para puestos equivalentes, mientras otros trabajan ad-honorem esperando herencia.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Desfasaje retributivo y distorsión en la estructura de costos de personal jerárquico.</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(9, 'green', '🟢 Viabilidad Óptima: Separación de Presidencia del Consejo de Familia y Gerencia General con límite de edad estatutario.')">
-                    <input type="radio" name="e9"> A) Separar Presidencia del Consejo de Familia y Gerencia Ejecutiva, fijando límite de edad estatutario.
+                <label class="option-label" onclick="registrarRespuesta(9, 'A) Tabulador salarial atado a benchmarks de mercado auditados (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Vincular las compensaciones de todo familiar empleado a estudios de mercado salariales independientes asegura equidad interna, justifica los egresos ante los co-accionistas y premia el mérito real.')">
+                    <input type="radio" name="e9"> A) Implementar bandas salariales basadas en estudios de mercado externos y auditoría de compensaciones.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(9, 'yellow', '🟡 Pragmatismo Aceptable: Mantener al fundador como presidente vitalicio pero incorporando un Director Operativo Adjunto con poder de firma.')">
-                    <input type="radio" name="e9"> B) Mantener presidencia vitalicia del fundador sumando un Director Operativo con delegación parcial de firma.
+                <label class="option-label" onclick="registrarRespuesta(9, 'B) Escala fija aprobada por Consejo de Familia con bandas flexibles (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Establecer un marco de retribuciones consensuado internamente equilibra las expectativas salariales de la familia sin requerir consultorías externas permanentes.')">
+                    <input type="radio" name="e9"> B) Fijar una escala de remuneraciones validada por el Consejo de Familia según antigüedad y nivel de responsabilidad.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(9, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Concentración absoluta e indefinida de poderes en el fundador. Paraliza la iniciativa de los sucesores y colapsa la empresa ante su ausencia.')">
-                    <input type="radio" name="e9"> C) Sostener la concentración vitalicia de todos los poderes operativos y de firma en manos del fundador original.
+                <label class="option-label" onclick="registrarRespuesta(9, 'C) Asignación discrecional de sueldos según necesidades personales (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Fijar sueldos arbitrarios en función de necesidades particulares y no de la productividad destruye la disciplina financiera y genera profundos resentimientos internos.')">
+                    <input type="radio" name="e9"> C) Permitir que cada líder de rama establezca libremente los sueldos de sus familiares a cargo.
                 </label>
             </div>
             <div class="feedback-box" id="fb-9"></div>
@@ -436,21 +455,21 @@
         <!-- ESCENA 10 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 10: Cesión de Acciones a Herederos Incapaces o Menores</h3>
-                <span class="scene-badge">Voting Trust</span>
+                <h3 class="scene-title">Escena 10: Creación y Operatividad del Consejo de Familia</h3>
+                <span class="scene-badge">Órgano de Gobierno</span>
             </div>
-            <p>Fallecimiento de socio y transmisión hereditaria de acciones a menores de edad o cónyuge supérstite sin formación empresaria.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Ingreso de tutores externos y leguleyos ajenos a la empresa con capacidad de voto en decisiones corporativas.</div >
+            <p>Las reuniones familiares informales en domingos se mezclan con decisiones corporativas críticas, generando confusión sobre dónde se decide qué.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Difuminación de fronteras entre el ámbito de la propiedad, la familia y la gestión empresaria (Modelo de los Tres Círculos).</div>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(10, 'green', '🟢 Viabilidad Óptima: Obligar constitución de fideicomiso testamentario (Voting Trust) administrado por fiduciario profesional.')">
-                    <input type="radio" name="e10"> A) Obligar constitución de Fideicomiso Testamentario donde derechos políticos son ejercidos por fiduciario profesional.
+                <label class="option-label" onclick="registrarRespuesta(10, 'A) Reglamento formal del Consejo de Familia con agenda y actas obligatorias (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Institucionalizar el Consejo de Familia con un reglamento de funcionamiento, actas registradas y temarios previos separa de forma nítida la dinámica afectiva de la responsabilidad corporativa.')">
+                    <input type="radio" name="e10"> A) Crear el Consejo de Familia formal con reglamento escrito, actas obligatorias y separación estricta de la Asamblea.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(10, 'yellow', '🟡 Pragmatismo Aceptable: Otorgar representación política temporal a un único familiar albacea designado por el Consejo de Familia.')">
-                    <input type="radio" name="e10"> B) Designar un miembro albacea de la familia para agrupar y representar los votos de los menores sin fiduciario externo.
+                <label class="option-label" onclick="registrarRespuesta(10, 'B) Reuniones periódicas convocadas ante temas críticos específicos (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Celebrar encuentros familiares estructurados solo cuando surgen temas conflictivos permite canalizar el diálogo sin burocratizar excesivamente la relación cotidiana.')">
+                    <input type="radio" name="e10"> B) Instituir plenarios familiares trimestrales para tratar temas de convivencia sin un reglamento rígido.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(10, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Permitir ejercicio directo de votos por tutores legales o cónyuges no idóneos. Exenta a la gestión de criterio técnico y abre juicios sucesorios.')">
-                    <input type="radio" name="e10"> C) Permitir ejercicio directo de derechos políticos por tutores legales sin restricción ni fideicomiso.
+                <label class="option-label" onclick="registrarRespuesta(10, 'C) Decisiones familiares informales en reuniones sociales (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Tomar decisiones corporativas vinculantes en ámbitos informales sin registro documental fomenta la ambigüedad, el olvido de acuerdos y futuros litigios societarios.')">
+                    <input type="radio" name="e10"> C) Continuar decidiendo los temas importantes de la empresa en reuniones familiares informales y domingos de asado.
                 </label>
             </div>
             <div class="feedback-box" id="fb-10"></div>
@@ -459,21 +478,21 @@
         <!-- ESCENA 11 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 11: Información Confidencial y Filtraciones</h3>
-                <span class="scene-badge">Secreto Comercial</span>
+                <h3 class="scene-title">Escena 11: Solución de Controversias y Arbitraje Vinculante</h3>
+                <span class="scene-badge">Mecanismos Preventivos</span>
             </div>
-            <p>Disputas familiares escalan motivando a un integrante a filtrar balances, costos o contratos estratégicos a competidores.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Vulneración de ventajas competitivas sectoriales y filtración de secretos industriales a competidores directos.</div >
+            <p>Ante un conflicto irresoluble entre ramas familiares, los socios amenazan con iniciar demandas judiciales ordinarias públicas y costosas.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Judicialización de disputas societarias con exposición pública y daño reputacional irreparable para la marca.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(11, 'green', '🟢 Viabilidad Óptima: Cláusula penal severa, multa indemnizatoria automática y exclusión forzosa inmediata del infractor.')">
-                    <input type="radio" name="e11"> A) Imponer cláusula penal severa, multa indemnizatoria automática y exclusión forzosa inmediata del socio infractor.
+                <label class="option-label" onclick="registrarRespuesta(11, 'A) Cláusula arbitral obligatoria institucional y mediación previa (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Establecer una cláusula arbitral estatutaria obligatoria con mediación previa confidencial evita la exposición pública de los conflictos, reduciendo drásticamente los costos y tiempos procesales.')">
+                    <input type="radio" name="e11"> A) Establecer cláusula arbitral obligatoria con tribunal de arbitraje institucional y mediación previa confidencial.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(11, 'yellow', '🟡 Pragmatismo Aceptable: Obligación de retractación pública y suspensión temporal de percepción de dividendos por un ejercicio fiscal.')">
-                    <input type="radio" name="e11"> B) Establecer apercibimiento ético formal y suspensión temporal del derecho de percepción de dividendos.
+                <label class="option-label" onclick="registrarRespuesta(11, 'B) Mediador externo designado de común acuerdo ante cada conflicto (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Acordar el recurso a un facilitador o mediador externo de prestigio cada vez que surja un cortocircuito preserva la confidencialidad sin necesidad de tribunales rígidos preconstituidos.')">
+                    <input type="radio" name="e11"> B) Acordar la intervención de un mediador externo de confianza mutua antes de cualquier acción legal.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(11, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Considerar la filtración como mera desavenencia familiar sin consecuencias patrimoniales societarias graves.')">
-                    <input type="radio" name="e11"> C) No tipificar sanciones patrimoniales por filtración de información bajo el argumento de la indulgencia familiar.
+                <label class="option-label" onclick="registrarRespuesta(11, 'C) Vía libre para litigios judiciales ordinarios públicos (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Permitir la apertura inmediata de juicios ordinarios destruye el clima de negocios, paraliza cuentas bancarias y filtra secretos industriales a la competencia.')">
+                    <input type="radio" name="e11"> C) Dejar expedita la vía judicial ordinaria para que cada socio accione legalmente según su criterio.
                 </label>
             </div>
             <div class="feedback-box" id="fb-11"></div>
@@ -482,21 +501,21 @@
         <!-- ESCENA 12 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 12: Régimen de Dedicación Exclusiva y No Competencia</h3>
-                <span class="scene-badge">Exclusividad</span>
+                <h3 class="scene-title">Escena 12: Plan de Educación y Formación para Accionistas Nuevos</h3>
+                <span class="scene-badge">Independencia y Saber</span>
             </div>
-            <p>Accionista empleado monta en paralelo un emprendimiento propio en el mismo rubro de extracción de arena, desviando clientes.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Conflicto de intereses operativo, desvío de clientela y aprovechamiento de know-how corporativo en beneficio propio.</div >
+            <p>Las nuevas generaciones acceden a la titularidad de acciones sin poseer nociones básicas de lectura de balances, finanzas corporativas ni gobernanza.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Analfabetismo societario de los herederos con riesgo de manipulación y votaciones irracionales.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(12, 'green', '🟢 Viabilidad Óptima: Pacto riguroso de no competencia y exclusividad comercial durante la vinculación y 3 años posteriores.')">
-                    <input type="radio" name="e12"> A) Pacto riguroso de no competencia y exclusividad comercial durante la vinculación y 3 años posteriores.
+                <label class="option-label" onclick="registrarRespuesta(12, 'A) Programa obligatorio de formación en lectura de balances y gobierno (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Exigir un programa de inducción y capacitación en finanzas corporativas y gobernanza antes de asumir derechos de voto asegura accionistas responsables, informados y capaces de ejercer un control efectivo.')">
+                    <input type="radio" name="e12"> A) Exigir aprobación de programa de capacitación en finanzas corporativas antes de integrar Asambleas con voz y voto.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(12, 'yellow', '🟡 Pragmatismo Aceptable: Prohibición de competir solo dentro de la misma zona geográfica de influencia directa de la planta principal.')">
-                    <input type="radio" name="e12"> B) Restringir la no competencia exclusivamente al radio geográfico inmediato de operación de la compañía.
+                <label class="option-label" onclick="registrarRespuesta(12, 'B) Tutoría financiera personalizada con los directores actuales (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Implementar un acompañamiento formativo interno y directo con los ejecutivos veteranos transmite la cultura y los rudimentos técnicos de la firma sin requerir academias externas.')">
+                    <input type="radio" name="e12"> B) Organizar talleres internos anuales y mentoría con directores para los jóvenes herederos.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(12, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Ausencia de pacto de exclusividad. Permite a socios empleados competir deslealmente usando la infraestructura de la empresa.')">
-                    <input type="radio" name="e12"> C) Permitir inversiones paralelas de los socios en cualquier empresa competidora del mismo sector industrial.
+                <label class="option-label" onclick="registrarRespuesta(12, 'C) Traspaso accionario automático al cumplir mayoría de edad (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Transferir acciones y poder de decisión sin formación previa expone a la compañía a decisiones asamblearias desacertadas y vulnerabilidad frente a asesores externos malintencionados.')">
+                    <input type="radio" name="e12"> C) Transferir las acciones y el poder de voto de forma automática al alcanzar la mayoría de edad legal.
                 </label>
             </div>
             <div class="feedback-box" id="fb-12"></div>
@@ -505,21 +524,21 @@
         <!-- ESCENA 13 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 13: Política de Endeudamiento y Garantías</h3>
-                <span class="scene-badge">Gravámenes y Fianza</span>
+                <h3 class="scene-title">Escena 13: Venta de Acciones a Terceros y Derecho de Adquisición</h3>
+                <span class="scene-badge">Protección del Capital</span>
             </div>
-            <p>Empresa toma créditos bancarios gigantes afectando bienes personales de los socios como garantía sin consenso minoritario.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Exposición patrimonial inconsulta de los socios frente al sistema financiero y bancario.</div >
+            <p>Un accionista minoritario en apuros financieros pretende vender su paquete accionario directamente a un competidor directo del mercado.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Intromisión de competidores o terceros extraños en el capital social y secreto industrial.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(13, 'green', '🟢 Viabilidad Óptima: Exigir mayoría calificada del 75% del capital para constitución de hipotecas, prendas o fianzas solidarias.')">
-                    <input type="radio" name="e13"> A) Exigir mayoría calificada del 75% del capital social para constitución de hipotecas, prendas o fianzas solidarias.
+                <label class="option-label" onclick="registrarRespuesta(13, 'A) Derecho de preferencia estricto y opción de compra corporativa (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Consagrar un riguroso derecho de preferencia a favor de los socios actuales y de la propia sociedad bloquea la entrada de extraños y protege el secreto estratégico del negocio.')">
+                    <input type="radio" name="e13"> A) Establecer derecho de tanteo, adquisición preferente para socios y opción de recompra por la sociedad.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(13, 'yellow', '🟡 Pragmatismo Aceptable: Requerir aprobación de la mayoría absoluta de socios solo para fianzas que superen el 50% del patrimonio neto.')">
-                    <input type="radio" name="e13"> B) Requerir aprobación por mayoría absoluta de socios solo para gravámenes que superen el 50% del patrimonio neto.
+                <label class="option-label" onclick="registrarRespuesta(13, 'B) Autorización previa requerida por el Directorio (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Supeditar la incorporación de nuevos inversores a la aprobación fundada del Directorio otorga un filtro defensivo razonable ante compradores indeseados.')">
+                    <input type="radio" name="e13"> B) Requerir aprobación previa por mayoría calificada del Directorio para cualquier transferencia a terceros.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(13, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Discrecionalidad gerencial absoluta para endeudar y comprometer activos personales de los socios sin su consentimiento.')">
-                    <input type="radio" name="e13"> C) Conceder total discrecionalidad a la gerencia ejecutiva para endeudar y comprometer activos sociales y personales.
+                <label class="option-label" onclick="registrarRespuesta(13, 'C) Libre transmisibilidad de acciones sin restricciones (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Permitir la venta libre de acciones sin restricciones vulnera el carácter cerrado de la empresa familiar y facilita la toma de control por parte de actores hostiles.')">
+                    <input type="radio" name="e13"> C) Permitir la libre venta de acciones a cualquier inversor externo sin intervención de los socios.
                 </label>
             </div>
             <div class="feedback-box" id="fb-13"></div>
@@ -528,21 +547,21 @@
         <!-- ESCENA 14 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 14: Gestión de Crisis Reputacionales</h3>
-                <span class="scene-badge">Blindaje Ético</span>
+                <h3 class="scene-title">Escena 14: Diversificación de Inversiones vs. Negocio Core</h3>
+                <span class="scene-badge">Estrategia Patrimonial</span>
             </div>
-            <p>Conductas públicas reprochables de un miembro de la familia socavan la imagen institucional ante bancos y clientes corporativos.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Deterioro grave del goodwill corporativo y riesgo de pérdida de contratos estratégicos con grandes clientes.</div >
+            <p>Un grupo de accionistas exige desviar fondos de la compañía principal para financiar proyectos inmobiliarios y personales ajenos al objeto social.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Descapitalización del núcleo industrial para aventuras financieras particulares de socios.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(14, 'green', '🟢 Viabilidad Óptima: Facultar al Consejo de Familia a suspender derechos políticos y representación ante daño reputacional comprobado.')">
-                    <input type="radio" name="e14"> A) Facultar al Consejo de Familia a suspender derechos políticos y representación ante daño reputacional comprobado.
+                <label class="option-label" onclick="registrarRespuesta(14, 'A) Prohibición de desviar fondos operativos y creación de vehículo patrimonial separado (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Mantener blindada la caja operativa de la firma principal y canalizar inversiones externas a través de un <i>Family Office</i> o vehículo societario independiente protege la calificación crediticia de la empresa core.')">
+                    <input type="radio" name="e14"> A) Prohibir el uso de fondos operativos en negocios ajenos y constituir un vehículo de inversión patrimonial independiente.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(14, 'yellow', '🟡 Pragmatismo Aceptable: Exigir pedido de disculpas formales y retiro temporal de cargos de cara al público sin afectar derechos societarios.')">
-                    <input type="radio" name="e14"> B) Exigir retiro temporal de la exposición pública institucional sin alterar la titularidad de los derechos políticos.
+                <label class="option-label" onclick="registrarRespuesta(14, 'B) Financiamiento excepcional sujeto a aprobación unánime de Asamblea (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Permitir aportes puntuales a otros proyectos solo bajo consenso unánime de todos los socios evita abusos de mayorías circunstanciales sin rigidizar totalmente la caja.')">
+                    <input type="radio" name="e14"> B) Permitir inversiones satélites extraordinarias únicamente mediante acuerdo unánime de los socios.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(14, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Considerar la vida privada de cada integrante como asunto estrictamente ajeno, permitiendo que escándalos públicos dañen contratos petroleros o industriales.')">
-                    <input type="radio" name="e14"> C) Considerar la vida privada de cada integrante como un asunto estrictamente ajeno a la corporación sin derecho a intervención.
+                <label class="option-label" onclick="registrarRespuesta(14, 'C) Uso libre de la caja corporativa para cualquier proyecto de los socios (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Utilizar la caja de la empresa principal como caja chica para emprendimientos personales dispersos destruye la liquidez y pone en quiebra técnica al negocio central.')">
+                    <input type="radio" name="e14"> C) Permitir que los accionistas retiren fondos libremente de la caja corporativa para financiar proyectos personales.
                 </label>
             </div>
             <div class="feedback-box" id="fb-14"></div>
@@ -551,21 +570,21 @@
         <!-- ESCENA 15 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 15: Consejo de Familia como Mediación Previa</h3>
-                <span class="scene-badge">Instancia Interna</span>
+                <h3 class="scene-title">Escena 15: Auditoría Externa e Informes de Transparencia</h3>
+                <span class="scene-badge">Control Contable</span>
             </div>
-            <p>Conflictos cotidianos familiares se judicializan directamente en tribunales ordinarios, ventilando secretos societarios.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Judicialización prematura que destruye el clima de la empresa y expone documentación interna en estrados judiciales.</div >
+            <p>Accionistas minoritarios no operativos denuncian falta de transparencia y manipulación de balances contables por parte de la gerencia mayoritaria.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Desconfianza crónica entre socios de control y socios pasivos por asimetría de información.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(15, 'green', '🟢 Viabilidad Óptima: Establecer requisito procesal interno de transitar obligatoriamente el Consejo de Familia antes de iniciar demandas.')">
-                    <input type="radio" name="e15"> A) Establecer requisito procesal interno de transitar obligatoriamente el Consejo de Familia antes de iniciar demandas.
+                <label class="option-label" onclick="registrarRespuesta(15, 'A) Contratación anual obligatoria de auditoría externa internacional de estados contables (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Contratar una auditoría contable externa de primer nivel aporta fe pública sobre los estados financieros, disipa suspicacias de los socios pasivos y asegura estándares bancarios óptimos.')">
+                    <input type="radio" name="e15"> A) Contratación obligatoria anual de auditoría externa de balances por una firma de prestigio internacional.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(15, 'yellow', '🟡 Pragmatismo Aceptable: Instancia de mediación voluntaria recomendada de 15 días antes de habilitar la vía legal ordinaria.')">
-                    <input type="radio" name="e15"> B) Establecer una instancia de mediación voluntaria sugerida de 15 días antes de habilitar la vía legal ordinaria.
+                <label class="option-label" onclick="registrarRespuesta(15, 'B) Comisión fiscalizadora mixta con representación de minorías (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Designar una sindicatura o comisión revisora integrada con contadores propuestos por las minorías otorga tranquilidad de control sin el costo elevado de grandes auditorías globales.')">
+                    <input type="radio" name="e15"> B) Designar una comisión de vigilancia interna con participación de contadores designados por las minorías.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(15, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Habilitar la vía judicial ordinaria inmediata. Destruye la paz familiar y ventila balances en expedientes públicos.')">
-                    <input type="radio" name="e15"> C) Habilitar la vía judicial ordinaria inmediata ante cualquier diferencia entre parientes o socios.
+                <label class="option-label" onclick="registrarRespuesta(15, 'C) Balances cerrados exclusivamente por la administración interna (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Presentar estados contables elaborados sin revisión independiente profundiza la desconfianza accionaria, fomenta litigios por ocultamiento de información y deteriora el clima societario.')">
+                    <input type="radio" name="e15"> C) Aprobar los estados contables presentados por la gerencia sin auditoría ni revisión independiente.
                 </label>
             </div>
             <div class="feedback-box" id="fb-15"></div>
@@ -574,21 +593,21 @@
         <!-- ESCENA 16 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 16: Evaluación de Desempeño y Remuneraciones</h3>
-                <span class="scene-badge">Comité Salarial</span>
+                <h3 class="scene-title">Escena 16: Donación de Acciones y Protección contra Embargos</h3>
+                <span class="scene-badge">Blindaje Patrimonial</span>
             </div>
-            <p>Disparidad en retribuciones percibidas por familiares frente a profesionales externos, generando acusaciones de favoritismo.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Percepción de arbitrariedad salarial y desbalance en la estructura de costos operativos por sueldos injustificados.</div >
+            <p>Un accionista en riesgo patrimonial personal pretende transferir sus acciones a sus hijos mediante donación sin restricciones de inalienabilidad.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Vulnerabilidad del capital social ante acciones judiciales de acreedores particulares de los socios.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(16, 'green', '🟢 Viabilidad Óptima: Crear Comité de Remuneraciones independiente con participación de asesor externo y bandas salariales de mercado.')">
-                    <input type="radio" name="e16"> A) Crear Comité de Remuneraciones independiente con participación de asesor externo y bandas salariales de mercado.
+                <label class="option-label" onclick="registrarRespuesta(16, 'A) Inclusión de cláusula de inalienabilidad temporal y usufructo vitalicio (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Establecer restricciones estatutarias a la transferencia gratuita y pactar usufructo con nuda propiedad protege el control accionario ante embargos personales y mantiene la estabilidad del paquete mayoritario.')">
+                    <input type="radio" name="e16"> A) Pactar usufructo vitalicio con nuda propiedad e incorporar restricciones estatutarias de inalienabilidad temporal.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(16, 'yellow', '🟡 Pragmatismo Aceptable: Aprobación de sueldos ejecutivos por mayoría simple de directorio sin comité externo especializado.')">
-                    <input type="radio" name="e16"> B) Aprobar los haberes ejecutivos por mayoría simple de directorio sin intervención de consultores externos.
+                <label class="option-label" onclick="registrarRespuesta(16, 'B) Notificación previa obligatoria y derecho de oposición societaria (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Exigir aviso previo de cualquier transmisión gratuita y evaluar el impacto del nuevo titular en el Directorio mitiga sorpresas patrimoniales graves.')">
+                    <input type="radio" name="e16"> B) Exigir notificación previa de cualquier cesión gratuita para control y evaluación del Directorio.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(16, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Fijación discrecional de sueldos por cada director para su propia familia. Genera acusaciones de favoritismo y quebranto operativo.')">
-                    <input type="radio" name="e16"> C) Dejar la fijación de haberes ejecutivos familiares a total discreción de la presidencia de la firma.
+                <label class="option-label" onclick="registrarRespuesta(16, 'C) Donación libre y sin cautelas ante crisis personales (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Permitir transferencias libres en contextos de crisis personal expone las acciones a medidas cautelares de acreedores externos, poniendo en riesgo la gobernabilidad de la compañía.')">
+                    <input type="radio" name="e16"> C) Permitir donaciones libres de acciones sin restricciones ni intervención de los demás socios.
                 </label>
             </div>
             <div class="feedback-box" id="fb-16"></div>
@@ -597,21 +616,21 @@
         <!-- ESCENA 17 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 17: Incorporación de Inversionistas Externos (Private Equity)</h3>
-                <span class="scene-badge">Tag-Along y Drag-Along</span>
+                <h3 class="scene-title">Escena 17: Manejo de Crisis Reputacionales y Comunicación</h3>
+                <span class="scene-badge">Gestión de Crisis</span>
             </div>
-            <p>Necesidad de capital fresco requiriendo apertura accionaria, generando temor en la familia fundadora por pérdida de control.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Riesgo de dilución de control mayoritario y falta de mecanismos de salida conjunta ante inversores institucionales.</div >
+            <p>Un conflicto familiar interno trasciende a los medios de comunicación locales y afecta la imagen comercial de la empresa frente a clientes clave.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Filtración de internas familiares al ámbito público con destrucción de valor de marca y cartera comercial.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(17, 'green', '🟢 Viabilidad Óptima: Incorporar derechos estrictos de Acompañamiento (Tag-Along) y Arrastre (Drag-Along) en el acuerdo parasocietario.')">
-                    <input type="radio" name="e17"> A) Incorporar derechos estrictos de Acompañamiento (Tag-Along) y Arrastre (Drag-Along) en el acuerdo parasocietario.
+                <label class="option-label" onclick="registrarRespuesta(17, 'A) Protocolo de vocero único y cláusula de confidencialidad estricta (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Designar un único vocero oficial institucional y penalizar contractualmente la filtración de disputas familiares a la prensa resguarda la reputación corporativa y la confianza de los clientes.')">
+                    <input type="radio" name="e17"> A) Protocolo estricto de comunicación con vocero único autorizado y penalizaciones por filtraciones mediáticas.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(17, 'yellow', '🟡 Pragmatismo Aceptable: Pactar derechos de venta conjunta negociables caso por caso sin estipular fórmulas predeterminadas de arrastre.')">
-                    <input type="radio" name="e17"> B) Pactar reglas genéricas de preferencia de venta sin cláusulas estrictas de arrastre accionario obligatorio.
+                <label class="option-label" onclick="registrarRespuesta(17, 'B) Declaración conjunta moderada redactada por los asesores legales (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Consensuar un comunicado institucional neutral y acotado ante crisis públicas calma las aguas en el mercado sin necesidad de burocratizar protocolos complejos.')">
+                    <input type="radio" name="e17"> B) Consensuar un comunicado institucional estándar y unificado entre las partes ante trascendidos públicos.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(17, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Permitir la entrada de inversores sin regular reglas de venta conjunta ni mayorías de protección. Expone a la familia a quedar atrapada o diluida.')">
-                    <input type="radio" name="e17"> C) Permitir la entrada de inversores institucionales sin regular reglas de venta conjunta ni mayorías de protección.
+                <label class="option-label" onclick="registrarRespuesta(17, 'C) Libertad de expresión individual de cada socio en redes sociales (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Permitir declaraciones públicas y cruces mediáticos individuales de los socios destruye la reputación empresaria y destruye contratos comerciales en curso.')">
+                    <input type="radio" name="e17"> C) Permitir que cada socio exprese libremente su versión de los hechos en medios de comunicación y redes.
                 </label>
             </div>
             <div class="feedback-box" id="fb-17"></div>
@@ -620,21 +639,21 @@
         <!-- ESCENA 18 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 18: Protocolo de Donaciones en Vida y Sucesión</h3>
-                <span class="scene-badge">Anticipo Hereditario</span>
+                <h3 class="scene-title">Escena 18: Jubilación de Directivos y Socios Mayores</h3>
+                <span class="scene-badge">Retiro Institucional</span>
             </div>
-            <p>Donación arbitraria de acciones a un solo hijo en vida del fundador, provocando colaciones de herencia y bloqueos futuros.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Conflictos graves entre legitimarios por desigualdad en anticipos de herencia y donaciones accionariales en vida.</div >
+            <p>Socios mayores retirados de la operativa continúan cobrando dietas y honorarios gerenciales elevados sin aportar funciones efectivas al negocio.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Sobrecosto financiero por cargas salariales de directivos inactivos y resistencia al recambio generacional.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(18, 'green', '🟢 Viabilidad Óptima: Consolidar actos de liberalidad bajo esquemas de compensación en vida aceptados por unanimidad de legitimarios.')">
-                    <input type="radio" name="e18"> A) Consolidar actos de liberalidad bajo esquemas de compensación en vida aceptados por unanimidad de legitimarios.
+                <label class="option-label" onclick="registrarRespuesta(18, 'A) Plan de retiro escalonado con renta vitalicia societaria desvinculada de gerencia (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Sustituir los sueldos ejecutivos de socios jubilados por una renta vitalicia transparente o plan de retiro estructurado libera la masa salarial operativa y dignifica el retiro de los fundadores.')">
+                    <input type="radio" name="e18"> A) Establecer un régimen de retiro escalonado con renta pasiva desvinculada de los cargos gerenciales activos.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(18, 'yellow', '🟡 Pragmatismo Aceptable: Notificar formalmente las donaciones en vida al Consejo de Familia sin requerir unanimidad compensatoria previa.')">
-                    <input type="radio" name="e18"> B) Notificar las donaciones accionariales en vida al Consejo de Familia sin exigir consenso compensatorio previo.
+                <label class="option-label" onclick="registrarRespuesta(18, 'B) Reducción gradual de honorarios sujeta a productividad consultiva (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Acordar una disminución progresiva de dietas reconvirtiendo su rol en asesorías honorarias puntuales equilibra las cuentas sin generar rupturas afectivas violentas.')">
+                    <input type="radio" name="e18"> B) Reducir progresivamente las dietas directivas y mantenerlos como consejeros consultivos ad-honorem.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(18, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Permitir donaciones unilaterales discrecionales de acciones a favor de herederos preferidos sin compensación. Desencadena litigios sucesorios feroces.')">
-                    <input type="radio" name="e18"> C) Permitir donaciones unilaterales discrecionales de acciones a favor de herederos preferidos sin compensación.
+                <label class="option-label" onclick="registrarRespuesta(18, 'C) Mantener honorarios gerenciales vitalicios e inalterables (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Perpetuar sueldos gerenciales a personas que no trabajan drena recursos financieros vitales para la competitividad y genera injusticia con los cuadros activos.')">
+                    <input type="radio" name="e18"> C) Mantener el pago de honorarios gerenciales plenos de por vida a todos los socios fundadores.
                 </label>
             </div>
             <div class="feedback-box" id="fb-18"></div>
@@ -643,21 +662,21 @@
         <!-- ESCENA 19 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 19: Formación y Capacitación Obligatoria de Sucesores</h3>
-                <span class="scene-badge">Itinerario Directivo</span>
+                <h3 class="scene-title">Escena 19: Protocolo de Incorporación de Nuevos Negocios</h3>
+                <span class="scene-badge">Expansión Corporativa</span>
             </div>
-            <p>Incorporación de jóvenes a puestos de decisión sin madurez técnica ni formación requerida, poniendo en riesgo la continuidad.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Inserción prematura de herederos sin competencias técnicas conduciendo a errores operativos severos en planta y administración.</div >
+            <p>Un heredero propone abrir una nueva unidad de negocio de alto riesgo tecnológico sin contar con plan de negocios ni consenso de los socios.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Riesgo de dispersión estratégica y compromiso patrimonial inconsulto en aventuras comerciales.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(19, 'green', '🟢 Viabilidad Óptima: Implementar currícula obligatoria de formación corporativa, pasantías rotativas y posgrados como requisito previo.')">
-                    <input type="radio" name="e19"> A) Implementar currícula obligatoria de formación corporativa, pasantías rotativas y posgrados como requisito previo.
+                <label class="option-label" onclick="registrarRespuesta(19, 'A) Requisito de plan de negocios validado por comité técnico y presupuesto acotado (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Exigir un business plan riguroso, análisis de ROI y aprobación de un comité técnico antes de fondear nuevos emprendimientos evita la dispersión de capital y el fracaso de proyectos improvisados.')">
+                    <input type="radio" name="e19"> A) Exigir plan de negocios formal, evaluación de riesgos y aprobación técnica previa por el Directorio.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(19, 'yellow', '🟡 Pragmatismo Aceptable: Exigir título universitario afín sin necesidad de cursar pasantías internas rotativas operativas previas.')">
-                    <input type="radio" name="e19"> B) Exigir título universitario afín sin obligar a pasantías rotativas internas operativas previas.
+                <label class="option-label" onclick="registrarRespuesta(19, 'B) Prueba piloto con presupuesto semilla limitado a 12 meses (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Autorizar un fondo semilla acotado para testear el proyecto en escala mínima permite evaluar el potencial real de innovación sin comprometer la caja estructural de la firma.')">
+                    <input type="radio" name="e19"> B) Autorizar una prueba piloto con presupuesto reducido y revisión de resultados a los seis meses.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(19, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Habilitar el ingreso automático de los jóvenes herederos al cumplir la mayoría de edad sin exigir ningún tipo de formación ni idoneidad.')">
-                    <input type="radio" name="e19"> C) Habilitar el ingreso automático de los jóvenes herederos al cumplir la mayoría de edad sin exigencia formativa.
+                <label class="option-label" onclick="registrarRespuesta(19, 'C) Fondeo directo e inmediato de cualquier idea de los herederos (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Financiar emprendimientos sin validación técnica ni controles de riesgo dilapida el capital acumulado y desordena la estrategia comercial principal de la empresa.')">
+                    <input type="radio" name="e19"> C) Liberar fondos inmediatamente para que cualquier heredero desarrolle su proyecto comercial.
                 </label>
             </div>
             <div class="feedback-box" id="fb-19"></div>
@@ -666,21 +685,21 @@
         <!-- ESCENA 20 -->
         <div class="scene-card">
             <div class="scene-header">
-                <h3 class="scene-title">Escena 20: Mecanismo de Reforma y Actualización Quinquenal</h3>
-                <span class="scene-badge">Evolución Normativa</span>
+                <h3 class="scene-title">Escena 20: Ratificación y Actualización Anual del Protocolo Familiar</h3>
+                <span class="scene-badge">Revisión Sistémica</span>
             </div>
-            <p>Un protocolo rígido que queda obsoleto frente a los cambios del mercado y la evolución de las nuevas generaciones.</p>
-            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Obsolescencia normativa del acuerdo familiar frente a dinámicas de mercado cambiantes, volviéndose letra muerta.</div >
+            <p>El protocolo familiar redactado hace diez años ha quedado obsoleto frente a los cambios normativos y el crecimiento exponencial del grupo económico.</p>
+            <div class="conflict-box"><strong>Conflicto Sistémico:</strong> Obsolescencia normativa del marco de gobernanza frente a la expansión corporativa y generacional.</p>
             
             <div class="options-group">
-                <label class="option-label" onclick="mostrarFeedback(20, 'green', '🟢 Viabilidad Óptima: Mandato formal de revisión integral del Protocolo y acuerdos parasocietarios cada 5 años por mayoría del 80%.')">
-                    <input type="radio" name="e20"> A) Mandato formal de revisión integral del Protocolo y acuerdos parasocietarios cada 5 años por mayoría del 80%.
+                <label class="option-label" onclick="registrarRespuesta(20, 'A) Asamblea anual ordinaria de actualización y auditoría legal del Protocolo (Ideal)', 'green', '🟢 <strong>Fundamento de Viabilidad Óptima (Acierto Estructural):</strong> Instituir una revisión anual obligatoria del Protocolo Familiar con participación de asesores legales asegura que las normas societarias evolucionen al ritmo de la legislación y del crecimiento del holding.')">
+                    <input type="radio" name="e20"> A) Establecer revisión y ratificación anual obligatoria del Protocolo con asesoría legal externa especializada.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(20, 'yellow', '🟡 Pragmatismo Aceptable: Establecer revisión flexible sujeta a la decisión unánime de los directores en funciones cuando lo consideren oportuno.')">
-                    <input type="radio" name="e20"> B) Establecer revisión sujeta a decisión de los directores en funciones cuando lo consideren oportuno.
+                <label class="option-label" onclick="registrarRespuesta(20, 'B) Revisión trienal convocada por el Consejo de Familia (Pragmático)', 'yellow', '🟡 <strong>Fundamento de Pragmatismo Aceptable (Criterio Equilibrado):</strong> Programar actualizaciones periódicas cada tres años permite adaptar la normativa interna a los cambios significativos sin sobrecargar la agenda anual de los socios.')">
+                    <input type="radio" name="e20"> B) Programar revisiones y ajustes del Protocolo cada tres años o ante cambios normativos mayores.
                 </label>
-                <label class="option-label" onclick="mostrarFeedback(20, 'red', '🔴 Alerta de Conflicto (Oportunidad Perdida): Establecer vigencia indefinida e inmodificable del texto original aprobado por los fundadores. Conduce inexorablemente al repudio y obsolescencia del pacto.')">
-                    <input type="radio" name="e20"> C) Establecer vigencia indefinida e inmodificable del texto original aprobado por los fundadores.
+                <label class="option-label" onclick="registrarRespuesta(20, 'C) Considerar el Protocolo original como norma pétrea e inmodificable (Riesgoso)', 'red', '🔴 <strong>Fundamento de Alerta de Riesgo (Oportunidad Perdida):</strong> Tratar el documento de gobernanza como un dogma inalterable frente a realidades dinámicas conduce a su inoperancia práctica y a la violación sistemática de sus propias reglas.')">
+                    <input type="radio" name="e20"> C) Mantener el Protocolo original inalterable e intangible a lo largo de las décadas.
                 </label>
             </div>
             <div class="feedback-box" id="fb-20"></div>
@@ -688,65 +707,179 @@
 
     </div>
 
-    <!-- NAVEGACIÓN HACIA EL SIGUIENTE MÓDULO (SIN ERROR 404) -->
+    <!-- NAVEGACIÓN HACIA EL SIGUIENTE MÓDULO (Ruta de continuidad corregida a parasocietarios.html) -->
     <div style="text-align: center; margin: 40px 0; padding: 30px; background-color: var(--panel-bg); border-radius: 10px; border: 1px solid var(--border-col);">
-        <h3 style="color: var(--accent); margin-top: 0;">Parametrización de Gobernanza Concluida</h3>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">Avance al siguiente módulo para desarrollar la teoría, práctica y el articulado jurídico definitivo en Acuerdos Parasocietarios.</p>
-        <button class="btn" onclick="avanzarACuerdos()" style="padding: 15px 40px; font-size: 1.1rem; cursor: pointer;">
+        <h3 style="color: var(--accent); margin-top: 0;">Parametrización de Gobernanza Concluida (20 Escenas)</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Avance al siguiente micrositio para desarrollar los Acuerdos Parasocietarios y el articulado jurídico definitivo.</p>
+        <button class="btn" onclick="avanzarAParasocietarios()" style="padding: 15px 40px; font-size: 1.1rem; cursor: pointer;">
             Continuar a Módulo de Acuerdos Parasocietarios &rarr;
         </button>
     </div>
 
-    <!-- PANEL PRIVATIVO DEL CONSULTOR -->
+    <!-- PANEL PRIVATIVO DEL CONSULTOR CON HISTORIAL COMPLETO Y RESUMEN -->
     <div class="consultant-panel" id="consultor">
-        <h3>Panel Privativo del Consultor (Restringido)</h3>
-        <p style="color: var(--text-muted);">Acceso exclusivo para auditoría técnica de opciones pragmáticas seleccionadas.</p>
-        <div style="margin-top: 15px;">
-            <input type="password" id="passConsultor" placeholder="Ingrese clave de consultor" style="padding: 10px; width: 250px; background-color: #0b0f19; border: 1px solid var(--border-col); color: #fff; border-radius: 6px;">
-            <button class="btn" onclick="verificarConsultor()" style="margin-left: 10px;">Desbloquear Auditoría</button>
+        <h3>Panel Privativo del Consultor (Auditoría Integral y Ajuste de Conducta)</h3>
+        <p style="color: var(--text-muted);">Autentíquese para extraer conclusiones y analizar el grado de ajuste entre el relato y la conducta de los jugadores registrados.</p>
+        
+        <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <input type="password" id="passConsultor" placeholder="Ingrese clave (lprediger / joaquin7)" style="padding: 10px; width: 280px; background-color: #0b0f19; border: 1px solid var(--border-col); color: #fff; border-radius: 6px;">
+            <button class="btn" onclick="verificarConsultor()">Desbloquear Auditoría Histórica</button>
         </div>
-        <div id="contenidoConsultor" style="display: none; margin-top: 20px; border-top: 1px solid var(--border-col); padding-top: 15px;">
-            <p style="color: var(--success); font-weight: bold;">Acceso concedido. Auditoría de semáforos activa.</p>
-            <p><strong>Holding Configurado:</strong> <span id="lblRazonSocial" style="color:var(--accent);">No especificado</span> | <span id="lblTipo" style="color:var(--accent);">S.A.</span></p>
-            <p style="font-size: 0.9rem; color: var(--text-muted);">Las opciones elegidas por el cliente se compilarán dinámicamente al presionar continuar para estructurar el plexo normativo en el micrositio de acuerdos.</p>
+
+        <div id="contenidoConsultor" style="display: none; margin-top: 25px; border-top: 1px solid var(--border-col); padding-top: 20px;">
+            <p style="color: var(--success); font-weight: bold; margin-bottom: 15px;">&check; Acceso de Consultor Concedido. Historial y Resumen por Jugador Activos.</p>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h4 style="color: var(--accent); margin: 0;">Resumen Flexible por Jugador</h4>
+                <button class="btn btn-secondary" onclick="exportarHistorial()" style="font-size: 0.8rem; padding: 5px 10px;">Actualizar Métricas</button>
+            </div>
+            
+            <!-- Resumen Estadístico por Jugador -->
+            <div id="resumenJugadores" style="background-color: #0b0f19; padding: 15px; border-radius: 8px; border: 1px solid var(--border-col); margin-bottom: 20px; font-size: 0.9rem;">
+                <em>Aún no hay interacciones registradas. Complete opciones con un jugador activo.</em>
+            </div>
+
+            <h4 style="color: var(--accent); margin-bottom: 10px;">Historial Completo de Respuestas y Conductas (20 Escenas)</h4>
+            <div style="overflow-x: auto;">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Jugador</th>
+                            <th>Razón Social</th>
+                            <th>Escena</th>
+                            <th>Opción Elegida</th>
+                            <th>Semáforo / Riesgo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaHistorial">
+                        <tr>
+                            <td colspan="6" style="text-align: center; color: var(--text-muted);">Sin registros en el historial general todavía.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
 </div>
 
 <script>
-    function guardarParametros() {
-        const raz = document.getElementById('razonSocial').value || 'Empresa Familiar Sin Nombre';
+    // Almacenamiento local del historial de juego
+    let historialGlobal = JSON.parse(localStorage.getItem('historialGobernanza20')) || [];
+    let jugadorActual = "Anónimo";
+    let razonSocialActual = "Sin Definir";
+
+    function registrarJugador() {
+        const nombre = document.getElementById('nombreJugador').value.trim();
+        const raz = document.getElementById('razonSocial').value.trim();
         const tipo = document.getElementById('tipoSocietario').value;
-        document.getElementById('lblRazonSocial').innerText = raz;
-        document.getElementById('lblTipo').innerText = tipo;
-        alert('Estructura fijada correctamente para: ' + raz + ' (' + tipo + ').');
+
+        if(!nombre) {
+            alert('Por favor, ingrese el nombre del jugador/familiar.');
+            return;
+        }
+        if(!raz) {
+            alert('Por favor, ingrese la Razón Social.');
+            return;
+        }
+
+        jugadorActual = nombre;
+        razonSocialActual = raz + ' (' + tipo + ')';
+        alert('Jugador registrado con éxito: ' + jugadorActual + ' | Holding: ' + razonSocialActual);
     }
 
-    function mostrarFeedback(idEscena, tipoColor, texto) {
+    function registrarRespuesta(idEscena, textoOpcion, tipoColor, feedbackTexto) {
+        // Mostrar feedback visual detallado al usuario
         const fb = document.getElementById('fb-' + idEscena);
         fb.style.display = 'block';
         fb.className = 'feedback-box feedback-' + tipoColor;
-        fb.innerHTML = texto;
-    }
+        fb.innerHTML = feedbackTexto;
 
-    function avanzarACuerdos() {
-        const raz = document.getElementById('razonSocial').value;
-        if(!raz) {
-            alert('Por favor, ingrese y fije la Razón Social de la empresa antes de avanzar.');
-            return;
-        }
-        // Redirección limpia al micrositio siguiente sin error 404
-        window.location.href = 'acuerdos.html';
+        // Crear registro para el historial
+        const nuevoRegistro = {
+            timestamp: new Date().toLocaleTimeString() + ' ' + new Date().toLocaleDateString(),
+            jugador: jugadorActual,
+            holding: razonSocialActual,
+            escena: 'Escena ' + idEscena,
+            opcion: textoOpcion,
+            semaforo: tipoColor.toUpperCase()
+        };
+
+        // Evitar duplicados consecutivos de la misma escena por el mismo jugador y actualizar
+        historialGlobal = historialGlobal.filter(item => !(item.jugador === jugadorActual && item.escena === 'Escena ' + idEscena));
+        historialGlobal.push(nuevoRegistro);
+        localStorage.setItem('historialGobernanza20', JSON.stringify(historialGlobal));
     }
 
     function verificarConsultor() {
         const pass = document.getElementById('passConsultor').value;
         if (pass === 'lprediger' || pass === 'joaquin7') {
             document.getElementById('contenidoConsultor').style.display = 'block';
+            actualizarVistaConsultor();
         } else {
-            alert('Clave incorrecta.');
+            alert('Clave de consultor incorrecta. Utilice lprediger o joaquin7.');
         }
+    }
+
+    function actualizarVistaConsultor() {
+        const tbody = document.getElementById('tablaHistorial');
+        const resumenDiv = document.getElementById('resumenJugadores');
+
+        if (historialGlobal.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--text-muted);">Sin registros en el historial general todavía.</td></tr>';
+            resumenDiv.innerHTML = '<em>No hay suficientes datos para generar resumen por jugador.</em>';
+            return;
+        }
+
+        // Llenar tabla
+        tbody.innerHTML = '';
+        historialGlobal.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${item.timestamp}</td>
+                <td style="font-weight:bold; color:var(--accent);">${item.jugador}</td>
+                <td>${item.holding}</td>
+                <td>${item.escena}</td>
+                <td>${item.opcion}</td>
+                <td><span style="padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; background: ${item.semaforo==='GREEN'?'rgba(34,197,94,0.2);color:#86efac':item.semaforo==='YELLOW'?'rgba(245,158,11,0.2);color:#fde047':'rgba(239,68,68,0.2);color:#fca5a5'}">${item.semaforo}</span></td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Generar resumen agrupado por jugador (Flexibilidad para medir relato vs conducta)
+        let resumenPorJugador = {};
+        historialGlobal.forEach(item => {
+            if(!resumenPorJugador[item.jugador]) {
+                resumenPorJugador[item.jugador] = { GREEN: 0, YELLOW: 0, RED: 0, total: 0, holding: item.holding };
+            }
+            resumenPorJugador[item.jugador][item.semaforo]++;
+            resumenPorJugador[item.jugador].total++;
+        });
+
+        let resumenHTML = '<ul style="margin:0; padding-left: 20px;">';
+        for(let jug in resumenPorJugador) {
+            let datos = resumenPorJugador[jug];
+            let perfilConductual = datos.GREEN >= datos.YELLOW && datos.GREEN >= datos.RED ? 'Ideal / Conservador de Mejores Prácticas' : datos.YELLOW >= datos.GREEN ? 'Pragmático / Flexible' : 'Riesgoso / Propenso a Conflicto';
+            resumenHTML += `<li style="margin-bottom: 8px;"><strong>${jug}</strong> (${datos.holding}): ${datos.total} decisiones tomadas | 🟢 Óptimas: ${datos.GREEN} | 🟡 Pragmáticas: ${datos.YELLOW} | 🔴 Riesgosas: ${datos.RED} <br><span style="color:var(--accent); font-size:0.85rem;">&rarr; Tendencia de conducta detectada: <strong>${perfilConductual}</strong></span></li>`;
+        }
+        resumenHTML += '</ul>';
+        resumenDiv.innerHTML = resumenHTML;
+    }
+
+    function exportarHistorial() {
+        actualizarVistaConsultor();
+        alert('Métricas y panel actualizados correctamente desde el almacenamiento local.');
+    }
+
+    function avanzarAParasocietarios() {
+        const raz = document.getElementById('razonSocial').value.trim();
+        if(!raz) {
+            alert('Por favor, registre el nombre de la Razón Social antes de avanzar al módulo de Acuerdos Parasocietarios.');
+            return;
+        }
+        // Redirección corregida al micrositio real de GitHub: parasocietarios.html
+        window.location.href = 'parasocietarios.html';
     }
 </script>
 
