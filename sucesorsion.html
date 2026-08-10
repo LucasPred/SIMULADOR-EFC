@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EFC - Plan Sucesorio y Costos Jurisprudenciales (Argentina)</title>
+    <title>EFC - Simulador de Salida Patrimonial y Viabilidad Societaria (Argentina)</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -14,6 +14,7 @@
             --border-col: #1e293b;
             --danger: #ef4444;
             --success: #22c55e;
+            --warning: #f59e0b;
         }
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
@@ -28,7 +29,7 @@
         }
         .container {
             width: 100%;
-            max-width: 680px;
+            max-width: 850px;
             background-color: var(--card-bg);
             border-radius: 16px;
             padding: 30px;
@@ -45,16 +46,35 @@
         }
         .user-info { display: flex; align-items: center; gap: 12px; }
         .user-info img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
-        h1 { font-size: 1.15rem; color: var(--accent); text-transform: uppercase; margin-bottom: 15px; }
-        .scenario-box {
-            background-color: #0b0f19; padding: 18px; border-radius: 10px; margin-bottom: 20px; border: 1px solid var(--border-col); line-height: 1.5; font-size: 0.95rem;
+        h1 { font-size: 1.25rem; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+        .subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px; }
+        .grid-options { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 25px; }
+        .option-card {
+            background-color: #0b0f19;
+            border: 1px solid var(--border-col);
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-        .choices { display: flex; flex-direction: column; gap: 12px; }
-        .choice-btn {
-            background-color: #1e293b; color: var(--text-main); text-align: left; padding: 14px 16px;
-            border-radius: 8px; cursor: pointer; border: 1px solid #334155; font-size: 0.95rem; transition: all 0.2s;
+        .option-card:hover { border-color: var(--accent); background-color: #111827; }
+        .option-card.selected { border-color: var(--success); background-color: rgba(34, 197, 94, 0.05); }
+        .option-title { font-weight: bold; color: var(--accent); margin-bottom: 6px; font-size: 1rem; }
+        .metrics-row { display: flex; gap: 15px; margin-top: 10px; font-size: 0.8rem; color: var(--text-muted); }
+        .metric-tag { background: #1e293b; padding: 4px 8px; border-radius: 4px; }
+        .actions { display: flex; justify-content: flex-end; gap: 10px; }
+        .btn {
+            background-color: var(--accent);
+            color: #0b0f19;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.2s;
         }
-        .choice-btn:hover { background-color: #334155; border-color: var(--accent); }
+        .btn:hover { opacity: 0.9; }
+        .btn-secondary { background-color: #1e293b; color: var(--text-main); border: 1px solid #334155; }
     </style>
 </head>
 <body>
@@ -68,44 +88,80 @@
                     <span id="lblRazon" style="font-size:0.7rem; color:var(--text-muted);">Empresa</span>
                 </div>
             </div>
-            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--accent);">Acto Final: Sucesión</div>
+            <div style="font-size:0.8rem; background:#1e293b; padding:6px 12px; border-radius:6px; color:var(--warning);">Fase Final: Sucesión & Blindaje</div>
         </div>
 
-        <h1>Simulación de Plan Sucesorio & Impacto Jurisprudencial (Argentina)</h1>
+        <h1>Simulador de Salida Patrimonial y Viabilidad Societaria</h1>
+        <div class="subtitle">Marco Legal: CCCN (Ley 26.994) & Ley General de Sociedades (N° 19.550). Análisis de impacto fiscal, gravámenes y previsibilidad de voto político.</div>
 
-        <div class="scenario-box">
-            <p><strong>Dilema Sucesorio Estratégico:</strong> El directorio y los socios fundadores deben definir el mecanismo de transferencia patrimonial y de gobierno corporativo. Bajo el régimen del Código Civil y Comercial de la Nación y la jurisprudencia argentina, seleccione la estrategia de salida:</p>
+        <div class="grid-options">
+            <!-- Opción A -->
+            <div class="option-card" id="card-judicial" onclick="seleccionarEstrategia('judicial')">
+                <div class="option-title">Opción A: Sucesión <i>Mortis Causa</i> Judicial Tradicional</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 5px 0;">Proceso judicial universal con designación de administrador provisorio. Alto riesgo de bloqueo operativo, aplicación de tasa de justicia provincial e intervención de herederos forzosos sobre cuotas/acciones.</p>
+                <div class="metrics-row">
+                    <span class="metric-tag">Costo Legal/Tasas: $15k - $45k USD</span>
+                    <span class="metric-tag">Gobernanza: Inestable (Colisión Hereditaria)</span>
+                    <span class="metric-tag">Voto: Dividido por hijuela</span>
+                </div>
+            </div>
+
+            <!-- Opción B -->
+            <div class="option-card" id="card-donacion" onclick="seleccionarEstrategia('donacion')">
+                <div class="option-title">Opción B: Donación en Vida con Reserva de Usufructo y Sindicación</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 5px 0;">Transmisión anticipada de la nuda propiedad reteniendo el usufructo político y económico (Art. 218 y ss. LGS). Expuesta a acciones de colación (Art. 2385 CCCN) y reducción si afecta la legítima.</p>
+                <div class="metrics-row">
+                    <span class="metric-tag">Costo Notarial/Fiscal: $5k - $12k USD</span>
+                    <span class="metric-tag">Gobernanza: Control Vitalicio del Fundador</span>
+                    <span class="metric-tag">Voto: Retenido por Usufructuario</span>
+                </div>
+            </div>
+
+            <!-- Opción C -->
+            <div class="option-card" id="card-protocolo" onclick="seleccionarEstrategia('protocolo')">
+                <div class="option-title">Opción C: Protocolo Familiar + Fideicomiso Sucesorio & Acciones Clase A/B</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 5px 0;">Estructuración corporativa superior. Emisión de acciones de voto plural (Clase A para gestores, Clase B patrimoniales) combinada con fideicomiso de administración y transferencia de dominio fiduciario.</p>
+                <div class="metrics-row">
+                    <span class="metric-tag">Costo Fiduciario/Corporativo: $8k - $20k USD</span>
+                    <span class="metric-tag">Gobernanza: Blindaje Institucional</span>
+                    <span class="metric-tag">Voto: Previsible y Blindado (Hasta 5 votos por acción)</span>
+                </div>
+            </div>
         </div>
 
-        <div class="choices">
-            <button class="choice-btn" onclick="finalizarSimulacion('judicial')">
-                <strong>Opción A: Sucesión *Mortis Causa* Judicial Tradicional.</strong><br>
-                <span style="font-size:0.85rem; color:var(--text-muted);">Bloqueo operativo temporal, tasa de justicia provincial, honorarios de abogados y peritos estimados entre $15,000 y $45,000 USD según valor activo, con riesgo latente de colisión entre herederos.</span>
-            </button>
-            <button class="choice-btn" onclick="finalizarSimulacion('donacion')">
-                <strong>Opción B: Donación en Vida con Reserva de Usufructo y Pactos de Sindicación.</strong><br>
-                <span style="font-size:0.85rem; color:var(--text-muted);">Costo notarial e impositivo estimado de $5,000 a $12,000 USD. Protege el control político del fundador mediante usufructo accionario, sujeto a acciones de colación y reducción si vulnera legítimas.</span>
-            </button>
-            <button class="choice-btn" onclick="finalizarSimulacion('protocolo')">
-                <strong>Opción C: Protocolo Familiar con Fideicomiso Sucesorio / Acciones Clase A y B.</strong><br>
-                <span style="font-size:0.85rem; color:var(--text-muted);">Estructuración jurídica avanzada de alta gobernanza. Costo de implementación fiduciaria y corporativa de $8,000 a $20,000 USD. Máxima continuidad institucional y blindaje patrimonial.</span>
-            </button>
+        <div class="actions">
+            <button class="btn btn-secondary" onclick="ir AGobernanza()">Ir a Gobernanza Familiar</button>
+            <button class="btn" onclick="guardarYContinuar()">Confirmar Estrategia y Ver Panel Consultor</button>
         </div>
     </div>
 
     <script>
-        if (sessionStorage.getItem("efc_indice_escenario") < 2) {
+        // Control de bloqueo estricto: Requiere superar encrucijadas
+        if (!sessionStorage.getItem("efc_encrucijadas_completadas")) {
+            alert("Acceso denegado: Debe completar las simulaciones de gobernanza y encrucijadas operativas previas.");
             window.location.href = "encrucijadas.html";
         } else {
-            document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario");
-            document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon");
-            document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar");
+            document.getElementById("lblUsuario").innerText = sessionStorage.getItem("efc_usuario") || "Directorio";
+            document.getElementById("lblRazon").innerText = sessionStorage.getItem("efc_razon") || "GRAVAFILT S.A. / SL";
+            document.getElementById("avatarDisplay").src = sessionStorage.getItem("efc_avatar") || "https://via.placeholder.com/40";
         }
 
-        function finalizarSimulacion(estrategia) {
-            sessionStorage.setItem("efc_estrategia_sucesion", estrategia);
+        let estrategiaSeleccionada = "protocolo";
+
+        function seleccionarEstrategia(est) {
+            estrategiaSeleccionada = est;
+            document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+            document.getElementById('card-' + est).classList.add('selected');
+        }
+
+        function guardarYContinuar() {
+            sessionStorage.setItem("efc_estrategia_sucesion", estrategiaSeleccionada);
             sessionStorage.setItem("efc_sucesion_completada", "true");
-            window.location.href = "dashboard.html";;
+            window.location.href = "consultor.html";
+        }
+
+        function irAGobernanza() {
+            window.location.href = "gobernanza.html";
         }
     </script>
 </body>
