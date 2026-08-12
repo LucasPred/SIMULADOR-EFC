@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitución Familiar | Panel de Consultoría Estratégica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(203, 213, 225, 0.6); }
+        .editable-field:hover { background-color: #fef08a; cursor: pointer; transition: background 0.2s; }
+        .editable-field:focus { background-color: #fef08a; outline: 2px solid #eab308; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="border-b border-slate-800 bg-slate-900/80 sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <a href="#" class="text-xs uppercase tracking-widest text-slate-400 hover:text-white transition">&larr; Parasocietarios</a>
+            <span class="text-slate-600">/</span>
+            <h1 class="font-bold text-lg bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">Constitución Familiar</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <button onclick="toggleAuthModal()" id="auth-status-btn" class="text-xs px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-amber-400 font-medium hover:bg-slate-700 transition">
+                🔒 Acceso Restringido: Bloqueado
+            </button>
+            <button onclick="saveChanges()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold px-4 py-2 rounded-lg text-sm shadow-lg shadow-amber-500/10 transition">
+                Guardar Cambios (Tiempo Real)
+            </button>
+            <a href="#sucesccion" class="text-xs uppercase tracking-widest bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-slate-300 transition">Ir a Sucesión &rarr;</a>
+        </div>
+    </header>
+
+    <!-- AUTH MODAL -->
+    <div id="auth-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel text-slate-900 rounded-2xl p-8 max-w-md w-full shadow-2xl relative">
+            <h3 class="text-xl font-bold mb-2">Control de Acceso de Consultoría</h3>
+            <p class="text-xs text-slate-600 mb-6">Ingrese sus credenciales de consultor para desbloquear la edición en tiempo real de la Constitución Familiar, o sáltese al siguiente nivel.</p>
+            
+            <div class="space-y-4 mb-6">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">Usuario</label>
+                    <input type="text" id="username-input" placeholder="ej. lprediger" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1">Contraseña</label>
+                    <input type="password" id="password-input" placeholder="••••••••" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-amber-500">
+                </div>
+                <div id="auth-error" class="text-red-600 text-xs hidden font-medium">Credenciales incorrectas. Verifique usuario y contraseña.</div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <button onclick="handleLogin()" class="w-full bg-slate-900 text-white font-semibold py-2.5 rounded-lg text-sm hover:bg-slate-800 transition">Verificar e Ingresar</button>
+                <button onclick="bypassAuth()" class="w-full bg-slate-200 text-slate-700 font-medium py-2 rounded-lg text-xs hover:bg-slate-300 transition">Puentear y saltar al Micrositio Sucesión &rarr;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-6 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- SIDEBAR NAVIGATION SECTIONS -->
+        <aside class="lg:col-span-1 space-y-2">
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-3 px-2">Secciones del Protocolo</p>
+            <nav class="space-y-1" id="nav-sections">
+                <a href="#sec-a" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900 hover:text-white transition">A. Tipo de Empresa</a>
+                <a href="#sec-b" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900 hover:text-white transition">B. Valores Compartidos</a>
+                <a href="#sec-c" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900 hover:text-white transition">C. Orientación Estratégica</a>
+                <a href="#sec-d" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900 hover:text-white transition">D. Órganos de Gobierno</a>
+                <a href="#sec-e" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900 hover:text-white transition">E. Propiedad y Venta</a>
+                <a href="#sec-f" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900 hover:text-white transition">F. Ingreso de Familiares</a>
+                <a href="#sec-i" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900 hover:text-white transition">I. Remuneración (SRA)</a>
+                <a href="#sec-j" class="block px-3 py-2 rounded-lg text-sm text-slate-300 hover:bg-slate-900 hover:text-white transition">J. Políticas Financieras</a>
+            </nav>
+        </aside>
+
+        <!-- EDITABLE CONTENT CONTAINER -->
+        <div class="lg:col-span-3 space-y-8" id="editable-container">
+            
+            <!-- INTRODUCCIÓN -->
+            <section class="glass-panel p-6 rounded-2xl text-slate-900 shadow-xl">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-600 block mb-1">Introducción del Marco</span>
+                <blockquote class="italic text-slate-700 border-l-4 border-amber-500 pl-4 my-2 text-sm" contenteditable="false" data-key="intro-quote">
+                    “Las Empresas Familiares que tienen la doble intención de mantenerse como tales en el transcurso del tiempo... un Protocolo familiar debería ayudar a profesionalizar los procesos de dirección estratégica...”
+                </blockquote>
+                <p class="text-xs text-slate-500 mt-2">— Miguel Ángel Gallo (IESE)</p>
+            </section>
+
+            <!-- SECCIÓN A -->
+            <section id="sec-a" class="glass-panel p-6 rounded-2xl text-slate-900 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <h2 class="font-bold text-lg text-slate-900">A. Tipo de Empresa Familiar</h2>
+                    <span class="text-xs bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full font-semibold">Parametrización General</span>
+                </div>
+                <p class="text-sm text-slate-700 leading-relaxed" contenteditable="false" data-key="sec-a-desc">
+                    Actualmente la firma <span class="font-semibold editable-field px-1 rounded bg-amber-50 border border-dashed border-amber-300 text-amber-900" contenteditable="false" data-key="company-name">[ RAZÓN SOCIAL / NOMBRE DE LA EMPRESA ]</span> es una empresa donde la generación fundadora lidera la gestión, compartiendo parcialmente responsabilidades con los miembros de la siguiente generación. El objetivo es evolucionar hacia una Empresa de <span class="font-semibold editable-field px-1 rounded bg-amber-50 border border-dashed border-amber-300 text-amber-900" contenteditable="false" data-key="target-model">Dirección Familiar y Gerenciamiento Familiar</span>.
+                </p>
+            </section>
+
+            <!-- SECCIÓN B -->
+            <section id="sec-b" class="glass-panel p-6 rounded-2xl text-slate-900 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <h2 class="font-bold text-lg text-slate-900">B. Valores Compartidos por la Familia</h2>
+                </div>
+                <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                    <li><strong contenteditable="false" data-key="val-1-title">Unidad familiar:</strong> Basada en amor, solidaridad y confianza mutua (consenso antes que unanimidad).</li>
+                    <li><strong contenteditable="false" data-key="val-2-title">Amor Societario (Afecto Societatis):</strong> <span class="editable-field px-1 rounded" contenteditable="false" data-key="val-2-desc">Es aquello que cuando se pierde, ya no es una empresa familiar y hay que vender.</span></li>
+                    <li><strong contenteditable="false" data-key="val-3-title">Rentabilidad Genuina:</strong> Basada en procesos efectivos, eficientes y éticos.</li>
+                </ul>
+            </section>
+
+            <!-- SECCIÓN D -->
+            <section id="sec-d" class="glass-panel p-6 rounded-2xl text-slate-900 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <h2 class="font-bold text-lg text-slate-900">D. Órganos de Gobierno y Estructura</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <strong class="block text-amber-600 mb-1">Plano Familiar</strong>
+                        <p class="text-slate-600 text-xs">Consejo de Familia: Velar por la unidad, formación de jóvenes y amor societario.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <strong class="block text-amber-600 mb-1">Plano de la Propiedad</strong>
+                        <p class="text-slate-600 text-xs">Asamblea de Accionistas y Mesa de Dueños.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <strong class="block text-amber-600 mb-1">Plano de la Dirección</strong>
+                        <p class="text-slate-600 text-xs">Directorio: Gobierno estratégico y políticas generales.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <strong class="block text-amber-600 mb-1">Plano de la Ejecución</strong>
+                        <p class="text-slate-600 text-xs">Comité Ejecutivo y Gerencias (rige el mérito, no la sangre).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN I: REMUNERACIÓN (SRA) -->
+            <section id="sec-i" class="glass-panel p-6 rounded-2xl text-slate-900 shadow-xl space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-200 pb-3">
+                    <h2 class="font-bold text-lg text-slate-900">I. Sistema de Remuneración Anual (S.R.A.)</h2>
+                </div>
+                <div class="bg-slate-900 text-amber-300 font-mono p-4 rounded-xl text-center text-xs tracking-wider">
+                    S.R.A. = Remuneración al Trabajo + Remuneración a la Dirección + Remuneración a la Propiedad + Remuneración a la Familia
+                </div>
+                <p class="text-xs text-slate-600">Cada miembro recibe en función de lo que aporta, manteniendo la transparencia y lógica económica basada en fórmula polinómica.</p>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER / NEXT STEP REDIRECT -->
+    <footer id="sucesccion" class="border-t border-slate-800 bg-slate-900/90 py-8 px-6 text-center mt-auto">
+        <div class="max-w-3xl mx-auto space-y-4">
+            <h4 class="text-sm font-semibold uppercase tracking-widest text-slate-400">Siguiente Nivel del Sistema</h4>
+            <p class="text-xs text-slate-500">Una vez consolidada la Constitución Familiar y las reglas de gobernanza, continúe hacia el micrositio de Sucesión Patrimonial y Relevo Generacional.</p>
+            <button onclick="alert('Redirigiendo al Micrositio de Sucesión hipervinculado...');" class="inline-block bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm shadow-lg shadow-amber-500/20 hover:scale-105 transition">
+                Acceder al Micrositio: Sucesión &rarr;
+            </button>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE FRONTEND/BACKEND SIMULATOR SCRIPT -->
+    <script>
+        let isEditable = false;
+
+        function toggleAuthModal() {
+            const modal = document.getElementById('auth-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function handleLogin() {
+            const user = document.getElementById('username-input').value;
+            const pass = document.getElementById('password-input').value;
+            const err = document.getElementById('auth-error');
+
+            if (user === 'lprediger' && pass === 'joaquin7') {
+                isEditable = true;
+                enableEditing();
+                toggleAuthModal();
+                updateAuthStatus(true);
+            } else {
+                err.classList.remove('hidden');
+            }
+        }
+
+        function bypassAuth() {
+            toggleAuthModal();
+            updateAuthStatus(false, "Modo Demostración");
+            enableEditing();
+        }
+
+        function updateAuthStatus(success, customText) {
+            const btn = document.getElementById('auth-status-btn');
+            if (success) {
+                btn.innerHTML = "🔓 Consultor Activo (lprediger)";
+                btn.classList.remove('bg-slate-800', 'text-amber-400');
+                btn.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border-emerald-500');
+            } else {
+                btn.innerHTML = `⚡ ${customText || "Modo Demostración"}`;
+                btn.classList.remove('bg-slate-800', 'text-amber-400');
+                btn.classList.add('bg-amber-500/20', 'text-amber-400', 'border-amber-500');
+            }
+        }
+
+        function enableEditing() {
+            const fields = document.querySelectorAll('[contenteditable]');
+            fields.forEach(el => {
+                el.setAttribute('contenteditable', 'true');
+                el.classList.add('editable-field');
+            });
+        }
+
+        function saveChanges() {
+            const data = {};
+            document.querySelectorAll('[data-key]').forEach(el => {
+                data[el.getAttribute('data-key')] = el.innerText;
+            });
+            console.log("Backend Simulado - Datos actualizados en tiempo real:", data);
+            alert("¡Cambios guardados exitosamente en el backend de la Constitución Familiar! Los parámetros se han adaptado en tiempo real.");
+        }
+    </script>
+</body>
+</html>
