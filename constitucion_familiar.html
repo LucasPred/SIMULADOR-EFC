@@ -164,66 +164,195 @@
             <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">Motor Jurídico Sistémico para Empresas Familiares Complejas — Trazabilidad desde Genograma hasta Gobernanza.</p>
         </header>
 
-        <!-- SECCIÓN A: TIPO DE EMPRESA FAMILIAR -->
-        <section id="seccion-a" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-            <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-lg text-sm">A</span>
-                    Tipo de Empresa Familiar
-                </h2>
-                <span class="text-xs text-indigo-400 bg-indigo-950 px-3 py-1 rounded-full border border-indigo-800">Dashboard Estratégico</span>
+       <!-- SECCIÓN A: TIPO DE EMPRESA FAMILIAR (INTERACTIVA, CON CRÉDITOS Y SEMÁFORO DE RIESGO) -->
+<section id="seccion-a-interactiva" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10 transition-all">
+    <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-4 gap-2">
+        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-lg text-sm">A</span>
+            Tipo de Empresa Familiar: Evaluación y Consenso
+        </h2>
+        <!-- Indicador de Semáforo y Créditos de Sección -->
+        <div class="flex items-center gap-3">
+            <div id="badge-creditos-a" class="bg-indigo-950 px-3 py-1.5 rounded-full border border-indigo-500/40 text-xs font-bold text-indigo-300">
+                Créditos Sección: <span id="pts-seccion-a">0</span> / 100 pts
             </div>
-
-            <!-- Grid de Niveles de Acceso -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div class="bg-slate-800/60 p-4 rounded-xl border-t-4 border-indigo-500">
-                    <h4 class="font-bold text-slate-200 text-sm mb-1">Familia</h4>
-                    <p class="text-xs text-slate-400">Ámbito de unidad y valores compartidos.</p>
-                </div>
-                <div class="bg-slate-800/60 p-4 rounded-xl border-t-4 border-blue-500">
-                    <h4 class="font-bold text-slate-200 text-sm mb-1">Propiedad</h4>
-                    <p class="text-xs text-slate-400">Ámbito de control patrimonial y capital.</p>
-                </div>
-                <div class="bg-slate-800/60 p-4 rounded-xl border-t-4 border-amber-500">
-                    <h4 class="font-bold text-slate-200 text-sm mb-1">Dirección</h4>
-                    <p class="text-xs text-slate-400">Ámbito de gobierno estratégico y políticas.</p>
-                </div>
-                <div class="bg-slate-800/60 p-4 rounded-xl border-t-4 border-emerald-500">
-                    <h4 class="font-bold text-slate-200 text-sm mb-1">Ejecución</h4>
-                    <p class="text-xs text-slate-400">Ámbito operativo basado estrictamente en mérito.</p>
-                </div>
+            <div id="semaforo-seccion-a" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-xs font-bold text-slate-300">
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-500" id="dot-semaforo-a"></span> Estado: Pendiente
             </div>
+        </div>
+    </div>
 
-            <!-- Panel Comparativo de Estado -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                    <span class="text-[10px] font-bold text-slate-400 tracking-wider block mb-1">MODELO DE GESTIÓN ACTUAL</span>
-                    <p class="text-base text-slate-200 font-semibold">Gerencia Familiar</p>
-                    <p class="text-xs mt-2 text-slate-400 leading-relaxed">Gestión compartida parcialmente con participación activa de la primera y segunda generación bajo liderazgo central.</p>
-                </div>
-                <div class="bg-amber-950/20 p-5 rounded-xl border border-amber-500/30">
-                    <span class="text-[10px] font-bold text-amber-400 tracking-wider block mb-1">ESTADO DESEADO / OBJETIVO</span>
-                    <p class="text-base text-amber-200 font-bold">Dirección y Gerenciamiento Familiar</p>
-                    <p class="text-xs mt-2 text-amber-300/80 leading-relaxed">Roles protagónicos en igualdad de condiciones y profesionalización de los órganos de gobierno para futuras generaciones.</p>
-                </div>
+    <!-- Introducción Interactiva -->
+    <p class="text-xs text-slate-300 mb-6 leading-relaxed">
+        Analice el modelo de gestión actual de su organización familiar. Indique el grado de acuerdo con las siguientes afirmaciones estructurales para determinar la alineación corporativa y acumular créditos de gobernanza.
+    </p>
+
+    <!-- Preguntas / Evaluaciones Interactivas de la Sección A -->
+    <div class="space-y-6 mb-8">
+        
+        <!-- Pregunta 1 -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
+            <h4 class="text-xs font-bold text-slate-200 mb-2">1. ¿Existe una separación clara entre los roles de la Familia, la Propiedad, la Dirección y la Ejecución operativa?</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <button onclick="evaluarPreguntaA(1, 'si', 35)" id="btn-a1-si" class="p-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 text-xs text-slate-300 transition text-left font-medium">
+                    ✅ Sí, están claramente delimitados (Óptimo)
+                </button>
+                <button onclick="evaluarPreguntaA(1, 'parcial', 15)" id="btn-a1-parcial" class="p-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-500 text-xs text-slate-300 transition text-left font-medium">
+                    ⚠️ Parcialmente / Hay superposición
+                </button>
+                <button onclick="evaluarPreguntaA(1, 'no', 0)" id="btn-a1-no" class="p-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-rose-500 text-xs text-slate-300 transition text-left font-medium">
+                    ❌ No, se mezclan familia y gestión (Alto Riesgo)
+                </button>
             </div>
+            <div id="feedback-a1" class="mt-3 text-[11px] text-slate-400 italic hidden"></div>
+        </div>
 
-            <!-- Pilares de Transformación -->
-            <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-                <h3 class="text-sm font-bold text-indigo-400 uppercase tracking-widest mb-4">🚀 Pilares Clave de Evolución</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-slate-900 p-4 rounded-lg border-l-4 border-emerald-500">
-                        <strong class="text-white text-sm block mb-1">Crecimiento Organizacional</strong>
-                        <p class="text-xs text-slate-400">Madurez del negocio, profesionalización, orientación estratégica y sistemas formales de evaluación y remuneración.</p>
-                    </div>
-                    <div class="bg-slate-900 p-4 rounded-lg border-l-4 border-blue-500">
-                        <strong class="text-white text-sm block mb-1">Unidad de Gobierno</strong>
-                        <p class="text-xs text-slate-400">Consenso estratégico, alineación de expectativas y formalización del Consejo de Familia como órgano consultivo y protector.</p>
-                    </div>
-                </div>
+        <!-- Pregunta 2 -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
+            <h4 class="text-xs font-bold text-slate-200 mb-2">2. El modelo de gestión actual hacia el que transita la empresa prioriza el mérito profesional sobre el parentesco:</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <button onclick="evaluarPreguntaA(2, 'si', 35)" id="btn-a2-si" class="p-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 text-xs text-slate-300 transition text-left font-medium">
+                    ✅ Totalmente de acuerdo (Mérito estructural)
+                </button>
+                <button onclick="evaluarPreguntaA(2, 'parcial', 15)" id="btn-a2-parcial" class="p-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-500 text-xs text-slate-300 transition text-left font-medium">
+                    ⚠️ En proceso de formalización
+                </button>
+                <button onclick="evaluarPreguntaA(2, 'no', 0)" id="btn-a2-no" class="p-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-rose-500 text-xs text-slate-300 transition text-left font-medium">
+                    ❌ En desacuerdo (Decisiones por lazo familiar)
+                </button>
             </div>
-        </section>
+            <div id="feedback-a2" class="mt-3 text-[11px] text-slate-400 italic hidden"></div>
+        </div>
 
+        <!-- Pregunta 3 -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
+            <h4 class="text-xs font-bold text-slate-200 mb-2">3. ¿Existe consenso intergeneracional sobre el Estado Deseado / Objetivo de la compañía?</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <button onclick="evaluarPreguntaA(3, 'si', 30)" id="btn-a3-si" class="p-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-emerald-500 text-xs text-slate-300 transition text-left font-medium">
+                    ✅ Sí, hay visión compartida unánime
+                </button>
+                <button onclick="evaluarPreguntaA(3, 'parcial', 10)" id="btn-a3-parcial" class="p-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-amber-500 text-xs text-slate-300 transition text-left font-medium">
+                    ⚠️ Hay matices o diferencias leves
+                </button>
+                <button onclick="evaluarPreguntaA(3, 'no', 0)" id="btn-a3-no" class="p-3 rounded-lg bg-slate-900 border border-slate-700 hover:border-rose-500 text-xs text-slate-300 transition text-left font-medium">
+                    ❌ No hay consenso (Riesgo de conflicto)
+                </button>
+            </div>
+            <div id="feedback-a3" class="mt-3 text-[11px] text-slate-400 italic hidden"></div>
+        </div>
+
+    </div>
+
+    <!-- Panel de Consejos y Recomendaciones del Consultor en Tiempo Real -->
+    <div id="panel-recomendacion-a" class="bg-indigo-950/30 p-5 rounded-xl border border-indigo-500/30 mb-6 hidden">
+        <h4 class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-1">💡 Recomendación del Consultor Sistémico:</h4>
+        <p id="texto-recomendacion-a" class="text-xs text-indigo-200/90 leading-relaxed"></p>
+    </div>
+
+    <!-- Navegación Consecutiva a la Sección B -->
+    <div class="flex justify-end items-center pt-4 border-t border-slate-800">
+        <button onclick="avanzarASeccionB()" class="bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white px-6 py-2.5 rounded-lg text-xs font-bold transition shadow-lg shadow-indigo-500/20 flex items-center gap-2">
+            Continuar a Sección B: Valores Compartidos &rarr;
+        </button>
+    </div>
+</section>
+
+<!-- SCRIPT DE LÓGICA INTERACTIVA, CRÉDITOS Y SEMÁFORO PARA LA SECCIÓN A -->
+<script>
+    // Estado local de la Sección A
+    let puntajeA1 = 0;
+    let puntajeA2 = 0;
+    let puntajeA3 = 0;
+    let respuestasRegistradasA = { p1: null, p2: null, p3: null };
+
+    function evaluarPreguntaA(pregunta, opcion, valor) {
+        // Guardar puntaje y opción
+        if (pregunta === 1) { puntajeA1 = valor; respuestasRegistradasA.p1 = opcion; }
+        if (pregunta === 2) { puntajeA2 = valor; respuestasRegistradasA.p2 = opcion; }
+        if (pregunta === 3) { puntajeA3 = valor; respuestasRegistradasA.p3 = opcion; }
+
+        // Actualizar diseño de botones visuales
+        for (let opt of ['si', 'parcial', 'no']) {
+            const btn = document.getElementById(`btn-a${pregunta}-${opt}`);
+            if (btn) {
+                btn.className = "p-3 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-300 transition text-left font-medium";
+            }
+        }
+        const seleccionado = document.getElementById(`btn-a${pregunta}-${opcion}`);
+        if (seleccionado) {
+            if (opcion === 'si') seleccionado.className += " border-emerald-500 bg-emerald-950/40 text-emerald-200 font-bold";
+            if (opcion === 'parcial') seleccionado.className += " border-amber-500 bg-amber-950/40 text-amber-200 font-bold";
+            if (opcion === 'no') seleccionado.className += " border-rose-500 bg-rose-950/40 text-rose-200 font-bold";
+        }
+
+        // Mostrar feedback específico según desvío
+        const feedback = document.getElementById(`feedback-a${pregunta}`);
+        feedback.style.display = 'block';
+        if (opcion === 'si') {
+            feedback.className = "mt-3 text-[11px] text-emerald-400 font-medium";
+            feedback.innerHTML = "✔ Excelente alineación con los estándares de gobernanza corporativa.";
+        } else if (opcion === 'parcial') {
+            feedback.className = "mt-3 text-[11px] text-amber-400 font-medium";
+            feedback.innerHTML = "⚠ Atención: Se recomienda formalizar protocolos escritos para evitar ambigüedades.";
+        } else {
+            feedback.className = "mt-3 text-[11px] text-rose-400 font-medium";
+            feedback.innerHTML = "🚨 Alerta de desvío crítico: La falta de separación de roles incrementa el riesgo de conflictos societarios.";
+        }
+
+        calcularTotalesYCreditosA();
+    }
+
+    function calcularTotalesYCreditosA() {
+        const totalCreditos = puntajeA1 + puntajeA2 + puntajeA3; // Máximo 100 pts
+        document.getElementById('pts-seccion-a').innerText = totalCreditos;
+
+        // Actualizar Semáforo
+        const dot = document.getElementById('dot-semaforo-a');
+        const semaforo = document.getElementById('semaforo-seccion-a');
+        const panelRec = document.getElementById('panel-recomendacion-a');
+        const textoRec = document.getElementById('texto-recomendacion-a');
+
+        panelRec.style.display = 'block';
+
+        if (totalCreditos >= 70) {
+            dot.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse";
+            semaforo.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-xs font-bold text-emerald-400";
+            semaforo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Riesgo Bajo (Sólido)';
+            textoRec.innerText = "Su empresa familiar muestra una estructura de gobernanza saludable. Mantenga los canales de comunicación activos y formalice estos acuerdos en el protocolo escrito.";
+        } else if (totalCreditos >= 40) {
+            dot.className = "w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse";
+            semaforo.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-950/60 border border-amber-500/40 text-xs font-bold text-amber-400";
+            semaforo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Riesgo Medio (Requiere Ajustes)';
+            textoRec.innerText = "Se detectan superposiciones operativas y familiares. Es aconsejable establecer reglas claras de ingreso y profesionalización antes de avanzar en la sucesión.";
+        } else {
+            dot.className = "w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse";
+            semaforo.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-950/60 border border-rose-500/40 text-xs font-bold text-rose-400";
+            semaforo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Riesgo Alto (Conflicto Potencial)';
+            textoRec.innerText = "Alerta crítica: La integración sin filtros entre familia y gestión expone a la compañía a parálisis decisoria. Se sugiere intervención del consultor para separar planos patrimoniales.";
+        }
+
+        // Guardar historial acumulado en localStorage para el puntaje global del jugador
+        let historialGlobal = JSON.parse(localStorage.getItem('historial_consultoria_integral') || '{}');
+        historialGlobal.seccionA = { creditos: totalCreditos, respuestas: respuestasRegistradasA };
+        localStorage.setItem('historial_consultoria_integral', JSON.stringify(historialGlobal));
+    }
+
+    function avanzarASeccionB() {
+        if (respuestasRegistradasA.p1 === null || respuestasRegistradasA.p2 === null || respuestasRegistradasA.p3 === null) {
+            alert("Por favor, responda todas las evaluaciones de la Sección A para registrar sus créditos antes de continuar a la Sección B.");
+            return;
+        }
+        alert("¡Créditos de la Sección A registrados con éxito en su historial! Desplazándose a la Sección B...");
+        
+        // Simular scroll o transición limpia a la siguiente sección del micrositio
+        const seccionB = document.getElementById('seccion-b-valores') || document.getElementById('seccion-b');
+        if (seccionB) {
+            seccionB.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.location.hash = "seccion-b";
+        }
+    }
+</script>
         <!-- SECCIÓN B: VALORES COMPARTIDOS POR LA FAMILIA (DASHBOARD CULTURAL) -->
         <section id="seccion-b" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
             <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
