@@ -999,89 +999,136 @@
             </div>
         </section>
 
-        <!-- SECCIÓN C: PROYECTO EMPRESARIO COMÚN Y ORIENTACIÓN ESTRATÉGICA -->
-        <section id="seccion-c" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-            <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <span class="bg-teal-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">C</span>
-                    Proyecto Empresario Común: Orientación Estratégica
-                </h2>
-                <span class="text-xs text-teal-400 bg-teal-950/40 px-3 py-1 rounded-full border border-teal-800/50">Visión y Gobierno de Capacidades</span>
+     <!-- SECCIÓN C: PROYECTO EMPRESARIO COMÚN Y ORIENTACIÓN ESTRATÉGICA (Dashboard Estratégico) -->
+<section id="seccion-c" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10 transition-all">
+    <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-4 gap-2">
+        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+            <span class="bg-teal-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">C</span>
+            Proyecto Empresario Común
+        </h2>
+        <!-- Indicador de Madurez Estratégica -->
+        <div class="flex items-center gap-3">
+            <div id="badge-madurez-c" class="bg-teal-950/60 px-3 py-1.5 rounded-full border border-teal-500/40 text-xs font-bold text-teal-300">
+                Madurez Estratégica: <span id="pts-seccion-c">0</span> / 100 pts
             </div>
-            
-            <p class="text-sm text-slate-400 mb-6 leading-relaxed">
-                Identificación de los aspectos que definen el negocio, poniendo en común el conocimiento de las fuerzas propias de la compañía, ganando conciencia de la función que cumple y adquiriendo una visión compartida de futuro para alinear a los propietarios.
-            </p>
+            <div id="semaforo-seccion-c" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-xs font-bold text-slate-300">
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-500" id="dot-semaforo-c"></span> Estado: En Diagnóstico
+            </div>
+        </div>
+    </div>
 
-            <!-- Lineamientos Estratégicos Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
-                        <h3 class="font-bold text-white text-sm uppercase tracking-wide">a) Respecto a la Cartera de Negocios</h3>
-                    </div>
-                    <ul class="space-y-2 text-xs text-slate-300">
-                        <li class="bg-slate-900/70 p-2.5 rounded border border-slate-800 flex items-center justify-between">
-                            <span>Mercado Interno y Externo</span>
-                            <span class="text-teal-400 font-bold">Evaluación activa</span>
-                        </li>
-                        <li class="bg-slate-900/70 p-2.5 rounded border border-slate-800">
-                            <strong class="text-teal-300 block mb-1">Diversificación:</strong>
-                            Segmentación por Clientes, Actividad, Producto, Geografía (acompañando el crecimiento de clientes internamente y en el exterior) y Tipos de Negocio.
-                        </li>
-                    </ul>
-                </div>
+    <p class="text-sm text-slate-400 mb-6 italic">Definición del negocio, alineación de propietarios y visión compartida de futuro. Evalúe el estado de ejecución de estos pilares estratégicos:</p>
 
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-400"></span>
-                        <h3 class="font-bold text-white text-sm uppercase tracking-wide">b) Respecto a la Organización</h3>
-                    </div>
-                    <ul class="space-y-2 text-xs text-slate-300">
-                        <li class="bg-slate-900/70 p-2.5 rounded border border-slate-800">
-                            <strong class="text-indigo-300 block mb-1">Capacitación y Tecnificación:</strong>
-                            Actualización constante de sistemas, maquinaria, equipos y optimización de procesos.
-                        </li>
-                        <li class="bg-slate-900/70 p-2.5 rounded border border-slate-800 flex items-center justify-between">
-                            <span>Concentración Geográfica de la Organización</span>
-                            <span class="text-indigo-400 font-bold">Optimización</span>
-                        </li>
-                    </ul>
+    <!-- Grid de Pilares Estratégicos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        
+        <!-- Pila 1: Cartera de Negocios -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+                <h3 class="font-bold text-white text-sm uppercase tracking-wide">Cartera de Negocios</h3>
+            </div>
+            <p class="text-xs text-slate-300 mb-4">Diversificación y posicionamiento en mercados interno y externo.</p>
+            <div class="border-t border-slate-800/80 pt-3">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿Está clara y consolidada la segmentación?</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="evaluarC(1, 20, 'c1-si')" id="btn-c1-si" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-teal-500 transition text-center">Consolidada (20p)</button>
+                    <button onclick="evaluarC(1, 10, 'c1-parcial')" id="btn-c1-parcial" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-amber-500 transition text-center">En ajuste (10p)</button>
+                    <button onclick="evaluarC(1, 0, 'c1-no')" id="btn-c1-no" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-rose-500 transition text-center">Incipiente (0p)</button>
                 </div>
             </div>
+        </div>
 
-            <!-- Matriz de Tamaños Relativos y Cuidado de Capacidades -->
-            <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-8">
-                <h3 class="text-sm font-bold text-teal-400 uppercase tracking-widest mb-3">📊 Matriz de Tamaños Relativos y Dinámica Humana</h3>
-                <p class="text-xs text-slate-300 mb-4 leading-relaxed">
-                    Bajo la matriz de tamaños relativos, la compañía opera como una estructura de tamaño compacto con una familia nuclear acotada. Con proyección de crecimiento hacia una escala mediana mientras la familia mantiene su proporción en la siguiente generación.
-                </p>
-                <div class="bg-teal-950/20 p-4 rounded-lg border border-teal-500/30 text-xs text-teal-200">
-                    <strong>El Gran Secreto:</strong> El cuidado de las <em>capacidades de la gente que trabaja en la empresa</em>: evitar luchas de poder, garantizar una dinámica familiar sana y potenciar el talento de las generaciones actuales y futuras.
+        <!-- Pila 2: Organización y Tecnificación -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                <h3 class="font-bold text-white text-sm uppercase tracking-wide">Org. y Tecnificación</h3>
+            </div>
+            <p class="text-xs text-slate-300 mb-4">Actualización constante, sistemas, equipos y procesos eficientes.</p>
+            <div class="border-t border-slate-800/80 pt-3">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿La estructura acompaña el crecimiento?</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="evaluarC(2, 20, 'c2-si')" id="btn-c2-si" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-indigo-500 transition text-center">Optimizada (20p)</button>
+                    <button onclick="evaluarC(2, 10, 'c2-parcial')" id="btn-c2-parcial" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-amber-500 transition text-center">En proceso (10p)</button>
+                    <button onclick="evaluarC(2, 0, 'c2-no')" id="btn-c2-no" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-rose-500 transition text-center">Desfasada (0p)</button>
                 </div>
             </div>
+        </div>
 
-            <!-- Sugerencias para el Desarrollo de Capacidades -->
-            <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-                <h3 class="text-sm font-bold text-teal-400 uppercase tracking-widest mb-4">🎯 Plan de Desarrollo y Liderazgo Generacional</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                    <div class="bg-slate-900 p-4 rounded-lg border-l-4 border-teal-500">
-                        <strong class="text-white block mb-1 font-semibold">Generación Actual:</strong>
-                        <p class="text-slate-400">Capacitación focalizada de acuerdo a las necesidades estratégicas detectadas en la gestión.</p>
-                    </div>
-                    <div class="bg-slate-900 p-4 rounded-lg border-l-4 border-amber-500">
-                        <strong class="text-white block mb-1 font-semibold">Actuales Miembros y Futuras Generaciones:</strong>
-                        <ul class="list-disc list-inside space-y-1 text-slate-400 mt-1">
-                            <li>Enseñar a ser buenos dueños (elegir buen Directorio y Gerentes).</li>
-                            <li>Aprender a respetar la capacidad ajena (clave de crecimiento).</li>
-                            <li>Creación de la <strong>"Mesa de Jóvenes"</strong> en el Consejo de Familia para concientización patrimonial (equilibrio: perfil bajo, alta responsabilidad).</li>
-                            <li>Enfoque directivo: formar hombres y mujeres de números, bilingües y líderes de personas.</li>
-                        </ul>
-                    </div>
+        <!-- Pila 3: Talento y Liderazgo Generacional -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 md:col-span-2">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                <h3 class="font-bold text-white text-sm uppercase tracking-wide">Formación y Liderazgo (El Gran Secreto)</h3>
+            </div>
+            <p class="text-xs text-slate-300 mb-4">Capacitación focalizada, "Mesa de Jóvenes", y preparación de la siguiente generación en roles de gobierno.</p>
+            <div class="border-t border-slate-800/80 pt-3">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿Existe un programa de desarrollo formalizado y activo?</span>
+                <div class="grid grid-cols-3 gap-4">
+                    <button onclick="evaluarC(3, 60, 'c3-si')" id="btn-c3-si" class="py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 hover:border-emerald-500 transition font-bold text-center">Sí, activo y medible (60p)</button>
+                    <button onclick="evaluarC(3, 30, 'c3-parcial')" id="btn-c3-parcial" class="py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 hover:border-amber-500 transition font-bold text-center">Iniciativas aisladas (30p)</button>
+                    <button onclick="evaluarC(3, 0, 'c3-no')" id="btn-c3-no" class="py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 hover:border-rose-500 transition font-bold text-center">No existe plan (0p)</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
 
+    <!-- Panel de Diagnóstico -->
+    <div id="panel-diagnostico-c" class="bg-teal-950/20 p-5 rounded-xl border border-teal-500/30 mb-6 hidden">
+        <h4 class="text-xs font-bold text-teal-300 uppercase tracking-wider mb-1">🚀 Diagnóstico de Orientación Estratégica:</h4>
+        <p id="texto-diagnostico-c" class="text-xs text-teal-100/90 leading-relaxed"></p>
+    </div>
+</section>
+
+<script>
+    let puntajesValoresC = { 1: 0, 2: 0, 3: 0 };
+
+    function evaluarC(num, pts, btnId) {
+        puntajesValoresC[num] = pts;
+
+        // Reset visual botones
+        const opciones = ['si', 'parcial', 'no'];
+        opciones.forEach(o => {
+            const btn = document.getElementById(`btn-c${num}-${o}`);
+            if(btn) btn.className = btn.className.replace(/ bg-[a-z]+-950\/50 border-[a-z]+-500/g, "");
+        });
+
+        const active = document.getElementById(`btn-c${num}-${btnId.split('-')[1]}`);
+        if(active) active.className += " border-teal-500 bg-teal-950/50";
+
+        calcularTotalC();
+    }
+
+    function calcularTotalC() {
+        let totalC = Object.values(puntajesValoresC).reduce((a, b) => a + b, 0);
+        document.getElementById('pts-seccion-c').innerText = totalC;
+
+        const dotC = document.getElementById('dot-semaforo-c');
+        const semaforoC = document.getElementById('semaforo-seccion-c');
+        const panelDiag = document.getElementById('panel-diagnostico-c');
+        const textoDiag = document.getElementById('texto-diagnostico-c');
+
+        panelDiag.style.display = 'block';
+
+        if(totalC >= 80) {
+            dotC.className = "w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse";
+            semaforoC.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-950/60 border border-teal-500/40 text-xs font-bold text-teal-400";
+            semaforoC.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span> Visión Alineada';
+            textoDiag.innerText = "La empresa posee un rumbo estratégico claro y un plan de sucesión/liderazgo activo. La profesionalización está alineada con los objetivos de los propietarios.";
+        } else if(totalC >= 40) {
+            dotC.className = "w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse";
+            semaforoC.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-950/60 border border-amber-500/40 text-xs font-bold text-amber-400";
+            semaforoC.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Desafío Estratégico';
+            textoDiag.innerText = "Existen focos de desarrollo necesarios, particularmente en la formalización del liderazgo generacional. Es momento de unificar la visión compartida.";
+        } else {
+            dotC.className = "w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse";
+            semaforoC.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-950/60 border border-rose-500/40 text-xs font-bold text-rose-400";
+            semaforoC.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Alerta: Falta de Proyecto';
+            textoDiag.innerText = "La ausencia de una estructura de formación y visión clara es un riesgo de gestión. La profesionalización de la siguiente generación debe ser una prioridad absoluta.";
+        }
+    }
+</script>
         <!-- SECCIÓN D: ÓRGANOS DE GOBIERNO Y ESTRUCTURA ORGANIZATIVA (DASHBOARD SISTÉMICO) -->
         <section id="seccion-d-gobierno" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
             <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
