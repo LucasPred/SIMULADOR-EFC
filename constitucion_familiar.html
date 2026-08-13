@@ -353,413 +353,299 @@
         }
     }
 </script>
-        <!-- SECCIÓN B: VALORES COMPARTIDOS POR LA FAMILIA (DASHBOARD CULTURAL) -->
-        <section id="seccion-b" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-            <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <span class="bg-amber-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">B</span>
-                    Valores Compartidos por la Familia
-                </h2>
-                <span class="text-xs text-amber-400 bg-amber-950/40 px-3 py-1 rounded-full border border-amber-800/50">Identidad y ADN Corporativo</span>
+   <!-- SECCIÓN B: VALORES COMPARTIDOS POR LA FAMILIA (DASHBOARD CULTURAL INTERACTIVO) -->
+<section id="seccion-b" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10 transition-all">
+    <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-4 gap-2">
+        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+            <span class="bg-amber-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">B</span>
+            Valores Compartidos por la Familia
+        </h2>
+        <!-- Indicador de Semáforo y Créditos Culturales de Sección B -->
+        <div class="flex items-center gap-3">
+            <div id="badge-creditos-b" class="bg-amber-950/60 px-3 py-1.5 rounded-full border border-amber-500/40 text-xs font-bold text-amber-300">
+                Créditos Culturales: <span id="pts-seccion-b">0</span> / 100 pts
             </div>
-            
-            <p class="text-sm text-slate-400 mb-6 italic">Aquellas cosas que nos identifican como Grupo Familiar Empresario y por las cuales vale la pena luchar.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- Valor 1: Unidad Familiar -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Unidad Familiar</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Basada en el amor, la solidaridad y la confianza mutua.</p>
-                        
-                        <div class="space-y-3 bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-xs text-slate-400">
-                            <div>
-                                <strong class="text-amber-300 block mb-0.5">Capacidad de Consenso:</strong>
-                                Significa "ponerse de acuerdo" (no unanimidad). Implica ceder ocasionalmente sin que deje un sabor a renunciamiento que dañe la dinámica familiar.
-                            </div>
-                            <div>
-                                <strong class="text-amber-300 block mb-0.5">Confianza Mutua:</strong>
-                                Nos otorga la capacidad plena de "decirnos las cosas" de forma transparente y constructiva.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Valor 2: Libertad y Dignidad -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Respeto y Dignidad</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Defensa intransigente de la libertad y dignidad de las personas que integran tanto el núcleo familiar como el equipo de trabajo.</p>
-                    </div>
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400 italic">
-                        "Garantizar un trato humano fundamentado en la valoración individual dentro del ecosistema empresario."
-                    </div>
-                </div>
-
-                <!-- Valor 3: Rentabilidad Genuina -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Rentabilidad Genuina y Razonable</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Basada estrictamente en procesos efectivos, eficientes y éticos.</p>
-                    </div>
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400">
-                        Busca el equilibrio entre el rédito económico sustentable y la integridad operacional a largo plazo.
-                    </div>
-                </div>
-
-                <!-- Valor 4: Excelencia Competitiva -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Excelencia Competitiva</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Orientación absoluta hacia la calidad superior en todos los productos y servicios de la compañía.</p>
-                    </div>
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400">
-                        Estándar de mejora continua para liderar en los mercados donde opera la empresa.
-                    </div>
-                </div>
-
-                <!-- Valor 5: Satisfacción de Clientes -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Satisfacción Total</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Compromiso inquebrantable con la satisfacción de los clientes externos (mercado) e internos (colaboradores).</p>
-                    </div>
-                </div>
-
-                <!-- Valor 6: Compromiso y Lealtad -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Compromiso y Lealtad</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Lealtad combinada con la unidad familiar, la empresa y el bien común.</p>
-                        <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-xs text-slate-400">
-                            Refuerza el equilibrio indispensable que exige el cuidado simultáneo de estas tres realidades críticas.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Valor 7: Deberes Ciudadanos -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-teal-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Responsabilidad Ciudadana</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Cumplimiento responsable, transparente y honesto de todos los deberes cívicos y fiscales.</p>
-                    </div>
-                </div>
-
-                <!-- Valor 8: Amor Societario (Afecto Societatis) -->
-                <div class="bg-amber-950/20 p-5 rounded-xl border border-amber-500/40 flex flex-col justify-between md:col-span-2">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                            <h3 class="font-bold text-amber-200 text-sm uppercase tracking-wide">Amar lo que se hace (Amor Societario / Afecto Societatis)</h3>
-                        </div>
-                        <p class="text-xs text-amber-100/80 mb-4">Fundamentado en la confianza y la amistad; aquello que nos hace disfrutar del trabajo dentro de la empresa y querer ser socios.</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-300">
-                            <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/20">
-                                <strong class="text-amber-300 block mb-1">Mesa y Fin Común:</strong>
-                                Discutir, disentir y proyectar con criterios morales y éticos bajo total transparencia.
-                            </div>
-                            <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/20">
-                                <strong class="text-amber-300 block mb-1">Regla de Oro:</strong>
-                                "Es aquello que cuando se pierde, ya no es una empresa familiar y... hay que vender."
-                            </div>
-                            <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/20">
-                                <strong class="text-amber-300 block mb-1">Actitud Clave:</strong>
-                                Más que una capacidad técnica, es una actitud que merece ser transferida por completo a la siguiente generación.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div id="semaforo-seccion-b" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-xs font-bold text-slate-300">
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-500" id="dot-semaforo-b"></span> Estado: Evaluación Pendiente
             </div>
-        </section>
+        </div>
+    </div>
+    
+    <p class="text-sm text-slate-400 mb-6 italic">Aquellas cosas que nos identifican como Grupo Familiar Empresario y por las cuales vale la pena luchar. Evalúe el grado de vigencia cultural de cada pilar en la organización actual:</p>
 
-        <!-- ZONA DE EXPORTACIÓN Y TRAZABILIDAD -->
-        <div id="exportador" class="bg-slate-900 p-6 rounded-2xl border border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        
+        <!-- Valor 1: Unidad Familiar -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
             <div>
-                <h3 class="text-sm font-bold text-white">Trazabilidad y Control de Consultoría</h3>
-                <p class="text-xs text-slate-400">Los datos modificados en este nivel se sincronizan automáticamente con el expediente global.</p>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    <h3 class="font-bold text-white text-sm uppercase tracking-wide">Unidad Familiar</h3>
+                </div>
+                <p class="text-xs text-slate-300 mb-4">Basada en el amor, la solidaridad y la confianza mutua.</p>
+                
+                <div class="space-y-3 bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-xs text-slate-400 mb-4">
+                    <div>
+                        <strong class="text-amber-300 block mb-0.5">Capacidad de Consenso:</strong>
+                        Significa "ponerse de acuerdo" (no unanimidad). Implica ceder ocasionalmente sin que deje un sabor a renunciamiento que dañe la dinámica familiar.
+                    </div>
+                    <div>
+                        <strong class="text-amber-300 block mb-0.5">Confianza Mutua:</strong>
+                        Nos otorga la capacidad plena de "decirnos las cosas" de forma transparente y constructiva.
+                    </div>
+                </div>
             </div>
-            <button onclick="alert('Proyecto y trazabilidad exportados correctamente.')" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-lg text-xs font-bold transition shadow-lg shadow-indigo-500/20">
-                Exportar Estado Actual
-            </button>
-        </div>
-
-    </main>
-
-    <!-- FOOTER DE NAVEGACIÓN INFERIOR -->
-    <footer class="max-w-6xl mx-auto px-6 py-10 mt-10 border-t border-slate-900 flex justify-between items-center text-xs text-slate-500">
-        <a href="parasocietarios.html" class="hover:text-slate-300 transition">&larr; Volver a Parasocietarios</a>
-        <span>Sistema de Consultoría Patrimonial y Societaria</span>
-        <a href="sucesion.html" class="text-amber-400 font-bold hover:underline">Ir a Sucesión &rarr;</a>
-    </footer>
-</body>
-</html>
-        <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constitución Familiar y Protocolo Corporativo — Panel de Consultoría</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen">
-
-    <!-- BARRA DE NAVEGACIÓN Y PUENTES DE NIVEL -->
-    <nav class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-700 p-4 flex flex-wrap justify-between items-center shadow-2xl">
-        
-        <!-- Lado Izquierdo: Volver al Nivel Anterior -->
-        <div class="flex items-center gap-3">
-            <a href="parasocietarios.html" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg text-xs font-semibold transition border border-slate-600">
-                &larr; Volver a Parasocietarios
-            </a>
-            <div class="flex items-center gap-2 bg-slate-800/60 px-3 py-1.5 rounded-lg border border-emerald-500/30">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Acceso Consultor: Activo</span>
+            <!-- Evaluación Interactiva del Valor 1 -->
+            <div class="border-t border-slate-800/80 pt-3 mt-2">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿Vigente en la práctica diaria?</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="evaluarValorB(1, 15, 'b1-si')" id="btn-b1-si" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-emerald-500 transition font-medium text-center">Sí (15p)</button>
+                    <button onclick="evaluarValorB(1, 8, 'b1-parcial')" id="btn-b1-parcial" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-amber-500 transition font-medium text-center">Parcial (8p)</button>
+                    <button onclick="evaluarValorB(1, 0, 'b1-no')" id="btn-b1-no" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-rose-500 transition font-medium text-center">Débil (0p)</button>
+                </div>
             </div>
         </div>
 
-        <!-- Lado Derecho: Continuar al Siguiente Nivel (Sucesión) -->
-        <div class="flex items-center gap-3">
-            <span class="text-slate-400 text-xs italic hidden md:inline">Nivel 2: Constitución Familiar</span>
-            <a href="sucesion.html" 
-               class="group flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 px-5 py-2 rounded-lg font-bold text-sm transition-all hover:scale-105 shadow-lg shadow-amber-500/20">
-                Siguiente: Sucesión &rarr;
-            </a>
+        <!-- Valor 2: Libertad y Dignidad -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                    <h3 class="font-bold text-white text-sm uppercase tracking-wide">Respeto y Dignidad</h3>
+                </div>
+                <p class="text-xs text-slate-300 mb-4">Defensa intransigente de la libertad y dignidad de las personas que integran tanto el núcleo familiar como el equipo de trabajo.</p>
+                <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400 italic mb-4">
+                    "Garantizar un trato humano fundamentado en la valoración individual dentro del ecosistema empresario."
+                </div>
+            </div>
+            <!-- Evaluación Interactiva del Valor 2 -->
+            <div class="border-t border-slate-800/80 pt-3 mt-2">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿Vigente en la práctica diaria?</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="evaluarValorB(2, 15, 'b2-si')" id="btn-b2-si" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-emerald-500 transition font-medium text-center">Sí (15p)</button>
+                    <button onclick="evaluarValorB(2, 8, 'b2-parcial')" id="btn-b2-parcial" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-amber-500 transition font-medium text-center">Parcial (8p)</button>
+                    <button onclick="evaluarValorB(2, 0, 'b2-no')" id="btn-b2-no" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-rose-500 transition font-medium text-center">Débil (0p)</button>
+                </div>
+            </div>
         </div>
-    </nav>
 
-    <!-- CONTENEDOR PRINCIPAL DEL PANEL DE CONSULTORÍA -->
-    <main class="max-w-6xl mx-auto p-6 md:p-10">
-        
-        <!-- HEADER DEL MICROSITIO -->
-        <header class="mb-10 text-center border-b border-slate-800 pb-6">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2">Constitución Familiar y Protocolo Corporativo</h1>
-            <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto">Motor Jurídico Sistémico para Empresas Familiares Complejas — Trazabilidad desde Genograma hasta Gobernanza.</p>
-        </header>
-
-        <!-- SECCIÓN A: TIPO DE EMPRESA FAMILIAR -->
-        <section id="seccion-a" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-            <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-lg text-sm">A</span>
-                    Tipo de Empresa Familiar
-                </h2>
-                <span class="text-xs text-indigo-400 bg-indigo-950 px-3 py-1 rounded-full border border-indigo-800">Dashboard Estratégico</span>
-            </div>
-
-            <!-- Grid de Niveles de Acceso -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div class="bg-slate-800/60 p-4 rounded-xl border-t-4 border-indigo-500">
-                    <h4 class="font-bold text-slate-200 text-sm mb-1">Familia</h4>
-                    <p class="text-xs text-slate-400">Ámbito de unidad y valores compartidos.</p>
+        <!-- Valor 3: Rentabilidad Genuina -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <h3 class="font-bold text-white text-sm uppercase tracking-wide">Rentabilidad Genuina y Razonable</h3>
                 </div>
-                <div class="bg-slate-800/60 p-4 rounded-xl border-t-4 border-blue-500">
-                    <h4 class="font-bold text-slate-200 text-sm mb-1">Propiedad</h4>
-                    <p class="text-xs text-slate-400">Ámbito de control patrimonial y capital.</p>
-                </div>
-                <div class="bg-slate-800/60 p-4 rounded-xl border-t-4 border-amber-500">
-                    <h4 class="font-bold text-slate-200 text-sm mb-1">Dirección</h4>
-                    <p class="text-xs text-slate-400">Ámbito de gobierno estratégico y políticas.</p>
-                </div>
-                <div class="bg-slate-800/60 p-4 rounded-xl border-t-4 border-emerald-500">
-                    <h4 class="font-bold text-slate-200 text-sm mb-1">Ejecución</h4>
-                    <p class="text-xs text-slate-400">Ámbito operativo basado estrictamente en mérito.</p>
+                <p class="text-xs text-slate-300 mb-4">Basada estrictamente en procesos efectivos, eficientes y éticos.</p>
+                <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400 mb-4">
+                    Busca el equilibrio entre el rédito económico sustentable y la integridad operacional a largo plazo.
                 </div>
             </div>
-
-            <!-- Panel Comparativo de Estado -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                    <span class="text-[10px] font-bold text-slate-400 tracking-wider block mb-1">MODELO DE GESTIÓN ACTUAL</span>
-                    <p class="text-base text-slate-200 font-semibold">Gerencia Familiar</p>
-                    <p class="text-xs mt-2 text-slate-400 leading-relaxed">Gestión compartida parcialmente con participación activa de la primera y segunda generación bajo liderazgo central.</p>
-                </div>
-                <div class="bg-amber-950/20 p-5 rounded-xl border border-amber-500/30">
-                    <span class="text-[10px] font-bold text-amber-400 tracking-wider block mb-1">ESTADO DESEADO / OBJETIVO</span>
-                    <p class="text-base text-amber-200 font-bold">Dirección y Gerenciamiento Familiar</p>
-                    <p class="text-xs mt-2 text-amber-300/80 leading-relaxed">Roles protagónicos en igualdad de condiciones y profesionalización de los órganos de gobierno para futuras generaciones.</p>
+            <!-- Evaluación Interactiva del Valor 3 -->
+            <div class="border-t border-slate-800/80 pt-3 mt-2">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿Vigente en la práctica diaria?</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="evaluarValorB(3, 10, 'b3-si')" id="btn-b3-si" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-emerald-500 transition font-medium text-center">Sí (10p)</button>
+                    <button onclick="evaluarValorB(3, 5, 'b3-parcial')" id="btn-b3-parcial" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-amber-500 transition font-medium text-center">Parcial (5p)</button>
+                    <button onclick="evaluarValorB(3, 0, 'b3-no')" id="btn-b3-no" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-rose-500 transition font-medium text-center">Débil (0p)</button>
                 </div>
             </div>
+        </div>
 
-            <!-- Pilares de Transformación -->
-            <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-                <h3 class="text-sm font-bold text-indigo-400 uppercase tracking-widest mb-4">🚀 Pilares Clave de Evolución</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-slate-900 p-4 rounded-lg border-l-4 border-emerald-500">
-                        <strong class="text-white text-sm block mb-1">Crecimiento Organizacional</strong>
-                        <p class="text-xs text-slate-400">Madurez del negocio, profesionalización, orientación estratégica y sistemas formales de evaluación y remuneración.</p>
-                    </div>
-                    <div class="bg-slate-900 p-4 rounded-lg border-l-4 border-blue-500">
-                        <strong class="text-white text-sm block mb-1">Unidad de Gobierno</strong>
-                        <p class="text-xs text-slate-400">Consenso estratégico, alineación de expectativas y formalización del Consejo de Familia como órgano consultivo y protector.</p>
-                    </div>
+        <!-- Valor 4: Excelencia Competitiva -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                    <h3 class="font-bold text-white text-sm uppercase tracking-wide">Excelencia Competitiva</h3>
+                </div>
+                <p class="text-xs text-slate-300 mb-4">Orientación absoluta hacia la calidad superior en todos los productos y servicios de la compañía.</p>
+                <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400 mb-4">
+                    Estándar de mejora continua para liderar en los mercados donde opera la empresa.
                 </div>
             </div>
-        </section>
-
-        <!-- SECCIÓN B: VALORES COMPARTIDOS POR LA FAMILIA -->
-        <section id="seccion-b" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-            <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                    <span class="bg-amber-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">B</span>
-                    Valores Compartidos por la Familia
-                </h2>
-                <span class="text-xs text-amber-400 bg-amber-950/40 px-3 py-1 rounded-full border border-amber-800/50">Identidad y ADN Corporativo</span>
+            <!-- Evaluación Interactiva del Valor 4 -->
+            <div class="border-t border-slate-800/80 pt-3 mt-2">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿Vigente en la práctica diaria?</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="evaluarValorB(4, 10, 'b4-si')" id="btn-b4-si" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-emerald-500 transition font-medium text-center">Sí (10p)</button>
+                    <button onclick="evaluarValorB(4, 5, 'b4-parcial')" id="btn-b4-parcial" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-amber-500 transition font-medium text-center">Parcial (5p)</button>
+                    <button onclick="evaluarValorB(4, 0, 'b4-no')" id="btn-b4-no" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-rose-500 transition font-medium text-center">Débil (0p)</button>
+                </div>
             </div>
-            
-            <p class="text-sm text-slate-400 mb-6 italic">Aquellas cosas que nos identifican como Grupo Familiar Empresario y por las cuales vale la pena luchar.</p>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Valor 1: Unidad Familiar -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Unidad Familiar</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Basada en el amor, la solidaridad y la confianza mutua.</p>
-                        <div class="space-y-3 bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-xs text-slate-400">
-                            <div>
-                                <strong class="text-amber-300 block mb-0.5">Capacidad de Consenso:</strong>
-                                Significa "ponerse de acuerdo" (no unanimidad). Implica ceder ocasionalmente sin que deje un sabor a renunciamiento que dañe la dinámica familiar.
-                            </div>
-                            <div>
-                                <strong class="text-amber-300 block mb-0.5">Confianza Mutua:</strong>
-                                Nos otorga la capacidad plena de "decirnos las cosas" de forma transparente y constructiva.
-                            </div>
-                        </div>
-                    </div>
+        <!-- Valor 5: Satisfacción de Clientes -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
+                    <h3 class="font-bold text-white text-sm uppercase tracking-wide">Satisfacción Total</h3>
                 </div>
-
-                <!-- Valor 2: Libertad y Dignidad -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Respeto y Dignidad</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Defensa intransigente de la libertad y dignidad de las personas que integran tanto el núcleo familiar como el equipo de trabajo.</p>
-                    </div>
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400 italic">
-                        "Garantizar un trato humano fundamentado en la valoración individual dentro del ecosistema empresario."
-                    </div>
+                <p class="text-xs text-slate-300 mb-4">Compromiso inquebrantable con la satisfacción de los clientes externos (mercado) e internos (colaboradores).</p>
+            </div>
+            <!-- Evaluación Interactiva del Valor 5 -->
+            <div class="border-t border-slate-800/80 pt-3 mt-2">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿Vigente en la práctica diaria?</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="evaluarValorB(5, 10, 'b5-si')" id="btn-b5-si" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-emerald-500 transition font-medium text-center">Sí (10p)</button>
+                    <button onclick="evaluarValorB(5, 5, 'b5-parcial')" id="btn-b5-parcial" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-amber-500 transition font-medium text-center">Parcial (5p)</button>
+                    <button onclick="evaluarValorB(5, 0, 'b5-no')" id="btn-b5-no" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-rose-500 transition font-medium text-center">Débil (0p)</button>
                 </div>
+            </div>
+        </div>
 
-                <!-- Valor 3: Rentabilidad Genuina -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Rentabilidad Genuina y Razonable</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Basada estrictamente en procesos efectivos, eficientes y éticos.</p>
-                    </div>
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400">
-                        Busca el equilibrio entre el rédito económico sustentable y la integridad operacional a largo plazo.
-                    </div>
+        <!-- Valor 6: Compromiso y Lealtad -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+                    <h3 class="font-bold text-white text-sm uppercase tracking-wide">Compromiso y Lealtad</h3>
                 </div>
-
-                <!-- Valor 4: Excelencia Competitiva -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Excelencia Competitiva</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Orientación absoluta hacia la calidad superior en todos los productos y servicios de la compañía.</p>
-                    </div>
-                    <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-[11px] text-slate-400">
-                        Estándar de mejora continua para liderar en los mercados donde opera la empresa.
-                    </div>
+                <p class="text-xs text-slate-300 mb-4">Lealtad combinada con la unidad familiar, la empresa y el bien común.</p>
+                <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-xs text-slate-400 mb-4">
+                    Refuerza el equilibrio indispensable que exige el cuidado simultáneo de estas tres realidades críticas.
                 </div>
-
-                <!-- Valor 5: Satisfacción de Clientes -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Satisfacción Total</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Compromiso inquebrantable con la satisfacción de los clientes externos (mercado) e internos (colaboradores).</p>
-                    </div>
+            </div>
+            <!-- Evaluación Interactiva del Valor 6 -->
+            <div class="border-t border-slate-800/80 pt-3 mt-2">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿Vigente en la práctica diaria?</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="evaluarValorB(6, 10, 'b6-si')" id="btn-b6-si" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-emerald-500 transition font-medium text-center">Sí (10p)</button>
+                    <button onclick="evaluarValorB(6, 5, 'b6-parcial')" id="btn-b6-parcial" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-amber-500 transition font-medium text-center">Parcial (5p)</button>
+                    <button onclick="evaluarValorB(6, 0, 'b6-no')" id="btn-b6-no" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-rose-500 transition font-medium text-center">Débil (0p)</button>
                 </div>
+            </div>
+        </div>
 
-                <!-- Valor 6: Compromiso y Lealtad -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-purple-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Compromiso y Lealtad</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Lealtad combinada con la unidad familiar, la empresa y el bien común.</p>
-                        <div class="bg-slate-900/60 p-3 rounded-lg border border-slate-800/80 text-xs text-slate-400">
-                            Refuerza el equilibrio indispensable que exige el cuidado simultáneo de estas tres realidades críticas.
-                        </div>
-                    </div>
+        <!-- Valor 7: Deberes Ciudadanos -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+                    <h3 class="font-bold text-white text-sm uppercase tracking-wide">Responsabilidad Ciudadana</h3>
                 </div>
-
-                <!-- Valor 7: Deberes Ciudadanos -->
-                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-teal-500"></span>
-                            <h3 class="font-bold text-white text-sm uppercase tracking-wide">Responsabilidad Ciudadana</h3>
-                        </div>
-                        <p class="text-xs text-slate-300 mb-4">Cumplimiento responsable, transparente y honesto de todos los deberes cívicos y fiscales.</p>
-                    </div>
+                <p class="text-xs text-slate-300 mb-4">Cumplimiento responsable, transparente y honesto de todos los deberes cívicos y fiscales.</p>
+            </div>
+            <!-- Evaluación Interactiva del Valor 7 -->
+            <div class="border-t border-slate-800/80 pt-3 mt-2">
+                <span class="text-[11px] text-slate-400 block mb-2 font-medium">¿Vigente en la práctica diaria?</span>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="evaluarValorB(7, 10, 'b7-si')" id="btn-b7-si" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-emerald-500 transition font-medium text-center">Sí (10p)</button>
+                    <button onclick="evaluarValorB(7, 5, 'b7-parcial')" id="btn-b7-parcial" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-amber-500 transition font-medium text-center">Parcial (5p)</button>
+                    <button onclick="evaluarValorB(7, 0, 'b7-no')" id="btn-b7-no" class="py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 hover:border-rose-500 transition font-medium text-center">Débil (0p)</button>
                 </div>
+            </div>
+        </div>
 
-                <!-- Valor 8: Amor Societario (Afecto Societatis) -->
-                <div class="bg-amber-950/20 p-5 rounded-xl border border-amber-500/40 flex flex-col justify-between md:col-span-2">
-                    <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                            <h3 class="font-bold text-amber-200 text-sm uppercase tracking-wide">Amar lo que se hace (Amor Societario / Afecto Societatis)</h3>
-                        </div>
-                        <p class="text-xs text-amber-100/80 mb-4">Fundamentado en la confianza y la amistad; aquello que nos hace disfrutar del trabajo dentro de la empresa y querer ser socios.</p>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-300">
-                            <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/20">
-                                <strong class="text-amber-300 block mb-1">Mesa y Fin Común:</strong>
-                                Discutir, disentir y proyectar con criterios morales y éticos bajo total transparencia.
-                            </div>
-                            <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/20">
-                                <strong class="text-amber-300 block mb-1">Regla de Oro:</strong>
-                                "Es aquello que cuando se pierde, ya no es una empresa familiar y... hay que vender."
-                            </div>
-                            <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/20">
-                                <strong class="text-amber-300 block mb-1">Actitud Clave:</strong>
-                                Más que una capacidad técnica, es una actitud que merece ser transferida por completo a la siguiente generación.
-                            </div>
-                        </div>
+        <!-- Valor 8: Amor Societario (Afecto Societatis) - Ocupa 2 columnas -->
+        <div class="bg-amber-950/20 p-5 rounded-xl border border-amber-500/40 flex flex-col justify-between md:col-span-2">
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    <h3 class="font-bold text-amber-200 text-sm uppercase tracking-wide">Amar lo que se hace (Amor Societario / Afecto Societatis)</h3>
+                </div>
+                <p class="text-xs text-amber-100/80 mb-4">Fundamentado en la confianza y la amistad; aquello que nos hace disfrutar del trabajo dentro de la empresa y querer ser socios.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-300 mb-4">
+                    <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/20">
+                        <strong class="text-amber-300 block mb-1">Mesa y Fin Común:</strong>
+                        Discutir, disentir y proyectar con criterios morales y éticos bajo total transparencia.
+                    </div>
+                    <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/20">
+                        <strong class="text-amber-300 block mb-1">Regla de Oro:</strong>
+                        "Es aquello que cuando se pierde, ya no es una empresa familiar y... hay que vender."
+                    </div>
+                    <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/20">
+                        <strong class="text-amber-300 block mb-1">Actitud Clave:</strong>
+                        Más que una capacidad técnica, es una actitud que merece ser transferida por completo a la siguiente generación.
                     </div>
                 </div>
             </div>
-        </section>
 
+            <!-- Evaluación Interactiva del Valor 8 (Pesa más: 20 pts) -->
+            <div class="border-t border-amber-500/30 pt-3 mt-2">
+                <span class="text-[11px] text-amber-200 block mb-2 font-semibold">¿Se mantiene vivo el Afecto Societatis en la sociedad? (Valor Crítico)</span>
+                <div class="grid grid-cols-3 gap-3">
+                    <button onclick="evaluarValorB(8, 20, 'b8-si')" id="btn-b8-si" class="py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 hover:border-emerald-500 transition font-bold text-center">Sí, inquebrantable (20p)</button>
+                    <button onclick="evaluarValorB(8, 10, 'b8-parcial')" id="btn-b8-parcial" class="py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 hover:border-amber-500 transition font-bold text-center">Parcial / Desgaste (10p)</button>
+                    <button onclick="evaluarValorB(8, 0, 'b8-no')" id="btn-b8-no" class="py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 hover:border-rose-500 transition font-bold text-center">Riesgo de Ruptura (0p)</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Panel de Diagnóstico Cultural en Tiempo Real -->
+    <div id="panel-diagnostico-b" class="bg-amber-950/30 p-5 rounded-xl border border-amber-500/30 mb-6 hidden">
+        <h4 class="text-xs font-bold text-amber-300 uppercase tracking-wider mb-1">🏛️ Diagnóstico de Cultura Corporativa:</h4>
+        <p id="texto-diagnostico-b" class="text-xs text-amber-200/90 leading-relaxed"></p>
+    </div>
+</section>
+
+<!-- SCRIPT DE EVALUACIÓN INTERACTIVA DE LA SECCIÓN B -->
+<script>
+    // Almacenamiento de puntajes por cada uno de los 8 valores (Total máx = 100)
+    let puntajesValoresB = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0 };
+
+    function evaluarValorB(numValor, puntaje, idBotonSeleccionado) {
+        puntajesValoresB[numValor] = puntaje;
+
+        // Limpiar estilos de botones para ese valor
+        const opciones = ['si', 'parcial', 'no'];
+        for (let opt of opciones) {
+            const btn = document.getElementById(`btn-b${numValor}-${opt}`);
+            if (btn) {
+                btn.className = "py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 transition font-medium text-center";
+                if(numValor === 8) btn.className = "py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 transition font-bold text-center";
+            }
+        }
+
+        // Resaltar el botón seleccionado
+        const activo = document.getElementById(`btn-b${numValor}-${idBotonSeleccionado.split('-')[1]}`);
+        if (activo) {
+            if (idBotonSeleccionado.includes('si')) activo.className += " border-emerald-500 bg-emerald-950/50 text-emerald-200 font-bold";
+            else if (idBotonSeleccionado.includes('parcial')) activo.className += " border-amber-500 bg-amber-950/50 text-amber-200 font-bold";
+            else activo.className += " border-rose-500 bg-rose-950/50 text-rose-200 font-bold";
+        }
+
+        calcularPuntajeTotalB();
+    }
+
+    function calcularPuntajeTotalB() {
+        let totalB = Object.values(puntajesValoresB).reduce((a, b) => a + b, 0);
+        document.getElementById('pts-seccion-b').innerText = totalB;
+
+        const dotB = document.getElementById('dot-semaforo-b');
+        const semaforoB = document.getElementById('semaforo-seccion-b');
+        const panelDiag = document.getElementById('panel-diagnostico-b');
+        const textoDiag = document.getElementById('texto-diagnostico-b');
+
+        panelDiag.style.display = 'block';
+
+        if (totalB >= 75) {
+            dotB.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse";
+            semaforoB.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-xs font-bold text-emerald-400";
+            semaforoB.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> ADN Consolidado';
+            textoDiag.innerText = "La cultura familiar y el 'Afecto Societatis' se encuentran firmemente arraigados. Los valores no son meras declaraciones, sino guías operativas cotidianas.";
+        } else if (totalB >= 45) {
+            dotB.className = "w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse";
+            semaforoB.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-950/60 border border-amber-500/40 text-xs font-bold text-amber-400";
+            semaforoB.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Desgaste Cultural';
+            textoDiag.innerText = "Existen valores clave que muestran fricción o debilitamiento. Se recomienda propiciar espacios de diálogo abierto ('Mesa y Fin Común') para alinear expectativas antes de que afecten la rentabilidad o la unidad.";
+        } else {
+            dotB.className = "w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse";
+            semaforoB.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-950/60 border border-rose-500/40 text-xs font-bold text-rose-400";
+            semaforoB.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Alerta Roja: Pérdida de Afecto Societatis';
+            textoDiag.innerText = "Advertencia crítica: El puntaje refleja un deterioro severo en los consensos axiológicos. Cuando el afecto societatis y la confianza se erosionan, el pacto familiar corre peligro inminente.";
+        }
+
+        // Sincronizar con almacenamiento local para trazabilidad general del consultor
+        let historialGlobal = JSON.parse(localStorage.getItem('historial_consultoria_integral') || '{}');
+        historialGlobal.seccionB = { creditos: totalB, valores: puntajesValoresB };
+        localStorage.setItem('historial_consultoria_integral', JSON.stringify(historialGlobal));
+    }
+</script>
         <!-- SECCIÓN C: PROYECTO EMPRESARIO COMÚN Y ORIENTACIÓN ESTRATÉGICA (DASHBOARD ESTRATÉGICO) -->
         <section id="seccion-c" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
             <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
