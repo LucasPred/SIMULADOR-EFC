@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <head>
+    <style>
+        /* ESTABILIZADOR GLOBAL DE ANCHO */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            overflow-x: hidden !important; /* Elimina la barra de scroll horizontal */
+        }
+        main {
+            width: 100% !important;
+            max-width: 1200px !important; /* Ajusta según el diseño deseado */
+            margin: 0 auto !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+        }
+    </style>
+    <!-- Tus scripts de Tailwind siguen aquí -->
+</head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Constitución Familiar y Protocolo Corporativo — Panel de Consultoría</title>
@@ -1146,233 +1165,69 @@
         }
     }
 </script>
-  <!-- SECCIÓN D: ÓRGANOS DE GOBIERNO Y ESTRUCTURA ORGANIZATIVA (Dashboard Sistémico) -->
-<section id="seccion-d-gobierno" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10 transition-all">
-    <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-4 gap-2">
-        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-            <span class="bg-purple-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">D</span>
-            Órganos de Gobierno y Estructura Organizativa
-        </h2>
-        <!-- Indicador de Gobernanza Sistémica -->
-        <div class="flex items-center gap-3">
-            <div id="badge-gobernanza-d" class="bg-purple-950/60 px-3 py-1.5 rounded-full border border-purple-500/40 text-xs font-bold text-purple-300">
-                Índice de Gobernanza: <span id="pts-seccion-d">0</span> / 100 pts
-            </div>
-            <div id="semaforo-seccion-d" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-xs font-bold text-slate-300">
-                <span class="w-2.5 h-2.5 rounded-full bg-slate-500" id="dot-semaforo-d"></span> Estado: En Diagnóstico
-            </div>
-        </div>
+        <!-- INICIO SECCIÓN D: ÓRGANOS DE GOBIERNO -->
+<section id="seccion-d" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-6 md:p-8 my-8 shadow-2xl">
+    <div class="mb-8">
+        <h2 class="text-3xl font-bold text-sky-400 mb-2">D. Órganos de Gobierno y Estructura Organizativa</h2>
+        <p class="text-slate-400 italic">Índice de Gobernanza: Evaluación y delimitación de los cuatro planos institucionales.</p>
     </div>
-    
-    <p class="text-sm text-slate-400 mb-6 italic">
-        Análisis y formalización de la conveniencia de crear el Consejo de Familia y la correcta delimitación de los cuatro planos institucionales de la empresa familiar. Evalúe el nivel de formalización de cada plano:
-    </p>
 
-    <!-- Esquema Interactivo de los 4 Planos -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 border-t-4 border-amber-500">
-            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest block mb-1">Plano 1: Familiar</span>
-            <p class="text-xs font-bold text-white mb-2">Consejo de Familia</p>
-            <div class="grid grid-cols-2 gap-1 mt-2">
-                <button onclick="evaluarD(1, 25, 'd1-si')" id="btn-d1-si" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 text-[10px] text-slate-300 hover:border-amber-500 transition text-center">Formalizado (25p)</button>
-                <button onclick="evaluarD(1, 0, 'd1-no')" id="btn-d1-no" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 text-[10px] text-slate-300 hover:border-rose-500 transition text-center">Pendiente (0p)</button>
-            </div>
+    <!-- Grid de 4 Planos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <!-- Tarjeta Plano 1 -->
+        <div class="bg-slate-800 p-5 rounded-lg border-l-4 border-sky-500">
+            <h3 class="font-bold text-lg mb-2">Plano 1: Familiar</h3>
+            <p class="text-sm text-slate-300 mb-4">Consejo de Familia</p>
+            <span class="inline-block px-3 py-1 text-xs font-semibold rounded bg-sky-900 text-sky-200">Formalizado (25p)</span>
         </div>
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 border-t-4 border-blue-500">
-            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest block mb-1">Plano 2: Propiedad</span>
-            <p class="text-xs font-bold text-white mb-2">Asamblea / Mesa de Dueños</p>
-            <div class="grid grid-cols-2 gap-1 mt-2">
-                <button onclick="evaluarD(2, 25, 'd2-si')" id="btn-d2-si" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 text-[10px] text-slate-300 hover:border-blue-500 transition text-center">Formalizado (25p)</button>
-                <button onclick="evaluarD(2, 0, 'd2-no')" id="btn-d2-no" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 text-[10px] text-slate-300 hover:border-rose-500 transition text-center">Pendiente (0p)</button>
-            </div>
+        <!-- Tarjeta Plano 2 -->
+        <div class="bg-slate-800 p-5 rounded-lg border-l-4 border-emerald-500">
+            <h3 class="font-bold text-lg mb-2">Plano 2: Propiedad</h3>
+            <p class="text-sm text-slate-300 mb-4">Asamblea / Mesa de Dueños</p>
+            <span class="inline-block px-3 py-1 text-xs font-semibold rounded bg-emerald-900 text-emerald-200">Formalizado (25p)</span>
         </div>
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 border-t-4 border-indigo-500">
-            <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest block mb-1">Plano 3: Dirección</span>
-            <p class="text-xs font-bold text-white mb-2">El Directorio</p>
-            <div class="grid grid-cols-2 gap-1 mt-2">
-                <button onclick="evaluarD(3, 25, 'd3-si')" id="btn-d3-si" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 text-[10px] text-slate-300 hover:border-indigo-500 transition text-center">Formalizado (25p)</button>
-                <button onclick="evaluarD(3, 0, 'd3-no')" id="btn-d3-no" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 text-[10px] text-slate-300 hover:border-rose-500 transition text-center">Pendiente (0p)</button>
-            </div>
+        <!-- Tarjeta Plano 3 -->
+        <div class="bg-slate-800 p-5 rounded-lg border-l-4 border-amber-500">
+            <h3 class="font-bold text-lg mb-2">Plano 3: Dirección</h3>
+            <p class="text-sm text-slate-300 mb-4">El Directorio</p>
+            <span class="inline-block px-3 py-1 text-xs font-semibold rounded bg-amber-900 text-amber-200">Formalizado (25p)</span>
         </div>
-        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 border-t-4 border-emerald-500">
-            <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mb-1">Plano 4: Ejecución</span>
-            <p class="text-xs font-bold text-white mb-2">Comité Ejecutivo y Gerencias</p>
-            <div class="grid grid-cols-2 gap-1 mt-2">
-                <button onclick="evaluarD(4, 25, 'd4-si')" id="btn-d4-si" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 text-[10px] text-slate-300 hover:border-emerald-500 transition text-center">Formalizado (25p)</button>
-                <button onclick="evaluarD(4, 0, 'd4-no')" id="btn-d4-no" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 text-[10px] text-slate-300 hover:border-rose-500 transition text-center">Pendiente (0p)</button>
-            </div>
+        <!-- Tarjeta Plano 4 -->
+        <div class="bg-slate-800 p-5 rounded-lg border-l-4 border-rose-500">
+            <h3 class="font-bold text-lg mb-2">Plano 4: Ejecución</h3>
+            <p class="text-sm text-slate-300 mb-4">Comité Ejecutivo y Gerencias</p>
+            <span class="inline-block px-3 py-1 text-xs font-semibold rounded bg-rose-900 text-rose-200">Formalizado (25p)</span>
         </div>
     </div>
 
-    <!-- Panel de Diagnóstico Sistémico -->
-    <div id="panel-diagnostico-d" class="bg-purple-950/20 p-5 rounded-xl border border-purple-500/30 mb-6 hidden">
-        <h4 class="text-xs font-bold text-purple-300 uppercase tracking-wider mb-1">🏛️ Diagnóstico de Estructura de Gobierno:</h4>
-        <p id="texto-diagnostico-d" class="text-xs text-purple-100/90 leading-relaxed"></p>
-    </div>
-
-    <!-- DETALLE PLANO 1: FAMILIAR -->
-    <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-6">
-        <div class="flex items-center gap-2 mb-4">
-            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-            <h3 class="text-base font-bold text-amber-300 uppercase tracking-wide">1. Plano Familiar: Consejo de Familia</h3>
+    <!-- Detalle de Planos -->
+    <div class="space-y-8">
+        <div class="border-b border-slate-700 pb-6">
+            <h4 class="text-xl font-semibold text-sky-300 mb-3">1. Plano Familiar: Consejo de Familia</h4>
+            <ul class="list-disc ml-5 space-y-1 text-slate-300">
+                <li><strong>Función:</strong> Cuidar a la Familia, rol de cónyuges e hijos, desarrollo de los jóvenes.</li>
+                <li><strong>Integrantes:</strong> Ricardo, Luisa, Carolina, Gustavo, Virginia, Cristina y Facilitador Externo.</li>
+            </ul>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
-                <strong class="text-white block mb-2 font-semibold">Funciones Principales:</strong>
-                <ul class="list-disc list-inside space-y-1 text-slate-400">
-                    <li>Cuidar a la Familia como tal, como dueña y como empresaria.</li>
-                    <li>Dar relevancia al rol de cónyuges e hijos, enseñándoles a querer la empresa.</li>
-                    <li>Velar por la unidad familiar y el desarrollo de los jóvenes.</li>
-                </ul>
-            </div>
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
-                <strong class="text-white block mb-2 font-semibold">Integrantes:</strong>
-                <p class="text-slate-300 mb-2"><strong>Propietarios:</strong> Ricardo, Luisa, Carolina, Gustavo, Virginia y Cristina.</p>
-                <p class="text-slate-400"><strong>Facilitador Externo (No Familiar):</strong> Custodio de la unidad y mediador imparcial sugerido para la etapa inicial.</p>
-            </div>
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
-                <strong class="text-white block mb-2 font-semibold">Temas del Consejo:</strong>
-                <ul class="list-disc list-inside space-y-1 text-slate-400">
-                    <li>Formación de jóvenes (aprender a ser dueños y socios).</li>
-                    <li>Condiciones de ingreso de familiares a la compañía.</li>
-                    <li>Promoción del <em>amor societario</em> (afecto societatis).</li>
-                    <li>Evaluación y financiación de emprendimientos propios.</li>
-                    <li>Reuniones y espacios recreativos familiares.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- DETALLE PLANO 2: PROPIEDAD -->
-    <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-6">
-        <div class="flex items-center gap-2 mb-4">
-            <span class="w-3 h-3 rounded-full bg-blue-500"></span>
-            <h3 class="text-base font-bold text-blue-300 uppercase tracking-wide">2. Plano de la Propiedad: Asamblea y Mesa de Dueños</h3>
+        <div class="border-b border-slate-700 pb-6">
+            <h4 class="text-xl font-semibold text-emerald-300 mb-3">2. Plano de la Propiedad: Asamblea y Mesa de Dueños</h4>
+            <p class="text-slate-300">Distinción crítica entre <strong>Buen Dueño</strong> (vigila continuidad) y <strong>Buen Socio</strong> (amor societario).</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs mb-4">
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
-                <strong class="text-white block mb-2 font-semibold">Buen Dueño vs. Buen Socio:</strong>
-                <p class="text-slate-400 mb-2"><strong>Buen Dueño:</strong> Vela por sus intereses, vigila la continuidad, procura rédito y cumple con las obligaciones del derecho de propiedad.</p>
-                <p class="text-slate-400"><strong>Buen Socio:</strong> Sabe compartir el ejercicio de la propiedad, trabajar en conjunto y posee el genuino <em>amor societario</em>.</p>
-            </div>
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
-                <strong class="text-white block mb-2 font-semibold">Asamblea de Accionistas (Competencias Legales):</strong>
-                <ul class="list-disc list-inside space-y-1 text-slate-400">
-                    <li>Elección de Autoridades</li>
-                    <li>Tenencia y transferencia de Acciones</li>
-                    <li>Distribución de Utilidades</li>
-                    <li>Decisiones sobre Asociaciones</li>
-                </ul>
-            </div>
+        <div class="border-b border-slate-700 pb-6">
+            <h4 class="text-xl font-semibold text-amber-300 mb-3">3. Plano de la Dirección: El Directorio</h4>
+            <p class="text-slate-300">Gobierno estratégico, toma de decisiones con racionalidad económica y resguardo de la rentabilidad a largo plazo.</p>
         </div>
 
-        <div class="bg-blue-950/20 p-4 rounded-lg border border-blue-500/30 text-xs text-slate-300">
-            <strong class="text-blue-300 block mb-1">El Consejo de Familia como Mesa de Dueños:</strong>
-            Actúa como ámbito estratégico previo al Directorio para tratar la financiación a largo plazo, el plan estratégico y políticas clave, mejorando la comunicación con los accionistas no directores ante el crecimiento generacional.
-        </div>
-    </div>
-
-    <!-- DETALLE PLANO 3: DIRECCIÓN -->
-    <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-6">
-        <div class="flex items-center gap-2 mb-4">
-            <span class="w-3 h-3 rounded-full bg-indigo-500"></span>
-            <h3 class="text-base font-bold text-indigo-300 uppercase tracking-wide">3. Plano de la Dirección: El Directorio</h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs mb-4">
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
-                <strong class="text-white block mb-2 font-semibold">Políticas y Composición:</strong>
-                <ul class="list-disc list-inside space-y-1 text-slate-400 mb-3">
-                    <li>Gobierno estratégico y políticas mantenidas en manos de miembros directos de la familia.</li>
-                    <li>Sistemas de selección y evaluación que aseguran la presencia directiva familiar.</li>
-                    <li>Composición: Familiares elegidos + Director Independiente No Familiar (si fuera necesario).</li>
-                </ul>
-                <strong class="text-indigo-300 block mb-1">Criterios del Buen Director:</strong>
-                <p class="text-slate-400">Dominio de estrategia macro con indicadores, motor propio, capacidad de tomar decisiones en equipo, discutir con números (racionalidad económica), respeto jerárquico y dedicación exclusiva sin conflictos de interés.</p>
-            </div>
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800">
-                <strong class="text-white block mb-2 font-semibold">Tareas Clave del Directorio:</strong>
-                <ul class="list-disc list-inside space-y-1 text-slate-400">
-                    <li>Establecer la estrategia de la empresa familiar.</li>
-                    <li>Controlar la actuación del director general o gerentes (administrando el sistema de evaluación).</li>
-                    <li>Resguardar intereses de los dueños y garantizar rentabilidad a largo plazo.</li>
-                    <li>Aprobar presupuestos, planes financieros y asignación de recursos.</li>
-                    <li>Cumplimiento legal y estatuario; decisiones de inversión en Activos Fijos.</li>
-                    <li>Fusiones, Adquisiciones y Estructura organizativa.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- DETALLE PLANO 4: EJECUCIÓN -->
-    <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-        <div class="flex items-center gap-2 mb-4">
-            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-            <h3 class="text-base font-bold text-emerald-300 uppercase tracking-wide">4. Plano de la Ejecución: Comité Ejecutivo y Gerencia</h3>
-        </div>
-
-        <div class="bg-slate-900 p-4 rounded-lg border border-slate-800 text-xs text-slate-300">
-            <p class="mb-2"><strong>Comité Ejecutivo:</strong> Puede estar integrado por miembros de la familia y/o profesionales externos, rigiéndose estrictamente por el <strong>mérito</strong> y no por el vínculo de sangre.</p>
-            <p><strong>Requisitos de Elegibilidad:</strong> Las personas (familiares o no) deben poseer título universitario y cumplir con los estándares de selección para personal de alto potencial establecidos por la compañía.</p>
+        <div>
+            <h4 class="text-xl font-semibold text-rose-300 mb-3">4. Plano de la Ejecución: Comité Ejecutivo y Gerencia</h4>
+            <p class="text-slate-300">Rigurosidad basada en <strong>mérito</strong>, títulos universitarios y estándares de alto potencial, sin distinción de vínculo sanguíneo.</p>
         </div>
     </div>
 </section>
-
-<!-- Script de Interactividad para la Sección D -->
-<script>
-    let puntajesValoresD = { 1: 0, 2: 0, 3: 0, 4: 0 };
-
-    function evaluarD(plano, pts, btnId) {
-        puntajesValoresD[plano] = pts;
-
-        // Reset estilo visual de botones del plano
-        const opciones = ['si', 'no'];
-        opciones.forEach(o => {
-            const btn = document.getElementById(`btn-d${plano}-${o}`);
-            if(btn) btn.className = btn.className.replace(/ bg-[a-z]+-950\/50 border-[a-z]+-500/g, "");
-        });
-
-        const active = document.getElementById(`btn-d${plano}-${btnId.split('-')[1]}`);
-        if(active) {
-            const borderColor = plano === 1 ? 'border-amber-500 bg-amber-950/50' : (plano === 2 ? 'border-blue-500 bg-blue-950/50' : (plano === 3 ? 'border-indigo-500 bg-indigo-950/50' : 'border-emerald-500 bg-emerald-950/50'));
-            active.className += ` ${borderColor}`;
-        }
-
-        calcularTotalD();
-    }
-
-    function calcularTotalD() {
-        let totalD = Object.values(puntajesValoresD).reduce((a, b) => a + b, 0);
-        document.getElementById('pts-seccion-d').innerText = totalD;
-
-        const dotD = document.getElementById('dot-semaforo-d');
-        const semaforoD = document.getElementById('semaforo-seccion-d');
-        const panelDiag = document.getElementById('panel-diagnostico-d');
-        const textoDiag = document.getElementById('texto-diagnostico-d');
-
-        panelDiag.style.display = 'block';
-
-        if(totalD === 100) {
-            dotD.className = "w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse";
-            semaforoD.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/40 text-xs font-bold text-purple-300";
-            semaforoD.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span> Gobernanza Sistémica Plena';
-            textoDiag.innerText = "Los cuatro planos institucionales están formalizados de manera óptima, garantizando una separación clara entre familia, propiedad, dirección y ejecución.";
-        } else if(totalD >= 50) {
-            dotD.className = "w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse";
-            semaforoD.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-950/60 border border-amber-500/40 text-xs font-bold text-amber-300";
-            semaforoD.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Gobernanza en Transición';
-            textoDiag.innerText = "Existen planos consolidados pero aún hay espacios institucionales pendientes de formalización (como el Consejo de Familia o el Directorio formal).";
-        } else {
-            dotD.className = "w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse";
-            semaforoD.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-950/60 border border-rose-500/40 text-xs font-bold text-rose-300";
-            semaforoD.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Alta Superposición de Planos';
-            textoDiag.innerText = "Se observa una fuerte mezcla entre los roles familiares y corporativos. Es prioritario institucionalizar los órganos de gobierno para evitar conflictos de agencia.";
-        }
-    }
-</script>
-        <!-- SECCIÓN A: TIPO DE EMPRESA FAMILIAR -->
+<!-- FIN SECCIÓN D -->
+          <!-- SECCIÓN A: TIPO DE EMPRESA FAMILIAR -->
         <section id="seccion-a" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
             <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
                 <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
