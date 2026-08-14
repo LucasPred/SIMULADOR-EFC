@@ -219,6 +219,204 @@
             localStorage.setItem('historial_consultoria_integral', JSON.stringify(hist));
         }
     </script>
+        <!-- SECCIÓN B: EVALUACIÓN DE GOBERNANZA Y PERFIL PATRIMONIAL (MÓDULO INTERACTIVO) -->
+<section id="seccion-b-interactiva" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
+    <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
+        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+            <span class="bg-cyan-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">B</span>
+            Auditoría de Postura Societaria y Validación de Principios
+        </h2>
+        <div class="flex items-center gap-3">
+            <span class="text-xs text-cyan-300 bg-cyan-950/40 px-3 py-1 rounded-full border border-cyan-800/50">Créditos de Gobernanza: <strong id="score-display" class="text-white">0</strong> pts</span>
+            <span class="text-xs text-amber-400 bg-amber-950/40 px-3 py-1 rounded-full border border-amber-800/50">Modo Ejecutivo</span>
+        </div>
+    </div>
+
+    <p class="text-sm text-slate-400 mb-6 leading-relaxed">
+        Instrumento de validación directiva para holdings y empresas de alta complejidad. Indique su conformidad con los siguientes acápites regulatorios. Sus respuestas otorgarán puntaje de alineación corporativa y bloquearán el registro para la confección del borrador definitivo de la Constitución Familiar.
+    </p>
+
+    <!-- Contenedor de Ítems Interactivos del Juego -->
+    <div class="space-y-6" id="interactive-form-container">
+
+        <!-- Ítem 1 -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 item-evaluacion" data-item="1">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                <div>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">Acápite B.1 — Restricción de Transferencia</span>
+                    <h3 class="text-white font-bold text-sm mt-2">Prohibición estricta de enajenación a extraños sin derecho de tanteo corporativo previo.</h3>
+                </div>
+                <div class="flex gap-2 shrink-0">
+                    <button onclick="registrarDecision(this, 1, 'correcto', 25)" class="btn-opcion bg-slate-900 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-600 px-4 py-2 rounded-lg text-xs font-bold transition">
+                        ✓ Correcto (25 pts)
+                    </button>
+                    <button onclick="registrarDecision(this, 1, 'incorrecto', 0)" class="btn-opcion bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-slate-700 hover:border-rose-600 px-4 py-2 rounded-lg text-xs font-bold transition">
+                        ✗ Objeción (0 pts)
+                    </button>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 border-t border-slate-900 pt-3">
+                <em>Conducta asociada:</em> Prioriza la perpetuidad patrimonial del holding familiar frente a la liquidez individual de corto plazo.
+            </p>
+        </div>
+
+        <!-- Ítem 2 -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 item-evaluacion" data-item="2">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                <div>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">Acápite B.2 — Profesionalización Directiva</span>
+                    <h3 class="text-white font-bold text-sm mt-2">Exigencia de background corporativo externo previo (mínimo 3 años) para ingreso a cargos ejecutivos.</h3>
+                </div>
+                <div class="flex gap-2 shrink-0">
+                    <button onclick="registrarDecision(this, 2, 'correcto', 25)" class="btn-opcion bg-slate-900 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-600 px-4 py-2 rounded-lg text-xs font-bold transition">
+                        ✓ Correcto (25 pts)
+                    </button>
+                    <button onclick="registrarDecision(this, 2, 'incorrecto', 0)" class="btn-opcion bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-slate-700 hover:border-rose-600 px-4 py-2 rounded-lg text-xs font-bold transition">
+                        ✗ Objeción (0 pts)
+                    </button>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 border-t border-slate-900 pt-3">
+                <em>Conducta asociada:</em> Meritocracia estricta. Neutraliza la endogamia gerencial en holdings de alta escala operativa.
+            </p>
+        </div>
+
+        <!-- Ítem 3 -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 item-evaluacion" data-item="3">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                <div>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">Acápite B.3 — Arbitraje y Bloqueos</span>
+                    <h3 class="text-white font-bold text-sm mt-2">Sometimiento obligatorio a comité de arbitraje independiente ante empate o bloqueo de votos en directorio.</h3>
+                </div>
+                <div class="flex gap-2 shrink-0">
+                    <button onclick="registrarDecision(this, 3, 'correcto', 25)" class="btn-opcion bg-slate-900 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-600 px-4 py-2 rounded-lg text-xs font-bold transition">
+                        ✓ Correcto (25 pts)
+                    </button>
+                    <button onclick="registrarDecision(this, 3, 'incorrecto', 0)" class="btn-opcion bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-slate-700 hover:border-rose-600 px-4 py-2 rounded-lg text-xs font-bold transition">
+                        ✗ Objeción (0 pts)
+                    </button>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 border-t border-slate-900 pt-3">
+                <em>Conducta asociada:</em> Gobernanza institucionalizada. Evita la parálisis operativa y la judicialización prematura del patrimonio.
+            </p>
+        </div>
+
+        <!-- Ítem 4 -->
+        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 item-evaluacion" data-item="4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+                <div>
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">Acápite B.4 — Fondo de Liquidez</span>
+                    <h3 class="text-white font-bold text-sm mt-2">Constitución de un fondo de recompra corporativo fondeado por utilidades retenidas no distribuidas.</h3>
+                </div>
+                <div class="flex gap-2 shrink-0">
+                    <button onclick="registrarDecision(this, 4, 'correcto', 25)" class="btn-opcion bg-slate-900 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-600 px-4 py-2 rounded-lg text-xs font-bold transition">
+                        ✓ Correcto (25 pts)
+                    </button>
+                    <button onclick="registrarDecision(this, 4, 'incorrecto', 0)" class="btn-opcion bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-slate-700 hover:border-rose-600 px-4 py-2 rounded-lg text-xs font-bold transition">
+                        ✗ Objeción (0 pts)
+                    </button>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 border-t border-slate-900 pt-3">
+                <em>Conducta asociada:</em> Visión financiera táctica. Asegura estabilidad de caja ante desinversiones imprevistas de herederos.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Panel de Diagnóstico Dinámico y Generación de Word -->
+    <div class="mt-8 bg-slate-950 p-6 rounded-xl border border-slate-800 text-center">
+        <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-2">📊 Consolidado de Perfil Organizacional para Consultoría</h3>
+        <p id="diagnostico-status" class="text-xs text-slate-400 mb-4">Estado: Completar los 4 acápites para habilitar el motor de exportación del borrador normativo.</p>
+        
+        <button id="btn-exportar-word" disabled onclick="exportarBorradorWord()" class="bg-slate-800 text-slate-500 cursor-not-allowed px-8 py-3 rounded-xl font-bold text-xs transition shadow-lg">
+            📥 Generar y Exportar Borrador de Constitución Familiar (.doc)
+        </button>
+    </div>
+</section>
+
+<!-- Script de Control del Juego y Bloqueo de Respuestas -->
+<script>
+    let puntajeTotal = 0;
+    let decisionesTomadas = {};
+
+    function registrarencion(btnElement, itemId, decision, puntos) {
+        if (decisionesTomadas[itemId]) return; // Evita modificación una vez elegido
+        
+        decisionesTomadas[itemId] = { decision, puntos };
+        puntajeTotal += puntos;
+
+        // Actualizar visualizador de créditos
+        document.getElementById('score-display').innerText = puntajeTotal;
+
+        // Bloquear los botones de esta tarjeta específica y estilizar selección
+        const card = btnElement.closest('.item-evaluacion');
+        const buttons = card.querySelectorAll('.btn-opcion');
+        
+        buttons.forEach(b => {
+            b.disabled = true;
+            b.classList.add('opacity-40', 'cursor-not-allowed');
+        });
+
+        if (decision === 'correcto') {
+            btnElement.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-700');
+            btnElement.classList.add('bg-emerald-600', 'text-slate-950', 'border-emerald-500', 'opacity-100');
+        } else {
+            btnElement.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-700');
+            btnElement.classList.add('bg-rose-600', 'text-slate-950', 'border-rose-500', 'opacity-100');
+        }
+
+        // Verificar si se completaron los 4 ítems
+        if (Object.keys(decisionesTomadas).length === 4) {
+            activarExportadorBorrador();
+        }
+    }
+
+    // Alias corregido por si acaso el parser interno llama a registrarDecision
+    function registrarDecision(btnElement, itemId, decision, puntos) {
+        registrarencion(btnElement, itemId, decision, puntos);
+    }
+
+    function activarExportadorBorrador() {
+        const btn = document.getElementById('btn-exportar-word');
+        const status = document.getElementById('diagnostico-status');
+        
+        let perfilAnalisis = "";
+        if (puntajeTotal === 100) {
+            perfilAnalisis = "Perfil: Altamente Institucional / Estratega Corporativo.";
+        } else if (puntajeTotal >= 50) {
+            perfilAnalisis = "Perfil: Pragmático Moderado con Reservas Operativas.";
+        } else {
+            perfilAnalisis = "Perfil: Disidente / Resistencia Estructural al Protocolo.";
+        }
+
+        status.innerHTML = `<span class="text-emerald-400 font-bold">Evaluación Completa. Puntaje Final: ${puntajeTotal}/100. ${perfilAnalisis}</span>`;
+        
+        btn.disabled = false;
+        btn.classList.remove('bg-slate-800', 'text-slate-500', 'cursor-not-allowed');
+        btn.classList.add('bg-indigo-600', 'hover:bg-indigo-500', 'text-white', 'cursor-pointer', 'shadow-indigo-500/20');
+    }
+
+    function exportarBorradorWord() {
+        let contenidoWord = `CONSTITUCIÓN FAMILIAR - BORRADOR EJECUTIVO\n`;
+        contenidoWord += `Puntaje de Alineación: ${puntajeTotal}/100\n`;
+        contenidoWord += `---------------------------------------------------\n\n`;
+        
+        for (let id in decisionesTomadas) {
+            contenidoWord += `Acápite B.${id}: Respuesta del Participante -> ${decisionesTomadas[id].decision.toUpperCase()} (${decisionesTomadas[id].puntos} pts)\n`;
+        }
+
+        const blob = new Blob([contenidoWord], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Borrador_Constitucion_Familiar_Holding_${puntajeTotal}pts.doc`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+</script>
         <!-- SECCIÓN C: PROYECTO EMPRESARIO COMÚN -->
 <section id="seccion-c" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10 transition-all">
     <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-4 gap-2">
