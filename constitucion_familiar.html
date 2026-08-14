@@ -987,5 +987,115 @@
             }
         }
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Inicializar Estado Global desde LocalStorage o Valores Cero
+        const gameState = {
+            totalScore: parseInt(localStorage.getItem('cf_score')) || 0,
+            decisions: JSON.parse(localStorage.getItem('cf_decisions')) || {}
+        };
+
+        const scoreDisplay = document.getElementById('score-display');
+        const exportBtn = document.getElementById('btn-exportar-word');
+        const statusText = document.getElementById('diagnostico-status');
+
+        // Función para actualizar la interfaz visual de puntaje
+        function actualizarUI() {
+            if (scoreDisplay) scoreDisplay.innerText = gameState.totalScore;
+            
+            // Restaurar estados visuales guardados previamente
+            for (const [selectorId, data] of Object.entries(gameState.decisions)) {
+                const container = document.querySelector(`[data-seccion-item="${selectorId}"]`);
+                if (container) {
+                    const botones = container.querySelectorAll('.btn-opcion');
+                    botones.forEach(b => {
+                        b.disabled = true;
+                        b.classList.add('opacity-40', 'cursor-not-allowed');
+                        if (b.getAttribute('data-decision') === data.decision) {
+                            b.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-700');
+                            if (data.decision === 'correcto') {
+                                b.classList.add('bg-emerald-600', 'text-slate-950', 'border-emerald-500', 'opacity-100');
+                            } else {
+                                b.classList.add('bg-rose-600', 'text-slate-950', 'border-rose-500', 'opacity-100');
+                            }
+                        }
+                    });
+                }
+            }
+
+            // Habilitar exportador si hay actividad
+            if (Object.keys(gameState.decisions).length > 0 && exportBtn) {
+                exportBtn.disabled = false;
+                exportBtn.classList.remove('bg-slate-800', 'text-slate-500', 'cursor-not-allowed');
+                exportBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-500', 'text-white', 'cursor-pointer', 'shadow-indigo-500/20');
+                if (statusText) {
+                    statusText.innerHTML = `<span class="text-emerald-400 font-bold">Evaluación en curso. Decisiones registradas: ${Object.keys(gameState.decisions).length} | Puntaje Actual: ${gameState.totalScore} pts</span>`;
+                }
+            }
+        }
+
+        // 2. Interceptar clics en cualquier botón de opción de cualquier sección
+        document.body.addEventListener('click', function(e) {
+            const btn = e.target.closest('.btn-opcion');
+            if (!btn) return;
+
+            const itemContainer = btn.closest('[data-seccion-item]');
+            if (!itemContainer) return;
+
+            const itemId = itemContainer.getAttribute('data-seccion-item');
+            
+            // Si ya se tomó una decisión en este ítem, no permitir cambios (Candado)
+            if (gameState.decisions[itemId]) return;
+
+            const decision = btn.getAttribute('data-decision');
+            const puntos = parseInt(btn.getAttribute('data-puntos')) || 0;
+
+            // Registrar en el estado global
+            gameState.decisions[itemId] = { decision, puntos, titulo: itemContainer.getAttribute('data-titulo') || itemId };
+            gameState.totalScore += puntos;
+
+            // Guardar en persistencia local
+            localStorage.setItem('cf_score', gameState.totalScore);
+            localStorage.setItem('cf_decisions', JSON.stringify(gameState.decisions));
+
+            actualizarUI();
+        });
+
+        // 3. Generador Automático del Borrador Word para el Consultor
+        window.exportarBorradorWordGlobal = function() {
+            let perfilAnalisis = "Perfil en Desarrollo";
+            if (gameState.totalScore >= 80) perfilAnalisis = "Perfil: Estratega Corporativo / Alto Alineamiento Institucional.";
+            else if (gameState.totalScore >= 40) perfilAnalisis = "Perfil: Pragmático Moderado.";
+            else perfilAnalisis = "Perfil: Resistencia Estructural / Requiere Alineación Directiva.";
+
+            let contenidoWord = `CONSTITUCIÓN FAMILIAR Y PROTOCOLO CORPORATIVO - HOLDINGS\n`;
+            contenidoWord += `====================================================\n`;
+            contenidoWord += `Puntaje Total de Gobernanza: ${gameState.totalScore} pts\n`;
+            contenidoWord += `Evaluación Preliminar: ${perfilAnalisis}\n`;
+            contenidoWord += `Fecha de Emisión: ${new Date().toLocaleDateString()}\n`;
+            contenidoWord += `----------------------------------------------------\n\n`;
+            contenidoWord += `DETALLE DE DECISIONES Y VINCULACIONES DEL PARTICIPANTE:\n\n`;
+
+            let contador = 1;
+            for (const [id, data] of Object.entries(gameState.decisions)) {
+                contenidoWord += `${contador}. [${id.toUpperCase()}] ${data.titulo}\n`;
+                contenidoWord += `   -> Elección: ${data.decision.toUpperCase()} (${data.puntos} pts)\n\n`;
+                contador++;
+            }
+
+            const blob = new Blob([contenidoWord], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Borrador_Constitucion_Familiar_Holding_${gameState.totalScore}pts.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        };
+
+        // Inicializar al cargar
+        actualizarUI();
+    });
+</script>
 </body>
 </html>
