@@ -165,7 +165,60 @@
                 </span>
             </div>
         </header>
+<script>
+        let puntajesValoresB = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0 };
 
+        function evaluarValorB(num, pts, estado) {
+            puntajesValoresB[num] = pts;
+            
+            // UI Feedback
+            ['si', 'parcial', 'no'].forEach(s => {
+                const b = document.getElementById(`btn-b${num}-${s}`);
+                if(b) {
+                    b.className = "p-2 rounded bg-slate-900 border border-slate-800 text-[10px] transition font-bold text-slate-300";
+                    if(num === 8) b.className = "p-4 rounded-xl bg-slate-950 border border-amber-900 transition font-bold text-amber-300 text-xs text-center";
+                }
+            });
+            
+            const btnActivo = document.getElementById(`btn-b${num}-${estado}`);
+            if(estado === 'si') btnActivo.className += " border-emerald-500 bg-emerald-950/30 text-emerald-200";
+            else if(estado === 'parcial') btnActivo.className += " border-amber-500 bg-amber-950/30 text-amber-200";
+            else btnActivo.className += " border-rose-500 bg-rose-950/30 text-rose-200";
+
+            actualizarDashboardB();
+        }
+
+        function actualizarDashboardB() {
+            const total = Object.values(puntajesValoresB).reduce((a, b) => a + b, 0);
+            document.getElementById('pts-seccion-b').innerText = total;
+
+            const dot = document.getElementById('dot-semaforo-b');
+            const semaforo = document.getElementById('semaforo-seccion-b');
+            const panel = document.getElementById('panel-diagnostico-b');
+            const texto = document.getElementById('texto-diagnostico-b');
+
+            panel.classList.remove('hidden');
+
+            if(total >= 75) {
+                semaforo.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-xs font-bold text-emerald-300";
+                semaforo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span> ADN Consolidado';
+                texto.innerText = "La cultura familiar y el 'Afecto Societatis' están firmemente arraigados. Sus valores son guías operativas reales.";
+            } else if(total >= 45) {
+                semaforo.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-950/80 border border-amber-500/40 text-xs font-bold text-amber-300";
+                semaforo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span> Desgaste Cultural';
+                texto.innerText = "Se detectan fricciones en los valores compartidos. Es vital propiciar espacios de diálogo antes de que afecte la rentabilidad.";
+            } else {
+                semaforo.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg bg-rose-950/80 border border-rose-500/40 text-xs font-bold text-rose-300";
+                semaforo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span> Alerta Roja';
+                texto.innerText = "Advertencia crítica: El deterioro en los consensos axiológicos pone en peligro el pacto familiar. Se recomienda intervención estratégica.";
+            }
+
+            // Sync
+            let hist = JSON.parse(localStorage.getItem('historial_consultoria_integral') || '{}');
+            hist.seccionB = { total, valores: puntajesValoresB };
+            localStorage.setItem('historial_consultoria_integral', JSON.stringify(hist));
+        }
+    </script>
         <!-- CONTENEDOR PRINCIPAL DE SECCIONES -->
         <main class="space-y-12">
 
