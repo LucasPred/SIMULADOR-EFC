@@ -935,6 +935,49 @@
         actualizarUI();
     });
 </script>
+    <script>
+// Configuración de niveles de respuesta (No exponer esto al usuario)
+const tablaValores = { "alto": 25, "medio": 15, "bajo": 5, "nulo": 0 };
+
+document.querySelectorAll('.btn-opcion').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const parent = this.closest('.seccion-item');
+        // Ocultar valor en atributo data-val para que no se vea en el HTML inspeccionado
+        parent.dataset.puntajeSeleccionado = tablaValores[this.dataset.nivel];
+        
+        // Feedback visual sin mostrar puntos
+        parent.querySelectorAll('.btn-opcion').forEach(b => b.classList.remove('ring-2', 'ring-white'));
+        this.classList.add('ring-2', 'ring-white');
+        
+        verificarCompletitud();
+    });
+});
+
+function verificarCompletitud() {
+    const todosItems = document.querySelectorAll('.seccion-item');
+    const completados = Array.from(todosItems).every(item => item.dataset.puntajeSeleccionado !== undefined);
+    
+    if (completados) {
+        const btn = document.getElementById('btn-exportar');
+        btn.classList.replace('opacity-50', 'opacity-100');
+        btn.classList.remove('cursor-not-allowed');
+        btn.disabled = false;
+    }
+}
+
+function generarDocumentoConsolidado() {
+    // Autenticación simulada
+    const user = prompt("Usuario de Consultor:");
+    const pass = prompt("Contraseña:");
+    
+    if (user === "lprediger" && pass === "joaquin7") {
+        alert("Exportando borrador normativo al sistema...");
+        // Aquí conectaría con tu función de generación de archivos
+    } else {
+        alert("Credenciales incorrectas o insuficientes.");
+    }
+}
+</script>
 </body>
     <div id="container-exportacion" class="mt-16 p-8 border-t border-slate-800 text-center">
     <button id="btn-exportar" 
