@@ -1,231 +1,338 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constitución Familiar y Gobierno Corporativo - Micrositio Integral</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Constitución Familiar y Protocolo Corporativo — Panel Ejecutivo</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 950: '#020617', 900: '#0f172a', 800: '#1e293b', 700: '#334155' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .btn-opcion.active {
+            border-color: #6366f1 !important;
+            background-color: rgba(99, 102, 241, 0.2) !important;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+            color: #ffffff !important;
+        }
+        /* Scrollbar elegante */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen p-4 md:p-8">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white">
 
-    <div class="max-w-7xl mx-auto space-y-12">
+    <nav class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-6 py-4 flex flex-wrap justify-between items-center shadow-xl">
+        <div class="flex items-center gap-4">
+            <a href="parasocietarios.html" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-700 shadow-sm">
+                &larr; Volver a Parasocietarios
+            </a>
+            <div class="hidden sm:flex items-center gap-2 bg-emerald-950/50 px-3 py-1.5 rounded-xl border border-emerald-500/30">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[11px] font-black text-emerald-400 uppercase tracking-wider">Modo Consultor: Activo</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden md:block text-right">
+                <span class="text-[10px] text-slate-400 block uppercase tracking-wider font-semibold">Nivel Actual</span>
+                <span class="text-xs font-bold text-indigo-400">Constitución Familiar y Gobierno</span>
+            </div>
+            <a href="sucesion.html" class="flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 px-5 py-2 rounded-xl font-extrabold text-xs transition-all hover:scale-105 shadow-lg shadow-amber-500/20">
+                Siguiente: Sucesión &rarr;
+            </a>
+        </div>
+    </nav>
 
-        <!-- HEADER INSTITUCIONAL -->
-        <header class="bg-slate-900 border border-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-                <span class="text-xs font-bold text-sky-400 uppercase tracking-widest block mb-1">Sistema de Consultoría Patrimonial y Societaria</span>
-                <h1 class="text-2xl md:text-4xl font-black text-white tracking-tight">Constitución Familiar y Protocolo de Gobierno</h1>
+    <main class="max-w-5xl mx-auto px-6 py-10 space-y-12">
+        
+        <header class="text-center border-b border-slate-800/80 pb-8 space-y-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-widest">
+                <span>Marco Jurídico y Estratégico</span>
             </div>
-            <div class="flex items-center gap-3">
-                <span class="px-3 py-1.5 rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-xs font-bold text-emerald-300">
-                    🟢 ACCESO CONSULTOR: ACTIVO
-                </span>
-            </div>
+            <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight">Constitución Familiar y Protocolo de Gobierno</h1>
+            <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                Sistema interactivo de diagnóstico corporativo para holdings. Sus decisiones configurarán automáticamente los postulados normativos del borrador final.
+            </p>
         </header>
 
-        <main class="space-y-12">
+        <div id="contenedor-evaluacion" class="space-y-10">
 
-            <!-- SECCIÓN A: TIPO DE EMPRESA FAMILIAR -->
-            <section id="seccion-a-interactiva" class="bg-slate-900 p-6 md:p-10 rounded-2xl border border-slate-800 shadow-2xl transition-all seccion-item" data-titulo="Tipo de Empresa Familiar">
-                <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-6 gap-4">
-                    <div class="flex items-center gap-3">
-                        <span class="bg-indigo-600 text-white px-3 py-1 rounded-lg text-sm font-black tracking-wider">A</span>
-                        <div>
-                            <h2 class="text-2xl md:text-3xl font-extrabold text-white">Tipo de Empresa Familiar</h2>
-                            <p class="text-xs text-slate-400 mt-1">Evaluación, Consenso y Dashboard Estratégico</p>
-                        </div>
-                    </div>
+            <section class="seccion-item bg-slate-900/90 backdrop-blur p-6 md:p-8 rounded-3xl border border-slate-800 shadow-2xl transition-all relative overflow-hidden group" 
+                     data-titulo="Tipo de Empresa Familiar y Planos Institucionales"
+                     data-capitulo-id="A">
+                <div class="absolute top-0 left-0 w-2 h-full bg-indigo-500"></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-xl text-xs font-black tracking-widest">A</span>
+                    <h2 class="text-xl font-extrabold text-white">Tipo de Empresa Familiar y Delimitación de Planos</h2>
                 </div>
-
-                <p class="text-xs md:text-sm text-slate-300 mb-8 leading-relaxed max-w-4xl">
-                    Analice el modelo de gestión actual de su organización familiar. Indique el grado de acuerdo con las siguientes afirmaciones estructurales para determinar la alineación corporativa.
+                <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                    Define el grado de apertura y los límites de acceso de los miembros familiares en los ámbitos corporativos: Familia, Propiedad, Dirección y Ejecución.
                 </p>
-
-                <div class="space-y-6 mb-8">
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                        <h4 class="text-xs md:text-sm font-bold text-slate-200 mb-3">1. ¿Existe una separación clara entre los roles de la Familia, la Propiedad, la Dirección y la Ejecución operativa?</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <button data-nivel="alto" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-emerald-500 text-xs text-slate-300 transition text-left font-medium">✅ Sí, están claramente delimitados (Óptimo)</button>
-                            <button data-nivel="medio" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-amber-500 text-xs text-slate-300 transition text-left font-medium">⚠️ Parcialmente / Hay superposición</button>
-                            <button data-nivel="nulo" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-rose-500 text-xs text-slate-300 transition text-left font-medium">❌ No, se mezclan familia y gestión (Alto Riesgo)</button>
-                        </div>
+                <div class="space-y-4">
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-wide">Seleccione el modelo de transición directiva deseado:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <button type="button" data-nivel="alto" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition flex flex-col justify-between">
+                            <span class="font-bold text-white mb-2">Dirección y Gerenciamiento Familiar</span>
+                            <span class="text-[11px] text-slate-400">Roles protagónicos e igualitarios con máxima profesionalización y unidad (Óptimo).</span>
+                        </button>
+                        <button type="button" data-nivel="medio" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition flex flex-col justify-between">
+                            <span class="font-bold text-white mb-2">Gerencia Familiar Centralizada</span>
+                            <span class="text-[11px] text-slate-400">Gestión compartida parcialmente con liderazgo central fundador dominante.</span>
+                        </button>
+                        <button type="button" data-nivel="nulo" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition flex flex-col justify-between">
+                            <span class="font-bold text-white mb-2">Estructuras Indefinidas</span>
+                            <span class="text-[11px] text-slate-400">Sin separación formal de planos ni criterios estables de desarrollo generacional.</span>
+                        </button>
                     </div>
                 </div>
             </section>
 
-            <!-- SECCIÓN B: AUDITORÍA DE POSTURA SOCIETARIA -->
-            <section id="seccion-b-interactiva" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Auditoría de Postura Societaria">
-                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                        <span class="bg-cyan-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">B</span>
-                        Auditoría de Postura Societaria y Validación de Principios
-                    </h2>
+            <section class="seccion-item bg-slate-900/90 backdrop-blur p-6 md:p-8 rounded-3xl border border-slate-800 shadow-2xl transition-all relative overflow-hidden group" 
+                     data-titulo="Valores Compartidos y Cultura Organizacional"
+                     data-capitulo-id="B">
+                <div class="absolute top-0 left-0 w-2 h-full bg-teal-500"></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-teal-600 text-slate-950 px-3 py-1 rounded-xl text-xs font-black tracking-widest">B</span>
+                    <h2 class="text-xl font-extrabold text-white">Valores Compartidos y Afecto Societario</h2>
                 </div>
-
-                <p class="text-sm text-slate-400 mb-6 leading-relaxed">
-                    Instrumento de validación directiva para holdings y empresas de alta complejidad. Indique su conformidad con los acápites regulatorios.
+                <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                    El "Amor Societario" (*Afecto Societatis*) constituye la actitud activa que hace que los socios disfruten de trabajar y proyectar juntos bajo criterios éticos transparentes.
                 </p>
-
-                <div class="space-y-6">
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                        <h3 class="text-white font-bold text-sm mb-3">Prohibición estricta de enajenación a extraños sin derecho de tanteo corporativo previo.</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <button data-nivel="alto" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">✓ Conforme / Estricto</button>
-                            <button data-nivel="medio" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">⚠️ Flexible con restricciones</button>
-                            <button data-nivel="nulo" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">✗ Sin restricciones</button>
-                        </div>
+                <div class="space-y-4">
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-wide">Seleccione el estado actual del consenso axiológico:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button type="button" data-nivel="alto" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Afecto Societatis Sólido y Transparente</span>
+                            <span class="text-[11px] text-slate-400">Confianza mutua, capacidad de diálogo constructivo y cumplimiento estricto de la ética común.</span>
+                        </button>
+                        <button type="button" data-nivel="nulo" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Desgaste Cultural / Riesgo de Ruptura</span>
+                            <span class="text-[11px] text-slate-400">Fricciones latentes o pérdida del sentido de asociación que obligaría a revisar la continuidad.</span>
+                        </button>
                     </div>
                 </div>
             </section>
 
-            <!-- SECCIÓN C: PROYECTO EMPRESARIO COMÚN -->
-            <section id="seccion-c" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Proyecto Empresario Común">
-                <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-4 gap-2">
-                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                        <span class="bg-teal-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">C</span>
-                        Proyecto Empresario Común
-                    </h2>
+            <section class="seccion-item bg-slate-900/90 backdrop-blur p-6 md:p-8 rounded-3xl border border-slate-800 shadow-2xl transition-all relative overflow-hidden group" 
+                     data-titulo="Proyecto Empresario Común y Orientación Estratégica"
+                     data-capitulo-id="C">
+                <div class="absolute top-0 left-0 w-2 h-full bg-cyan-500"></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-cyan-600 text-slate-950 px-3 py-1 rounded-xl text-xs font-black tracking-widest">C</span>
+                    <h2 class="text-xl font-extrabold text-white">Proyecto Empresario Común y Orientación Estratégica</h2>
                 </div>
-
-                <p class="text-sm text-slate-400 mb-6 italic">Definición del negocio, alineación de propietarios y visión compartida de futuro:</p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                        <h3 class="font-bold text-white text-sm mb-3">Cartera de Negocios y Diversificación</h3>
-                        <div class="grid grid-cols-3 gap-2">
-                            <button data-nivel="alto" class="btn-opcion py-2 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 text-center">Consolidada</button>
-                            <button data-nivel="medio" class="btn-opcion py-2 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 text-center">En ajuste</button>
-                            <button data-nivel="nulo" class="btn-opcion py-2 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 text-center">Incipiente</button>
-                        </div>
+                <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                    Definición de la cartera de negocios, tecnificación, sistemas y protección de las capacidades de las personas frente a pugnas de poder.
+                </p>
+                <div class="space-y-4">
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-wide">Seleccione el nivel de desarrollo estratégico:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <button type="button" data-nivel="alto" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Visión Consolidada y Tecnificada</span>
+                            <span class="text-[11px] text-slate-400">Diversificación planificada, alta tecnificación y protección rigurosa del talento interno.</span>
+                        </button>
+                        <button type="button" data-nivel="medio" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Crecimiento Incremental</span>
+                            <span class="text-[11px] text-slate-400">Proceso de modernización en curso con necesidades de formalización directiva.</span>
+                        </button>
+                        <button type="button" data-nivel="nulo" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Operación Incipiente</span>
+                            <span class="text-[11px] text-slate-400">Requiere estructuración urgente de lineamientos de negocio y gobernanza de capacidades.</span>
+                        </button>
                     </div>
                 </div>
             </section>
 
-            <!-- SECCIÓN D: ÓRGANOS DE GOBIERNO Y ESTRUCTURA -->
-            <section id="seccion-d-gobierno" class="w-full bg-slate-900 p-6 md:p-10 rounded-2xl border border-slate-800 shadow-2xl seccion-item" data-titulo="Órganos de Gobierno">
-                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-slate-800 pb-6 mb-8 gap-4">
-                    <div>
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="bg-purple-600 text-white px-3 py-1 rounded-lg text-sm font-black tracking-wider">D</span>
-                            <h2 class="text-2xl md:text-3xl font-extrabold text-white">Órganos de Gobierno y Estructura Organizativa</h2>
-                        </div>
-                    </div>
+            <section class="seccion-item bg-slate-900/90 backdrop-blur p-6 md:p-8 rounded-3xl border border-slate-800 shadow-2xl transition-all relative overflow-hidden group" 
+                     data-titulo="Órganos de Gobierno y Estructura Organizativa"
+                     data-capitulo-id="D">
+                <div class="absolute top-0 left-0 w-2 h-full bg-purple-500"></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-purple-600 text-white px-3 py-1 rounded-xl text-xs font-black tracking-widest">D</span>
+                    <h2 class="text-xl font-extrabold text-white">Órganos de Gobierno: Consejo, Asamblea, Directorio y Comité</h2>
                 </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 border-t-4 border-amber-500">
-                        <span class="text-[11px] font-bold text-amber-400 uppercase tracking-widest block mb-1">Consejo de Familia</span>
-                        <div class="grid grid-cols-2 gap-2 mt-4">
-                            <button data-nivel="alto" class="btn-opcion py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300 text-center">Formalizado</button>
-                            <button data-nivel="nulo" class="btn-opcion py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300 text-center">Pendiente</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN E: COMUNICACIÓN Y RESOLUCIONES -->
-            <section id="seccion-e" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Comunicación y Resoluciones">
-                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                        <span class="bg-indigo-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">E</span>
-                        Comunicación y Resoluciones
-                    </h2>
-                </div>
-
-                <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-                    <p class="text-slate-400 text-xs mb-4">¿Existe un protocolo escrito que defina las instancias de escalabilidad de conflictos?</p>
-                    <div class="flex gap-2">
-                        <button data-nivel="alto" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-4 py-2 rounded text-xs">Protocolo Escrito</button>
-                        <button data-nivel="nulo" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-4 py-2 rounded text-xs">Sin Protocolo</button>
+                <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                    Formalización de los cuatro planos institucionales para evitar superposición de roles y asegurar la representación idónea en la dirección.
+                </p>
+                <div class="space-y-4">
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-wide">Seleccione el estado de institucionalización de los órganos:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button type="button" data-nivel="alto" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Gobernanza Plena de los Cuatro Planos</span>
+                            <span class="text-[11px] text-slate-400">Consejo de Familia, Mesa de Dueños, Directorio profesional y Comité Ejecutivo operando sin fricciones.</span>
+                        </button>
+                        <button type="button" data-nivel="nulo" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Superposición Operativa</span>
+                            <span class="text-[11px] text-slate-400">Ausencia de Consejo de Familia formal; toma de decisiones concentrada y no reglamentada.</span>
+                        </button>
                     </div>
                 </div>
             </section>
 
-            <!-- SECCIÓN F: DESARROLLO DE TALENTO -->
-            <section id="seccion-f" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Desarrollo de Talento">
-                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                        <span class="bg-emerald-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">F</span>
-                        Desarrollo de Talento y Profesionalización
-                    </h2>
+            <section class="seccion-item bg-slate-900/90 backdrop-blur p-6 md:p-8 rounded-3xl border border-slate-800 shadow-2xl transition-all relative overflow-hidden group" 
+                     data-titulo="Propiedad de la Empresa y Mecanismos de Acceso, Valuación y Venta"
+                     data-capitulo-id="E">
+                <div class="absolute top-0 left-0 w-2 h-full bg-amber-500"></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-amber-600 text-slate-950 px-3 py-1 rounded-xl text-xs font-black tracking-widest">E</span>
+                    <h2 class="text-xl font-extrabold text-white">Propiedad de la Empresa, Valuación y Restricción de Venta</h2>
                 </div>
-
-                <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-                    <p class="text-slate-400 text-xs mb-4">¿Es obligatoria la experiencia externa previa para familiares ejecutivos?</p>
-                    <div class="flex gap-2">
-                        <button data-nivel="alto" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-4 py-2 rounded text-xs">Exigencia 3 Años</button>
-                        <button data-nivel="nulo" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-4 py-2 rounded text-xs">Ingreso Directo</button>
+                <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                    Mecánica de exclusividad familiar, prioridad de recompra intrafamiliar, fondo de liquidez y fórmulas de valuación (50/50 patrimonial y flujos de fondos).
+                </p>
+                <div class="space-y-4">
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-wide">Seleccione la política de tenencia y desinversión:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button type="button" data-nivel="alto" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Exclusividad 100% Familiar con Fondo de Recompra</span>
+                            <span class="text-[11px] text-slate-400">Derecho de tanteo estricto al Consejo de Familia, fórmulas de valuación objetivas y blindaje accionario.</span>
+                        </button>
+                        <button type="button" data-nivel="nulo" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Sin Mecanismos Formales de Liquidez</span>
+                            <span class="text-[11px] text-slate-400">Riesgo de venta a terceros o ausencia de reglas claras para herederos desinversionistas.</span>
+                        </button>
                     </div>
                 </div>
             </section>
 
-            <!-- SECCIÓN G y H: CONTINUIDAD Y RIESGOS -->
-            <section id="seccion-g-h" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Continuidad y Riesgos Patrimoniales">
-                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-                        <span class="bg-rose-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">G/H</span>
-                        Continuidad y Riesgos Patrimoniales
-                    </h2>
+            <section class="seccion-item bg-slate-900/90 backdrop-blur p-6 md:p-8 rounded-3xl border border-slate-800 shadow-2xl transition-all relative overflow-hidden group" 
+                     data-titulo="Criterios para el Trabajo y la Incorporación de Nuevos Familiares"
+                     data-capitulo-id="F">
+                <div class="absolute top-0 left-0 w-2 h-full bg-emerald-500"></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-emerald-600 text-slate-950 px-3 py-1 rounded-xl text-xs font-black tracking-widest">F</span>
+                    <h2 class="text-xl font-extrabold text-white">Criterios de Ingreso Laboral y Exclusión de Familiares Políticos</h2>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-                        <strong class="text-white block mb-2 text-xs">Riesgo Societario (Blindaje):</strong>
-                        <div class="flex gap-2">
-                            <button data-nivel="alto" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-3 py-2 rounded text-xs">Fideicomisos Activos</button>
-                            <button data-nivel="nulo" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-3 py-2 rounded text-xs">Estatuto Estándar</button>
-                        </div>
+                <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                    Requisitos de título universitario, experiencia externa mínima obligatoria de 2 a 3 años en empresas no relacionadas, y prohibición estricta de empleo para cónyuges.
+                </p>
+                <div class="space-y-4">
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-wide">Seleccione la rigurosidad de la política de talento:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button type="button" data-nivel="alto" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Meritocracia Estricta con Experiencia Externa</span>
+                            <span class="text-[11px] text-slate-400">Exigencia de formación, 2+ años fuera del grupo, selección rigurosa y exclusión total de cónyuges.</span>
+                        </button>
+                        <button type="button" data-nivel="nulo" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Criterios Flexibles o Endogámicos</span>
+                            <span class="text-[11px] text-slate-400">Ingreso sin filtros rigurosos previos o permisión de contratación de familiares políticos.</span>
+                        </button>
                     </div>
                 </div>
             </section>
 
-        </main>
+            <section class="seccion-item bg-slate-900/90 backdrop-blur p-6 md:p-8 rounded-3xl border border-slate-800 shadow-xl transition-all relative overflow-hidden group" 
+                     data-titulo="Formación Generacional, Capacitación Directiva y Sistemas de Evaluación (S.R.A.)"
+                     data-capitulo-id="G_H">
+                <div class="absolute top-0 left-0 w-2 h-full bg-rose-500"></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-rose-600 text-slate-950 px-3 py-1 rounded-xl text-xs font-black tracking-widest">G/H</span>
+                    <h2 class="text-xl font-extrabold text-white">Formación, Habilidades Directivas y Sistema de Remuneración Anual (S.R.A.)</h2>
+                </div>
+                <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                    Creación de la Mesa de Jóvenes, compromiso de capacitación directiva y aplicación de la fórmula polinómica de retribución basada en la contribución (*Sueldo + Variable + Honorarios + Dividendos*).
+                </p>
+                <div class="space-y-4">
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-wide">Seleccione el nivel de formalización directiva:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button type="button" data-nivel="alto" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">S.R.A. Polinómico y Mesa de Jóvenes Activa</span>
+                            <span class="text-[11px] text-slate-400">Retribución justa vinculada a contribución, autoevaluación comprobada y capacitación generacional estructurada.</span>
+                        </button>
+                        <button type="button" data-nivel="nulo" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Esquemas Salariales Discrecionales</span>
+                            <span class="text-[11px] text-slate-400">Sin fórmula transparente de retribución ni programas formales para herederos y directivos.</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
 
-        <!-- ZONA DE EXPORTACIÓN Y PANEL ADMINISTRADOR -->
-        <div id="container-exportacion" class="mt-16 p-8 bg-slate-900 rounded-2xl border border-slate-800 text-center shadow-2xl">
-            <h3 class="text-base font-bold text-white mb-2">Consolidado de Perfil Organizacional para Consultoría</h3>
-            <p id="mensaje-estado" class="text-slate-400 text-xs mb-6 italic">Complete todos los acápites y bloques de evaluación del micrositio para habilitar la exportación del borrador normativo.</p>
+            <section class="seccion-item bg-slate-900/90 backdrop-blur p-6 md:p-8 rounded-3xl border border-slate-800 shadow-xl transition-all relative overflow-hidden group" 
+                     data-titulo="Políticas Financieras, Reuniones de Familia y Enmiendas"
+                     data-capitulo-id="I_J_K">
+                <div class="absolute top-0 left-0 w-2 h-full bg-blue-500"></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="bg-blue-600 text-slate-950 px-3 py-1 rounded-xl text-xs font-black tracking-widest">I/J/K</span>
+                    <h2 class="text-xl font-extrabold text-white">Políticas Financieras, Dinámica de Reuniones y Enmiendas Unánimes</h2>
+                </div>
+                <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                    Regulación de reinversiones, dividendos por asamblea, rutinas de encuentro familiar para custodiar el afecto societatis y revisiones bianuales con enmiendas unánimes.
+                </p>
+                <div class="space-y-4">
+                    <p class="text-xs font-bold text-slate-300 uppercase tracking-wide">Seleccione el grado de institucionalidad financiera y de cierre:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button type="button" data-nivel="alto" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Gobernanza Financiera y Enmienda Unánime</span>
+                            <span class="text-[11px] text-slate-400">Reglas claras de reinversión, rutinas de integración familiar y cláusula de modificación por unanimidad.</span>
+                        </button>
+                        <button type="button" data-nivel="nulo" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition">
+                            <span class="font-bold text-white block mb-1">Criterios Informales</span>
+                            <span class="text-[11px] text-slate-400">Decisiones financieras discrecionales y ausencia de protocolos de revisión y enmienda.</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <div id="container-exportacion" class="mt-16 p-8 bg-slate-900/90 backdrop-blur rounded-3xl border border-slate-800 text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 pointer-events-none"></div>
+            <h3 class="text-lg font-black text-white mb-2">Consolidado de Perfil Organizacional para Consultoría</h3>
+            <p id="mensaje-estado" class="text-slate-400 text-xs mb-6 italic max-w-xl mx-auto">
+                Complete todas las secciones del micrositio para desbloquear el motor de redacción jurídica y generar el documento Word adaptado.
+            </p>
             
             <button id="btn-exportar" 
                     onclick="generarDocumentoConsolidado()"
-                    class="bg-slate-800 text-slate-500 font-bold py-4 px-12 rounded-xl shadow-lg transition-all opacity-50 cursor-not-allowed" 
+                    class="bg-slate-800 text-slate-500 font-extrabold py-4 px-10 rounded-2xl shadow-xl transition-all opacity-50 cursor-not-allowed text-sm uppercase tracking-wider" 
                     disabled>
-                📥 Generar y Exportar Borrador de Constitución Familiar (.doc)
+                📥 Generar y Exportar Borrador de Constitución Familiar Dinámica (.doc)
             </button>
         </div>
 
-        <!-- FOOTER / NAVEGACIÓN ENTRE NIVELES -->
-        <footer class="bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4">
-            <a href="parasocietarios.html" class="text-sm text-sky-400 hover:underline">← Volver a Parasocietarios</a>
-            <div class="text-xs text-slate-400 text-center">Nivel 2: Constitución Familiar</div>
-            <a href="sucesion.html" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition shadow-lg">Siguiente: Sucesión →</a>
+        <footer class="bg-slate-900/90 backdrop-blur border border-slate-800 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+            <a href="parasocietarios.html" class="text-slate-400 hover:text-white font-bold transition flex items-center gap-2">
+                &larr; Volver a Parasocietarios
+            </a>
+            <div class="text-slate-500 font-medium text-center">Nivel 2: Constitución Familiar y Protocolo Corporativo</div>
+            <a href="sucesion.html" class="text-amber-400 hover:text-amber-300 font-extrabold transition flex items-center gap-2">
+                Ir a Sucesión &rarr;
+            </a>
         </footer>
 
-    </div>
+    </main>
 
-    <!-- MOTOR GLOBAL DE JUEGO, PUNTUACIÓN OCULTA Y EXPORTACIÓN DINÁMICA -->
     <script>
-        // Tabla de valores internos (Oculta al usuario, accesible sólo para el administrador)
-        const tablaValores = { "alto": 25, "medio": 15, "bajo": 5, "nulo": 0 };
+        // Tabla de ponderación interna oculta para el administrador
+        const tablaValores = { "alto": 35, "medio": 20, "nulo": 0 };
 
         document.querySelectorAll('.btn-opcion').forEach(btn => {
             btn.addEventListener('click', function() {
                 const parent = this.closest('.seccion-item');
                 if (!parent) return;
 
-                // Asignar puntaje oculto en data-attributes
+                // Registrar puntaje y texto de elección de forma limpia
                 parent.dataset.puntajeSeleccionado = tablaValores[this.dataset.nivel] ?? 0;
-                parent.dataset.eleccionTexto = this.innerText.trim();
+                parent.dataset.nivelElegido = this.dataset.nivel;
+                parent.dataset.eleccionTexto = this.querySelector('span.font-bold') ? this.querySelector('span.font-bold').innerText : this.innerText.trim();
 
-                // Feedback visual en la interfaz
+                // Actualizar interfaz visual con animación de selección
                 parent.querySelectorAll('.btn-opcion').forEach(b => {
-                    b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-400', 'ring-2', 'ring-white');
-                    b.classList.add('bg-slate-900', 'text-slate-300', 'border-slate-700');
+                    b.classList.remove('active', 'border-indigo-500', 'bg-indigo-950/30', 'text-white', 'ring-2', 'ring-indigo-500');
                 });
                 
-                this.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-700');
-                this.classList.add('bg-indigo-600', 'text-white', 'border-indigo-400', 'ring-2', 'ring-white');
+                this.classList.add('active', 'border-indigo-500', 'bg-indigo-950/30', 'text-white', 'ring-2', 'ring-indigo-500');
 
                 verificarCompletitudGlobal();
             });
@@ -244,49 +351,131 @@
                 btn.classList.replace('bg-slate-800', 'bg-indigo-600');
                 btn.classList.replace('text-slate-500', 'text-white');
                 btn.classList.remove('cursor-not-allowed');
-                btn.classList.add('cursor-pointer', 'hover:bg-indigo-700', 'shadow-indigo-500/20');
+                btn.classList.add('cursor-pointer', 'hover:bg-indigo-500', 'shadow-indigo-500/30', 'hover:scale-[1.02]');
                 
-                mensaje.innerHTML = '<span class="text-emerald-400 font-bold">¡Diagnóstico completo! Panel de exportación habilitado para el consultor.</span>';
+                mensaje.innerHTML = '<span class="text-emerald-400 font-bold">¡Diagnóstico completo! Panel de exportación autorizado para el consultor.</span>';
             }
         }
 
         function generarDocumentoConsolidado() {
             // Autenticación de Administrador / Consultor
-            const user = prompt("Usuario de Consultor (Admin):");
-            const pass = prompt("Contraseña de Seguridad:");
+            const user = prompt("Ingrese Usuario Administrador:");
+            const pass = prompt("Ingrese Clave de Seguridad:");
 
             if (user === "lprediger" && pass === "joaquin7") {
                 let puntajeTotal = 0;
-                let contenidoWord = `CONSTITUCIÓN FAMILIAR Y PROTOCOLO CORPORATIVO - HOLDINGS\n`;
-                contenidoWord += `====================================================\n`;
-                contenidoWord += `Fecha de Emisión: ${new Date().toLocaleDateString()}\n`;
-                contenidoWord += `----------------------------------------------------\n\n`;
-                contenidoWord += `DETALLE DE EVALUACIÓN Y CLÁUSULAS PRELIMINARES:\n\n`;
+                let elecciones = {};
 
-                document.querySelectorAll('.seccion-item').forEach((item, index) => {
-                    const titulo = item.dataset.titulo || `Sección ${index + 1}`;
-                    const puntaje = parseInt(item.dataset.puntajeSeleccionado) || 0;
-                    const eleccion = item.dataset.eleccionTexto || "Sin registrar";
-                    puntajeTotal += puntaje;
-
-                    contenidoWord += `${index + 1}. ${titulo}\n`;
-                    contenidoWord += `   -> Elección del Participante: ${eleccion} (${puntaje} pts)\n\n`;
+                document.querySelectorAll('.seccion-item').forEach(item => {
+                    const capId = item.dataset.capituloId;
+                    elecciones[capId] = {
+                        titulo: item.dataset.titulo,
+                        nivel: item.dataset.nivelElegido,
+                        texto: item.dataset.eleccionTexto,
+                        puntaje: parseInt(item.dataset.puntajeSeleccionado) || 0
+                    };
+                    puntajeTotal += elecciones[capId].puntaje;
                 });
 
-                contenidoWord += `----------------------------------------------------\n`;
-                contenidoWord += `PUNTAJE TOTAL DE GOBERNANZA: ${puntajeTotal} / 200 pts\n`;
+                // CONFECCIÓN DINÁMICA DEL BORRADOR MATRIZ JURÍDICO (SIN NOMBRES PROPIOS NI APELLIDOS)
+                let doc = `========================================================================\n`;
+                doc = `CONSTITUCIÓN FAMILIAR Y PROTOCOLO DE GOBIERNO CORPORATIVO\n`;
+                doc += `Marco Jurídico, Estratégico y Sistémico para Holdings y Empresas Familiares\n`;
+                doc += `========================================================================\n\n`;
+                doc += `ÍNDICE GENERAL\n`;
+                doc += `  * A. Tipo de Empresa Familiar y Delimitación de Planos Institucionales.\n`;
+                doc += `  * B. Valores Compartidos y Cultura Organizacional (*Afecto Societatis*).\n`;
+                doc += `  * C. Proyecto Empresario Común y Orientación Estratégica.\n`;
+                doc += `  * D. Órganos de Gobierno de la Empresa Familiar y Estructura Organizativa.\n`;
+                doc += `  * E. Propiedad de la Empresa y Mecanismos de Acceso, Valuación y Venta.\n`;
+                doc += `  * F. Criterios para el Trabajo y la Incorporación de Nuevos Familiares.\n`;
+                doc += `  * G. Orientación sobre la Formación Generacional y Capacitación Directiva.\n`;
+                doc += `  * H. Sistemas de Dirección, Evaluación y Sistema de Remuneración Anual (S.R.A.).\n`;
+                doc += `  * I. Políticas Financieras, Dividendos y Reinversión de Utilidades.\n`;
+                doc += `  * J. Reuniones de Familia: Necesidad, Frecuencia y Mantenimiento de la Unidad.\n`;
+                doc += `  * K. Enmiendas al Protocolo, Vigencia y Cláusulas de Cierre.\n\n`;
+                doc += `------------------------------------------------------------------------\n\n`;
 
-                // Descarga automática del archivo .doc
-                const blob = new Blob([contenidoWord], { type: 'application/msword;charset=utf-8' });
+                doc += `INTRODUCCIÓN\n`;
+                doc += `“Las Empresas Familiares que tienen la doble intención de mantenerse como tales en el transcurso del tiempo, y de continuar su desarrollo y crecimiento económico, es frecuente que se planteen el tema de establecer unas relaciones entre los miembros de la familia (propietarios o no) y las empresas, que ayuden a garantizar puntos como su unidad, armonía, continuidad en la propiedad, rendimiento económico, excelencia en la Dirección de la Empresa, etc.\n`;
+                doc += `Desde el punto de vista de la empresa familiar, un Protocolo familiar debería ayudar a profesionalizar los procesos de dirección estratégica y a institucionalizar en la empresa los valores básicos de la familia.\n`;
+                doc += `Desde el punto de vista de la familia, un protocolo familiar debería ayudar a promover la unidad y armonía de sus miembros, a profesionalizarles como propietarios de una empresa, y a conservar en la familia los valores que hacen fuerte a la empresa familiar.” — Miguel Ángel Gallo (IESE)\n\n`;
+
+                // CAPÍTULO A
+                doc += `A. TIPO DE EMPRESA FAMILIAR Y DELIMITACIÓN DE PLANOS INSTITUCIONALES\n`;
+                doc += `[Gráfico Explicativo Incorporado: Modelo de los Tres Círculos y Transición de Planos: Familia, Propiedad, Dirección y Ejecución]\n`;
+                if (elecciones['A'] && elecciones['A'].nivel === 'alto') {
+                    doc += `Postura Adoptada: Dirección y Gerenciamiento Familiar.\n`;
+                    doc += `Cláusula A.1: Es aspiración de los propietarios consolidar un modelo donde los miembros activos cumplan roles protagónicos y en igualdad de condiciones, transitando hacia una organización de Dirección Familiar y Gerenciamiento Familiar. Este tránsito exige fortalecer dos vectores fundamentales: el crecimiento corporativo (volumen de negocio, madurez y profesionalización) y la unidad del equipo tomador de decisiones.\n\n`;
+                } else {
+                    doc += `Postura Adoptada: Gerencia Familiar Centralizada / Transicional.\n`;
+                    doc += `Cláusula A.1: La gestión se comparte parcialmente bajo un liderazgo central, comprometiéndose la organización a instrumentar gradualmente la separación formal de los cuatro planos institucionales para asegurar la continuidad generacional.\n\n`;
+                }
+
+                // CAPÍTULO B
+                doc += `B. VALORES COMPARTIDOS POR LA FAMILIA Y CULTURA ORGANIZACIONAL\n`;
+                doc += `Constituyen la identidad del grupo empresario y los principios rectores de la convivencia:\n`;
+                doc += `1. Unidad familiar, basada en el amor, la solidaridad y la confianza mutua, entendiendo el consenso como la capacidad de concertar posturas sin generar renunciamientos latentes.\n`;
+                doc += `2. Respeto de la libertad y dignidad de las personas.\n`;
+                doc += `3. Rentabilidad genuina y razonable, basada en procesos efectivos, eficientes y éticos.\n`;
+                doc += `4. Compromiso y lealtad con la unidad familiar, la empresa y el bien común.\n`;
+                if (elecciones['B'] && elecciones['B'].nivel === 'alto') {
+                    doc += `Cláusula B.1 (Afecto Societatis): Se ratifica que el "amor societario" no es un mero vínculo jurídico sino una actitud activa de disfrute en el trabajo conjunto. Su pérdida inquebrantable representa el límite crítico que invocaría la liquidación o venta ordenada de la compañía.\n\n`;
+                } else {
+                    doc += `Cláusula B.1 (Afecto Societatis): Ante indicios de desgaste cultural, se instituye la obligatoriedad de convocar al Consejo de Familia para la mediación y saneamiento de los vínculos societarios.\n\n`;
+                }
+
+                // CAPÍTULO C
+                doc += `C. PROYECTO EMPRESARIO COMÚN A NIVEL DE ORIENTACIÓN ESTRATÉGICA\n`;
+                doc += `[Gráfico Explicativo Incorporado: Matriz de Posicionamiento de Cartera de Negocios Actuales vs. Visión Futura Ideal, Posible, Incremental y Real]\n`;
+                doc += `[Gráfico Explicativo Incorporado: Matriz de Tamaños Relativos de Empresa y Familia]\n`;
+                doc += `Cláusula C.1: El gran secreto corporativo radica en el cuidado de las capacidades de la gente que trabaja en la organización: evitar pugnas de poder, asegurar una dinámica sana y proteger el talento intergeneracional mediante diversificación por clientes, actividad, producto y expansión geográfica.\n\n`;
+
+                // CAPÍTULO D
+                doc += `D. ÓRGANOS DE GOBIERNO DE LA EMPRESA FAMILIAR Y ESTRUCTURA ORGANIZATIVA\n`;
+                doc += `[Gráfico Explicativo Incorporado: Pirámide Jerárquica de Gobierno: Consejo de Familia -> Asamblea/Mesa de Dueños -> Directorio -> Comité Ejecutivo]\n`;
+                doc += `1. Plano Familiar (Consejo de Familia): Órgano exclusivo para velar por la familia como unidad, propietaria y empresaria, incorporando un Facilitador Externo (No Familiar) como mediador imparcial en etapas iniciales.\n`;
+                doc += `2. Plano de la Propiedad (Asamblea de Accionistas / Mesa de Dueños): Ámbito estratégico previo al Directorio para abordar financiación a largo plazo, plan estratégico y comunicación con accionistas pasivos. Elegibles: vínculo de sangre directo y 5+ años de experiencia ejecutiva.\n`;
+                doc += `3. Plano de la Dirección (Directorio): Gobierno estratégico en manos de miembros directos de la familia complementados por Directores Independientes No Familiares.\n`;
+                doc += `4. Plano de la Ejecución (Comité Ejecutivo y Gerencia): Integrado por profesionales rigurosamente seleccionados bajo criterios estrictos de mérito y titulación universitaria.\n\n`;
+
+                // CAPÍTULO E
+                doc += `E. PROPIEDAD DE LA EMPRESA Y FORMAS DE ACCESO O VENTA\n`;
+                doc += `1. Exclusividad Familiar: La titularidad accionaria y el control político se mantienen exclusivamente en manos de los miembros directos de la familia, prohibiendo el traspaso de acciones con voto a externos.\n`;
+                doc += `2. Orden de Prioridad de Venta (Tercera Generación): Primero, venta intrafamiliar (padres/hermanos); segundo, adquisición corporativa directa por la empresa; tercero, venta interfamiliar entre primos respetando porcentajes por rama.\n`;
+                doc += `Cláusula E.1 (Mecánica de Valuación): Salvo acuerdo unánime, el valor de las acciones se determinará mediante una combinación ponderada (50/50) entre Valores Patrimoniales (Contables, Liquidación, Reposición) y Valor según Flujos de Fondos descontados, o mediante arbitraje independiente.\n\n`;
+
+                // CAPÍTULO F
+                doc += `F. CRITERIOS PARA EL TRABAJO Y LA INCORPORACIÓN DE NUEVOS FAMILIARES\n`;
+                doc += `[Gráfico Explicativo Incorporado: Línea de Carrera Profesional: Estudios universitarios (18 años) -> Experiencia externa obligatoria de 2 a 3 años en empresas no relacionadas -> Postgrado -> Ingreso formal (28/30 años)]\n`;
+                doc += `1. Requisitos de Ingreso: Interés genuino, necesidad real de la empresa, titulación universitaria, superación de procesos de selección y acreditación de un mínimo de 2 a 3 años de desempeño exitoso en corporaciones externas independientes.\n`;
+                doc += `Cláusula F.1 (Familiares Políticos): Los familiares políticos no podrán trabajar bajo ningún concepto en la compañía, limitando su vínculo exclusivamente a roles externos como proveedores bajo estrictos requerimientos de calidad.\n\n`;
+
+                // CAPÍTULO G & H
+                doc += `G & H. FORMACIÓN GENERACIONAL, CAPACITACIÓN DIRECTIVA Y SISTEMAS DE REMUNERACIÓN (S.R.A.)\n`;
+                doc += `1. Formación Generacional: Creación de la "Mesa de Jóvenes" en el Consejo de Familia para enseñar a ser buenos dueños y custodiar el perfil prudente.\n`;
+                doc += `2. Sistema de Remuneración Anual (S.R.A.): Retribución regida por la justicia distributiva (*Retribución = Contribución*):\n`;
+                doc += `   S.R.A. = Sueldo Fijo (Mercado) + Variable (Resultados) + Honorarios (Dirección) + Dividendos (Propiedad).\n`;
+                doc += `Cláusula H.1 (Evaluación): Implementación del sistema de Autoevaluación Comprobada / Evaluación 360 orientada a la mejora personal, la eficacia y el aporte a la unidad familiar.\n\n`;
+
+                // CAPÍTULO I, J & K
+                doc += `I, J & K. POLÍTICAS FINANCIERAS, REUNIONES FAMILIARES Y ENMIENDAS\n`;
+                doc += `1. Políticas Financieras: Las reinversiones importantes serán decididas por el Consejo de Familia a propuesta del Directorio; los dividendos se repartirán por resolución de Asamblea.\n`;
+                doc += `2. Reuniones de Familia: Rutinas periódicas para equilibrar la cohesión del grupo y la autonomía individual, apalancándose en el afecto societatis.\n`;
+                doc += `Cláusula K.1 (Enmiendas): Las modificaciones al Protocolo requerirán decisión unánime de los accionistas familiares adherentes, efectuándose revisiones periódicas bianuales o trienales.\n`;
+                doc += `CIERRE: Los firmantes se comprometen a cumplir fielmente el presente Protocolo por ser la garantía fundamental para cuidar el futuro de la empresa y la unidad de la familia.\n`;
+
+                // Generación de descarga del archivo .doc
+                const blob = new Blob([doc], { type: 'application/msword;charset=utf-8' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `Borrador_Constitucion_Familiar_Holding_${puntajeTotal}pts.doc`;
+                a.download = `Borrador_Constitucion_Familiar_Eichhorn_Matriz_${puntajeTotal}pts.doc`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
             } else {
-                alert("Credenciales incorrectas. Acceso denegado al panel de exportación.");
+                alert("Credenciales de administrador incorrectas. Acceso denegado.");
             }
         }
     </script>
