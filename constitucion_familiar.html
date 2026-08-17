@@ -10,149 +10,7 @@
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen p-4 md:p-8">
 
     <div class="max-w-7xl mx-auto space-y-12">
-<!-- SECCIÓN A: TIPO DE EMPRESA FAMILIAR (INTERACTIVA, CON CRÉDITOS Y SEMÁFORO DE RIESGO) -->
-            <section id="seccion-a-interactiva" class="bg-slate-900 p-6 md:p-10 rounded-2xl border border-slate-800 shadow-2xl transition-all">
-                <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-6 gap-4">
-                    <div class="flex items-center gap-3">
-                        <span class="bg-indigo-600 text-white px-3 py-1 rounded-lg text-sm font-black tracking-wider">A</span>
-                        <div>
-                            <h2 class="text-2xl md:text-3xl font-extrabold text-white">Tipo de Empresa Familiar</h2>
-                            <p class="text-xs text-slate-400 mt-1">Evaluación, Consenso y Dashboard Estratégico</p>
-                        </div>
-                    </div>
-                    <!-- Indicador de Semáforo y Créditos de Sección -->
-                    <div class="flex flex-wrap items-center gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
-                        <div id="badge-creditos-a" class="px-3 py-1.5 rounded-lg bg-indigo-950/80 border border-indigo-500/40 text-xs font-bold text-indigo-300">
-                            Créditos: <span id="pts-seccion-a" class="text-white text-sm">0</span> / 100 pts
-                        </div>
-                        <div id="semaforo-seccion-a" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300">
-                            <span class="w-2.5 h-2.5 rounded-full bg-slate-500" id="dot-semaforo-a"></span> 
-                            <span>Estado: Pendiente</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Introducción Interactiva -->
-                <p class="text-xs md:text-sm text-slate-300 mb-8 leading-relaxed max-w-4xl">
-                    Analice el modelo de gestión actual de su organización familiar. Indique el grado de acuerdo con las siguientes afirmaciones estructurales para determinar la alineación corporativa y acumular créditos de gobernanza.
-                </p>
-
-                <!-- Grid de Niveles de Acceso (Familia, Propiedad, Dirección, Ejecución) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 border-t-4 border-indigo-500">
-                        <h4 class="font-bold text-white text-sm mb-1">Familia</h4>
-                        <p class="text-xs text-slate-400">Ámbito de unidad y valores compartidos.</p>
-                    </div>
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 border-t-4 border-blue-500">
-                        <h4 class="font-bold text-white text-sm mb-1">Propiedad</h4>
-                        <p class="text-xs text-slate-400">Ámbito de control patrimonial y capital.</p>
-                    </div>
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 border-t-4 border-amber-500">
-                        <h4 class="font-bold text-white text-sm mb-1">Dirección</h4>
-                        <p class="text-xs text-slate-400">Ámbito de gobierno estratégico y políticas.</p>
-                    </div>
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 border-t-4 border-emerald-500">
-                        <h4 class="font-bold text-white text-sm mb-1">Ejecución</h4>
-                        <p class="text-xs text-slate-400">Ámbito operativo basado estrictamente en mérito.</p>
-                    </div>
-                </div>
-
-                <!-- Panel Comparativo de Estado -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                        <span class="text-[10px] font-bold text-slate-400 tracking-wider block mb-1">MODELO DE GESTIÓN ACTUAL</span>
-                        <p class="text-base text-slate-200 font-semibold">Gerencia Familiar</p>
-                        <p class="text-xs mt-2 text-slate-400 leading-relaxed">Gestión compartida parcialmente con participación activa de la primera y segunda generación bajo liderazgo central.</p>
-                    </div>
-                    <div class="bg-amber-950/20 p-5 rounded-xl border border-amber-500/30">
-                        <span class="text-[10px] font-bold text-amber-400 tracking-wider block mb-1">ESTADO DESEADO / OBJETIVO</span>
-                        <p class="text-base text-amber-200 font-bold">Dirección y Gerenciamiento Familiar</p>
-                        <p class="text-xs mt-2 text-amber-300/80 leading-relaxed">Roles protagónicos en igualdad de condiciones y profesionalización de los órganos de gobierno para futuras generaciones.</p>
-                    </div>
-                </div>
-
-                <!-- Preguntas / Evaluaciones Interactivas de la Sección A -->
-                <div class="space-y-6 mb-8">
-                    <!-- Pregunta 1 -->
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                        <h4 class="text-xs md:text-sm font-bold text-slate-200 mb-3">1. ¿Existe una separación clara entre los roles de la Familia, la Propiedad, la Dirección y la Ejecución operativa?</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <button onclick="evaluarPreguntaA(1, 'si', 35)" id="btn-a1-si" class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-emerald-500 text-xs text-slate-300 transition text-left font-medium">
-                                ✅ Sí, están claramente delimitados (Óptimo)
-                            </button>
-                            <button onclick="evaluarPreguntaA(1, 'parcial', 15)" id="btn-a1-parcial" class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-amber-500 text-xs text-slate-300 transition text-left font-medium">
-                                ⚠️ Parcialmente / Hay superposición
-                            </button>
-                            <button onclick="evaluarPreguntaA(1, 'no', 0)" id="btn-a1-no" class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-rose-500 text-xs text-slate-300 transition text-left font-medium">
-                                ❌ No, se mezclan familia y gestión (Alto Riesgo)
-                            </button>
-                        </div>
-                        <div id="feedback-a1" class="mt-3 text-[11px] text-slate-400 italic hidden"></div>
-                    </div>
-
-                    <!-- Pregunta 2 -->
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                        <h4 class="text-xs md:text-sm font-bold text-slate-200 mb-3">2. El modelo de gestión actual hacia el que transita la empresa prioriza el mérito profesional sobre el parentesco:</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <button onclick="evaluarPreguntaA(2, 'si', 35)" id="btn-a2-si" class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-emerald-500 text-xs text-slate-300 transition text-left font-medium">
-                                ✅ Totalmente de acuerdo (Mérito estructural)
-                            </button>
-                            <button onclick="evaluarPreguntaA(2, 'parcial', 15)" id="btn-a2-parcial" class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-amber-500 text-xs text-slate-300 transition text-left font-medium">
-                                ⚠️ En proceso de formalización
-                            </button>
-                            <button onclick="evaluarPreguntaA(2, 'no', 0)" id="btn-a2-no" class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-rose-500 text-xs text-slate-300 transition text-left font-medium">
-                                ❌ En desacuerdo (Decisiones por lazo familiar)
-                            </button>
-                        </div>
-                        <div id="feedback-a2" class="mt-3 text-[11px] text-slate-400 italic hidden"></div>
-                    </div>
-
-                    <!-- Pregunta 3 -->
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-                        <h4 class="text-xs md:text-sm font-bold text-slate-200 mb-3">3. ¿Existe consenso intergeneracional sobre el Estado Deseado / Objetivo de la compañía?</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                            <button onclick="evaluarPreguntaA(3, 'si', 30)" id="btn-a3-si" class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-emerald-500 text-xs text-slate-300 transition text-left font-medium">
-                                ✅ Sí, hay visión compartida unánime
-                            </button>
-                            <button onclick="evaluarPreguntaA(3, 'parcial', 10)" id="btn-a3-parcial" class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-amber-500 text-xs text-slate-300 transition text-left font-medium">
-                                ⚠️ Hay matices o diferencias leves
-                            </button>
-                            <button onclick="evaluarPreguntaA(3, 'no', 0)" id="btn-a3-no" class="p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-rose-500 text-xs text-slate-300 transition text-left font-medium">
-                                ❌ No hay consenso (Riesgo de conflicto)
-                            </button>
-                        </div>
-                        <div id="feedback-a3" class="mt-3 text-[11px] text-slate-400 italic hidden"></div>
-                    </div>
-                </div>
-
-                <!-- Pilares de Transformación -->
-                <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-8">
-                    <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-4">🚀 Pilares Clave de Evolución</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-slate-900 p-4 rounded-lg border-l-4 border-emerald-500">
-                            <strong class="text-white text-sm block mb-1">Crecimiento Organizacional</strong>
-                            <p class="text-xs text-slate-400">Madurez del negocio, profesionalización, orientación estratégica y sistemas formales de evaluación y remuneración.</p>
-                        </div>
-                        <div class="bg-slate-900 p-4 rounded-lg border-l-4 border-blue-500">
-                            <strong class="text-white text-sm block mb-1">Unidad de Gobierno</strong>
-                            <p class="text-xs text-slate-400">Consenso estratégico, alineación de expectativas y formalización del Consejo de Familia como órgano consultivo y protector.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Panel de Consejos y Recomendaciones del Consultor en Tiempo Real -->
-                <div id="panel-recomendacion-a" class="bg-indigo-950/30 p-5 rounded-xl border border-indigo-500/30 mb-6 hidden">
-                    <h4 class="text-xs font-bold text-indigo-300 uppercase tracking-wider mb-1">💡 Recomendación del Consultor Sistémico:</h4>
-                    <p id="texto-recomendacion-a" class="text-xs text-indigo-200/90 leading-relaxed"></p>
-                </div>
-
-                <!-- Navegación Consecutiva a la Sección B -->
-                <div class="flex justify-end items-center pt-4 border-t border-slate-800">
-                    <button onclick="avanzarASeccionB()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2.5 rounded-lg text-xs font-bold transition shadow-lg shadow-indigo-500/20 flex items-center gap-2">
-                        Continuar a Sección Siguiente &rarr;
-                    </button>
-                </div>
-            </section>
         <!-- HEADER INSTITUCIONAL -->
         <header class="bg-slate-900 border border-slate-800 p-6 md:p-8 rounded-2xl shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
@@ -165,596 +23,158 @@
                 </span>
             </div>
         </header>
-<script>
-        let puntajesValoresB = { 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0 };
 
-        function evaluarValorB(num, pts, estado) {
-            puntajesValoresB[num] = pts;
-            
-            // UI Feedback
-            ['si', 'parcial', 'no'].forEach(s => {
-                const b = document.getElementById(`btn-b${num}-${s}`);
-                if(b) {
-                    b.className = "p-2 rounded bg-slate-900 border border-slate-800 text-[10px] transition font-bold text-slate-300";
-                    if(num === 8) b.className = "p-4 rounded-xl bg-slate-950 border border-amber-900 transition font-bold text-amber-300 text-xs text-center";
-                }
-            });
-            
-            const btnActivo = document.getElementById(`btn-b${num}-${estado}`);
-            if(estado === 'si') btnActivo.className += " border-emerald-500 bg-emerald-950/30 text-emerald-200";
-            else if(estado === 'parcial') btnActivo.className += " border-amber-500 bg-amber-950/30 text-amber-200";
-            else btnActivo.className += " border-rose-500 bg-rose-950/30 text-rose-200";
-
-            actualizarDashboardB();
-        }
-
-        function actualizarDashboardB() {
-            const total = Object.values(puntajesValoresB).reduce((a, b) => a + b, 0);
-            document.getElementById('pts-seccion-b').innerText = total;
-
-            const dot = document.getElementById('dot-semaforo-b');
-            const semaforo = document.getElementById('semaforo-seccion-b');
-            const panel = document.getElementById('panel-diagnostico-b');
-            const texto = document.getElementById('texto-diagnostico-b');
-
-            panel.classList.remove('hidden');
-
-            if(total >= 75) {
-                semaforo.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-xs font-bold text-emerald-300";
-                semaforo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span> ADN Consolidado';
-                texto.innerText = "La cultura familiar y el 'Afecto Societatis' están firmemente arraigados. Sus valores son guías operativas reales.";
-            } else if(total >= 45) {
-                semaforo.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-950/80 border border-amber-500/40 text-xs font-bold text-amber-300";
-                semaforo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span> Desgaste Cultural';
-                texto.innerText = "Se detectan fricciones en los valores compartidos. Es vital propiciar espacios de diálogo antes de que afecte la rentabilidad.";
-            } else {
-                semaforo.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg bg-rose-950/80 border border-rose-500/40 text-xs font-bold text-rose-300";
-                semaforo.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span> Alerta Roja';
-                texto.innerText = "Advertencia crítica: El deterioro en los consensos axiológicos pone en peligro el pacto familiar. Se recomienda intervención estratégica.";
-            }
-
-            // Sync
-            let hist = JSON.parse(localStorage.getItem('historial_consultoria_integral') || '{}');
-            hist.seccionB = { total, valores: puntajesValoresB };
-            localStorage.setItem('historial_consultoria_integral', JSON.stringify(hist));
-        }
-    </script>
-        <!-- SECCIÓN B: EVALUACIÓN DE GOBERNANZA Y PERFIL PATRIMONIAL (MÓDULO INTERACTIVO) -->
-<section id="seccion-b-interactiva" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-    <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-            <span class="bg-cyan-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">B</span>
-            Auditoría de Postura Societaria y Validación de Principios
-        </h2>
-        <div class="flex items-center gap-3">
-            <span class="text-xs text-cyan-300 bg-cyan-950/40 px-3 py-1 rounded-full border border-cyan-800/50">Créditos de Gobernanza: <strong id="score-display" class="text-white">0</strong> pts</span>
-            <span class="text-xs text-amber-400 bg-amber-950/40 px-3 py-1 rounded-full border border-amber-800/50">Modo Ejecutivo</span>
-        </div>
-    </div>
-
-    <p class="text-sm text-slate-400 mb-6 leading-relaxed">
-        Instrumento de validación directiva para holdings y empresas de alta complejidad. Indique su conformidad con los siguientes acápites regulatorios. Sus respuestas otorgarán puntaje de alineación corporativa y bloquearán el registro para la confección del borrador definitivo de la Constitución Familiar.
-    </p>
-
-    <!-- Contenedor de Ítems Interactivos del Juego -->
-    <div class="space-y-6" id="interactive-form-container">
-
-        <!-- Ítem 1 -->
-        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 item-evaluacion" data-item="1">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                <div>
-                    <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">Acápite B.1 — Restricción de Transferencia</span>
-                    <h3 class="text-white font-bold text-sm mt-2">Prohibición estricta de enajenación a extraños sin derecho de tanteo corporativo previo.</h3>
-                </div>
-                <div class="flex gap-2 shrink-0">
-                    <button onclick="registrarDecision(this, 1, 'correcto', 25)" class="btn-opcion bg-slate-900 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-600 px-4 py-2 rounded-lg text-xs font-bold transition">
-                        ✓ Correcto (25 pts)
-                    </button>
-                    <button onclick="registrarDecision(this, 1, 'incorrecto', 0)" class="btn-opcion bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-slate-700 hover:border-rose-600 px-4 py-2 rounded-lg text-xs font-bold transition">
-                        ✗ Objeción (0 pts)
-                    </button>
-                </div>
-            </div>
-            <p class="text-xs text-slate-400 border-t border-slate-900 pt-3">
-                <em>Conducta asociada:</em> Prioriza la perpetuidad patrimonial del holding familiar frente a la liquidez individual de corto plazo.
-            </p>
-        </div>
-
-        <!-- Ítem 2 -->
-        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 item-evaluacion" data-item="2">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                <div>
-                    <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">Acápite B.2 — Profesionalización Directiva</span>
-                    <h3 class="text-white font-bold text-sm mt-2">Exigencia de background corporativo externo previo (mínimo 3 años) para ingreso a cargos ejecutivos.</h3>
-                </div>
-                <div class="flex gap-2 shrink-0">
-                    <button onclick="registrarDecision(this, 2, 'correcto', 25)" class="btn-opcion bg-slate-900 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-600 px-4 py-2 rounded-lg text-xs font-bold transition">
-                        ✓ Correcto (25 pts)
-                    </button>
-                    <button onclick="registrarDecision(this, 2, 'incorrecto', 0)" class="btn-opcion bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-slate-700 hover:border-rose-600 px-4 py-2 rounded-lg text-xs font-bold transition">
-                        ✗ Objeción (0 pts)
-                    </button>
-                </div>
-            </div>
-            <p class="text-xs text-slate-400 border-t border-slate-900 pt-3">
-                <em>Conducta asociada:</em> Meritocracia estricta. Neutraliza la endogamia gerencial en holdings de alta escala operativa.
-            </p>
-        </div>
-
-        <!-- Ítem 3 -->
-        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 item-evaluacion" data-item="3">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                <div>
-                    <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">Acápite B.3 — Arbitraje y Bloqueos</span>
-                    <h3 class="text-white font-bold text-sm mt-2">Sometimiento obligatorio a comité de arbitraje independiente ante empate o bloqueo de votos en directorio.</h3>
-                </div>
-                <div class="flex gap-2 shrink-0">
-                    <button onclick="registrarDecision(this, 3, 'correcto', 25)" class="btn-opcion bg-slate-900 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-600 px-4 py-2 rounded-lg text-xs font-bold transition">
-                        ✓ Correcto (25 pts)
-                    </button>
-                    <button onclick="registrarDecision(this, 3, 'incorrecto', 0)" class="btn-opcion bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-slate-700 hover:border-rose-600 px-4 py-2 rounded-lg text-xs font-bold transition">
-                        ✗ Objeción (0 pts)
-                    </button>
-                </div>
-            </div>
-            <p class="text-xs text-slate-400 border-t border-slate-900 pt-3">
-                <em>Conducta asociada:</em> Gobernanza institucionalizada. Evita la parálisis operativa y la judicialización prematura del patrimonio.
-            </p>
-        </div>
-
-        <!-- Ítem 4 -->
-        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 item-evaluacion" data-item="4">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
-                <div>
-                    <span class="text-[10px] uppercase font-bold tracking-widest text-cyan-400 bg-cyan-950/60 px-2.5 py-1 rounded border border-cyan-800">Acápite B.4 — Fondo de Liquidez</span>
-                    <h3 class="text-white font-bold text-sm mt-2">Constitución de un fondo de recompra corporativo fondeado por utilidades retenidas no distribuidas.</h3>
-                </div>
-                <div class="flex gap-2 shrink-0">
-                    <button onclick="registrarDecision(this, 4, 'correcto', 25)" class="btn-opcion bg-slate-900 hover:bg-emerald-950 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-600 px-4 py-2 rounded-lg text-xs font-bold transition">
-                        ✓ Correcto (25 pts)
-                    </button>
-                    <button onclick="registrarDecision(this, 4, 'incorrecto', 0)" class="btn-opcion bg-slate-900 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-slate-700 hover:border-rose-600 px-4 py-2 rounded-lg text-xs font-bold transition">
-                        ✗ Objeción (0 pts)
-                    </button>
-                </div>
-            </div>
-            <p class="text-xs text-slate-400 border-t border-slate-900 pt-3">
-                <em>Conducta asociada:</em> Visión financiera táctica. Asegura estabilidad de caja ante desinversiones imprevistas de herederos.
-            </p>
-        </div>
-
-    </div>
-
-    <!-- Panel de Diagnóstico Dinámico y Generación de Word -->
-    <div class="mt-8 bg-slate-950 p-6 rounded-xl border border-slate-800 text-center">
-        <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-2">📊 Consolidado de Perfil Organizacional para Consultoría</h3>
-        <p id="diagnostico-status" class="text-xs text-slate-400 mb-4">Estado: Completar los 4 acápites para habilitar el motor de exportación del borrador normativo.</p>
-        
-        <button id="btn-exportar-word" disabled onclick="exportarBorradorWord()" class="bg-slate-800 text-slate-500 cursor-not-allowed px-8 py-3 rounded-xl font-bold text-xs transition shadow-lg">
-            📥 Generar y Exportar Borrador de Constitución Familiar (.doc)
-        </button>
-    </div>
-</section>
-
-<!-- Script de Control del Juego y Bloqueo de Respuestas -->
-<script>
-    let puntajeTotal = 0;
-    let decisionesTomadas = {};
-
-    function registrarencion(btnElement, itemId, decision, puntos) {
-        if (decisionesTomadas[itemId]) return; // Evita modificación una vez elegido
-        
-        decisionesTomadas[itemId] = { decision, puntos };
-        puntajeTotal += puntos;
-
-        // Actualizar visualizador de créditos
-        document.getElementById('score-display').innerText = puntajeTotal;
-
-        // Bloquear los botones de esta tarjeta específica y estilizar selección
-        const card = btnElement.closest('.item-evaluacion');
-        const buttons = card.querySelectorAll('.btn-opcion');
-        
-        buttons.forEach(b => {
-            b.disabled = true;
-            b.classList.add('opacity-40', 'cursor-not-allowed');
-        });
-
-        if (decision === 'correcto') {
-            btnElement.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-700');
-            btnElement.classList.add('bg-emerald-600', 'text-slate-950', 'border-emerald-500', 'opacity-100');
-        } else {
-            btnElement.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-700');
-            btnElement.classList.add('bg-rose-600', 'text-slate-950', 'border-rose-500', 'opacity-100');
-        }
-
-        // Verificar si se completaron los 4 ítems
-        if (Object.keys(decisionesTomadas).length === 4) {
-            activarExportadorBorrador();
-        }
-    }
-
-    // Alias corregido por si acaso el parser interno llama a registrarDecision
-    function registrarDecision(btnElement, itemId, decision, puntos) {
-        registrarencion(btnElement, itemId, decision, puntos);
-    }
-
-    function activarExportadorBorrador() {
-        const btn = document.getElementById('btn-exportar-word');
-        const status = document.getElementById('diagnostico-status');
-        
-        let perfilAnalisis = "";
-        if (puntajeTotal === 100) {
-            perfilAnalisis = "Perfil: Altamente Institucional / Estratega Corporativo.";
-        } else if (puntajeTotal >= 50) {
-            perfilAnalisis = "Perfil: Pragmático Moderado con Reservas Operativas.";
-        } else {
-            perfilAnalisis = "Perfil: Disidente / Resistencia Estructural al Protocolo.";
-        }
-
-        status.innerHTML = `<span class="text-emerald-400 font-bold">Evaluación Completa. Puntaje Final: ${puntajeTotal}/100. ${perfilAnalisis}</span>`;
-        
-        btn.disabled = false;
-        btn.classList.remove('bg-slate-800', 'text-slate-500', 'cursor-not-allowed');
-        btn.classList.add('bg-indigo-600', 'hover:bg-indigo-500', 'text-white', 'cursor-pointer', 'shadow-indigo-500/20');
-    }
-
-    function exportarBorradorWord() {
-        let contenidoWord = `CONSTITUCIÓN FAMILIAR - BORRADOR EJECUTIVO\n`;
-        contenidoWord += `Puntaje de Alineación: ${puntajeTotal}/100\n`;
-        contenidoWord += `---------------------------------------------------\n\n`;
-        
-        for (let id in decisionesTomadas) {
-            contenidoWord += `Acápite B.${id}: Respuesta del Participante -> ${decisionesTomadas[id].decision.toUpperCase()} (${decisionesTomadas[id].puntos} pts)\n`;
-        }
-
-        const blob = new Blob([contenidoWord], { type: 'application/msword' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `Borrador_Constitucion_Familiar_Holding_${puntajeTotal}pts.doc`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    }
-</script>
-        <!-- SECCIÓN C: PROYECTO EMPRESARIO COMÚN -->
-<section id="seccion-c" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10 transition-all">
-    <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-4 gap-2">
-        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-            <span class="bg-teal-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">C</span>
-            Proyecto Empresario Común
-        </h2>
-        <div class="flex items-center gap-3">
-            <div id="badge-madurez-c" class="bg-teal-950/60 px-3 py-1.5 rounded-full border border-teal-500/40 text-xs font-bold text-teal-300">
-                Madurez Estratégica: <span id="pts-seccion-c">0</span> / 100 pts
-            </div>
-            <div id="semaforo-seccion-c" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-xs font-bold text-slate-300">
-                <span class="w-2.5 h-2.5 rounded-full bg-slate-500" id="dot-semaforo-c"></span> Estado: En Diagnóstico
-            </div>
-        </div>
-    </div>
-
-    <p class="text-sm text-slate-400 mb-6 italic">Definición del negocio, alineación de propietarios y visión compartida de futuro. Evalúe el estado de ejecución de estos pilares estratégicos:</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <!-- Cartera de Negocios -->
-        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-            <div class="flex items-center gap-2 mb-3">
-                <span class="w-2 h-2 rounded-full bg-teal-400"></span>
-                <h3 class="font-bold text-white text-sm uppercase tracking-wide">Cartera de Negocios</h3>
-            </div>
-            <p class="text-xs text-slate-300 mb-4">Diversificación y posicionamiento en mercados interno y externo.</p>
-            <div class="border-t border-slate-800/80 pt-3">
-                <div class="grid grid-cols-3 gap-2" id="group-c1">
-                    <button onclick="evaluarC(1, 20, 'c1-si')" id="btn-c1-si" class="btn-opcion-c py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 transition text-center">Consolidada (20p)</button>
-                    <button onclick="evaluarC(1, 10, 'c1-parcial')" id="btn-c1-parcial" class="btn-opcion-c py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 transition text-center">En ajuste (10p)</button>
-                    <button onclick="evaluarC(1, 0, 'c1-no')" id="btn-c1-no" class="btn-opcion-c py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 transition text-center">Incipiente (0p)</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Organización y Tecnificación -->
-        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
-            <div class="flex items-center gap-2 mb-3">
-                <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
-                <h3 class="font-bold text-white text-sm uppercase tracking-wide">Org. y Tecnificación</h3>
-            </div>
-            <p class="text-xs text-slate-300 mb-4">Actualización constante, sistemas, equipos y procesos eficientes.</p>
-            <div class="border-t border-slate-800/80 pt-3">
-                <div class="grid grid-cols-3 gap-2" id="group-c2">
-                    <button onclick="evaluarC(2, 20, 'c2-si')" id="btn-c2-si" class="btn-opcion-c py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 transition text-center">Optimizada (20p)</button>
-                    <button onclick="evaluarC(2, 10, 'c2-parcial')" id="btn-c2-parcial" class="btn-opcion-c py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 transition text-center">En proceso (10p)</button>
-                    <button onclick="evaluarC(2, 0, 'c2-no')" id="btn-c2-no" class="btn-opcion-c py-1.5 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 transition text-center">Desfasada (0p)</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Talento y Liderazgo Generacional -->
-        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 md:col-span-2">
-            <div class="flex items-center gap-2 mb-3">
-                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                <h3 class="font-bold text-white text-sm uppercase tracking-wide">Formación y Liderazgo (El Gran Secreto)</h3>
-            </div>
-            <p class="text-xs text-slate-300 mb-4">Capacitación focalizada, "Mesa de Jóvenes", y preparación de la siguiente generación.</p>
-            <div class="border-t border-slate-800/80 pt-3">
-                <div class="grid grid-cols-3 gap-4" id="group-c3">
-                    <button onclick="evaluarC(3, 60, 'c3-si')" id="btn-c3-si" class="btn-opcion-c py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 transition font-bold text-center">Sí, activo (60p)</button>
-                    <button onclick="evaluarC(3, 30, 'c3-parcial')" id="btn-c3-parcial" class="btn-opcion-c py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 transition font-bold text-center">Iniciativas (30p)</button>
-                    <button onclick="evaluarC(3, 0, 'c3-no')" id="btn-c3-no" class="btn-opcion-c py-2 px-3 rounded bg-slate-900 border border-slate-700 text-xs text-amber-300 transition font-bold text-center">No existe (0p)</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="panel-diagnostico-c" class="bg-teal-950/20 p-5 rounded-xl border border-teal-500/30 mb-6 hidden">
-        <h4 class="text-xs font-bold text-teal-300 uppercase tracking-wider mb-1">🚀 Diagnóstico de Orientación Estratégica:</h4>
-        <p id="texto-diagnostico-c" class="text-xs text-teal-100/90 leading-relaxed"></p>
-    </div>
-</section>
-
-<script>
-    let puntajesValoresC = { 1: 0, 2: 0, 3: 0 };
-
-    function evaluarC(num, pts, btnId) {
-        puntajesValoresC[num] = pts;
-        
-        // Limpiar selección previa del grupo
-        document.querySelectorAll(`#group-c${num} .btn-opcion-c`).forEach(btn => {
-            btn.classList.remove('border-teal-500', 'bg-teal-950/50', 'text-white');
-        });
-
-        // Marcar seleccionado
-        const active = document.getElementById(`btn-${btnId}`);
-        if(active) active.classList.add('border-teal-500', 'bg-teal-950/50', 'text-white');
-
-        calcularTotalC();
-    }
-
-    function calcularTotalC() {
-        let totalC = Object.values(puntajesValoresC).reduce((a, b) => a + b, 0);
-        document.getElementById('pts-seccion-c').innerText = totalC;
-
-        const dotC = document.getElementById('dot-semaforo-c');
-        const semaforoC = document.getElementById('semaforo-seccion-c');
-        const panelDiag = document.getElementById('panel-diagnostico-c');
-        const textoDiag = document.getElementById('texto-diagnostico-c');
-
-        panelDiag.classList.remove('hidden');
-
-        if(totalC >= 80) {
-            dotC.className = "w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse";
-            semaforoC.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-950/60 border border-teal-500/40 text-xs font-bold text-teal-400";
-            semaforoC.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span> Visión Alineada';
-            textoDiag.innerText = "La empresa posee un rumbo estratégico claro y un plan de sucesión/liderazgo activo. La profesionalización está alineada con los objetivos de los propietarios.";
-        } else if(totalC >= 40) {
-            dotC.className = "w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse";
-            semaforoC.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-950/60 border border-amber-500/40 text-xs font-bold text-amber-400";
-            semaforoC.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Desafío Estratégico';
-            textoDiag.innerText = "Existen focos de desarrollo necesarios, particularmente en la formalización del liderazgo generacional. Es momento de unificar la visión compartida.";
-        } else {
-            dotC.className = "w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse";
-            semaforoC.className = "flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-950/60 border border-rose-500/40 text-xs font-bold text-rose-400";
-            semaforoC.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Alerta Roja';
-            textoDiag.innerText = "La ausencia de una estructura de formación y visión clara es un riesgo de gestión. La profesionalización de la siguiente generación debe ser una prioridad absoluta.";
-        }
-    }
-</script>
-     <!-- SECCIÓN D: ÓRGANOS DE GOBIERNO Y ESTRUCTURA ORGANIZATIVA -->
-<section id="seccion-d" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-    <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-            <span class="bg-purple-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">D</span>
-            Órganos de Gobierno y Estructura Organizativa
-        </h2>
-    </div>
-
-    <!-- AQUÍ SE INSERTA TU MARCO TEÓRICO (LOS 4 PLANOS) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        <div class="bg-slate-950 p-4 rounded-xl border border-amber-900/50 border-t-4 border-amber-500">
-            <h3 class="text-xs font-bold text-amber-400 uppercase">1. Plano Familiar: Consejo de Familia</h3>
-            <p class="text-[11px] text-slate-400 mt-1">Cuidar la unidad y formar a los nuevos dueños.</p>
-        </div>
-        <div class="bg-slate-950 p-4 rounded-xl border border-blue-900/50 border-t-4 border-blue-500">
-            <h3 class="text-xs font-bold text-blue-400 uppercase">2. Plano de la Propiedad: Mesa de Dueños</h3>
-            <p class="text-[11px] text-slate-400 mt-1">Gestión del "amor societario" y capital accionista.</p>
-        </div>
-        <div class="bg-slate-950 p-4 rounded-xl border border-indigo-900/50 border-t-4 border-indigo-500">
-            <h3 class="text-xs font-bold text-indigo-400 uppercase">3. Plano de la Dirección: Directorio</h3>
-            <p class="text-[11px] text-slate-400 mt-1">Estrategia, control y gobernanza corporativa.</p>
-        </div>
-        <div class="bg-slate-950 p-4 rounded-xl border border-emerald-900/50 border-t-4 border-emerald-500">
-            <h3 class="text-xs font-bold text-emerald-400 uppercase">4. Plano de la Ejecución: Gerencia</h3>
-            <p class="text-[11px] text-slate-400 mt-1">Profesionalización y mérito ejecutivo.</p>
-        </div>
-    </div>
-
-    <!-- AQUÍ SE INSERTA LA INTERACTIVIDAD PARA SUMAR PUNTAJE -->
-    <div class="space-y-4">
-        <div class="bg-slate-950 p-5 rounded-xl border border-slate-800" data-seccion-item="item-d1" data-titulo="Institucionalización de Planos">
-            <div class="flex justify-between items-center mb-3">
-                <h3 class="text-white font-bold text-sm">¿Están formalmente delimitados los 4 planos en el protocolo familiar?</h3>
-                <div class="flex gap-2">
-                    <button data-decision="correcto" data-puntos="25" class="btn-opcion bg-slate-900 hover:bg-emerald-950 text-slate-300 border border-slate-700 px-3 py-1 rounded text-xs font-bold transition">Sí (25p)</button>
-                    <button data-decision="incorrecto" data-puntos="0" class="btn-opcion bg-slate-900 hover:bg-rose-950 text-slate-300 border border-slate-700 px-3 py-1 rounded text-xs font-bold transition">No (0p)</button>
-                </div>
-            </div>
-        </div>
-        <!-- (Más ítems aquí...) -->
-    </div>
-</section>
-     <!-- SECCIÓN E: PROTOCOLO DE COMUNICACIÓN Y RESOLUCIÓN DE CONFLICTOS -->
-<section id="seccion-e" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-    <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-            <span class="bg-indigo-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">E</span>
-            Comunicación y Resoluciones
-        </h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-            <h3 class="text-indigo-400 font-bold mb-4 uppercase text-xs tracking-widest">Protocolo de Escalabilidad</h3>
-            <ul class="text-slate-300 text-xs space-y-3">
-                <li>✅ Conflictos operativos: Resolución en Gerencia.</li>
-                <li>✅ Diferencias estratégicas: Resolución en Directorio.</li>
-                <li>✅ Disputas de valores: Resolución en Consejo de Familia.</li>
-            </ul>
-        </div>
-        <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 flex flex-col justify-center">
-            <h3 class="text-indigo-400 font-bold mb-2 uppercase text-xs tracking-widest">Validación de Protocolo</h3>
-            <p class="text-slate-400 text-xs mb-4">¿Existe un protocolo escrito que defina estas instancias de escalabilidad?</p>
-            <div class="flex gap-2">
-                <button data-seccion-item="item-e1" data-decision="correcto" data-puntos="25" class="btn-opcion bg-emerald-950 text-emerald-300 border border-emerald-700 px-4 py-2 rounded text-xs font-bold transition hover:bg-emerald-900">Sí (25p)</button>
-                <button data-seccion-item="item-e1" data-decision="incorrecto" data-puntos="0" class="btn-opcion bg-rose-950 text-rose-300 border border-rose-700 px-4 py-2 rounded text-xs font-bold transition hover:bg-rose-900">No (0p)</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SECCIÓN F: DESARROLLO DE TALENTO Y PROFESIONALIZACIÓN -->
-<section id="seccion-f" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-    <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-            <span class="bg-emerald-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">F</span>
-            Desarrollo de Talento y Profesionalización
-        </h2>
-    </div>
-
-    <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-6">
-        <h3 class="text-emerald-400 font-bold mb-4 uppercase text-xs tracking-widest">Requisitos para la Profesionalización</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <!-- Ítem de evaluación: Formación Externa -->
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800 text-center">
-                <p class="text-white font-bold text-sm">Formación Externa</p>
-                <p class="text-slate-500 text-[10px] mt-1 mb-3">¿Es obligatoria?</p>
-                <button data-seccion-item="item-f1" data-decision="correcto" data-puntos="25" class="btn-opcion text-[10px] bg-slate-800 px-2 py-1 rounded hover:bg-emerald-900">Aplicar</button>
-            </div>
-            <!-- Ítem de evaluación: Nivel Académico -->
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800 text-center">
-                <p class="text-white font-bold text-sm">Nivel Académico</p>
-                <p class="text-slate-500 text-[10px] mt-1 mb-3">¿Es excluyente?</p>
-                <button data-seccion-item="item-f2" data-decision="correcto" data-puntos="25" class="btn-opcion text-[10px] bg-slate-800 px-2 py-1 rounded hover:bg-emerald-900">Aplicar</button>
-            </div>
-            <!-- Ítem de evaluación: Evaluación -->
-            <div class="bg-slate-900 p-4 rounded-lg border border-slate-800 text-center">
-                <p class="text-white font-bold text-sm">Evaluación</p>
-                <p class="text-slate-500 text-[10px] mt-1 mb-3">¿Existen métricas?</p>
-                <button data-seccion-item="item-f3" data-decision="correcto" data-puntos="25" class="btn-opcion text-[10px] bg-slate-800 px-2 py-1 rounded hover:bg-emerald-900">Aplicar</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SECCIÓN G y H UNIFICADAS PARA INTERACTIVIDAD -->
-<section id="seccion-g-h" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl mb-10">
-    <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
-        <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
-            <span class="bg-rose-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">G/H</span>
-            Continuidad y Riesgos Patrimoniales
-        </h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Riesgo Societario -->
-        <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-            <strong class="text-white block mb-2">Riesgo Societario:</strong>
-            <p class="text-slate-400 text-xs mb-4">¿Existen cláusulas de exclusión y arbitraje?</p>
-            <button data-seccion-item="item-g1" data-decision="correcto" data-puntos="25" class="btn-opcion bg-slate-800 px-4 py-2 rounded text-xs hover:bg-rose-900">Implementado</button>
-        </div>
-        <!-- Riesgo Personal -->
-        <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
-            <strong class="text-white block mb-2">Riesgo Personal:</strong>
-            <p class="text-slate-400 text-xs mb-4">¿Existen fideicomisos de control o seguros?</p>
-            <button data-seccion-item="item-h1" data-decision="correcto" data-puntos="25" class="btn-opcion bg-slate-800 px-4 py-2 rounded text-xs hover:bg-rose-900">Implementado</button>
-        </div>
-    </div>
-</section>
-<!-- ZONA DE EXPORTACIÓN Y TRAZABILIDAD (MANTENIENDO EL FLUJO) -->
-<div id="exportador" class="bg-slate-900 p-6 rounded-2xl border border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-    <div>
-        <h3 class="text-sm font-bold text-white">Sincronización de Módulos (G+H)</h3>
-        <p class="text-xs text-slate-400">Los nuevos módulos han sido integrados en la matriz de trazabilidad global.</p>
-    </div>
-    <button onclick="alert('Continuidad y Gestión de Riesgos sincronizados en el expediente.')" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-lg text-xs font-bold transition shadow-lg shadow-emerald-500/20">
-        Exportar Estado Actual
-    </button>
-</div>
-        <!-- CONTENEDOR PRINCIPAL DE SECCIONES -->
         <main class="space-y-12">
 
-            <!-- SECCIÓN D: ÓRGANOS DE GOBIERNO -->
-            <section id="seccion-d-gobierno" class="w-full bg-slate-900 p-6 md:p-10 rounded-2xl border border-slate-800 shadow-2xl">
+            <!-- SECCIÓN A: TIPO DE EMPRESA FAMILIAR -->
+            <section id="seccion-a-interactiva" class="bg-slate-900 p-6 md:p-10 rounded-2xl border border-slate-800 shadow-2xl transition-all seccion-item" data-titulo="Tipo de Empresa Familiar">
+                <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-6 gap-4">
+                    <div class="flex items-center gap-3">
+                        <span class="bg-indigo-600 text-white px-3 py-1 rounded-lg text-sm font-black tracking-wider">A</span>
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-extrabold text-white">Tipo de Empresa Familiar</h2>
+                            <p class="text-xs text-slate-400 mt-1">Evaluación, Consenso y Dashboard Estratégico</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-xs md:text-sm text-slate-300 mb-8 leading-relaxed max-w-4xl">
+                    Analice el modelo de gestión actual de su organización familiar. Indique el grado de acuerdo con las siguientes afirmaciones estructurales para determinar la alineación corporativa.
+                </p>
+
+                <div class="space-y-6 mb-8">
+                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
+                        <h4 class="text-xs md:text-sm font-bold text-slate-200 mb-3">1. ¿Existe una separación clara entre los roles de la Familia, la Propiedad, la Dirección y la Ejecución operativa?</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button data-nivel="alto" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-emerald-500 text-xs text-slate-300 transition text-left font-medium">✅ Sí, están claramente delimitados (Óptimo)</button>
+                            <button data-nivel="medio" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-amber-500 text-xs text-slate-300 transition text-left font-medium">⚠️ Parcialmente / Hay superposición</button>
+                            <button data-nivel="nulo" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 hover:border-rose-500 text-xs text-slate-300 transition text-left font-medium">❌ No, se mezclan familia y gestión (Alto Riesgo)</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN B: AUDITORÍA DE POSTURA SOCIETARIA -->
+            <section id="seccion-b-interactiva" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Auditoría de Postura Societaria">
+                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="bg-cyan-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">B</span>
+                        Auditoría de Postura Societaria y Validación de Principios
+                    </h2>
+                </div>
+
+                <p class="text-sm text-slate-400 mb-6 leading-relaxed">
+                    Instrumento de validación directiva para holdings y empresas de alta complejidad. Indique su conformidad con los acápites regulatorios.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
+                        <h3 class="text-white font-bold text-sm mb-3">Prohibición estricta de enajenación a extraños sin derecho de tanteo corporativo previo.</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button data-nivel="alto" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">✓ Conforme / Estricto</button>
+                            <button data-nivel="medio" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">⚠️ Flexible con restricciones</button>
+                            <button data-nivel="nulo" class="btn-opcion p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">✗ Sin restricciones</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN C: PROYECTO EMPRESARIO COMÚN -->
+            <section id="seccion-c" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Proyecto Empresario Común">
+                <div class="flex flex-wrap justify-between items-center mb-6 border-b border-slate-800 pb-4 gap-2">
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="bg-teal-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">C</span>
+                        Proyecto Empresario Común
+                    </h2>
+                </div>
+
+                <p class="text-sm text-slate-400 mb-6 italic">Definición del negocio, alineación de propietarios y visión compartida de futuro:</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800">
+                        <h3 class="font-bold text-white text-sm mb-3">Cartera de Negocios y Diversificación</h3>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button data-nivel="alto" class="btn-opcion py-2 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 text-center">Consolidada</button>
+                            <button data-nivel="medio" class="btn-opcion py-2 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 text-center">En ajuste</button>
+                            <button data-nivel="nulo" class="btn-opcion py-2 px-2 rounded bg-slate-900 border border-slate-700 text-[11px] text-slate-300 text-center">Incipiente</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN D: ÓRGANOS DE GOBIERNO Y ESTRUCTURA -->
+            <section id="seccion-d-gobierno" class="w-full bg-slate-900 p-6 md:p-10 rounded-2xl border border-slate-800 shadow-2xl seccion-item" data-titulo="Órganos de Gobierno">
                 <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-slate-800 pb-6 mb-8 gap-4">
                     <div>
                         <div class="flex items-center gap-3 mb-2">
                             <span class="bg-purple-600 text-white px-3 py-1 rounded-lg text-sm font-black tracking-wider">D</span>
                             <h2 class="text-2xl md:text-3xl font-extrabold text-white">Órganos de Gobierno y Estructura Organizativa</h2>
                         </div>
-                        <p class="text-sm text-slate-400 italic max-w-3xl">
-                            Análisis y formalización de la conveniencia de crear el Consejo de Familia y la correcta delimitación de los cuatro planos institucionales.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap items-center gap-3 bg-slate-950 p-3 rounded-xl border border-slate-800">
-                        <div id="badge-gobernanza-d" class="px-3 py-1.5 rounded-lg bg-purple-950/80 border border-purple-500/40 text-xs font-bold text-purple-300">
-                            Índice: <span id="pts-seccion-d" class="text-white text-sm">0</span> / 100 pts
-                        </div>
-                        <div id="semaforo-seccion-d" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300">
-                            <span class="w-2.5 h-2.5 rounded-full bg-slate-500" id="dot-semaforo-d"></span> 
-                            <span>En Diagnóstico</span>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Panel Diagnóstico -->
-                <div id="panel-diagnostico-d" class="bg-purple-950/20 p-5 rounded-xl border border-purple-500/30 mb-8 hidden">
-                    <h4 class="text-xs font-bold text-purple-300 uppercase tracking-widest mb-1">🏛️ Diagnóstico de Estructura de Gobierno:</h4>
-                    <p id="texto-diagnostico-d" class="text-xs md:text-sm text-purple-100/90 leading-relaxed"></p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 border-t-4 border-amber-500">
+                        <span class="text-[11px] font-bold text-amber-400 uppercase tracking-widest block mb-1">Consejo de Familia</span>
+                        <div class="grid grid-cols-2 gap-2 mt-4">
+                            <button data-nivel="alto" class="btn-opcion py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300 text-center">Formalizado</button>
+                            <button data-nivel="nulo" class="btn-opcion py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-300 text-center">Pendiente</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN E: COMUNICACIÓN Y RESOLUCIONES -->
+            <section id="seccion-e" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Comunicación y Resoluciones">
+                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="bg-indigo-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">E</span>
+                        Comunicación y Resoluciones
+                    </h2>
                 </div>
 
-                <!-- Grid de Planos -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    <!-- Plano 1 -->
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 border-t-4 border-amber-500 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[11px] font-bold text-amber-400 uppercase tracking-widest block mb-1">Plano 1: Familiar</span>
-                            <p class="text-sm font-bold text-white mb-4">Consejo de Familia</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2 mt-auto">
-                            <button onclick="evaluarD(1, 25, 'd1-si')" id="btn-d1-si" class="py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-medium text-slate-300 hover:border-amber-500 transition text-center">Formalizado (25p)</button>
-                            <button onclick="evaluarD(1, 0, 'd1-no')" id="btn-d1-no" class="py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-medium text-slate-300 hover:border-rose-500 transition text-center">Pendiente (0p)</button>
-                        </div>
+                <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
+                    <p class="text-slate-400 text-xs mb-4">¿Existe un protocolo escrito que defina las instancias de escalabilidad de conflictos?</p>
+                    <div class="flex gap-2">
+                        <button data-nivel="alto" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-4 py-2 rounded text-xs">Protocolo Escrito</button>
+                        <button data-nivel="nulo" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-4 py-2 rounded text-xs">Sin Protocolo</button>
                     </div>
-                    <!-- Plano 2 -->
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 border-t-4 border-blue-500 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[11px] font-bold text-blue-400 uppercase tracking-widest block mb-1">Plano 2: Propiedad</span>
-                            <p class="text-sm font-bold text-white mb-4">Asamblea / Mesa de Dueños</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2 mt-auto">
-                            <button onclick="evaluarD(2, 25, 'd2-si')" id="btn-d2-si" class="py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-medium text-slate-300 hover:border-blue-500 transition text-center">Formalizado (25p)</button>
-                            <button onclick="evaluarD(2, 0, 'd2-no')" id="btn-d2-no" class="py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-medium text-slate-300 hover:border-rose-500 transition text-center">Pendiente (0p)</button>
-                        </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN F: DESARROLLO DE TALENTO -->
+            <section id="seccion-f" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Desarrollo de Talento">
+                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="bg-emerald-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">F</span>
+                        Desarrollo de Talento y Profesionalización
+                    </h2>
+                </div>
+
+                <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
+                    <p class="text-slate-400 text-xs mb-4">¿Es obligatoria la experiencia externa previa para familiares ejecutivos?</p>
+                    <div class="flex gap-2">
+                        <button data-nivel="alto" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-4 py-2 rounded text-xs">Exigencia 3 Años</button>
+                        <button data-nivel="nulo" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-4 py-2 rounded text-xs">Ingreso Directo</button>
                     </div>
-                    <!-- Plano 3 -->
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 border-t-4 border-indigo-500 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[11px] font-bold text-indigo-400 uppercase tracking-widest block mb-1">Plano 3: Dirección</span>
-                            <p class="text-sm font-bold text-white mb-4">El Directorio</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2 mt-auto">
-                            <button onclick="evaluarD(3, 25, 'd3-si')" id="btn-d3-si" class="py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-medium text-slate-300 hover:border-indigo-500 transition text-center">Formalizado (25p)</button>
-                            <button onclick="evaluarD(3, 0, 'd3-no')" id="btn-d3-no" class="py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-medium text-slate-300 hover:border-rose-500 transition text-center">Pendiente (0p)</button>
-                        </div>
-                    </div>
-                    <!-- Plano 4 -->
-                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 border-t-4 border-emerald-500 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[11px] font-bold text-emerald-400 uppercase tracking-widest block mb-1">Plano 4: Ejecución</span>
-                            <p class="text-sm font-bold text-white mb-4">Comité Ejecutivo y Gerencias</p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-2 mt-auto">
-                            <button onclick="evaluarD(4, 25, 'd4-si')" id="btn-d4-si" class="py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-medium text-slate-300 hover:border-emerald-500 transition text-center">Formalizado (25p)</button>
-                            <button onclick="evaluarD(4, 0, 'd4-no')" id="btn-d4-no" class="py-2 px-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-medium text-slate-300 hover:border-rose-500 transition text-center">Pendiente (0p)</button>
+                </div>
+            </section>
+
+            <!-- SECCIÓN G y H: CONTINUIDAD Y RIESGOS -->
+            <section id="seccion-g-h" class="bg-slate-900 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-xl seccion-item" data-titulo="Continuidad y Riesgos Patrimoniales">
+                <div class="flex justify-between items-center mb-6 border-b border-slate-800 pb-4">
+                    <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+                        <span class="bg-rose-600 text-slate-950 px-3 py-1 rounded-lg text-sm font-extrabold">G/H</span>
+                        Continuidad y Riesgos Patrimoniales
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-950 p-6 rounded-xl border border-slate-800">
+                        <strong class="text-white block mb-2 text-xs">Riesgo Societario (Blindaje):</strong>
+                        <div class="flex gap-2">
+                            <button data-nivel="alto" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-3 py-2 rounded text-xs">Fideicomisos Activos</button>
+                            <button data-nivel="nulo" class="btn-opcion bg-slate-900 text-slate-300 border border-slate-700 px-3 py-2 rounded text-xs">Estatuto Estándar</button>
                         </div>
                     </div>
                 </div>
@@ -762,230 +182,113 @@
 
         </main>
 
+        <!-- ZONA DE EXPORTACIÓN Y PANEL ADMINISTRADOR -->
+        <div id="container-exportacion" class="mt-16 p-8 bg-slate-900 rounded-2xl border border-slate-800 text-center shadow-2xl">
+            <h3 class="text-base font-bold text-white mb-2">Consolidado de Perfil Organizacional para Consultoría</h3>
+            <p id="mensaje-estado" class="text-slate-400 text-xs mb-6 italic">Complete todos los acápites y bloques de evaluación del micrositio para habilitar la exportación del borrador normativo.</p>
+            
+            <button id="btn-exportar" 
+                    onclick="generarDocumentoConsolidado()"
+                    class="bg-slate-800 text-slate-500 font-bold py-4 px-12 rounded-xl shadow-lg transition-all opacity-50 cursor-not-allowed" 
+                    disabled>
+                📥 Generar y Exportar Borrador de Constitución Familiar (.doc)
+            </button>
+        </div>
+
         <!-- FOOTER / NAVEGACIÓN ENTRE NIVELES -->
         <footer class="bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4">
-            <a href="#" class="text-sm text-sky-400 hover:underline">← Volver a Parasocietarios</a>
+            <a href="parasocietarios.html" class="text-sm text-sky-400 hover:underline">← Volver a Parasocietarios</a>
             <div class="text-xs text-slate-400 text-center">Nivel 2: Constitución Familiar</div>
-            <a href="#" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition shadow-lg">Siguiente: Sucesión →</a>
+            <a href="sucesion.html" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition shadow-lg">Siguiente: Sucesión →</a>
         </footer>
 
     </div>
 
-    <!-- Script de Control -->
+    <!-- MOTOR GLOBAL DE JUEGO, PUNTUACIÓN OCULTA Y EXPORTACIÓN DINÁMICA -->
     <script>
-        let puntajesValoresD = { 1: 0, 2: 0, 3: 0, 4: 0 };
+        // Tabla de valores internos (Oculta al usuario, accesible sólo para el administrador)
+        const tablaValores = { "alto": 25, "medio": 15, "bajo": 5, "nulo": 0 };
 
-        function evaluarD(plano, pts, btnId) {
-            puntajesValoresD[plano] = pts;
-            ['si', 'no'].forEach(o => {
-                const btn = document.getElementById(`btn-d${plano}-${o}`);
-                if(btn) {
-                    btn.classList.remove('bg-amber-950', 'border-amber-500', 'bg-blue-950', 'border-blue-500', 'bg-indigo-950', 'border-indigo-500', 'bg-emerald-950', 'border-emerald-500', 'bg-rose-950', 'border-rose-500');
-                    btn.classList.add('bg-slate-900', 'border-slate-800');
-                }
+        document.querySelectorAll('.btn-opcion').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const parent = this.closest('.seccion-item');
+                if (!parent) return;
+
+                // Asignar puntaje oculto en data-attributes
+                parent.dataset.puntajeSeleccionado = tablaValores[this.dataset.nivel] ?? 0;
+                parent.dataset.eleccionTexto = this.innerText.trim();
+
+                // Feedback visual en la interfaz
+                parent.querySelectorAll('.btn-opcion').forEach(b => {
+                    b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-400', 'ring-2', 'ring-white');
+                    b.classList.add('bg-slate-900', 'text-slate-300', 'border-slate-700');
+                });
+                
+                this.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-700');
+                this.classList.add('bg-indigo-600', 'text-white', 'border-indigo-400', 'ring-2', 'ring-white');
+
+                verificarCompletitudGlobal();
             });
+        });
 
-            const active = document.getElementById(`btn-d${plano}-${btnId.split('-')[1]}`);
-            if(active) {
-                active.classList.remove('bg-slate-900', 'border-slate-800');
-                if(pts > 0) {
-                    if(plano === 1) active.classList.add('bg-amber-950/80', 'border-amber-500', 'text-amber-200');
-                    if(plano === 2) active.classList.add('bg-blue-950/80', 'border-blue-500', 'text-blue-200');
-                    if(plano === 3) active.classList.add('bg-indigo-950/80', 'border-indigo-500', 'text-indigo-200');
-                    if(plano === 4) active.classList.add('bg-emerald-950/80', 'border-emerald-500', 'text-emerald-200');
-                } else {
-                    active.classList.add('bg-rose-950/80', 'border-rose-500', 'text-rose-200');
-                }
+        function verificarCompletitudGlobal() {
+            const todosItems = document.querySelectorAll('.seccion-item');
+            const completados = Array.from(todosItems).every(item => item.dataset.puntajeSeleccionado !== undefined);
+            
+            if (completados) {
+                const btn = document.getElementById('btn-exportar');
+                const mensaje = document.getElementById('mensaje-estado');
+                
+                btn.disabled = false;
+                btn.classList.replace('opacity-50', 'opacity-100');
+                btn.classList.replace('bg-slate-800', 'bg-indigo-600');
+                btn.classList.replace('text-slate-500', 'text-white');
+                btn.classList.remove('cursor-not-allowed');
+                btn.classList.add('cursor-pointer', 'hover:bg-indigo-700', 'shadow-indigo-500/20');
+                
+                mensaje.innerHTML = '<span class="text-emerald-400 font-bold">¡Diagnóstico completo! Panel de exportación habilitado para el consultor.</span>';
             }
-            calcularTotalD();
         }
 
-        function calcularTotalD() {
-            let totalD = Object.values(puntajesValoresD).reduce((a, b) => a + b, 0);
-            document.getElementById('pts-seccion-d').innerText = totalD;
-            const dotD = document.getElementById('dot-semaforo-d');
-            const semaforoD = document.getElementById('semaforo-seccion-d');
-            const panelDiag = document.getElementById('panel-diagnostico-d');
-            const textoDiag = document.getElementById('texto-diagnostico-d');
+        function generarDocumentoConsolidado() {
+            // Autenticación de Administrador / Consultor
+            const user = prompt("Usuario de Consultor (Admin):");
+            const pass = prompt("Contraseña de Seguridad:");
 
-            panelDiag.classList.remove('hidden');
+            if (user === "lprediger" && pass === "joaquin7") {
+                let puntajeTotal = 0;
+                let contenidoWord = `CONSTITUCIÓN FAMILIAR Y PROTOCOLO CORPORATIVO - HOLDINGS\n`;
+                contenidoWord += `====================================================\n`;
+                contenidoWord += `Fecha de Emisión: ${new Date().toLocaleDateString()}\n`;
+                contenidoWord += `----------------------------------------------------\n\n`;
+                contenidoWord += `DETALLE DE EVALUACIÓN Y CLÁUSULAS PRELIMINARES:\n\n`;
 
-            if(totalD === 100) {
-                dotD.className = "w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse";
-                semaforoD.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span> Gobernanza Plena';
-                textoDiag.innerText = "Los cuatro planos institucionales están formalizados de manera óptima.";
-            } else if(totalD >= 50) {
-                dotD.className = "w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse";
-                semaforoD.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> En Transición';
-                textoDiag.innerText = "Existen planos consolidados, pero hay espacios pendientes de formalización.";
+                document.querySelectorAll('.seccion-item').forEach((item, index) => {
+                    const titulo = item.dataset.titulo || `Sección ${index + 1}`;
+                    const puntaje = parseInt(item.dataset.puntajeSeleccionado) || 0;
+                    const eleccion = item.dataset.eleccionTexto || "Sin registrar";
+                    puntajeTotal += puntaje;
+
+                    contenidoWord += `${index + 1}. ${titulo}\n`;
+                    contenidoWord += `   -> Elección del Participante: ${eleccion} (${puntaje} pts)\n\n`;
+                });
+
+                contenidoWord += `----------------------------------------------------\n`;
+                contenidoWord += `PUNTAJE TOTAL DE GOBERNANZA: ${puntajeTotal} / 200 pts\n`;
+
+                // Descarga automática del archivo .doc
+                const blob = new Blob([contenidoWord], { type: 'application/msword;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Borrador_Constitucion_Familiar_Holding_${puntajeTotal}pts.doc`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
             } else {
-                dotD.className = "w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse";
-                semaforoD.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Alta Superposición';
-                textoDiag.innerText = "Se observa una fuerte mezcla entre roles familiares y corporativos.";
+                alert("Credenciales incorrectas. Acceso denegado al panel de exportación.");
             }
         }
     </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // 1. Inicializar Estado Global desde LocalStorage o Valores Cero
-        const gameState = {
-            totalScore: parseInt(localStorage.getItem('cf_score')) || 0,
-            decisions: JSON.parse(localStorage.getItem('cf_decisions')) || {}
-        };
-
-        const scoreDisplay = document.getElementById('score-display');
-        const exportBtn = document.getElementById('btn-exportar-word');
-        const statusText = document.getElementById('diagnostico-status');
-
-        // Función para actualizar la interfaz visual de puntaje
-        function actualizarUI() {
-            if (scoreDisplay) scoreDisplay.innerText = gameState.totalScore;
-            
-            // Restaurar estados visuales guardados previamente
-            for (const [selectorId, data] of Object.entries(gameState.decisions)) {
-                const container = document.querySelector(`[data-seccion-item="${selectorId}"]`);
-                if (container) {
-                    const botones = container.querySelectorAll('.btn-opcion');
-                    botones.forEach(b => {
-                        b.disabled = true;
-                        b.classList.add('opacity-40', 'cursor-not-allowed');
-                        if (b.getAttribute('data-decision') === data.decision) {
-                            b.classList.remove('bg-slate-900', 'text-slate-300', 'border-slate-700');
-                            if (data.decision === 'correcto') {
-                                b.classList.add('bg-emerald-600', 'text-slate-950', 'border-emerald-500', 'opacity-100');
-                            } else {
-                                b.classList.add('bg-rose-600', 'text-slate-950', 'border-rose-500', 'opacity-100');
-                            }
-                        }
-                    });
-                }
-            }
-
-            // Habilitar exportador si hay actividad
-            if (Object.keys(gameState.decisions).length > 0 && exportBtn) {
-                exportBtn.disabled = false;
-                exportBtn.classList.remove('bg-slate-800', 'text-slate-500', 'cursor-not-allowed');
-                exportBtn.classList.add('bg-indigo-600', 'hover:bg-indigo-500', 'text-white', 'cursor-pointer', 'shadow-indigo-500/20');
-                if (statusText) {
-                    statusText.innerHTML = `<span class="text-emerald-400 font-bold">Evaluación en curso. Decisiones registradas: ${Object.keys(gameState.decisions).length} | Puntaje Actual: ${gameState.totalScore} pts</span>`;
-                }
-            }
-        }
-
-        // 2. Interceptar clics en cualquier botón de opción de cualquier sección
-        document.body.addEventListener('click', function(e) {
-            const btn = e.target.closest('.btn-opcion');
-            if (!btn) return;
-
-            const itemContainer = btn.closest('[data-seccion-item]');
-            if (!itemContainer) return;
-
-            const itemId = itemContainer.getAttribute('data-seccion-item');
-            
-            // Si ya se tomó una decisión en este ítem, no permitir cambios (Candado)
-            if (gameState.decisions[itemId]) return;
-
-            const decision = btn.getAttribute('data-decision');
-            const puntos = parseInt(btn.getAttribute('data-puntos')) || 0;
-
-            // Registrar en el estado global
-            gameState.decisions[itemId] = { decision, puntos, titulo: itemContainer.getAttribute('data-titulo') || itemId };
-            gameState.totalScore += puntos;
-
-            // Guardar en persistencia local
-            localStorage.setItem('cf_score', gameState.totalScore);
-            localStorage.setItem('cf_decisions', JSON.stringify(gameState.decisions));
-
-            actualizarUI();
-        });
-
-        // 3. Generador Automático del Borrador Word para el Consultor
-        window.exportarBorradorWordGlobal = function() {
-            let perfilAnalisis = "Perfil en Desarrollo";
-            if (gameState.totalScore >= 80) perfilAnalisis = "Perfil: Estratega Corporativo / Alto Alineamiento Institucional.";
-            else if (gameState.totalScore >= 40) perfilAnalisis = "Perfil: Pragmático Moderado.";
-            else perfilAnalisis = "Perfil: Resistencia Estructural / Requiere Alineación Directiva.";
-
-            let contenidoWord = `CONSTITUCIÓN FAMILIAR Y PROTOCOLO CORPORATIVO - HOLDINGS\n`;
-            contenidoWord += `====================================================\n`;
-            contenidoWord += `Puntaje Total de Gobernanza: ${gameState.totalScore} pts\n`;
-            contenidoWord += `Evaluación Preliminar: ${perfilAnalisis}\n`;
-            contenidoWord += `Fecha de Emisión: ${new Date().toLocaleDateString()}\n`;
-            contenidoWord += `----------------------------------------------------\n\n`;
-            contenidoWord += `DETALLE DE DECISIONES Y VINCULACIONES DEL PARTICIPANTE:\n\n`;
-
-            let contador = 1;
-            for (const [id, data] of Object.entries(gameState.decisions)) {
-                contenidoWord += `${contador}. [${id.toUpperCase()}] ${data.titulo}\n`;
-                contenidoWord += `   -> Elección: ${data.decision.toUpperCase()} (${data.puntos} pts)\n\n`;
-                contador++;
-            }
-
-            const blob = new Blob([contenidoWord], { type: 'application/msword' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Borrador_Constitucion_Familiar_Holding_${gameState.totalScore}pts.doc`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        };
-
-        // Inicializar al cargar
-        actualizarUI();
-    });
-</script>
-    <script>
-// Configuración de niveles de respuesta (No exponer esto al usuario)
-const tablaValores = { "alto": 25, "medio": 15, "bajo": 5, "nulo": 0 };
-
-document.querySelectorAll('.btn-opcion').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const parent = this.closest('.seccion-item');
-        // Ocultar valor en atributo data-val para que no se vea en el HTML inspeccionado
-        parent.dataset.puntajeSeleccionado = tablaValores[this.dataset.nivel];
-        
-        // Feedback visual sin mostrar puntos
-        parent.querySelectorAll('.btn-opcion').forEach(b => b.classList.remove('ring-2', 'ring-white'));
-        this.classList.add('ring-2', 'ring-white');
-        
-        verificarCompletitud();
-    });
-});
-
-function verificarCompletitud() {
-    const todosItems = document.querySelectorAll('.seccion-item');
-    const completados = Array.from(todosItems).every(item => item.dataset.puntajeSeleccionado !== undefined);
-    
-    if (completados) {
-        const btn = document.getElementById('btn-exportar');
-        btn.classList.replace('opacity-50', 'opacity-100');
-        btn.classList.remove('cursor-not-allowed');
-        btn.disabled = false;
-    }
-}
-
-function generarDocumentoConsolidado() {
-    // Autenticación simulada
-    const user = prompt("Usuario de Consultor:");
-    const pass = prompt("Contraseña:");
-    
-    if (user === "lprediger" && pass === "joaquin7") {
-        alert("Exportando borrador normativo al sistema...");
-        // Aquí conectaría con tu función de generación de archivos
-    } else {
-        alert("Credenciales incorrectas o insuficientes.");
-    }
-}
-</script>
 </body>
-    <div id="container-exportacion" class="mt-16 p-8 border-t border-slate-800 text-center">
-    <button id="btn-exportar" 
-            onclick="generarDocumentoConsolidado()"
-            class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-12 rounded-xl shadow-lg transition-all opacity-50 cursor-not-allowed" 
-            disabled>
-        📥 Generar y Exportar Borrador de Constitución Familiar (.doc)
-    </button>
-    <p id="mensaje-estado" class="text-slate-500 text-xs mt-4 italic">Complete todos los acápites para habilitar la exportación.</p>
-</div>
 </html>
