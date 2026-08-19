@@ -25,7 +25,6 @@
             box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
             color: #ffffff !important;
         }
-        /* Scrollbar elegante */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #020617; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
@@ -355,7 +354,7 @@
 
     </main>
 
-    <!-- MOTOR DE PERSISTENCIA Y REDACCIÓN JURÍDICA MATRIZ MAESTRA -->
+    <!-- MOTOR DE PERSISTENCIA Y REDACCIÓN JURÍDICA MATRIZ MAESTRA EXPANDIDA -->
     <script>
         const tablaValores = { "alto": 35, "medio": 20, "nulo": 0 };
 
@@ -459,7 +458,7 @@
                     puntajeTotal += elecciones[capId].puntaje;
                 });
 
-                // DESARROLLO JURÍDICO MATRIZ EXHAUSTIVO + ANEXO GRÁFICO PATRICIA ANGUS (COLUMBIA UNIVERSITY)
+                // MOTOR DE EXPORTACIÓN MAESTRO: DOCTRINA ÍNTEGRA Y GRÁFICOS ESTRUCTURADOS
                 let doc = `========================================================================\n`;
                 doc += `CONSTITUCIÓN FAMILIAR Y PROTOCOLO DE GOBIERNO CORPORATIVO\n`;
                 doc += `Marco Jurídico, Estratégico y Sistémico para Holdings y Empresas Familiares\n`;
@@ -478,7 +477,7 @@
                 doc += `  * J.- Políticas financieras de crecimiento, Dividendos y reinversión de utilidades.\n`;
                 doc += `  * K.- Reuniones de familia, necesidad, frecuencia y autonomía.\n`;
                 doc += `  * L.- Enmiendas al Protocolo, Vigencia y Cláusulas de Cierre.\n`;
-                doc += `  * ANEXO.- Metodología de Empresas Familiares Complejas (Dra. Patricia Angus - Columbia University).\n\n`;
+                doc += `  * ANEXO GRÁFICO TÉCNICO Y GOBERNANZA AVANZADA (Dra. Patricia Angus - Columbia University).\n\n`;
                 doc += `------------------------------------------------------------------------\n\n`;
 
                 doc += `INTRODUCCIÓN\n`;
@@ -488,93 +487,104 @@
 
                 // SECCIÓN A
                 doc += `A.- TIPO DE EMPRESA FAMILIAR QUE SE QUIERE TENER\n`;
-                doc += `[Gráfico Técnico: Modelo de los Tres Círculos de Tagiuri & Davis y Matriz de Acceso en los Cuatro Planos: Familia, Propiedad, Dirección, Ejecución]\n`;
-                if (elecciones['A']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['A'].texto} (${elecciones['A'].puntaje} pts)]\n`;
-                doc += `Es el deseo de los propietarios actuales que las subsiguientes generaciones cumplan roles protagónicos y en igualdad de condiciones en la Empresa, consolidando un modelo de Dirección Familiar y Gerenciamiento Familiar. Para avanzar en este camino, resulta indispensable fortalecer dos vectores rectores: el crecimiento (volumen de negocio, madurez y profesionalización) y la unidad del equipo tomador de decisiones.\n\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Modelo de los Tres Círculos de Tagiuri & Davis (Familia, Propiedad y Empresa) y Matriz de Acceso en los Cuatro Planos (Familia, Político, Socio, Director, Externo, Gerente, No Familiar)].\n`;
+                if (elecciones['A']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['A'].texto} (${elecciones['A'].puntaje} pts)]\n`;
+                doc += `En este apartado se trata de definir hasta dónde permitimos el acceso de los Familiares a los distintos niveles o ámbitos de la Empresa Familiar (Familia, Propiedad, Dirección, Ejecución). Las condiciones acordadas serán de aplicación estricta para los miembros actuales y para las generaciones futuras que deseen trabajar en la empresa. Es el deseo de los propietarios actuales que las subsiguientes generaciones cumplan roles protagónicos y en igualdad de condiciones, consolidando un modelo de Dirección Familiar y Gerenciamiento Familiar. Para avanzar, se requiere fortalecer el crecimiento (volumen de negocio, madurez y profesionalización) y la unidad del equipo tomador de decisiones.\n\n`;
 
                 // SECCIÓN B
                 doc += `B.- VALORES COMPARTIDOS POR LA FAMILIA\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Tabla de Alineación Cultural y Ética (Valores Core vs. Conductas Organizacionales)].\n`;
+                if (elecciones['B']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['B'].texto} (${elecciones['B'].puntaje} pts)]\n`;
                 doc += `Aquellas cosas que nos identifican como Grupo Familiar Empresario y por las cuales vale la pena luchar:\n`;
-                if (elecciones['B']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['B'].texto} (${elecciones['B'].puntaje} pts)]\n`;
-                doc += `1. Unidad familiar, basada en el amor, la solidaridad y la confianza mutua. El consenso no significa unanimidad, sino la capacidad para “ponerse de acuerdo”.\n`;
+                doc += `1. Unidad familiar, basada en el amor, la solidaridad y la confianza mutua. El consenso no significa unanimidad, sino la capacidad para ponerse de acuerdo cediendo sin rencor. La confianza mutua permite decirnos las cosas.\n`;
                 doc += `2. Respeto de la libertad y dignidad de las personas.\n`;
                 doc += `3. Rentabilidad genuina y razonable, basada en procesos efectivos, eficientes y éticos.\n`;
-                doc += `4. Excelencia competitiva en todos los productos y servicios.\n`;
+                doc += `4. Excelencia competitiva en todos los productos y servicios de la empresa.\n`;
                 doc += `5. Satisfacción de los clientes externos e internos.\n`;
                 doc += `6. Compromiso y lealtad con la unidad familiar, la empresa y el bien común.\n`;
                 doc += `7. Cumplimiento responsable y honesto de todos los deberes ciudadanos.\n`;
-                doc += `8. Amar lo que se hace (amor societario): Basado en la confianza y la amistad, es querer ser socios, discutir, disentir y proyectar de manera transparente.\n\n`;
+                doc += `8. Amar lo que se hace (Amor Societatis): Actitud de confianza y amistad que nos hace querer ser socios, discutir, disentir y proyectar de manera transparente. Cuando se pierde, la empresa deja de ser familiar y debe venderse.\n\n`;
 
                 // SECCIÓN C
                 doc += `C.- PROYECTO EMPRESARIO COMÚN A NIVEL DE ORIENTACIÓN ESTRATÉGICA\n`;
-                doc += `[Gráfico Técnico: Matriz de Posicionamiento de Cartera de Negocios y Tamaños Relativos Empresa vs. Familia]\n`;
-                if (elecciones['C']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['C'].texto} (${elecciones['C'].puntaje} pts)]\n`;
-                doc += `a) Cartera de negocios: Diversificación por clientes (segmentación), actividad, producto y expansión geográfica.\n`;
-                doc += `b) Organización: Capacitación, tecnificación, sistemas, maquinaria y concentración geográfica equilibrada. El gran secreto es el cuidado de las capacidades de la gente y la creación de la Mesa de Jóvenes.\n\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Matriz de Posicionamiento de Cartera de Negocios (Actual vs. Futura) y Matriz de Tamaños Relativos Empresa chica/mediana vs. Familia consolidada].\n`;
+                if (elecciones['C']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['C'].texto} (${elecciones['C'].puntaje} pts)]\n`;
+                doc += `a) Cartera de negocios: Diversificación por clientes (segmentación), actividad, producto y expansión geográfica nacional e internacional.\n`;
+                doc += `b) Organización: Capacitación, tecnificación, sistemas, maquinaria, equipos y concentración geográfica equilibrada.\n`;
+                doc += `El gran secreto es el cuidado de las capacidades de la gente: evitar luchas de poder, procurar una dinámica familiar sana, enseñar a los jóvenes a ser buenos dueños y crear una "Mesa de Jóvenes" en el Consejo de Familia.\n\n`;
 
                 // SECCIÓN D
                 doc += `D.- ÓRGANOS DE GOBIERNO DE LA EMPRESA FAMILIAR Y ESTRUCTURA ORGANIZATIVA\n`;
-                doc += `[Gráfico Técnico: Esquema de los Cuatro Planos de Decisión: Consejo de Familia -> Asamblea/Mesa de Dueños -> Directorio -> Comité Ejecutivo/Gerencia]\n`;
-                if (elecciones['D']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['D'].texto} (${elecciones['D'].puntaje} pts)]\n`;
-                doc += `Se definen con precisión las atribuciones del Consejo de Familia (con facilitador externo), la Asamblea de Accionistas, el Directorio profesional y la Gerencia ejecutiva.\n\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Esquema Jerárquico de los Cuatro Planos y Ámbitos de Decisión: Consejo de Familia -> Asamblea/Mesa de Dueños -> Directorio -> Comité Ejecutivo/Gerencia].\n`;
+                if (elecciones['D']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['D'].texto} (${elecciones['D'].puntaje} pts)]\n`;
+                doc += `1. Plano Familiar (Consejo de Familia): Órgano para velar por la familia como familia, dueña y empresaria. Puede integrar un Facilitador Externo (No Familiar).\n`;
+                doc += `2. Plano de la Propiedad (Asamblea de Accionistas / Mesa de Dueños): Decisiones sobre autoridades, acciones, utilidades y asociaciones. Requisitos para el Consejo ampliado: vínculo de sangre directo y 5+ años de experiencia gerencial.\n`;
+                doc += `3. Plano de la Dirección (Directorio): Representa a los dueños, fija la estrategia global, controla la gerencia y resguarda intereses con dedicación exclusiva.\n`;
+                doc += `4. Plano de la Ejecución (Comité Ejecutivo y Gerencia): Integrado por profesionales regidos estrictamente por el mérito y título universitario.\n\n`;
 
                 // SECCIÓN E
                 doc += `E.- PROPIEDAD DE LA EMPRESA Y SUS FORMAS DE ACCESO O VENTA\n`;
-                if (elecciones['E']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['E'].texto} (${elecciones['E'].puntaje} pts)]\n`;
-                doc += `Exclusividad 100% familiar. Prohibición de traspaso de votos a externos. Prioridad de venta: 1) Intrafamiliar, 2) La Empresa, 3) Interfamiliar (primos). Valuación combinada 50/50 (Patrimonial + Flujos de Fondos).\n\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Diagrama de Flujo de Tanteo y Recompra Accionaria].\n`;
+                if (elecciones['E']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['E'].texto} (${elecciones['E'].puntaje} pts)]\n`;
+                doc += `- La propiedad debe mantenerse en forma exclusiva en manos de los miembros directos de la familia, prohibiendo que acciones con voto pasen a externos.\n`;
+                doc += `- Los herederos que deseen vender ofrecerán sus acciones al Consejo de Familia. Orden de prioridad: 1) Intrafamiliar, 2) La Empresa, 3) Interfamiliar (primos).\n`;
+                doc += `- Mecánica de Valuación: Combinación 50/50 entre Valores Patrimoniales (Contables, Liquidación, Reposición) y Valor según Flujos de Fondos descontados. Se prevé un Fondo de Liquidez corporativo.\n\n`;
 
                 // SECCIÓN F
                 doc += `F.- CRITERIOS PARA EL TRABAJO EN LA EMPRESA Y PARA LA INCORPORACIÓN DE NUEVOS FAMILIARES\n`;
-                doc += `[Gráfico Técnico: Línea de Carrera Profesional: Estudios universitarios (18 años) -> Trabajo externo fuera del grupo + Postgrado (2-3 años) -> Ingreso formal con mérito]\n`;
-                if (elecciones['F']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['F'].texto} (${elecciones['F'].puntaje} pts)]\n`;
-                doc += `Requisitos de ingreso estricto y exclusión total de cónyuges / familiares políticos (salvo como proveedores externos).\n\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Línea de Carrera Profesional: 18 años (Estudios universitarios) -> 2-3 años (Trabajo externo fuera del grupo + Postgrado) -> 28/30 años (Ingreso formal con mérito comprobado)].\n`;
+                if (elecciones['F']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['F'].texto} (${elecciones['F'].puntaje} pts)]\n`;
+                doc += `Requisitos: Interés genuino, necesidad real de la empresa, título universitario, superación del proceso de selección y acreditación de un mínimo de 2 años de experiencia laboral exitosa en empresas ajenas a la familia. Por prudencia institucional, los cónyuges / familiares políticos no podrán trabajar bajo ningún concepto en la compañía, salvo como proveedores externos.\n\n`;
 
                 // SECCIÓN G & H
                 doc += `G.- ORIENTACIÓN SOBRE LA FORMACIÓN DE LAS ACTUALES Y FUTURAS GENERACIONES\n`;
-                doc += `H.- COMPROMISO DE CAPACITACIÓN EN HABILIDADES DIRECTIVAS\n`;
-                if (elecciones['H']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['H'].texto} (${elecciones['H'].puntaje} pts)]\n`;
-                doc += `Plan anual de perfeccionamiento directivo a nivel personal y de equipo corporativo.\n\n`;
+                doc += `H.- COMPROMISO DE CAPACITACIÓN DE LOS FAMILIARES EN LAS HABILIDADES DIRECTIVAS\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Matriz de Perfeccionamiento Directivo Dual (Nivel Personal vs. Nivel Equipo Directivo)].\n`;
+                if (elecciones['H']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['H'].texto} (${elecciones['H'].puntaje} pts)]\n`;
+                doc += `Compromiso de capacitación permanente a nivel personal (acrecentar capacidades) y de equipo directivo (gobierno corporativo y pensamiento estratégico).\n\n`;
 
                 // SECCIÓN I
                 doc += `I.- SISTEMAS DE DIRECCIÓN, EVALUACIÓN Y REMUNERACIÓN (S.R.A.) Y CONTROL\n`;
-                if (elecciones['I']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['I'].texto} (${elecciones['I'].puntaje} pts)]\n`;
-                doc += `Justicia distributiva (Retribución = Contribución) mediante fórmula polinómica (Sueldo Fijo + Variable + Honorarios + Dividendos) y Autoevaluación Comprobada / Evaluación 360 semestral.\n\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Desglose Gráfico de la Fórmula Polinómica de Remuneración y Círculo de Evaluación 360].\n`;
+                if (elecciones['I']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['I'].texto} (${elecciones['I'].puntaje} pts)]\n`;
+                doc += `- Sistema de Remuneración (S.R.A.): Justicia distributiva (Retribución = Contribución). Fórmula polinómica: Sueldo Fijo (Mercado) + Variable (Resultados) + Honorarios (Dirección) + Dividendos (Propiedad).\n`;
+                doc += `- Sistema de Evaluación: Autoevaluación Comprobada / Evaluación 360 mediante 15 preguntas semestrales (5 comunes de equipo, 5 individuales, 5 específicas) comprobadas por el Consejo.\n\n`;
 
                 // SECCIÓN J
                 doc += `J.- POLÍTICAS FINANCIERAS DE CRECIMIENTO, DIVIDENDOS Y REINVERSIÓN\n`;
-                if (elecciones['J']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['J'].texto} (${elecciones['J'].puntaje} pts)]\n`;
-                doc += `Reinversiones decididas en Consejo de Familia a propuesta del Directorio; dividendos vía Asamblea.\n\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Flujograma de Gobernanza Financiera (Reinversiones vía Consejo vs. Dividendos vía Asamblea)].\n`;
+                if (elecciones['J']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['J'].texto} (${elecciones['J'].puntaje} pts)]\n`;
+                doc += `Las reinversiones importantes serán decididas en el Consejo de Familia a propuesta del Directorio. Los dividendos se repartirán por resolución de Asamblea.\n\n`;
 
                 // SECCIÓN K
                 doc += `K.- REUNIONES DE FAMILIA, NECESIDAD Y FRECUENCIA\n`;
-                if (elecciones['K']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['K'].texto} (${elecciones['K'].puntaje} pts)]\n`;
-                doc += `Equilibrio entre unidad familiar y autonomía individual apalancada en el amor societario.\n\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Eje de Equilibrio entre Unidad Familiar y Autonomía Individual].\n`;
+                if (elecciones['K']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['K'].texto} (${elecciones['K'].puntaje} pts)]\n`;
+                doc += `Equilibrio entre la unidad del grupo familiar y la autonomía individual, apalancándose en los padres, el amor societario y rutinas periódicas de reuniones ante eventos importantes.\n\n`;
 
                 // SECCIÓN L
-                doc += `L.- ENMIENDAS AL PROTOCOLO, VIGENCIA Y CLÁUSULAS DE CIERRE\n`;
-                if (elecciones['L']) doc += `[Opción Seleccionada por el Jugador en Micrositio: ${elecciones['L'].texto} (${elecciones['L'].puntaje} pts)]\n`;
-                doc += `Modificación por decisión unánime de los accionistas adherentes con revisiones trienales obligatorias.\n\n`;
+                doc += `L.- ENMIENDAS AL PROTOCOLO FAMILIAR Y CLÁUSULAS DE CIERRE\n`;
+                doc += `[VISUALIZACIÓN GRÁFICA ASIGNADA: Ciclo de Revisión Trienal y Blindaje por Unanimidad].\n`;
+                if (elecciones['L']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['L'].texto} (${elecciones['L'].puntaje} pts)]\n`;
+                doc += `Las enmiendas requerirán decisión unánime de los accionistas familiares adherentes, con revisiones periódicas cada dos o tres años. Cierre: compromiso formal de cumplimiento para cuidar el futuro de la empresa y la unidad de la familia.\n\n`;
 
                 // ANEXO TÉCNICO: DRA. PATRICIA ANGUS (COLUMBIA UNIVERSITY)
                 doc += `========================================================================\n`;
-                doc += `ANEXO TÉCNICO: METODOLOGÍA DE EMPRESAS FAMILIARES COMPLEJAS\n`;
-                doc += `Cátedra de Gobierno Corporativo y Holdings — Dra. Patricia Angus (Columbia University)\n`;
+                doc += `ANEXO GRÁFICO TÉCNICO: GOBERNANZA DE EMPRESAS FAMILIARES COMPLEJAS\n`;
+                doc += `Cátedra Internacional — Dra. Patricia Angus (Columbia University)\n`;
                 doc += `========================================================================\n\n`;
-                doc += `Este anexo integra marcos conceptuales avanzados para la administración de la complejidad estructural en holdings multigeneracionales:\n\n`;
-                doc += `1. El Espectro de la Empresa Familiar Compleja:\n`;
-                doc += `   - Gráfico de convergencia entre la liquidez patrimonial, la diversificación de activos no operativos (inmobiliarios, agropecuarios) y la gobernanza unificada.\n`;
-                doc += `2. Dinámica de la Propiedad Cruzada y Protección de Votos:\n`;
-                doc += `   - Modelo de blindaje accionario frente a dispersión hereditaria, estableciendo cortafuegos legales y fideicomisos de control accionario.\n`;
-                doc += `3. Matriz de Riesgo en la Sucesión Multigeneracional:\n`;
-                doc += `   - Evaluación cuantitativa de riesgos de fricción entre ramas familiares colaterales y directores independientes externos.\n\n`;
-                doc += `Conclusión Metodológica:\n`;
-                doc += `La integración de los lineamientos de la Dra. Angus asegura que el presente Protocolo no solo gobierne el presente operativo, sino que anticipe los desafíos de escala y complejidad internacional característicos de los holdings consolidados.\n`;
+                doc += `[ANEXO GRÁFICO 1: El Espectro de la Empresa Familiar Compleja]\n`;
+                doc += `- Descripción técnica: Mapeo multidimensional que cruza la liquidez de los activos operativos, la tenencia de bienes raíces y la diversificación de inversiones secundarias bajo una unificada estructura de fideicomiso.\n\n`;
+                doc += `[ANEXO GRÁFICO 2: Dinámica de la Propiedad Cruzada y Cortafuegos Accionarios]\n`;
+                doc += `- Descripción técnica: Arquitectura jurídica orientada a prevenir la fragmentación del capital social ante eventualidades sucesorias complejas, blindando los derechos políticos frente a herederos indirectos.\n\n`;
+                doc += `[ANEXO GRÁFICO 3: Matriz de Mitigación de Riesgos Intergeneracionales]\n`;
+                doc += `- Descripción técnica: Cuadro de calor y ponderación de fricciones entre ramas familiares colaterales, diseñado para anticipar conflictos de interés y asegurar la continuidad operativa del holding a largo plazo.\n`;
 
                 const blob = new Blob([doc], { type: 'application/msword;charset=utf-8' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `Protocolo_Familiar_Maestro_Con_Anexo_Angus_${puntajeTotal}pts.doc`;
+                a.download = `Protocolo_Familiar_Completo_Con_Graficos_Angus_${puntajeTotal}pts.doc`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
