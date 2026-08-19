@@ -36,7 +36,7 @@
     <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
     <nav class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-6 py-4 flex flex-wrap justify-between items-center shadow-xl">
         <div class="flex items-center gap-4">
-            <a href="parasocietarios.html" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-700 shadow-sm">
+            <a href="parasocietarios.html" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition border border-slate-700 shadow-sm cursor-pointer">
                 &larr; Volver a Parasocietarios
             </a>
             <div class="hidden sm:flex items-center gap-2 bg-emerald-950/50 px-3 py-1.5 rounded-xl border border-emerald-500/30">
@@ -80,9 +80,7 @@
                     <span class="bg-indigo-600 text-white px-3 py-1 rounded-xl text-xs font-black tracking-widest">A</span>
                     <h2 class="text-xl font-extrabold text-white">Tipo de Empresa Familiar y Delimitación de Planos (Pirámide de Gobierno)</h2>
                 </div>
-                <p class="text-xs text-slate-400 mb-6 leading-relaxed">
-                    Seleccione el modelo estructural corporativo deseado para la delimitación de planos (Familia, Propiedad, Dirección y Ejecución):
-                </p>
+                <p class="text-xs text-slate-400 mb-6 leading-relaxed">Seleccione el modelo estructural corporativo deseado:</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <button type="button" data-nivel="alto" class="btn-opcion bg-slate-950 hover:bg-slate-800 text-slate-300 border border-slate-800 p-4 rounded-2xl text-xs font-medium text-left transition flex flex-col justify-between cursor-pointer">
                         <span class="font-bold text-white mb-2">Dirección y Gerenciamiento Familiar Pleno</span>
@@ -343,7 +341,7 @@
 
         <!-- FOOTER / NAVEGACIÓN -->
         <footer class="bg-slate-900/90 backdrop-blur border border-slate-800 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
-            <a href="parasocietarios.html" class="text-slate-400 hover:text-white font-bold transition flex items-center gap-2">
+            <a href="parasocietarios.html" class="text-slate-400 hover:text-white font-bold transition flex items-center gap-2 cursor-pointer">
                 &larr; Volver a Parasocietarios
             </a>
             <div class="text-slate-500 font-medium text-center">Nivel 2: Constitución Familiar y Protocolo Corporativo</div>
@@ -354,7 +352,7 @@
 
     </main>
 
-    <!-- MOTOR DE PERSISTENCIA Y REDACCIÓN JURÍDICA MATRIZ CON TABLAS VISUALES Y GRÁFICOS INTEGRADOS -->
+    <!-- MOTOR DE PERSISTENCIA Y EXPORTACIÓN COMPLETA -->
     <script>
         const tablaValores = { "alto": 35, "medio": 20, "nulo": 0 };
 
@@ -387,7 +385,9 @@
                 const capId = parent.dataset.capituloId;
                 const nivel = this.dataset.nivel;
                 const puntaje = tablaValores[nivel] ?? 0;
-                const textoEleccion = this.querySelector('span.font-bold') ? this.querySelector('span.font-bold'].innerText : this.innerText.trim();
+                
+                const spanBold = this.querySelector('span.font-bold');
+                const textoEleccion = spanBold ? spanBold.innerText : this.innerText.trim();
 
                 parent.dataset.puntajeSeleccionado = puntaje;
                 parent.dataset.nivelElegido = nivel;
@@ -458,7 +458,6 @@
                     puntajeTotal += elecciones[capId].puntaje;
                 });
 
-                // MOTOR DE EXPORTACIÓN CON ESTRUCTURAS TABULARES VISUALES Y GRÁFICOS INTEGRADOS
                 let doc = `========================================================================\n`;
                 doc += `CONSTITUCIÓN FAMILIAR Y PROTOCOLO DE GOBIERNO CORPORATIVO\n`;
                 doc += `Marco Jurídico, Estratégico y Sistémico para Holdings y Empresas Familiares\n`;
@@ -485,7 +484,7 @@
                 doc += `Desde el punto de vista de la empresa familiar, un Protocolo familiar debería ayudar a profesionalizar los procesos de dirección estratégica y a institucionalizar en la empresa los valores básicos de la familia.\n`;
                 doc += `Desde el punto de vista de la familia, un protocolo familiar debería ayudar a promover la unidad y armonía de sus miembros, a profesionalizarles como propietarios de una empresa, y a conservar en la familia los valores que hacen fuerte a la empresa familiar.” — Miguel Ángel Gallo (IESE)\n\n`;
 
-                // SECCIÓN A
+                // A
                 doc += `A.- TIPO DE EMPRESA FAMILIAR QUE SE QUIERE TENER\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: PIRÁMIDE DE LOS CUATRO PLANOS]\n`;
                 doc += `+------------------------------------------------------------------------+\n`;
@@ -500,7 +499,7 @@
                 if (elecciones['A']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['A'].texto} (${elecciones['A'].puntaje} pts)]\n`;
                 doc += `En este apartado se trata de definir hasta dónde permitimos el acceso de los Familiares a los distintos niveles o ámbitos de la Empresa Familiar (Familia, Propiedad, Dirección, Ejecución). Las condiciones acordadas serán de aplicación estricta para los miembros actuales y para las generaciones futuras. Es el deseo de los propietarios actuales que las subsiguientes generaciones cumplan roles protagónicos y en igualdad de condiciones, consolidando un modelo de Dirección Familiar y Gerenciamiento Familiar.\n\n`;
 
-                // SECCIÓN B
+                // B
                 doc += `B.- VALORES COMPARTIDOS POR LA FAMILIA\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: TABLA DE ALINEACIÓN CULTURAL Y VALORES]\n`;
                 doc += `+-------------------------+----------------------------------------------+\n`;
@@ -514,7 +513,7 @@
                 if (elecciones['B']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['B'].texto} (${elecciones['B'].puntaje} pts)]\n`;
                 doc += `Aquellas cosas que nos identifican como Grupo Familiar Empresario y por las cuales vale la pena luchar: Unidad familiar basada en el amor, solidaridad y confianza mutua. El consenso no significa unanimidad, sino la capacidad de ponerse de acuerdo. Respeto a la libertad y dignidad. Rentabilidad genuina. Excelencia competitiva y satisfacción del cliente. Lealtad con el bien común y cumplimiento ciudadano. Amar lo que se hace (Amor Societatis): actitud de amistad y transparencia que hace querer ser socios. Cuando este afecto se pierde, la empresa deja de ser familiar y debe venderse.\n\n`;
 
-                // SECCIÓN C
+                // C
                 doc += `C.- PROYECTO EMPRESARIO COMÚN A NIVEL DE ORIENTACIÓN ESTRATÉGICA\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: MAPA DE CARTERA Y TAMAÑOS RELATIVOS]\n`;
                 doc += `+-----------------------------------+------------------------------------+\n`;
@@ -527,7 +526,7 @@
                 if (elecciones['C']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['C'].texto} (${elecciones['C'].puntaje} pts)]\n`;
                 doc += `Respecto a la cartera de negocios, se busca la diversificación por clientes, actividad, producto y expansión geográfica. A nivel organizacional, se prioriza la capacitación, tecnificación, sistemas y maquinaria. El gran secreto es el cuidado de las capacidades de la gente: evitar luchas de poder, procurar una dinámica familiar sana y enseñar a los jóvenes a ser buenos dueños.\n\n`;
 
-                // SECCIÓN D
+                // D
                 doc += `D.- ÓRGANOS DE GOBIERNO DE LA EMPRESA FAMILIAR Y ESTRUCTURA ORGANIZATIVA\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: FLUJOGRAMA DE GOBIERNO Y ATRIBUCIONES]\n`;
                 doc += `+-------------------+-----------------------------+----------------------+\n`;
@@ -541,7 +540,7 @@
                 if (elecciones['D']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['D'].texto} (${elecciones['D'].puntaje} pts)]\n`;
                 doc += `Se describen en detalle los cuatro órganos de gobierno: Consejo de Familia (con facilitador externo como mediador imparcial), Asamblea de Accionistas / Mesa de Dueños (definición de políticas estratégicas), Directorio (representa a los dueños, controla la gerencia y asegura la rentabilidad a largo plazo) y Comité Ejecutivo (regido estrictamente por el mérito y la capacidad profesional).\n\n`;
 
-                // SECCIÓN E
+                // E
                 doc += `E.- PROPIEDAD DE LA EMPRESA Y SUS FORMAS DE ACCESO O VENTA\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: FLUJO DE TANTEO Y VALUACIÓN 50/50]\n`;
                 doc += `+------------------------------------------------------------------------+\n`;
@@ -555,7 +554,7 @@
                 if (elecciones['E']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['E'].texto} (${elecciones['E'].puntaje} pts)]\n`;
                 doc += `La propiedad debe mantenerse en forma exclusiva en manos de los miembros directos de la familia, prohibiendo que acciones con derecho a voto pasen a externos. Los herederos que deseen vender deberán ofrecer sus acciones obligatoriamente al Consejo de Familia. Se establece un Fondo de Liquidez corporativo para asistir a necesidades extraordinarias o compras minoritarias.\n\n`;
 
-                // SECCIÓN F
+                // F
                 doc += `F.- CRITERIOS PARA EL TRABAJO EN LA EMPRESA Y PARA LA INCORPORACIÓN DE NUEVOS FAMILIARES\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: LÍNEA DE CARRERA PROFESIONAL]\n`;
                 doc += `+------------------------+-----------------------------------------------+\n`;
@@ -569,7 +568,7 @@
                 if (elecciones['F']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['F'].texto} (${elecciones['F'].puntaje} pts)]\n`;
                 doc += `Requisitos: Interés genuino, necesidad real de la empresa, título universitario, superación de selección y acreditación de mínimo 2 años de trabajo exitoso fuera del grupo familiar. Por prudencia institucional, los cónyuges / familiares políticos no podrán trabajar en la empresa bajo ningún concepto, excepto como proveedores externos bajo auditoría de calidad.\n\n`;
 
-                // SECCIÓN G & H
+                // G & H
                 doc += `G & H.- ORIENTACIÓN GENERACIONAL Y CAPACITACIÓN DIRECTIVA\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: MATRIZ DE PERFECCIONAMIENTO DUAL]\n`;
                 doc += `+-------------------------+----------------------------------------------+\n`;
@@ -581,7 +580,7 @@
                 if (elecciones['H']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['H'].texto} (${elecciones['H'].puntaje} pts)]\n`;
                 doc += `Compromiso de capacitación permanente a nivel personal y de equipo directivo, garantizando que el perfeccionamiento no interfiera con las responsabilidades laborales ni familiares.\n\n`;
 
-                // SECCIÓN I
+                // I
                 doc += `I.- SISTEMAS DE DIRECCIÓN, EVALUACIÓN Y REMUNERACIÓN (S.R.A.) Y CONTROL\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: FÓRMULA POLINÓMICA S.R.A. Y EVALUACIÓN 360]\n`;
                 doc += `+------------------------------------------------------------------------+\n`;
@@ -596,7 +595,7 @@
                 if (elecciones['I']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['I'].texto} (${elecciones['I'].puntaje} pts)]\n`;
                 doc += `Retribución basada en la justicia distributiva (Retribución = Contribución). Cobertura vitalicia de retiro para directivos jubilados y seguro de vida para los fundadores. En caso de fallecimiento de un hermano, su familia continuará percibiendo ingresos proporcionales.\n\n`;
 
-                // SECCIÓN J
+                // J
                 doc += `J.- POLÍTICAS FINANCIERAS DE CRECIMIENTO, DIVIDENDOS Y REINVERSIÓN\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: GOBERNANZA FINANCIERA DE UTILIDADES]\n`;
                 doc += `+----------------------------------+-------------------------------------+\n`;
@@ -608,7 +607,7 @@
                 if (elecciones['J']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['J'].texto} (${elecciones['J'].puntaje} pts)]\n`;
                 doc += `Las reinversiones importantes serán decididas en el Consejo de Familia a propuesta del Directorio. Los dividendos se repartirán por resolución de Asamblea.\n\n`;
 
-                // SECCIÓN K
+                // K
                 doc += `K.- REUNIONES DE FAMILIA, NECESIDAD Y FRECUENCIA\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: EQUILIBRIO UNIDAD VS AUTONOMÍA]\n`;
                 doc += `+------------------------------------------------------------------------+\n`;
@@ -619,7 +618,7 @@
                 if (elecciones['K']) doc += `[Opción Seleccionada en Micrositio: ${elecciones['K'].texto} (${elecciones['K'].puntaje} pts)]\n`;
                 doc += `Se trabaja el mix de unidad del grupo familiar y la autonomía individual, apalancándose en los padres y el amor societario mediante rutinas de reuniones periódicas.\n\n`;
 
-                // SECCIÓN L
+                // L
                 doc += `L.- ENMIENDAS AL PROTOCOLO FAMILIAR Y CLÁUSULAS DE CIERRE\n`;
                 doc += `[VISUALIZACIÓN GRÁFICA MATRICIAL: CICLO DE REVISIÓN TRIENAL Y UNANIMIDAD]\n`;
                 doc += `+------------------------------------------------------------------------+\n`;
